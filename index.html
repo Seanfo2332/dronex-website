@@ -1,0 +1,1512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drone X — Elevating Malaysia's Drone Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* =============================================
+     UNICORN INTRO — FIXED OVERLAY
+     ============================================= */
+  * { box-sizing: border-box; }
+  html { margin: 0; padding: 0; background: #000; }
+  body { margin: 0; padding: 0; background: #000; }
+  /* Prevent horizontal scroll at section level, not root — keeps position:sticky working on all browsers */
+
+  /* Unicorn sits fixed on top of everything. Body scroll is locked until it leaves. */
+  .unicorn-section {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: #000;
+    overflow: hidden;
+    /* slide-up wipe — clearly visible against any background */
+    transition: transform 1400ms cubic-bezier(0.76, 0, 0.24, 1);
+    will-change: transform;
+  }
+  .unicorn-section.leaving {
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  #unicorn-container { width: 100%; height: 100%; }
+
+  .unicorn-logo {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+  .unicorn-logo img {
+    width: 36%;
+    max-width: 560px;
+    min-width: 260px;
+    height: auto;
+  }
+
+  .unicorn-scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.75);
+    pointer-events: none;
+    transition: opacity 300ms ease;
+    white-space: nowrap;
+  }
+  /* Mobile: replace scroll hint with a tappable button */
+  .unicorn-tap-btn {
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.9);
+    background: rgba(157,193,245,.12);
+    border: 1px solid rgba(157,193,245,.35);
+    padding: 14px 28px;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: background 200ms ease;
+  }
+  .unicorn-tap-btn:active { background: rgba(157,193,245,.22); }
+  @media (max-width: 768px) {
+    .unicorn-scroll-hint { display: none; }
+    .unicorn-tap-btn { display: block; }
+  }
+  .unicorn-scroll-hint .drop {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(157,193,245,1), transparent);
+    animation: dropLine 2.2s ease-in-out infinite;
+  }
+  @keyframes dropLine {
+    0%   { transform: scaleY(0) translateY(-100%); opacity: 0; }
+    40%  { transform: scaleY(1) translateY(0);     opacity: 1; }
+    100% { transform: scaleY(1) translateY(100%);  opacity: 0; }
+  }
+
+  a[href*="unicorn.studio"],
+  [class*="unicorn-badge"],
+  [class*="us-badge"],
+  [id*="us-badge"] { display: none !important; }
+
+  /* =============================================
+     DRONEХ — DESIGN TOKENS & RESETS
+     ============================================= */
+  :root {
+    --navy:    #151F27;
+    --slate:   #495F77;
+    --sky:     #9DC1F5;
+    --cloud:   #E8ECEF;
+    --white:   #FFFFFF;
+    --black:   #000000;
+    --navy-1:  #1B262F;
+    --navy-2:  #202D38;
+    --rule:         rgba(73,95,119,.35);
+    --rule-soft:    rgba(73,95,119,.18);
+    --rule-strong:  rgba(73,95,119,.55);
+    --grid:         rgba(157,193,245,.04);
+    --f-display: "Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --f-body:    "Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --f-mono:    "JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --gutter: clamp(20px,3.4vw,56px);
+    --maxw:   1440px;
+    --ease-aerial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .dx {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--navy);
+    color: var(--cloud);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .dx *, .dx *::before, .dx *::after { box-sizing: border-box; }
+  .dx ::selection { background: var(--sky); color: var(--navy); }
+  .dx a { color: inherit; text-decoration: none; }
+  .dx img { display: block; max-width: 100%; }
+
+  .dx .brand-stripe { height: 3px; background: var(--sky); width: 100%; }
+
+  .dx .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .dx .rule      { height:1px; background:var(--rule);      width:100%; border:0; }
+  .dx .rule-soft { height:1px; background:var(--rule-soft); width:100%; border:0; }
+  .dx .mono {
+    font-family: var(--f-mono);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 11px;
+    color: var(--slate);
+    font-weight: 400;
+  }
+  .dx .mono.cloud { color: var(--cloud); }
+  .dx .mono.sky   { color: var(--sky); }
+  .dx .lede {
+    font-family: var(--f-body);
+    font-size: clamp(15px,1.05vw,17px);
+    line-height: 1.65;
+    color: var(--cloud);
+    font-weight: 300;
+    max-width: 60ch;
+  }
+
+  /* ---------- Buttons ---------- */
+  .dx .btn {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 18px 22px;
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    border-radius: 2px;
+    transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+    cursor: pointer; white-space: nowrap; border: 1px solid transparent; line-height: 1;
+  }
+  .dx .btn .arrow {
+    width:18px; height:1px; background:currentColor; position:relative; display:inline-block;
+    transition: width 260ms var(--ease-aerial);
+  }
+  .dx .btn .arrow::after {
+    content:""; position:absolute; right:-1px; top:-3px; width:7px; height:7px;
+    border-top:1px solid currentColor; border-right:1px solid currentColor; transform:rotate(45deg);
+  }
+  .dx .btn:hover .arrow { width: 28px; }
+  .dx .btn-primary { background:var(--sky); color:var(--navy); }
+  .dx .btn-primary:hover {
+    background:var(--cloud);
+    box-shadow: 0 0 0 1px rgba(157,193,245,0.30), 0 8px 28px -16px rgba(157,193,245,0.45);
+  }
+  .dx .btn-ghost { border-color:var(--slate); color:var(--cloud); background:transparent; }
+  .dx .btn-ghost:hover {
+    border-color:var(--sky); color:var(--sky);
+    background: rgba(157,193,245,0.06);
+  }
+
+  /* ---------- Nav ---------- */
+  .dx .nav {
+    position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: rgba(21,31,39,.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(157,193,245,.12);
+  }
+  .dx .nav-inner {
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+  }
+  .dx .nav-logo { display:flex; align-items:center; }
+  .dx .nav-logo .wordmark { height:26px; width:auto; display:block; }
+  @media (max-width:520px){ .dx .nav-logo .wordmark{ height:22px; } }
+
+  .dx .nav-list {
+    display: flex; align-items: center; gap: 30px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .dx .nav-list li { position: relative; }
+  .dx .nav-list .caret {
+    display: inline-block; width:5px; height:5px;
+    border-right:1px solid var(--cloud); border-bottom:1px solid var(--cloud);
+    transform: rotate(45deg); margin-left: 6px; transform-origin: 55% 55%;
+    transition: transform 220ms ease, border-color 220ms ease; vertical-align: middle;
+  }
+  .dx .nav-list .has-menu:hover .caret,
+  .dx .nav-list .has-menu:focus-within .caret { transform:rotate(225deg); border-color:var(--sky); }
+
+  .dx .nav-list .submenu {
+    position: absolute; top: calc(100% + 14px); left: -20px;
+    min-width: 320px;
+    background: rgba(21,31,39,.96);
+    border: 1px solid var(--rule); border-top: 1px solid var(--sky);
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 2px;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: opacity 200ms ease, transform 200ms ease;
+    z-index: 60;
+  }
+  .dx .nav-list .has-menu:hover > .submenu,
+  .dx .nav-list .has-menu:focus-within > .submenu { opacity:1; pointer-events:auto; transform:translateY(0); }
+  .dx .nav-list .submenu::before {
+    content:""; position:absolute; left:0; right:0; top:-14px; height:14px;
+  }
+  .dx .nav-list .submenu-eyebrow {
+    font-family:var(--f-mono); font-size:9px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--slate); padding-bottom:10px; margin-bottom:6px; border-bottom:1px solid var(--rule-soft);
+  }
+  .dx .nav-list .submenu a {
+    display:grid; grid-template-columns:36px 1fr; gap:10px; align-items:baseline;
+    padding:9px 6px; color:var(--cloud); font-family:var(--f-display); font-size:14px;
+    border-left:1px solid transparent;
+    transition: border-color 220ms ease, color 220ms ease, padding-left 220ms ease, background-color 220ms ease;
+  }
+  .dx .nav-list .submenu a::after { display:none; }
+  .dx .nav-list .submenu a .sm-num { font-family:var(--f-mono); font-size:10px; letter-spacing:.18em; color:var(--slate); }
+  .dx .nav-list .submenu a:hover { color:var(--white); border-left-color:var(--sky); padding-left:12px; background:rgba(157,193,245,.04); }
+  .dx .nav-list .submenu a:hover .sm-num { color:var(--sky); }
+
+  .dx .nav-list a {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--cloud); position:relative; padding:6px 0;
+    transition: opacity 260ms var(--ease-aerial), color 220ms ease;
+  }
+  /* Replaced underline scale with opacity fade — feels more premium and confident */
+  .dx .nav-list a:hover { opacity: 0.7; color: var(--white); }
+  .dx .nav-list a::after {
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:var(--sky);
+    transform:scaleX(0); transform-origin:left; transition:transform 260ms ease;
+  }
+  .dx .nav-list a.active::after { transform:scaleX(1); }
+  /* Submenu and nav-cta still need the underline override */
+  .dx .nav-list .submenu a::after,
+  .dx .nav-list .nav-cta::after { display:none !important; }
+  .dx .nav-list .nav-cta:hover { opacity: 1; }
+
+  /* Nav CTA: border-only treatment, lighter touch in nav */
+  .dx .nav-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.20em; text-transform:uppercase;
+    color:var(--sky); background:transparent;
+    border:1px solid var(--sky); padding:10px 14px; border-radius:2px;
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+  }
+  .dx .nav-cta:hover {
+    background:rgba(157,193,245,0.08); color:var(--white); border-color:var(--white);
+  }
+  .dx .nav-cta .arrow {
+    width:14px; height:1px; background:currentColor; position:relative; display:inline-block;
+    transition: width 240ms var(--ease-aerial);
+  }
+  .dx .nav-cta .arrow::after {
+    content:""; position:absolute; right:-1px; top:-3px; width:6px; height:6px;
+    border-top:1px solid currentColor; border-right:1px solid currentColor; transform:rotate(45deg);
+  }
+  .dx .nav-cta:hover .arrow { width: 22px; }
+  @media (max-width:1100px){ .dx .nav-list{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .dx .hero {
+    position:relative; height:100svh; min-height:560px; background:var(--navy); overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+
+  /* Video background */
+  .dx .hero-video {
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; object-fit:cover;
+    pointer-events:none;
+  }
+  /* Navy overlay — keeps brand palette, ensures text contrast */
+  .dx .hero-video-overlay {
+    position:absolute; inset:0; z-index:1;
+    background: linear-gradient(
+      160deg,
+      rgba(21,31,39,0.75) 0%,
+      rgba(21,31,39,0.55) 50%,
+      rgba(21,31,39,0.72) 100%
+    );
+    pointer-events:none;
+  }
+
+  .dx .hero-grid {
+    position:absolute; inset:0; z-index:2;
+    background-image:
+      linear-gradient(to right, rgba(157,193,245,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(157,193,245,0.06) 1px, transparent 1px);
+    background-size:80px 80px; pointer-events:none;
+  }
+  .dx .hero::before, .dx .hero::after {
+    content:""; position:absolute; pointer-events:none; z-index:4; width:14px; height:14px;
+  }
+  .dx .hero::before { top:96px; left:var(--gutter); border-top:1px solid var(--sky); border-left:1px solid var(--sky); }
+  .dx .hero::after  { bottom:96px; right:var(--gutter); border-bottom:1px solid var(--sky); border-right:1px solid var(--sky); }
+
+  .dx .hero-emblem {
+    position:absolute; right:-20vw; top:-8vw; width:80vw; max-width:1200px; aspect-ratio:1/1;
+    opacity:.06; pointer-events:none; z-index:2;
+  }
+  .dx .hero-emblem svg { width:100%; height:100%; display:block; }
+  .dx .hero-emblem .x-stroke {
+    fill: none;
+    stroke: var(--sky);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: var(--len, 1800);
+    stroke-dashoffset: var(--len, 1800);
+    animation: drawStroke 2s var(--ease-aerial) forwards;
+  }
+  .dx .hero-emblem .x-stroke.s1 { animation-delay: 0.3s; }
+  .dx .hero-emblem .x-stroke.s2 { animation-delay: 1s; }
+  @keyframes drawStroke {
+    to { stroke-dashoffset: 0; }
+  }
+  /* Scroll-driven emblem parallax (modern browsers) */
+  @supports (animation-timeline: scroll()) {
+    .dx .hero-emblem {
+      animation: emblemParallax linear both;
+      animation-timeline: scroll();
+      animation-range: 0 40vh;
+    }
+    @keyframes emblemParallax {
+      from { transform: translateY(0) scale(1); opacity: 0.045; }
+      to   { transform: translateY(-8%) scale(1.06); opacity: 0; }
+    }
+  }
+
+  .dx .hero-chart-wrap {
+    position:absolute; right:-4vw; top:50%; transform:translateY(-50%);
+    width:64vw; max-width:1080px; aspect-ratio:1/0.78; pointer-events:none; z-index:3;
+    opacity: 0.5;
+  }
+  .dx .hero-chart { width:100%; height:100%; color:var(--slate); }
+
+  .dx .radar-sweep {
+    position:absolute; right:8vw; top:22%; width:32vw; max-width:460px; aspect-ratio:1/1;
+    pointer-events:none; z-index:3;
+  }
+  .dx .radar-sweep .sweep-blade { transform-origin:50% 50%; animation:sweep 8s linear infinite; }
+  @keyframes sweep    { from{transform:rotate(0)}   to{transform:rotate(360deg)} }
+  @keyframes pulseRing{ 0%{r:6;opacity:.9} 100%{r:30;opacity:0} }
+  @keyframes draw     { from{stroke-dashoffset:1800} to{stroke-dashoffset:0} }
+
+  .dx .hero-rail {
+    position:absolute; left:0; top:96px; bottom:140px; width:var(--gutter);
+    border-right:1px solid var(--rule-soft); pointer-events:none; z-index:2;
+  }
+  .dx .hero-rail .ticks {
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), var(--rule-soft) 100%) 0 0/100% 12.5%;
+  }
+  .dx .hero-rail .vlabel {
+    position:absolute; left:8px;
+    font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate);
+    writing-mode:vertical-rl; transform:rotate(180deg);
+  }
+  .dx .hero-rail .vlabel.t { top:8px; }
+  .dx .hero-rail .vlabel.m { top:50%; transform:translateY(-50%) rotate(180deg); }
+  .dx .hero-rail .vlabel.b { bottom:8px; }
+
+  .dx .mission-bar {
+    border-bottom:1px solid var(--rule-soft); padding:14px 0;
+    display:grid; grid-template-columns:auto 1fr auto auto auto;
+    gap:32px; align-items:center;
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:oklch(68% 0.018 240);
+    position:relative; z-index:2;
+  }
+  .dx .mission-bar .live { display:inline-flex; align-items:center; gap:10px; color:var(--cloud); }
+  .dx .mission-bar .live .rec { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--cloud); border:1px solid rgba(157,193,245,.3); padding:3px 6px; }
+  .dx .mission-bar .ticker { overflow:hidden; white-space:nowrap; mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent); }
+  .dx .mission-bar .ticker-track { display:inline-flex; gap:48px; animation:scroll 40s linear infinite; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .dx .mission-bar .ticker-track span b { color:var(--cloud); font-weight:400; margin-right:8px; }
+  .dx .mission-bar .clock { color:oklch(75% 0.016 240); }
+  .dx .mission-bar .clock b { color:var(--white); font-weight:400; }
+
+  .dx .hero-body {
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    padding-top:clamp(32px,6vh,64px); padding-bottom:40px;
+    position:relative; z-index:2;
+  }
+  .dx .hero-body .hero-left {
+    display:flex; flex-direction:column; min-width:0;
+    max-width:min(55vw,700px);
+  }
+  .dx .hero-body .hero-right { display:none; }
+
+  .dx .hero-tag {
+    display:inline-flex; align-items:stretch; gap:0; margin-bottom:40px;
+    border:1px solid var(--rule); background:rgba(27,38,47,.75);
+  }
+  .dx .hero-tag .cell {
+    padding:9px 14px; font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--cloud); border-right:1px solid var(--rule-soft); display:flex; align-items:center; gap:8px;
+  }
+  .dx .hero-tag .cell:last-child { border-right:none; color:var(--sky); }
+  .dx .hero-tag .cell .marker { font-family:var(--f-mono); font-size:11px; color:var(--sky); margin-right:2px; }
+
+  .dx .hero-headline {
+    font-family:var(--f-display); font-weight:500;
+    font-size:clamp(3rem,5.5vw,8rem); line-height:0.9; letter-spacing:-0.03em;
+    color:var(--white); margin:0; position:relative;
+  }
+  .dx .hero-headline .l       { display:block; }
+  .dx .hero-headline .l-dim   { display:block; font-weight:300; color:oklch(93% 0.008 240 / 0.55); padding-left:0.15em; }
+  .dx .hero-headline .num {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.22em;
+    color:var(--slate); vertical-align:super; margin-right:6px; font-weight:400; text-transform:uppercase;
+  }
+  .dx .hero-headline .arrow-glyph {
+    display:inline-block; width:.7em; height:.04em; background:var(--sky);
+    vertical-align:middle; margin:0 .25em 0 .15em; position:relative;
+  }
+  .dx .hero-headline .arrow-glyph::after {
+    content:""; position:absolute; right:0; top:-.18em; width:.18em; height:.18em;
+    border-top:.04em solid var(--sky); border-right:.04em solid var(--sky); transform:rotate(45deg);
+  }
+
+  .dx .hero-meta {
+    margin-top:40px;
+  }
+  .dx .hero-meta .lede { max-width:48ch; }
+  .dx .hero-meta .col h6 {
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.22em;
+    color:var(--slate); text-transform:uppercase; margin:0 0 14px; font-weight:400;
+    padding-bottom:10px; border-bottom:1px solid var(--rule-soft);
+  }
+  .dx .hero-meta .col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .dx .hero-meta .col li {
+    display:flex; align-items:baseline; gap:10px;
+    font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:300;
+  }
+  .dx .hero-meta .col li::before { content:""; width:8px; height:1px; background:var(--sky); flex:none; transform:translateY(-3px); }
+
+  .dx .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:48px; align-items:center; }
+  .dx .hero-actions .stat {
+    display:flex; flex-direction:column; gap:4px;
+    padding-left:18px; margin-left:8px; border-left:1px solid var(--rule-soft);
+  }
+  .dx .hero-actions .stat .k { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate); text-transform:uppercase; }
+  .dx .hero-actions .stat .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:400; }
+
+  .dx .hero-foot {
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    display:grid; grid-template-columns:repeat(5,1fr) auto; gap:0; position:relative; z-index:2;
+  }
+  .dx .hero-foot .cell {
+    padding:16px 22px 16px 0; border-right:1px solid var(--rule-soft);
+    display:flex; flex-direction:column; gap:6px; min-width:0;
+  }
+  .dx .hero-foot .cell:first-child { padding-left:0; }
+  .dx .hero-foot .cell:last-child  { border-right:none; padding-right:0; }
+  .dx .hero-foot .cell .k { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate); text-transform:uppercase; }
+  .dx .hero-foot .cell .v {
+    font-family:var(--f-mono); font-size:14px; letter-spacing:.04em; color:var(--white); font-weight:400;
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .dx .hero-foot .cell .v small { font-size:9px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; }
+  .dx .hero-foot .scroll {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.24em; color:var(--cloud); text-transform:uppercase;
+    padding:16px 0 16px 22px; border-left:1px solid var(--rule-soft);
+  }
+  .dx .hero-foot .scroll .down {
+    width:1px; height:18px; background:var(--cloud); animation:drop 2.4s ease-in-out infinite;
+  }
+  @keyframes drop { 0%{transform:translateY(-6px);opacity:.2} 50%{transform:translateY(0);opacity:1} 100%{transform:translateY(6px);opacity:.2} }
+
+  @media (max-width:1100px){ .dx .hero-meta{ grid-template-columns:1.2fr 1fr; } .dx .hero-meta .col.last{ display:none; } }
+  @media (max-width:860px){
+    .dx .hero-rail{ display:none; }
+    .dx .hero-meta{ grid-template-columns:1fr; gap:24px; }
+    .dx .hero-chart-wrap{ width:130vw; right:-30vw; opacity:.55; }
+    .dx .radar-sweep{ display:none; }
+    .dx .hero-foot{ grid-template-columns:1fr 1fr; }
+    .dx .hero-foot .scroll{ grid-column:1/-1; border-left:none; padding-left:0; padding-top:8px; border-top:1px solid var(--rule-soft); }
+    .dx .hero-headline{ font-size:clamp(2.6rem,11vw,5rem); }
+    .dx .hero-headline .indent{ padding-left:0; }
+    .dx .mission-bar{ grid-template-columns:auto 1fr auto; gap:14px; }
+    .dx .mission-bar .ticker, .dx .mission-bar .clock{ display:none; }
+  }
+
+  /* ---------- Section frame ---------- */
+  .dx section.frame { padding:clamp(80px,9vw,144px) 0; position:relative; overflow:hidden; }
+  .dx .section-head { display:flex; align-items:baseline; gap:16px; margin-bottom:56px; flex-wrap:wrap; position:relative; z-index:2; }
+  /* The container inside section frames sits above the background numeric */
+  .dx section.frame > .container { position:relative; z-index:2; }
+  /* Giant background section number — typographic anchor */
+  .dx .section-bgnum {
+    position:absolute;
+    top: 6vw;
+    left: 0;
+    font-family: var(--f-mono);
+    font-size: clamp(8rem, 15vw, 20rem);
+    font-weight: 700;
+    color: rgba(73,95,119,0.08);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    white-space: nowrap;
+  }
+  /* Light-bg variants tone the bgnum down differently */
+  .dx .about-light .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .tech-light  .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .partners-light .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .section-head .num   { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); }
+  .dx .section-head .title { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--cloud); text-transform:uppercase; }
+  .dx .section-head .line  { flex:1; height:1px; background:var(--rule-soft); min-width:80px; }
+  .dx .section-head .meta  { font-family:var(--f-mono); font-size:11px; color:var(--slate); letter-spacing:.18em; }
+
+  /* ---------- About ---------- */
+  .dx .about { display:grid; grid-template-columns:5fr 7fr; gap:clamp(32px,5vw,96px); align-items:start; position:relative; }
+  .dx .about-quote .pq { font-family:var(--f-display); font-weight:400; font-size:clamp(2.6rem,4.2vw,4.6rem); line-height:1.0; letter-spacing:-0.025em; color:var(--white); margin:0; }
+  .dx .about-quote .pq em { font-style:italic; font-weight:400; color:var(--sky); }
+  .dx .about-quote .annot { margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:18px; border-top:1px solid var(--rule-soft); padding-top:18px; max-width:380px; }
+  .dx .about-quote .annot .k { font-family:var(--f-mono); font-size:10px; color:var(--slate); letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:6px; }
+  .dx .about-quote .annot .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; }
+  .dx .about-copy { padding-left:24px; border-left:1px solid var(--sky); }
+  .dx .about-copy p { font-family:var(--f-body); font-size:clamp(16px,1.2vw,19px); color:var(--cloud); line-height:1.65; font-weight:300; margin:0 0 22px; max-width:60ch; }
+  .dx .about-copy p strong { color:var(--white); font-weight:500; }
+  .dx .about-copy .meta-row { display:flex; gap:48px; flex-wrap:wrap; margin-top:32px; border-top:1px solid var(--rule-soft); padding-top:24px; }
+  .dx .about-copy .meta-row .item .k { font-family:var(--f-mono); font-size:10px; color:var(--slate); letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:8px; }
+  .dx .about-copy .meta-row .item .v { font-family:var(--f-display); font-size:15px; color:var(--cloud); font-weight:400; }
+  @media (max-width:960px){ .dx .about{ grid-template-columns:1fr; } .dx .about-copy{ border-left:none; border-top:1px solid var(--sky); padding-left:0; padding-top:24px; margin-top:8px; } }
+
+  /* ---------- Pillars ---------- */
+  .dx .pillars { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-top:8px; }
+  .dx .pillar { padding:clamp(40px,5vw,80px) clamp(20px,3vw,48px) clamp(40px,5vw,80px) 0; position:relative; }
+  .dx .pillar + .pillar { border-left:1px solid var(--rule); padding-left:clamp(20px,3vw,48px); }
+  .dx .pillar .pkey { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:36px; }
+  .dx .pillar .pkey .bar { width:24px; height:1px; background:var(--sky); }
+  .dx .pillar h3 { font-family:var(--f-display); font-size:clamp(2.4rem,4.95vw,5rem); line-height:0.94; letter-spacing:-.035em; margin:0 0 28px; color:var(--white); font-weight:500; }
+  .dx .pillar h3 .it { font-style:italic; font-weight:400; color:var(--cloud); }
+  .dx .pillar p  { color:var(--cloud); font-weight:300; line-height:1.6; max-width:46ch; margin:0 0 28px; font-size:16px; }
+  .dx .pillar .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .dx .pillar .tags span { font-family:var(--f-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--cloud); border:1px solid var(--rule); padding:7px 10px; border-radius:2px; }
+  @media (max-width:860px){ .dx .pillars{ grid-template-columns:1fr; } .dx .pillar + .pillar{ border-left:none; border-top:1px solid var(--rule); padding-left:0; } }
+
+  /* ---------- Services section video ---------- */
+  .dx .services-video {
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; object-fit:cover;
+    opacity:0.45; pointer-events:none;
+  }
+  .dx .services-overlay {
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(160deg, rgba(21,31,39,0.65) 0%, rgba(21,31,39,0.50) 50%, rgba(21,31,39,0.70) 100%);
+    pointer-events:none;
+  }
+
+  /* ---------- Services ---------- */
+  .dx .svc {
+    display:grid; grid-template-columns:100px 1fr 180px; gap:24px;
+    padding:36px 0; border-top:1px solid var(--rule); align-items:start; position:relative;
+    transition:padding-left 260ms ease;
+  }
+  .dx .svc::before { content:""; position:absolute; left:-1px; top:0; bottom:0; width:1px; background:var(--sky); transform:scaleY(0); transform-origin:top; transition:transform 320ms ease; }
+  .dx .svc:hover::before { transform:scaleY(1); }
+  .dx .svc:hover { padding-left:14px; }
+  .dx .svc:last-child { border-bottom:1px solid var(--rule); }
+  .dx .svc .num { font-family:var(--f-mono); font-size:clamp(48px,5vw,72px); line-height:0.9; color:var(--rule); font-weight:300; letter-spacing:-.02em; }
+  .dx .svc .body h4 { font-family:var(--f-display); font-weight:500; font-size:clamp(22px,2vw,30px); line-height:1.1; letter-spacing:-.015em; margin:0 0 12px; color:var(--white); }
+  .dx .svc .body p  { color:var(--cloud); font-weight:300; line-height:1.55; margin:0; font-size:15px; max-width:52ch; }
+  .dx .svc .meta .k { font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--slate); display:block; margin-bottom:8px; }
+  .dx .svc .meta .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; line-height:1.5; }
+  @media (max-width:720px){ .dx .svc{ grid-template-columns:64px 1fr; } .dx .svc .meta{ grid-column:1/-1; } .dx .svc .num{ font-size:38px; } }
+
+  /* ---------- Entertainment ---------- */
+  .dx .entertainment { background:var(--navy-1); position:relative; overflow:hidden; border-top:1px solid var(--rule-soft); border-bottom:1px solid var(--rule-soft); }
+  .dx .entertainment::before {
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(to right,rgba(157,193,245,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(157,193,245,.04) 1px,transparent 1px);
+    background-size:48px 48px; pointer-events:none;
+    mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+    -webkit-mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+  }
+  .dx .show-bg { position:absolute; inset:0; pointer-events:none; opacity:.55; }
+  .dx .ent-grid { display:grid; grid-template-columns:7fr 5fr; gap:clamp(32px,5vw,80px); align-items:start; position:relative; z-index:1; }
+  .dx .ent-grid .lead h2 { font-family:var(--f-display); font-size:clamp(3rem,6.6vw,7.15rem); font-weight:500; line-height:0.94; letter-spacing:-.035em; margin:24px 0 24px; color:var(--white); max-width:18ch; }
+  .dx .ent-grid .lead h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .ent-grid .lead p { color:var(--cloud); font-weight:300; font-size:17px; max-width:52ch; margin:0; }
+  .dx .ent-products { display:flex; flex-direction:column; gap:32px; border-top:1px solid var(--rule-soft); padding-top:32px; }
+  .dx .ent-product { display:grid; grid-template-columns:64px 1fr; gap:18px; padding-bottom:32px; border-bottom:1px solid var(--rule-soft); }
+  .dx .ent-product:last-child { border-bottom:none; padding-bottom:0; }
+  .dx .ent-product .id { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); }
+  .dx .ent-product h4 { font-family:var(--f-display); font-size:26px; line-height:1; color:var(--white); font-weight:500; margin:0 0 10px; letter-spacing:-.01em; }
+  .dx .ent-product p  { color:var(--cloud); font-size:15px; font-weight:300; line-height:1.55; margin:0; }
+  @media (max-width:960px){ .dx .ent-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Tech & Data ---------- */
+  .dx .tech-grid { display:grid; grid-template-columns:4fr 8fr; gap:clamp(32px,5vw,96px); align-items:start; }
+  .dx .tech-grid h2 { font-family:var(--f-display); font-size:clamp(2rem,3.6vw,3.4rem); line-height:1; letter-spacing:-.022em; color:var(--white); font-weight:500; margin:0 0 24px; max-width:14ch; }
+  .dx .tech-grid h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .tech-grid .blurb { color:var(--cloud); font-weight:300; font-size:16px; max-width:36ch; }
+  .dx .specsheet { border-top:1px solid var(--rule); }
+  .dx .spec { display:grid; grid-template-columns:80px 1fr 1fr 220px; gap:24px; padding:22px 0; border-bottom:1px solid var(--rule-soft); align-items:baseline; transition:background-color 220ms ease; }
+  .dx .spec:hover { background:rgba(157,193,245,.04); }
+  .dx .spec .id    { font-family:var(--f-mono); font-size:11px; color:var(--slate); letter-spacing:.2em; }
+  .dx .spec .label { font-family:var(--f-display); color:var(--white); font-weight:500; font-size:18px; letter-spacing:-.01em; }
+  .dx .spec .value { font-family:var(--f-display); color:var(--cloud); font-weight:300; font-size:15px; }
+  .dx .spec .unit  { font-family:var(--f-mono); font-size:10px; color:var(--sky); letter-spacing:.2em; text-transform:uppercase; text-align:right; }
+  @media (max-width:760px){ .dx .tech-grid{ grid-template-columns:1fr; } .dx .spec{ grid-template-columns:56px 1fr; } .dx .spec .value,.dx .spec .unit{ grid-column:1/-1; padding-left:56px; } .dx .spec .unit{ text-align:left; } }
+
+  /* ---------- Partners ---------- */
+  .dx .partner-row { display:flex; flex-direction:column; }
+  .dx .prow {
+    display:grid; grid-template-columns:140px 1fr 1fr; gap:24px;
+    padding:22px 0; border-bottom:1px solid var(--rule-soft); align-items:baseline;
+    transition:padding-left 240ms ease, background-color 240ms ease; position:relative;
+  }
+  .dx .prow::before { content:""; position:absolute; left:-1px; top:0; bottom:0; width:1px; background:var(--sky); transform:scaleY(0); transform-origin:top; transition:transform 280ms ease; }
+  .dx .prow:hover { padding-left:14px; }
+  .dx .prow:hover::before { transform:scaleY(1); }
+  .dx .prow .pcat  { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--slate); }
+  .dx .prow .pname { font-family:var(--f-display); color:var(--white); font-size:18px; font-weight:500; letter-spacing:-.01em; }
+  .dx .prow .pmeta { font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:300; }
+  @media (max-width:720px){ .dx .prow{ grid-template-columns:1fr; gap:6px; padding:18px 0; } }
+
+  /* ---------- Partnership CTA ---------- */
+  .dx .partner { background:var(--navy); position:relative; overflow:hidden; border-top:1px solid var(--rule); }
+  .dx .partner-inner { padding:clamp(80px,9vw,160px) 0; display:grid; grid-template-columns:8fr 4fr; gap:clamp(32px,5vw,96px); align-items:end; position:relative; z-index:2; }
+  .dx .partner-inner h2 { font-family:var(--f-display); font-size:clamp(2.85rem,6vw,6.6rem); line-height:0.96; letter-spacing:-.035em; color:var(--white); font-weight:500; margin:24px 0 0; max-width:22ch; }
+  .dx .partner-inner h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .partner-inner .right { display:flex; flex-direction:column; gap:24px; border-left:1px solid var(--sky); padding-left:24px; }
+  .dx .partner-inner .right p { color:var(--cloud); font-weight:300; font-size:15px; margin:0; line-height:1.55; }
+  .dx .partner-emblem { position:absolute; right:-8vw; bottom:-12vw; width:45vw; max-width:560px; aspect-ratio:1/1; color:var(--sky); opacity:.05; pointer-events:none; z-index:1; }
+  @media (max-width:860px){ .dx .partner-inner{ grid-template-columns:1fr; } }
+  .dx .partner.slate { background:var(--slate); }
+  .dx .partner.slate .section-head .num   { color:var(--cloud); }
+  .dx .partner.slate .section-head .title { color:var(--white); }
+  .dx .partner.slate .section-head .line  { background:rgba(232,236,239,.25); }
+  .dx .partner.slate .section-head .meta  { color:var(--cloud); }
+  .dx .partner.slate .partner-emblem      { color:var(--white); opacity:.06; }
+  .dx .partner.slate .right               { border-left-color:var(--white); }
+  .dx .partner.slate .right p             { color:var(--cloud); }
+  .dx .partner.slate .btn-primary         { background:var(--white); color:var(--navy); }
+  .dx .partner.slate .btn-primary:hover   { background:var(--sky); }
+
+  /* ---------- Light variants ---------- */
+  .dx .about-light { background:var(--white); color:var(--navy); }
+  .dx .about-light .section-head .num   { color:var(--slate); }
+  .dx .about-light .section-head .title { color:var(--navy); }
+  .dx .about-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .about-light .section-head .meta  { color:var(--slate); }
+  .dx .about-light .about-quote .pq     { color:var(--navy); }
+  .dx .about-light .about-quote .pq em  { color:var(--slate); }
+  .dx .about-light .about-quote .annot  { border-top-color:rgba(73,95,119,.3); }
+  .dx .about-light .about-quote .annot .k { color:var(--slate); }
+  .dx .about-light .about-quote .annot .v { color:var(--navy); }
+  .dx .about-light .about-copy         { border-left-color:var(--slate); }
+  .dx .about-light .about-copy p       { color:var(--slate); }
+  .dx .about-light .about-copy p strong{ color:var(--navy); }
+  .dx .about-light .about-copy .meta-row { border-top-color:rgba(73,95,119,.3); }
+  .dx .about-light .about-copy .meta-row .item .k { color:var(--slate); }
+  .dx .about-light .about-copy .meta-row .item .v { color:var(--navy); }
+  @media (max-width:960px){ .dx .about-light .about-copy{ border-top-color:var(--slate); } }
+
+  .dx .partners-light { background:var(--white); color:var(--navy); border-top:1px solid rgba(73,95,119,.3); border-bottom:1px solid rgba(73,95,119,.3); }
+  .dx .partners-light .section-head .num   { color:var(--slate); }
+  .dx .partners-light .section-head .title { color:var(--navy); }
+  .dx .partners-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .partners-light .section-head .meta  { color:var(--slate); }
+  .dx .partners-light .prow                { border-bottom-color:rgba(73,95,119,.25); }
+  .dx .partners-light .prow .pcat          { color:var(--slate); }
+  .dx .partners-light .prow .pname         { color:var(--navy); }
+  .dx .partners-light .prow .pmeta         { color:var(--slate); }
+  .dx .partners-light .prow:hover          { background:rgba(73,95,119,.06); }
+
+  /* ---------- Tech Light (cloud bg) ---------- */
+  .dx .tech-light { background:var(--cloud); color:var(--navy); border-top:1px solid rgba(73,95,119,.3); border-bottom:1px solid rgba(73,95,119,.3); }
+  .dx .tech-light .section-head .num   { color:var(--slate); }
+  .dx .tech-light .section-head .title { color:var(--navy); }
+  .dx .tech-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .tech-light .section-head .meta  { color:var(--slate); }
+  .dx .tech-light .tech-grid h2        { color:var(--navy); }
+  .dx .tech-light .tech-grid h2 em     { color:var(--slate); }
+  .dx .tech-light .tech-grid .blurb    { color:var(--slate); }
+  .dx .tech-light .specsheet           { border-top-color:rgba(73,95,119,.35); }
+  .dx .tech-light .spec                { border-bottom-color:rgba(73,95,119,.18); }
+  .dx .tech-light .spec .id            { color:var(--slate); }
+  .dx .tech-light .spec .label         { color:var(--navy); }
+  .dx .tech-light .spec .value         { color:var(--slate); }
+  .dx .tech-light .spec .unit          { color:var(--slate); }
+  .dx .tech-light .spec:hover          { background:rgba(157,193,245,.18); }
+
+  /* ---------- Footer ---------- */
+  .dx footer { background:var(--black); border-top:1px solid var(--rule); padding:48px 0 32px; color:var(--cloud); }
+  .dx .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; align-items:start; }
+  .dx .foot-grid .col h5 { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--slate); margin:0 0 18px; font-weight:400; }
+  .dx .foot-grid .col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .dx .foot-grid .col a  { font-size:14px; color:var(--cloud); transition:color 200ms; }
+  .dx .foot-grid .col a:hover { color:var(--sky); }
+  .dx .foot-brand p { color:var(--cloud); font-weight:300; font-size:14px; max-width:38ch; margin:18px 0 0; line-height:1.55; }
+  .dx .foot-bottom { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:48px; padding-top:24px; border-top:1px solid var(--rule-soft); font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; color:var(--slate); text-transform:uppercase; }
+  .dx .foot-bottom .coord b { color:var(--cloud); font-weight:400; }
+  @media (max-width:760px){ .dx .foot-grid{ grid-template-columns:1fr 1fr; } .dx .foot-brand{ grid-column:1/-1; } }
+
+  /* ---------- Stats Band (animated counters) ---------- */
+  .dx .stats-band { background:var(--navy); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); position:relative; overflow:hidden; }
+  .dx .stats-band::before {
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(to right,rgba(157,193,245,.04) 1px,transparent 1px);
+    background-size:25% 100%; pointer-events:none;
+  }
+  .dx .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:clamp(56px,7vw,104px) 0; position:relative; z-index:1; }
+  .dx .stat-cell { padding:0 clamp(20px,3vw,48px); border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:18px; min-width:0; }
+  .dx .stat-cell:first-child { padding-left:0; }
+  .dx .stat-cell:last-child  { border-right:none; padding-right:0; }
+  .dx .stat-cell .stat-id { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; }
+  .dx .stat-cell .stat-num {
+    font-family:var(--f-mono); font-weight:300;
+    font-size:clamp(2.6rem,5.6vw,5.6rem);
+    line-height:0.95; letter-spacing:-.02em; color:var(--white);
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .dx .stat-cell .stat-num small { font-family:var(--f-mono); font-size:.36em; color:var(--sky); letter-spacing:.04em; font-weight:400; }
+  .dx .stat-cell .stat-label { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--cloud); text-transform:uppercase; padding-top:14px; border-top:1px solid var(--rule-soft); }
+  @media (max-width:860px){
+    .dx .stats-grid { grid-template-columns:repeat(2,1fr); gap:32px 0; }
+    .dx .stat-cell { border-right:none; padding:24px clamp(16px,3vw,32px); border-bottom:1px solid var(--rule-soft); }
+    .dx .stat-cell:nth-child(odd) { padding-left:0; }
+    .dx .stat-cell:nth-child(2n)  { padding-right:0; }
+    .dx .stat-cell:nth-last-child(-n+2) { border-bottom:none; }
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .dx .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 600ms var(--ease-aerial),
+      transform 600ms var(--ease-aerial);
+  }
+  .dx .reveal.in { opacity: 1; transform: translateY(0); }
+  .dx .reveal.delay-1 { transition-delay: 80ms; }
+  .dx .reveal.delay-2 { transition-delay: 160ms; }
+  .dx .reveal.delay-3 { transition-delay: 240ms; }
+  .dx .reveal.delay-4 { transition-delay: 320ms; }
+  .dx .reveal.delay-5 { transition-delay: 400ms; }
+
+  /* Horizontal wipe — headlines only, GPU-friendly clip-path */
+  .dx .reveal-wipe {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 750ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .dx .reveal-wipe.in { clip-path: inset(0 0% 0 0); }
+  .dx .reveal-wipe.delay-1 { transition-delay: 80ms; }
+  .dx .reveal-wipe.delay-2 { transition-delay: 160ms; }
+  .dx .reveal-wipe.delay-3 { transition-delay: 240ms; }
+
+  /* ---------- Operational Manifest (replaces hero-metric stats template) ---------- */
+  .dx .manifest {
+    background: var(--navy);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .dx .manifest::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--sky);
+    opacity:0.5;
+  }
+  .dx .manifest-row {
+    display:flex; align-items:center; gap: 36px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-left: 4px;
+  }
+  .dx .manifest-row::-webkit-scrollbar { display: none; }
+  .dx .manifest-row .item { display:inline-flex; align-items:baseline; gap:10px; }
+  .dx .manifest-row .item .lbl { color: var(--slate); font-size: 10px; letter-spacing: .22em; }
+  .dx .manifest-row .item .val { color: var(--white); font-size: 12px; letter-spacing: .08em; }
+  .dx .manifest-row .sep { color: var(--sky); opacity: 0.65; flex: none; }
+  @media (max-width: 760px) {
+    .dx .manifest-row { gap: 24px; }
+  }
+
+  /* Hero reveals — always visible immediately (hero is in-viewport on load) */
+  .dx .hero .reveal        { opacity:1; transform:none; }
+  .dx .hero .reveal-wipe   { clip-path:inset(0 0% 0 0); }
+
+  /* ---------- Reduced motion (mandatory) ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .dx *, .dx *::before, .dx *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .dx .reveal,
+    .dx .reveal-wipe {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      filter: none !important;
+    }
+    .dx .radar-sweep .sweep-blade { animation: none; }
+    .dx .mission-bar .ticker-track { animation: none; }
+    .dx .hero-grid { animation: none; }
+    .dx .hero-emblem .x-stroke {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    @supports (animation-timeline: scroll()) {
+      .dx .hero-emblem { animation: none; }
+    }
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ========== UNICORN INTRO ========== -->
+  <section class="unicorn-section">
+    <div id="unicorn-container"></div>
+    <div class="unicorn-logo">
+      <img src="assets/DroneX_WhiteOnBlack_HorizontalLogo.png" alt="Drone X Malaysia" />
+    </div>
+    <div class="unicorn-scroll-hint">
+      <span>Scroll</span>
+      <span class="drop"></span>
+    </div>
+    <button class="unicorn-tap-btn" aria-label="Enter site">Enter</button>
+  </section>
+
+  <!-- ========== DRONEХ HOMEPAGE ========== -->
+  <div class="dx">
+
+    <div class="brand-stripe" aria-hidden="true"></div>
+
+    <header class="nav" role="banner">
+      <div class="container nav-inner">
+        <a href="#" class="nav-logo" aria-label="Drone X — Home">
+          <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#about">About&nbsp;Us</a></li>
+            <li class="has-menu">
+              <a href="#solutions" aria-haspopup="true">Commercial&nbsp;Solutions <span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu" role="menu">
+                <span class="submenu-eyebrow">Pillar I · Six Disciplines</span>
+                <a href="#svc-01" role="menuitem"><span class="sm-num">01</span><span>Agriculture Drone Support</span></a>
+                <a href="#svc-02" role="menuitem"><span class="sm-num">02</span><span>Drone Delivery</span></a>
+                <a href="#svc-03" role="menuitem"><span class="sm-num">03</span><span>Aerial Mapping</span></a>
+                <a href="#svc-04" role="menuitem"><span class="sm-num">04</span><span>Building&nbsp;/&nbsp;Solar Cleaning</span></a>
+                <a href="#svc-05" role="menuitem"><span class="sm-num">05</span><span>Public Sector Support</span></a>
+                <a href="#svc-06" role="menuitem"><span class="sm-num">06</span><span>Drone E-Sport</span></a>
+              </div>
+            </li>
+            <li class="has-menu">
+              <a href="#entertainment" aria-haspopup="true">Drone&nbsp;Entertainment <span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu" role="menu">
+                <span class="submenu-eyebrow">Pillar II · Productions</span>
+                <a href="#ent-01" role="menuitem"><span class="sm-num">P‑01</span><span>Drone Show</span></a>
+                <a href="#ent-02" role="menuitem"><span class="sm-num">P‑02</span><span>Drone Spot</span></a>
+              </div>
+            </li>
+            <li><a href="#technology">Technology&nbsp;&amp;&nbsp;Data</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#contact" class="nav-cta">Contact&nbsp;Us <span class="arrow" aria-hidden="true"></span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero" aria-label="Introduction">
+        <!-- Video background -->
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay" aria-hidden="true"></div>
+
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-emblem" aria-hidden="true">
+          <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+            <!-- Two crossing wing strokes that draw themselves on load -->
+            <path class="x-stroke s1"
+                  d="M 100 200 C 240 300, 380 360, 500 500 C 620 640, 760 740, 900 800"
+                  style="--len: 1300;" />
+            <path class="x-stroke s2"
+                  d="M 100 800 C 240 700, 380 640, 500 500 C 620 360, 760 260, 900 200"
+                  style="--len: 1300;" />
+          </svg>
+        </div>
+
+        <div class="hero-chart-wrap" aria-hidden="true">
+          <svg class="hero-chart" viewBox="0 0 1000 780" fill="none" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <pattern id="micro" width="22" height="22" patternUnits="userSpaceOnUse">
+                <path d="M 22 0 L 0 0 0 22" fill="none" stroke="currentColor" stroke-width="0.4" opacity=".26"/>
+              </pattern>
+              <radialGradient id="fadeMask" cx="55%" cy="50%" r="62%">
+                <stop offset="0%" stop-color="white" stop-opacity="1"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
+              <mask id="m1"><rect width="1000" height="780" fill="url(#fadeMask)"/></mask>
+              <linearGradient id="pathLine" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#9DC1F5" stop-opacity="0.05"/>
+                <stop offset="40%" stop-color="#9DC1F5" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#9DC1F5" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g mask="url(#m1)" stroke="currentColor">
+              <rect x="0" y="0" width="1000" height="780" fill="url(#micro)"/>
+              <g opacity="0.5" stroke-width="0.6">
+                <path d="M0 195 H1000"/><path d="M0 390 H1000"/><path d="M0 585 H1000"/>
+                <path d="M200 0 V780"/><path d="M400 0 V780"/><path d="M600 0 V780"/><path d="M800 0 V780"/>
+              </g>
+              <g font-family="JetBrains Mono,monospace" font-size="9" fill="#495F77" letter-spacing="1.2">
+                <text x="6" y="190">400M</text><text x="6" y="385">300M</text><text x="6" y="580">200M</text><text x="6" y="770">SURFACE</text>
+                <text x="200" y="775">+02</text><text x="400" y="775">+04</text><text x="600" y="775">+06</text><text x="800" y="775">+08 KM</text>
+              </g>
+              <g opacity="0.42" stroke-width="0.8" fill="none">
+                <path d="M -50 620 C 200 500, 360 560, 520 480 S 820 380, 1080 300"/>
+                <path d="M -50 680 C 200 560, 360 620, 520 540 S 820 440, 1080 360"/>
+                <path d="M -50 560 C 200 440, 360 500, 520 420 S 820 320, 1080 240"/>
+                <path d="M -50 500 C 200 380, 360 440, 520 360 S 820 260, 1080 180"/>
+                <path d="M -50 440 C 200 320, 360 380, 520 300 S 820 200, 1080 120"/>
+              </g>
+              <g fill="none" opacity="0.35">
+                <path d="M 110 700 Q 280 620, 400 560 T 700 380 T 900 220" stroke="#9DC1F5" stroke-width="0.6" stroke-dasharray="3 5"/>
+                <path d="M 60 660 Q 240 580, 360 520 T 680 320 T 940 160" stroke="#9DC1F5" stroke-width="0.5" stroke-dasharray="2 6"/>
+              </g>
+              <g fill="none">
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="#9DC1F5" stroke-width="8" opacity=".08"/>
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="url(#pathLine)" stroke-width="1.4" opacity=".95" stroke-dasharray="1800" stroke-dashoffset="1800" style="animation:draw 4s ease-out 0.6s forwards;"/>
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="#9DC1F5" stroke-width="0.6" opacity=".45" stroke-dasharray="2 5"/>
+              </g>
+              <g stroke="#9DC1F5" fill="none" stroke-width="1">
+                <g transform="translate(80,680)"><rect x="-9" y="-9" width="18" height="18" stroke-width="0.8"/><circle r="4"/><path d="M-16 0 H-10 M10 0 H16 M0 -16 V-10 M0 10 V16"/></g>
+                <g transform="translate(290,540)"><circle r="4"/><path d="M-12 0 H-7 M7 0 H12 M0 -12 V-7 M0 7 V12"/></g>
+                <g transform="translate(480,460)"><rect x="-6" y="-6" width="12" height="12"/><path d="M-16 0 H-9 M9 0 H16 M0 -16 V-9 M0 9 V16"/></g>
+                <g transform="translate(710,260)"><circle r="4"/><path d="M-12 0 H-7 M7 0 H12 M0 -12 V-7 M0 7 V12"/></g>
+                <g transform="translate(920,120)">
+                  <circle r="14" stroke="#9DC1F5" stroke-width="0.6" opacity=".5"/>
+                  <circle r="6" stroke="#9DC1F5"/><circle r="2" fill="#9DC1F5" stroke="none"/>
+                  <circle r="6" fill="none" stroke="#9DC1F5" style="animation:pulseRing 2.8s ease-out infinite;"/>
+                  <path d="M-18 0 H-10 M10 0 H18 M0 -18 V-10 M0 10 V18" stroke-width="0.8"/>
+                </g>
+              </g>
+              <g font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="1.4" fill="#9DC1F5" opacity=".9">
+                <text x="98" y="710">WP-01 · ORIGIN</text><text x="306" y="534">WP-02</text>
+                <text x="498" y="448">04°N 102°E · ALT 120M</text><text x="726" y="254">WP-04</text><text x="948" y="118">▸ TGT</text>
+              </g>
+              <g transform="translate(870,700)" fill="none" stroke="currentColor" opacity=".75">
+                <circle r="32" stroke-width="0.6"/><circle r="24" stroke-width="0.4" stroke-dasharray="2 3"/>
+                <path d="M0 -36 V-26 M0 36 V26 M-36 0 H-26 M36 0 H26" stroke-width="0.6"/>
+                <path d="M0 -28 L5 0 L0 28 L-5 0 Z" fill="#9DC1F5" opacity="0.95" stroke="none"/>
+                <text x="-3" y="-40" font-family="JetBrains Mono,monospace" font-size="9" fill="#9DC1F5" stroke="none">N</text>
+                <text x="38" y="3" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">E</text>
+                <text x="-40" y="3" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">W</text>
+                <text x="-3" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">S</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <svg class="radar-sweep" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9DC1F5" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#9DC1F5" stop-opacity="0.55"/>
+            </linearGradient>
+            <radialGradient id="rfade" cx="50%" cy="50%" r="50%">
+              <stop offset="60%" stop-color="white" stop-opacity="1"/>
+              <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="rmask"><rect width="200" height="200" fill="url(#rfade)"/></mask>
+          </defs>
+          <g mask="url(#rmask)" stroke="#9DC1F5" fill="none" opacity=".42">
+            <circle cx="100" cy="100" r="92" stroke-width="0.5"/><circle cx="100" cy="100" r="68" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="44" stroke-width="0.5"/><circle cx="100" cy="100" r="20" stroke-width="0.5"/>
+            <path d="M100 8 V192 M8 100 H192" stroke-width="0.4"/>
+            <path d="M35 35 L165 165 M165 35 L35 165" stroke-width="0.3" stroke-dasharray="2 3"/>
+          </g>
+          <g class="sweep-blade">
+            <path d="M100 100 L100 8 A92 92 0 0 1 192 100 Z" fill="url(#sweepGrad)" opacity=".55"/>
+            <line x1="100" y1="100" x2="100" y2="8" stroke="#9DC1F5" stroke-width="0.8" opacity=".9"/>
+          </g>
+          <circle cx="138" cy="64" r="3" fill="#9DC1F5"/>
+          <circle cx="138" cy="64" r="3" fill="none" stroke="#9DC1F5" style="animation:pulseRing 2.8s ease-out infinite;"/>
+          <text x="148" y="60" font-family="JetBrains Mono,monospace" font-size="7" letter-spacing="1.2" fill="#9DC1F5">DX-04</text>
+        </svg>
+
+        <div class="hero-rail" aria-hidden="true">
+          <div class="ticks"></div>
+          <span class="vlabel t">N · 03°08′</span>
+          <span class="vlabel m">ALT 0–400 M</span>
+          <span class="vlabel b">E · 101°41′</span>
+        </div>
+
+        <div class="container">
+          <div class="mission-bar" role="status" aria-label="Mission status">
+            <span class="live"><span class="rec" aria-hidden="true">OPS</span> Operations Channel · Active</span>
+            <span class="ticker" aria-hidden="true">
+              <span class="ticker-track">
+                <span><b>FL-04·26</b> KUL→PEN · BVLOS</span>
+                <span><b>WX</b> 28°C · WIND 06KT 080°</span>
+                <span><b>CLR</b> CAAM · RPAS-A1</span>
+                <span><b>FLEET</b> 14 ACTIVE · 3 EN-ROUTE</span>
+                <span><b>PILOT</b> ALOR-2 · IBRAHIM, A.</span>
+                <span><b>FL-04·26</b> KUL→PEN · BVLOS</span>
+                <span><b>WX</b> 28°C · WIND 06KT 080°</span>
+                <span><b>CLR</b> CAAM · RPAS-A1</span>
+                <span><b>FLEET</b> 14 ACTIVE · 3 EN-ROUTE</span>
+                <span><b>PILOT</b> ALOR-2 · IBRAHIM, A.</span>
+              </span>
+            </span>
+            <span class="clock">CHANNEL <b>OPS·01</b></span>
+            <span class="clock">UTC+8</span>
+            <span class="clock"><b id="hero-time">--:--:--</b></span>
+          </div>
+        </div>
+
+        <div class="container hero-body">
+          <div class="hero-left">
+            <div class="hero-tag reveal">
+              <span class="cell"><span class="marker" aria-hidden="true">+</span>Drone&nbsp;X · Malaysia</span>
+              <span class="cell">CAAM&nbsp;RPAS-A1</span>
+              <span class="cell">KUL · MY</span>
+              <span class="cell">Est.&nbsp;2024</span>
+            </div>
+            <h1 class="hero-headline reveal-wipe delay-1">
+              <span class="l">Drone Solutions</span>
+              <span class="l">for Malaysia.</span>
+              <span class="l-dim">Certified. Precise. Ready.</span>
+            </h1>
+            <div class="hero-meta reveal delay-2">
+              <p class="lede">Commercial drone operations and aerial entertainment. CAAM RPAS-A1 certified. Serving businesses, agencies and event producers across Malaysia.</p>
+            </div>
+            <div class="hero-actions reveal delay-3">
+              <a href="#solutions" class="btn btn-primary">Explore Solutions <span class="arrow" aria-hidden="true"></span></a>
+              <a href="#contact"   class="btn btn-ghost">Contact Drone&nbsp;X <span class="arrow" aria-hidden="true"></span></a>
+            </div>
+          </div>
+          <div class="hero-right" aria-hidden="true"></div>
+        </div>
+
+        <div class="container">
+          <div class="hero-foot" aria-label="Telemetry">
+            <div class="cell"><span class="k">Position · Lat / Lon</span><span class="v">03°08′22″N · 101°41′13″E</span></div>
+            <div class="cell"><span class="k">Altitude AGL</span><span class="v">120 <small>M</small></span></div>
+            <div class="cell"><span class="k">Heading</span><span class="v">045° <small>NE</small></span></div>
+            <div class="cell"><span class="k">Ground Speed</span><span class="v">38 <small>KTS</small></span></div>
+            <div class="cell"><span class="k">Clearance</span><span class="v">RPAS-A1 <small>CAAM</small></span></div>
+            <div class="scroll"><span>Scroll</span><span class="down" aria-hidden="true"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="frame about-light" id="about" aria-label="About Drone X">
+        <span class="section-bgnum" aria-hidden="true">01</span>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">01 —</span><span class="title">Operator&nbsp;Profile</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Est.&nbsp;Drone&nbsp;X · Malaysia</span>
+          </div>
+          <div class="about">
+            <div class="about-quote reveal">
+              <p class="pq reveal-wipe">Founded for Malaysia's <em>aerial future.</em></p>
+              <div class="annot">
+                <div><span class="k">Origin</span><span class="v">Selangor, MY</span></div>
+                <div><span class="k">Mandate</span><span class="v">Civil &amp; Commercial RPAS</span></div>
+              </div>
+            </div>
+            <div class="about-copy reveal delay-1">
+              <p><strong>Drone X is a Malaysian-grown drone solutions and aerial entertainment company.</strong> We build, fly and operate certified unmanned systems across commercial, industrial, public sector and entertainment work — from agricultural fleets above oil palm acreage to choreographed light shows above coastline cities.</p>
+              <p>Our work sits at the intersection of regulated airspace, industrial reliability and editorial production craft. Every operation is planned, briefed and recorded against the same standard: precision in the air, accountability on the ground.</p>
+              <div class="meta-row">
+                <div class="item"><span class="k">Headquartered</span><span class="v">Kuala Lumpur, MY</span></div>
+                <div class="item"><span class="k">Regulatory</span><span class="v">CAAM-aligned operations</span></div>
+                <div class="item"><span class="k">Coverage</span><span class="v">Nationwide deployment</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OPERATIONAL MANIFEST (replaces hero-metric stats template) -->
+      <section class="manifest" aria-label="Operational manifest">
+        <div class="container">
+          <div class="manifest-row reveal-wipe" role="list">
+            <span class="item" role="listitem"><span class="lbl">Fleet&nbsp;Status</span><span class="val">14&nbsp;active&nbsp;platforms</span></span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span class="item" role="listitem"><span class="lbl">Disciplines</span><span class="val">6&nbsp;commercial&nbsp;+&nbsp;2&nbsp;entertainment</span></span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span class="item" role="listitem"><span class="lbl">Certification</span><span class="val">CAAM&nbsp;RPAS-A1</span></span>
+            <span class="sep" aria-hidden="true">·</span>
+            <span class="item" role="listitem"><span class="lbl">Coverage</span><span class="val">Nationwide,&nbsp;MY</span></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLARS -->
+      <section class="frame" id="solutions" aria-label="Core pillars">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">02 —</span><span class="title">Core Pillars</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Two disciplines · One operator</span>
+          </div>
+          <div class="pillars">
+            <article class="pillar reveal">
+              <div class="pkey"><span class="bar" aria-hidden="true"></span> Pillar I · Commercial</div>
+              <h3 class="reveal delay-1">Commercial<br/>Drone <span class="it">Solutions.</span></h3>
+              <p>Mission-grade aerial work for Malaysia's industrial and public-sector operators — agriculture, mapping, inspection, delivery exploration and government support.</p>
+              <div class="tags"><span>Agriculture</span><span>Mapping</span><span>Inspection</span><span>Delivery R&amp;D</span><span>Public Sector</span></div>
+            </article>
+            <article class="pillar reveal delay-1">
+              <div class="pkey"><span class="bar" aria-hidden="true"></span> Pillar II · Entertainment</div>
+              <h3 class="reveal delay-2">Drone<br/><span class="it">Entertainment.</span></h3>
+              <p>Choreographed aerial spectacle for events, brands and civic moments — drone shows engineered as production, not novelty.</p>
+              <div class="tags"><span>Drone Show</span><span>Drone Spot</span><span>Live Events</span><span>Brand Activations</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section class="frame services" aria-label="Commercial applications">
+        <video class="services-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/commercial-bg.mp4" type="video/mp4">
+        </video>
+        <div class="services-overlay" aria-hidden="true"></div>
+        <span class="section-bgnum" aria-hidden="true">03</span>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">03 —</span><span class="title">Commercial&nbsp;Applications</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Six disciplines</span>
+          </div>
+          <div class="svc-list">
+            <div class="svc reveal" id="svc-01"><div class="num">01</div><div class="body"><h4>Agriculture Drone Support</h4><p>Aerial spraying, scouting and yield analytics across plantations and smallholder farms. Engineered for tropical canopies and large-acreage workflows.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">Plantations · Estates · Co-operatives</span></div></div>
+            <div class="svc reveal" id="svc-02"><div class="num">02</div><div class="body"><h4>Drone Delivery</h4><p>Pilot programmes for last-mile and inter-island logistics — operating envelope, payload, route corridors and regulatory pathways modelled and flown.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">Logistics · Healthcare · Islands</span></div></div>
+            <div class="svc reveal" id="svc-03"><div class="num">03</div><div class="body"><h4>Aerial Mapping</h4><p>Photogrammetry, LiDAR and orthomosaic capture for survey-grade outputs — terrain, sites, coastlines and cities — referenced to local datums.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">GIS · Surveyors · Construction</span></div></div>
+            <div class="svc reveal" id="svc-04"><div class="num">04</div><div class="body"><h4>Building / Solar Cleaning</h4><p>Façade and rooftop PV cleaning by tethered and free-flight platforms — safer than rope access, faster than conventional cycles.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">High-rises · Solar farms · FM</span></div></div>
+            <div class="svc reveal" id="svc-05"><div class="num">05</div><div class="body"><h4>Public Sector Support</h4><p>Operational support for agencies and councils — search, monitoring, civil protection and infrastructure oversight, on contract or on-call.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">Federal · State · Local councils</span></div></div>
+            <div class="svc reveal" id="svc-06"><div class="num">06</div><div class="body"><h4>Drone E-Sport</h4><p>Competitive FPV and racing programmes — pilot development, league formats and broadcast-ready production for Malaysia's growing scene.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">Leagues · Schools · Sponsors</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENTERTAINMENT -->
+      <section class="frame entertainment" id="entertainment" aria-label="Drone Entertainment">
+        <svg class="show-bg" viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true">
+          <defs><radialGradient id="dot" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#9DC1F5" stop-opacity="1"/><stop offset="100%" stop-color="#9DC1F5" stop-opacity="0"/></radialGradient></defs>
+          <g fill="url(#dot)">
+            <circle cx="500" cy="120" r="3"/><circle cx="560" cy="160" r="3"/><circle cx="620" cy="200" r="3"/><circle cx="680" cy="240" r="3"/><circle cx="740" cy="280" r="4"/><circle cx="800" cy="320" r="4"/><circle cx="860" cy="280" r="3"/><circle cx="920" cy="240" r="3"/><circle cx="980" cy="200" r="3"/><circle cx="1040" cy="160" r="3"/><circle cx="1100" cy="120" r="3"/>
+            <circle cx="500" cy="520" r="3"/><circle cx="560" cy="480" r="3"/><circle cx="620" cy="440" r="3"/><circle cx="680" cy="400" r="3"/><circle cx="740" cy="360" r="4"/><circle cx="860" cy="360" r="3"/><circle cx="920" cy="400" r="3"/><circle cx="980" cy="440" r="3"/><circle cx="1040" cy="480" r="3"/><circle cx="1100" cy="520" r="3"/>
+            <circle cx="200" cy="80" r="2" opacity=".5"/><circle cx="260" cy="380" r="2" opacity=".5"/><circle cx="140" cy="500" r="2" opacity=".5"/><circle cx="1300" cy="100" r="2" opacity=".5"/><circle cx="1380" cy="320" r="2" opacity=".5"/><circle cx="1440" cy="500" r="2" opacity=".5"/>
+          </g>
+        </svg>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">04 —</span><span class="title">Drone&nbsp;Entertainment</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Choreographed · Permitted · Insured</span>
+          </div>
+          <div class="ent-grid">
+            <div class="lead reveal">
+              <h2 class="reveal delay-1">Spectacle, <em>flown</em> with the precision of an industrial operation.</h2>
+              <p>Our entertainment division designs and operates aerial drone shows for civic events, festivals, brand activations and private occasions — at scale, with the same flight-planning rigour as our commercial work.</p>
+            </div>
+            <div class="ent-products reveal delay-1">
+              <div class="ent-product" id="ent-01"><span class="id">P-01</span><div><h4>Drone Show</h4><p>Choreographed swarms above stadiums, waterfronts and skylines. Concept, animation, pilot-in-command and ground operations delivered as a single production package.</p></div></div>
+              <div class="ent-product" id="ent-02"><span class="id">P-02</span><div><h4>Drone Spot</h4><p>Compact aerial set-pieces for product launches, hospitality and on-site brand moments — engineered for venues where a full show isn't the brief.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNOLOGY & DATA -->
+      <section class="frame tech-light" id="technology" aria-label="Technology and Data">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">05 —</span><span class="title">Technology &amp; Data</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Specification sheet</span>
+          </div>
+          <div class="tech-grid">
+            <div class="reveal">
+              <h2 class="reveal delay-1">Engineered as a <em>system</em>, not a fleet.</h2>
+              <p class="blurb">Hardware, mission planning, data capture and operations stack as one integrated platform — auditable, repeatable, deployable.</p>
+            </div>
+            <div class="specsheet reveal delay-1" role="list">
+              <div class="spec" role="listitem"><span class="id">SPEC-01</span><span class="label">Platforms</span><span class="value">Multirotor · Fixed-wing · VTOL hybrid · FPV</span><span class="unit">Fleet</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-02</span><span class="label">Operating Envelope</span><span class="value">0–400 m AGL · BVLOS-ready · Day &amp; night</span><span class="unit">Altitude</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-03</span><span class="label">Sensing</span><span class="value">RGB · Multispectral · Thermal · LiDAR</span><span class="unit">Payload</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-04</span><span class="label">Data Pipeline</span><span class="value">Capture → Process → Deliver, audit-trailed</span><span class="unit">Workflow</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-05</span><span class="label">Compliance</span><span class="value">CAAM-aligned · Insured · Risk-assessed (SORA)</span><span class="unit">Reg.</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-06</span><span class="label">Operations</span><span class="value">PIC · Visual Observers · Ground Control · Comms</span><span class="unit">Crew</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNERS -->
+      <section class="frame partners-light" id="partners" aria-label="Partners">
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">06 —</span><span class="title">Partners &amp; Network</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Operators · Authorities · Industry</span>
+          </div>
+          <div style="display:grid;grid-template-columns:4fr 8fr;gap:clamp(32px,5vw,96px);align-items:start;">
+            <div class="reveal">
+              <h2 style="font-family:var(--f-display);font-size:clamp(1.8rem,3vw,2.8rem);line-height:1;letter-spacing:-.02em;color:var(--navy);font-weight:500;margin:0 0 18px;max-width:14ch;">Built with <em style="font-style:italic;color:var(--slate);font-weight:400;">a network</em> of operators &amp; authorities.</h2>
+              <p style="color:var(--slate);font-weight:300;font-size:15px;max-width:36ch;line-height:1.6;">Drone X works alongside regulators, industry partners and manufacturers to deliver missions that meet Malaysian standards — in the airspace and on the ground.</p>
+            </div>
+            <div class="reveal delay-1" style="border-top:1px solid rgba(73,95,119,.3);">
+              <div class="partner-row" role="list">
+                <div class="prow" role="listitem"><span class="pcat">Regulatory</span><span class="pname">CAAM</span><span class="pmeta">Civil Aviation Authority MY</span></div>
+                <div class="prow" role="listitem"><span class="pcat">Industry</span><span class="pname">MAVCAP · NTIS</span><span class="pmeta">Innovation · Tech</span></div>
+                <div class="prow" role="listitem"><span class="pcat">Manufacturer</span><span class="pname">DJI Enterprise</span><span class="pmeta">Authorised dealer / operator</span></div>
+                <div class="prow" role="listitem"><span class="pcat">Plantation</span><span class="pname">FELDA · Sime Darby</span><span class="pmeta">Agriculture deployments</span></div>
+                <div class="prow" role="listitem"><span class="pcat">Public Sector</span><span class="pname">JBPM · PDRM</span><span class="pmeta">Civil protection support</span></div>
+                <div class="prow" role="listitem"><span class="pcat">Production</span><span class="pname">Live event partners</span><span class="pmeta">Drone Show productions</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PARTNERSHIP CTA -->
+      <section class="partner slate" id="contact" aria-label="Partnership">
+        <svg class="partner-emblem" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M8 78 C 35 64, 44 58, 50 50 C 56 42, 61 35, 92 22 L 88 30 C 60 42, 55 47, 50 50 C 45 53, 40 58, 12 70 Z" fill="currentColor"/>
+          <path d="M8 22 C 35 36, 44 42, 50 50 C 56 58, 61 65, 92 78 L 88 70 C 60 58, 55 53, 50 50 C 45 47, 40 42, 12 30 Z" fill="currentColor"/>
+        </svg>
+        <div class="container">
+          <div class="section-head reveal" style="margin-bottom:0;">
+            <span class="num">07 —</span><span class="title">Partnership</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Open inquiries · Malaysia &amp; SE-Asia</span>
+          </div>
+          <div class="partner-inner">
+            <div class="reveal">
+              <h2 class="reveal delay-1">Let's explore what <em>aerial technology</em> can do for your project.</h2>
+              <div style="margin-top:40px;">
+                <a href="mailto:contact@dronex.my" class="btn btn-primary">Contact Drone&nbsp;X <span class="arrow" aria-hidden="true"></span></a>
+                <span style="display:inline-flex;align-items:center;gap:14px;margin-left:18px;font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;color:var(--cloud);text-transform:uppercase;">contact@dronex.my</span>
+              </div>
+            </div>
+            <div class="right reveal delay-1">
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Operations</span> Kuala Lumpur · Selangor · Nationwide deployment.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Inquiries</span> Commercial · Public sector · Entertainment.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Response window</span> Within two business days.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="foot-grid">
+          <div class="col foot-brand">
+            <img src="assets/dronex-wordmark-light.png" alt="Drone X" style="height:44px;width:auto;display:block;" />
+            <p>Elevating Malaysia's drone future — commercial solutions and aerial entertainment, engineered as one operation.</p>
+          </div>
+          <div class="col">
+            <h5>Commercial Solutions</h5>
+            <ul>
+              <li><a href="#svc-01">Agriculture Drone Support</a></li>
+              <li><a href="#svc-02">Drone Delivery</a></li>
+              <li><a href="#svc-03">Aerial Mapping</a></li>
+              <li><a href="#svc-04">Building / Solar Cleaning</a></li>
+              <li><a href="#svc-05">Public Sector Support</a></li>
+              <li><a href="#svc-06">Drone E-Sport</a></li>
+            </ul>
+          </div>
+          <div class="col">
+            <h5>Drone Entertainment</h5>
+            <ul><li><a href="#ent-01">Drone Show</a></li><li><a href="#ent-02">Drone Spot</a></li></ul>
+          </div>
+          <div class="col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#about">About&nbsp;Us</a></li>
+              <li><a href="#technology">Technology &amp; Data</a></li>
+              <li><a href="#partners">Partners</a></li>
+              <li><a href="#contact">Contact&nbsp;Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span class="coord"><b>© Drone&nbsp;X&nbsp;Malaysia</b> · All&nbsp;rights&nbsp;reserved · 2026</span>
+          <span class="coord">RPAS-A1 · CAAM-aligned · KUL · MY</span>
+          <span class="coord">03°08′22″N · 101°41′13″E</span>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.dx -->
+
+  <script>
+    // ── Unicorn Studio ──────────────────────────────────────────
+    var sdk = document.createElement('script');
+    sdk.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.12/dist/unicornStudio.umd.js';
+    sdk.onload = function () {
+      UnicornStudio.addScene({
+        elementId: 'unicorn-container',
+        projectId: '6mLFPgVthG9QzgBxU3mO',
+        scale: 1,
+        dpi: window.devicePixelRatio || 1,
+        fps: 60,
+        lazyLoad: false,
+      });
+      var obs = new MutationObserver(function (m) {
+        m.forEach(function (mut) {
+          mut.addedNodes.forEach(function (node) {
+            if (node.nodeType !== 1) return;
+            var el = node.querySelector ? node.querySelector('a[href*="unicorn.studio"]') : null;
+            if (el) el.style.display = 'none';
+            if (node.href && node.href.includes && node.href.includes('unicorn.studio')) node.style.display = 'none';
+          });
+        });
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+    };
+    document.head.appendChild(sdk);
+
+    // ── Single-scroll intro transition ──────────────────────────
+    // Body scroll is locked while the unicorn overlay is up.
+    // One scroll/wheel/swipe triggers the CSS exit, then scroll is unlocked.
+    document.body.style.overflow = 'hidden';
+
+    var unicorn     = document.querySelector('.unicorn-section');
+    var hint        = document.querySelector('.unicorn-scroll-hint');
+    var done        = false;
+    var touchStartY = 0;
+
+    function leave() {
+      if (done) return;
+      done = true;
+      if (hint) hint.style.opacity = '0';
+      // Double rAF ensures the browser has painted the initial state
+      // before the transition-triggering class is added
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          unicorn.classList.add('leaving');
+        });
+      });
+      // Unlock scroll and destroy the WebGL scene after transition
+      setTimeout(function () {
+        unicorn.style.display = 'none';
+        document.body.style.overflow = '';
+        // Kill the Unicorn Studio WebGL context so it stops consuming GPU
+        try {
+          if (window.UnicornStudio && typeof UnicornStudio.destroy === 'function') {
+            UnicornStudio.destroy();
+          } else {
+            // Fallback: nuke the canvas directly
+            var canvas = document.querySelector('#unicorn-container canvas');
+            if (canvas) {
+              var gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+              if (gl) gl.getExtension('WEBGL_lose_context').loseContext();
+              canvas.width = 1; canvas.height = 1;
+            }
+          }
+        } catch(e) {}
+      }, 1500);
+    }
+
+    // Mouse wheel / trackpad
+    window.addEventListener('wheel', function (e) {
+      if (!done && e.deltaY > 0) { e.preventDefault(); leave(); }
+    }, { passive: false });
+
+    // Touch swipe up — 70px threshold to avoid accidental triggers
+    window.addEventListener('touchstart', function (e) {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (!done && (touchStartY - e.touches[0].clientY) > 70) leave();
+    }, { passive: true });
+
+    // Mobile tap button
+    var tapBtn = document.querySelector('.unicorn-tap-btn');
+    if (tapBtn) { tapBtn.addEventListener('click', function () { leave(); }); }
+
+    // Keyboard arrow / page / space
+    window.addEventListener('keydown', function (e) {
+      if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
+        e.preventDefault(); leave();
+      }
+    });
+
+    // ── Live UTC+8 clock ────────────────────────────────────────
+    var clockEl = document.getElementById('hero-time');
+    if (clockEl) {
+      var tick = function () {
+        var now = new Date();
+        var my  = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + 8 * 3600000);
+        var p   = function (n) { return String(n).padStart(2, '0'); };
+        clockEl.textContent = p(my.getHours()) + ':' + p(my.getMinutes()) + ':' + p(my.getSeconds());
+      };
+      tick(); setInterval(tick, 1000);
+    }
+
+    // ── Reveal on scroll (handles both .reveal and .reveal-wipe) ─
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    document.querySelectorAll('.reveal, .reveal-wipe').forEach(function (el) { io.observe(el); });
+
+    // ── Counter animation ──────────────────────────────────────
+    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var counterIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var el     = e.target;
+        var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+        var suffix = el.getAttribute('data-suffix') || '';
+        counterIO.unobserve(el);
+        if (prefersReduced) { el.textContent = target + suffix; return; }
+        var dur   = 1600;
+        var start = performance.now();
+        function step(now) {
+          var t = Math.min(1, (now - start) / dur);
+          // ease-out cubic
+          var eased = 1 - Math.pow(1 - t, 3);
+          var val   = Math.round(target * eased);
+          el.textContent = val + (t === 1 ? suffix : '');
+          if (t < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.counter').forEach(function (el) { counterIO.observe(el); });
+
+    // ── Active nav on scroll ────────────────────────────────────
+    var links   = [].slice.call(document.querySelectorAll('.dx .nav-list a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
+    var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var setActive = function () {
+      var y = window.scrollY + 120; var active = null;
+      targets.forEach(function (t) { if (t.offsetTop <= y) active = t.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + active); });
+    };
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+  </script>
+
+</body>
+</html>
