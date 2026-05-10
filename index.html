@@ -225,6 +225,134 @@
   .dx .nav-logo .wordmark { height:26px; width:auto; display:block; }
   @media (max-width:520px){ .dx .nav-logo .wordmark{ height:22px; } }
 
+  /* ── Hamburger button (mobile only) ──────────────────────── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 7px; width: 44px; height: 44px;
+    background: none; border: none; padding: 0; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: var(--cloud);
+    transition: transform 360ms cubic-bezier(0.76, 0, 0.24, 1),
+                opacity   200ms ease;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(4.25px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { transform: translateY(-4.25px) rotate(-45deg); }
+
+  /* ── Mobile full-screen menu ──────────────────────────────── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 90;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    transform: translateY(-100%);
+    transition: transform 480ms cubic-bezier(0.76, 0, 0.24, 1);
+    overflow-y: auto; overflow-x: hidden;
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mobile-menu-head {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px; padding: 0 clamp(20px, 5vw, 40px);
+    border-bottom: 1px solid var(--rule-soft); flex-shrink: 0;
+  }
+  .mobile-menu-head .wordmark { height: 22px; width: auto; }
+  .mobile-menu-close {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: none; border: none;
+    cursor: pointer; padding: 0; position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-menu-close::before,
+  .mobile-menu-close::after {
+    content: ''; position: absolute;
+    width: 20px; height: 1.5px; background: var(--cloud);
+    transition: background 200ms ease;
+  }
+  .mobile-menu-close::before { transform: rotate(45deg); }
+  .mobile-menu-close::after  { transform: rotate(-45deg); }
+  .mobile-menu-close:active::before,
+  .mobile-menu-close:active::after { background: var(--sky); }
+
+  .mobile-nav {
+    flex: 1; display: flex; flex-direction: column;
+    padding: 8px clamp(20px, 5vw, 40px) 0;
+  }
+  .mobile-nav-item {
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 20px 0; border-bottom: 1px solid var(--rule);
+    text-decoration: none; color: var(--white);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 400ms var(--ease-aerial),
+                transform 400ms var(--ease-aerial),
+                color 200ms ease;
+  }
+  .mobile-menu.open .mobile-nav-item { opacity: 1; transform: translateY(0); }
+  .mobile-menu.open .mobile-nav-item:nth-child(1) { transition-delay: 80ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(2) { transition-delay: 130ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(3) { transition-delay: 180ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(4) { transition-delay: 230ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(5) { transition-delay: 280ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(6) { transition-delay: 330ms; }
+  .mobile-nav-item:active { color: var(--sky); }
+  .mobile-nav-num {
+    font-family: var(--f-mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--sky); flex-shrink: 0; padding-top: 4px;
+  }
+  .mobile-nav-label {
+    font-family: var(--f-display); font-size: clamp(1.7rem, 7vw, 2.6rem);
+    font-weight: 500; line-height: 1; letter-spacing: -0.02em;
+  }
+  .mobile-nav-sub {
+    display: flex; flex-direction: column; gap: 0;
+    padding: 0 0 4px 40px;
+  }
+  .mobile-nav-sub a {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--rule-soft);
+    text-decoration: none; color: var(--cloud);
+    font-family: var(--f-display); font-size: 14px; font-weight: 300;
+    transition: color 180ms ease;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 350ms var(--ease-aerial), transform 350ms var(--ease-aerial), color 180ms ease;
+  }
+  .mobile-nav-sub a:last-child { border-bottom: none; }
+  .mobile-menu.open .mobile-nav-sub a { opacity: 1; transform: translateY(0); }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(1) { transition-delay: 220ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(2) { transition-delay: 260ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(3) { transition-delay: 300ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(4) { transition-delay: 340ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(5) { transition-delay: 380ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(6) { transition-delay: 420ms; }
+  .mobile-nav-sub .sm-num {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .2em;
+    color: var(--slate); flex-shrink: 0;
+  }
+  .mobile-nav-sub a:active { color: var(--sky); }
+
+  .mobile-menu-foot {
+    padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px);
+    border-top: 1px solid var(--rule-soft); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .mobile-menu-foot .creds {
+    font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--slate);
+  }
+  .mobile-menu-foot .btn { font-size: 10px; padding: 14px 20px; }
+
+  /* ── Responsive show/hide ─────────────────────────────── */
+  @media (max-width: 860px) {
+    .dx .nav-list { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
   .dx .nav-list {
     display: flex; align-items: center; gap: 30px;
     list-style: none; margin: 0; padding: 0;
@@ -896,6 +1024,9 @@
         <a href="#" class="nav-logo" aria-label="Drone X — Home">
           <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
         </a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span></span><span></span>
+        </button>
         <nav aria-label="Primary">
           <ul class="nav-list">
             <li><a href="#" class="active">Home</a></li>
@@ -927,6 +1058,60 @@
         </nav>
       </div>
     </header>
+
+    <!-- ── Mobile menu overlay ── -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Site navigation">
+      <div class="mobile-menu-head">
+        <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu"></button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <a href="#" class="mobile-nav-item">
+          <span class="mobile-nav-num">01</span>
+          <span class="mobile-nav-label">Home</span>
+        </a>
+        <a href="#about" class="mobile-nav-item">
+          <span class="mobile-nav-num">02</span>
+          <span class="mobile-nav-label">About Us</span>
+        </a>
+        <div class="mobile-nav-item" style="flex-direction:column; align-items:flex-start; gap:0;">
+          <div style="display:flex; align-items:baseline; gap:18px; width:100%;">
+            <span class="mobile-nav-num">03</span>
+            <span class="mobile-nav-label"><a href="#solutions" style="color:inherit;text-decoration:none;">Commercial Solutions</a></span>
+          </div>
+          <div class="mobile-nav-sub">
+            <a href="#svc-01"><span class="sm-num">01</span>Agriculture Drone Support</a>
+            <a href="#svc-02"><span class="sm-num">02</span>Drone Delivery</a>
+            <a href="#svc-03"><span class="sm-num">03</span>Aerial Mapping</a>
+            <a href="#svc-04"><span class="sm-num">04</span>Building / Solar Cleaning</a>
+            <a href="#svc-05"><span class="sm-num">05</span>Public Sector Support</a>
+            <a href="#svc-06"><span class="sm-num">06</span>Drone E-Sport</a>
+          </div>
+        </div>
+        <div class="mobile-nav-item" style="flex-direction:column; align-items:flex-start; gap:0;">
+          <div style="display:flex; align-items:baseline; gap:18px; width:100%;">
+            <span class="mobile-nav-num">04</span>
+            <span class="mobile-nav-label"><a href="#entertainment" style="color:inherit;text-decoration:none;">Drone Entertainment</a></span>
+          </div>
+          <div class="mobile-nav-sub">
+            <a href="#ent-01"><span class="sm-num">P-01</span>Drone Show</a>
+            <a href="#ent-02"><span class="sm-num">P-02</span>Drone Spot</a>
+          </div>
+        </div>
+        <a href="#technology" class="mobile-nav-item">
+          <span class="mobile-nav-num">05</span>
+          <span class="mobile-nav-label">Technology &amp; Data</span>
+        </a>
+        <a href="#partners" class="mobile-nav-item">
+          <span class="mobile-nav-num">06</span>
+          <span class="mobile-nav-label">Partners</span>
+        </a>
+      </nav>
+      <div class="mobile-menu-foot">
+        <span class="creds">CAAM · RPAS-A1 · KUL · MY</span>
+        <a href="#contact" class="btn btn-primary mobile-menu-cta">Contact Drone X <span class="arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
 
     <main>
 
@@ -1359,6 +1544,44 @@
   </div><!-- /.dx -->
 
   <script>
+    // ── Mobile menu ─────────────────────────────────────────────
+    (function () {
+      var btn   = document.getElementById('nav-hamburger');
+      var menu  = document.getElementById('mobile-menu');
+      var close = document.getElementById('mobile-menu-close');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden', 'false');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden', 'true');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      if (close) close.addEventListener('click', closeMenu);
+
+      // Close on any nav link tap
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+
     // ── Unicorn Studio ──────────────────────────────────────────
     var sdk = document.createElement('script');
     sdk.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.12/dist/unicornStudio.umd.js';
