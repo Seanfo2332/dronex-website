@@ -227,21 +227,21 @@
 
   /* ── Hamburger button (mobile only) ──────────────────────── */
   .nav-hamburger {
-    display: none;
-    flex-direction: column; justify-content: center; align-items: center;
-    gap: 7px; width: 44px; height: 44px;
+    display: none; position: relative;
+    align-items: center; justify-content: center;
+    width: 44px; height: 44px;
     background: none; border: none; padding: 0; cursor: pointer;
     -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+    color: var(--cloud);
   }
-  .nav-hamburger span {
-    display: block; width: 22px; height: 1.5px;
-    background: var(--cloud);
-    transition: transform 360ms cubic-bezier(0.76, 0, 0.24, 1),
-                opacity   200ms ease;
-    transform-origin: center;
+  .nav-hamburger:hover { color: var(--sky); }
+  .hbg-drone, .hbg-close {
+    position: absolute; inset: 0; margin: auto;
+    transition: opacity 260ms ease, transform 300ms cubic-bezier(0.76,0,0.24,1);
   }
-  .nav-hamburger.open span:nth-child(1) { transform: translateY(4.25px) rotate(45deg); }
-  .nav-hamburger.open span:nth-child(2) { transform: translateY(-4.25px) rotate(-45deg); }
+  .hbg-close { opacity: 0; transform: rotate(-45deg) scale(0.8); }
+  .nav-hamburger.open .hbg-drone { opacity: 0; transform: rotate(45deg) scale(0.8); }
+  .nav-hamburger.open .hbg-close { opacity: 1; transform: rotate(0deg) scale(1); }
 
   /* ── Mobile full-screen menu ──────────────────────────────── */
   .mobile-menu {
@@ -1024,9 +1024,6 @@
         <a href="#" class="nav-logo" aria-label="Drone X — Home">
           <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
         </a>
-        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
-          <span></span><span></span>
-        </button>
         <nav aria-label="Primary">
           <ul class="nav-list">
             <li><a href="#" class="active">Home</a></li>
@@ -1056,6 +1053,35 @@
             <li><a href="#contact" class="nav-cta">Contact&nbsp;Us <span class="arrow" aria-hidden="true"></span></a></li>
           </ul>
         </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <!-- Drone icon (closed state) -->
+          <svg class="hbg-drone" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Arms -->
+            <line x1="14" y1="14" x2="8.5" y2="8.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="19.5" y2="8.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="8.5" y2="19.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="19.5" y2="19.5" stroke-width="1.4"/>
+            <!-- Propeller rings -->
+            <circle cx="7" cy="7" r="4.2" stroke-width="1.2"/>
+            <circle cx="21" cy="7" r="4.2" stroke-width="1.2"/>
+            <circle cx="7" cy="21" r="4.2" stroke-width="1.2"/>
+            <circle cx="21" cy="21" r="4.2" stroke-width="1.2"/>
+            <!-- Propeller blades (× inside each ring) -->
+            <line x1="5.1" y1="5.1" x2="8.9" y2="8.9" stroke-width="1"/>
+            <line x1="8.9" y1="5.1" x2="5.1" y2="8.9" stroke-width="1"/>
+            <line x1="19.1" y1="5.1" x2="22.9" y2="8.9" stroke-width="1"/>
+            <line x1="22.9" y1="5.1" x2="19.1" y2="8.9" stroke-width="1"/>
+            <line x1="5.1" y1="19.1" x2="8.9" y2="22.9" stroke-width="1"/>
+            <line x1="8.9" y1="19.1" x2="5.1" y2="22.9" stroke-width="1"/>
+            <line x1="19.1" y1="19.1" x2="22.9" y2="22.9" stroke-width="1"/>
+            <line x1="22.9" y1="19.1" x2="19.1" y2="22.9" stroke-width="1"/>
+          </svg>
+          <!-- Close × (open state) -->
+          <svg class="hbg-close" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="7" y1="7" x2="21" y2="21"/>
+            <line x1="21" y1="7" x2="7" y2="21"/>
+          </svg>
+        </button>
       </div>
     </header>
 
