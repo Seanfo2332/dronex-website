@@ -1362,13 +1362,14 @@
     // ── Unicorn Studio ──────────────────────────────────────────
     var sdk = document.createElement('script');
     sdk.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.12/dist/unicornStudio.umd.js';
+    var isMobile = window.innerWidth <= 768;
     sdk.onload = function () {
       UnicornStudio.addScene({
         elementId: 'unicorn-container',
         projectId: '6mLFPgVthG9QzgBxU3mO',
-        scale: 1,
-        dpi: window.devicePixelRatio || 1,
-        fps: 60,
+        scale: isMobile ? 0.5 : 1,
+        dpi: isMobile ? 1 : (window.devicePixelRatio || 1),
+        fps: isMobile ? 30 : 60,
         lazyLoad: false,
       });
       var obs = new MutationObserver(function (m) {
@@ -1432,15 +1433,17 @@
       if (!done && e.deltaY > 0) { e.preventDefault(); leave(); }
     }, { passive: false });
 
-    // Touch swipe up — 70px threshold to avoid accidental triggers
-    window.addEventListener('touchstart', function (e) {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    window.addEventListener('touchmove', function (e) {
-      if (!done && (touchStartY - e.touches[0].clientY) > 70) leave();
-    }, { passive: true });
+    // Swipe-to-dismiss: desktop/tablet only — mobile uses Enter button exclusively
+    if (!isMobile) {
+      window.addEventListener('touchstart', function (e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      window.addEventListener('touchmove', function (e) {
+        if (!done && (touchStartY - e.touches[0].clientY) > 70) leave();
+      }, { passive: true });
+    }
 
-    // Mobile tap button
+    // Mobile Enter button — only trigger on mobile
     var tapBtn = document.querySelector('.unicorn-tap-btn');
     if (tapBtn) { tapBtn.addEventListener('click', function () { leave(); }); }
 
