@@ -1367,9 +1367,9 @@
       UnicornStudio.addScene({
         elementId: 'unicorn-container',
         projectId: '6mLFPgVthG9QzgBxU3mO',
-        scale: isMobile ? 0.5 : 1,
-        dpi: isMobile ? 1 : (window.devicePixelRatio || 1),
-        fps: isMobile ? 30 : 60,
+        scale: 1,
+        dpi: window.devicePixelRatio || 1,
+        fps: 60,
         lazyLoad: false,
       });
       var obs = new MutationObserver(function (m) {
