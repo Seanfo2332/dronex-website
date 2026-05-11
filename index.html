@@ -913,17 +913,17 @@
     pointer-events: none;
   }
 
-  /* Dark overlay — video shows through, white text reads cleanly on top */
+  /* Light cloud overlay — reverted to Image 23 look, video visible */
   .dx .tech-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(
-      105deg,
-      rgba(21,31,39,0.82) 0%,
-      rgba(21,31,39,0.65) 45%,
-      rgba(21,31,39,0.42) 75%,
-      rgba(21,31,39,0.28) 100%
+      to right,
+      rgba(232,236,239,0.72) 0%,
+      rgba(232,236,239,0.52) 40%,
+      rgba(232,236,239,0.22) 70%,
+      rgba(232,236,239,0.10) 100%
     );
     pointer-events: none;
   }
@@ -931,29 +931,26 @@
   /* All content above both layers */
   .dx .tech-light .container { position: relative; z-index: 2; }
 
-  /* Switch all text in section 05 to light — dark overlay makes them pop */
-  .dx .tech-light .section-head .num   { color: var(--sky); }
-  .dx .tech-light .section-head .title { color: var(--white); }
-  .dx .tech-light .section-head .line  { background: rgba(157,193,245,0.3); }
-  .dx .tech-light .section-head .meta  { color: rgba(232,236,239,0.6); }
-  .dx .tech-light .tech-grid h2        { color: var(--white); }
-  .dx .tech-light .tech-grid h2 em     { color: var(--sky); }
-  .dx .tech-light .tech-grid .blurb    { color: rgba(232,236,239,0.8); }
-  .dx .tech-light .specsheet           { border-top-color: rgba(157,193,245,0.25); }
-  .dx .tech-light .spec                { border-bottom-color: rgba(73,95,119,0.35); }
-  .dx .tech-light .spec .id            { color: var(--sky); }
-  .dx .tech-light .spec .label         { color: var(--white); font-weight: 500; }
-  .dx .tech-light .spec .value         { color: rgba(232,236,239,0.75); }
-  .dx .tech-light .spec .unit          { color: rgba(157,193,245,0.6); }
-  .dx .tech-light .spec:hover          { background: rgba(157,193,245,0.08); }
-  .dx .tech-light .section-bgnum       { color: rgba(157,193,245,0.06); }
+  /* Font colors: near-black so they cut through the grey video clearly */
+  .dx .tech-light .section-head .num   { color: var(--navy); }
+  .dx .tech-light .section-head .title { color: var(--navy); font-weight: 600; }
+  .dx .tech-light .section-head .line  { background: rgba(73,95,119,0.35); }
+  .dx .tech-light .section-head .meta  { color: var(--slate); }
+  .dx .tech-light .tech-grid h2        { color: oklch(8% 0.006 240); }
+  .dx .tech-light .tech-grid h2 em     { color: var(--slate); }
+  .dx .tech-light .tech-grid .blurb    { color: oklch(12% 0.01 240); }
+  .dx .tech-light .specsheet           { border-top-color: rgba(73,95,119,0.4); }
+  .dx .tech-light .spec                { border-bottom-color: rgba(73,95,119,0.25); }
+  .dx .tech-light .spec .id            { color: var(--navy); font-weight: 600; }
+  .dx .tech-light .spec .label         { color: oklch(8% 0.006 240); font-weight: 600; }
+  .dx .tech-light .spec .value         { color: oklch(18% 0.015 240); font-weight: 400; }
+  .dx .tech-light .spec .unit          { color: var(--slate); font-weight: 500; }
+  .dx .tech-light .spec:hover          { background: rgba(73,95,119,0.08); }
 
-  /* Mobile: slightly heavier overlay so single-column stacked text stays sharp */
+  /* Mobile: uniform semi-opaque cloud overlay */
   @media (max-width: 768px) {
     .dx .tech-video { opacity: 1; }
-    .dx .tech-overlay {
-      background: rgba(21,31,39,0.78);
-    }
+    .dx .tech-overlay { background: rgba(232,236,239,0.82); }
   }
 
   /* Keep old tech-light for any remaining references */
