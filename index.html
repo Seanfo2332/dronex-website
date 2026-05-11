@@ -913,17 +913,17 @@
     pointer-events: none;
   }
 
-  /* Overlay: lightest possible while keeping text readable */
+  /* Dark overlay — video shows through, white text reads cleanly on top */
   .dx .tech-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(
-      to right,
-      rgba(232,236,239,0.72) 0%,
-      rgba(232,236,239,0.52) 40%,
-      rgba(232,236,239,0.22) 70%,
-      rgba(232,236,239,0.10) 100%
+      105deg,
+      rgba(21,31,39,0.82) 0%,
+      rgba(21,31,39,0.65) 45%,
+      rgba(21,31,39,0.42) 75%,
+      rgba(21,31,39,0.28) 100%
     );
     pointer-events: none;
   }
@@ -931,10 +931,29 @@
   /* All content above both layers */
   .dx .tech-light .container { position: relative; z-index: 2; }
 
-  /* Mobile: uniform light veil — video fully visible, text still readable */
+  /* Switch all text in section 05 to light — dark overlay makes them pop */
+  .dx .tech-light .section-head .num   { color: var(--sky); }
+  .dx .tech-light .section-head .title { color: var(--white); }
+  .dx .tech-light .section-head .line  { background: rgba(157,193,245,0.3); }
+  .dx .tech-light .section-head .meta  { color: rgba(232,236,239,0.6); }
+  .dx .tech-light .tech-grid h2        { color: var(--white); }
+  .dx .tech-light .tech-grid h2 em     { color: var(--sky); }
+  .dx .tech-light .tech-grid .blurb    { color: rgba(232,236,239,0.8); }
+  .dx .tech-light .specsheet           { border-top-color: rgba(157,193,245,0.25); }
+  .dx .tech-light .spec                { border-bottom-color: rgba(73,95,119,0.35); }
+  .dx .tech-light .spec .id            { color: var(--sky); }
+  .dx .tech-light .spec .label         { color: var(--white); font-weight: 500; }
+  .dx .tech-light .spec .value         { color: rgba(232,236,239,0.75); }
+  .dx .tech-light .spec .unit          { color: rgba(157,193,245,0.6); }
+  .dx .tech-light .spec:hover          { background: rgba(157,193,245,0.08); }
+  .dx .tech-light .section-bgnum       { color: rgba(157,193,245,0.06); }
+
+  /* Mobile: slightly heavier overlay so single-column stacked text stays sharp */
   @media (max-width: 768px) {
     .dx .tech-video { opacity: 1; }
-    .dx .tech-overlay { background: rgba(232,236,239,0.62); }
+    .dx .tech-overlay {
+      background: rgba(21,31,39,0.78);
+    }
   }
 
   /* Keep old tech-light for any remaining references */
