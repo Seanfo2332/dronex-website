@@ -902,31 +902,28 @@
     overflow: hidden;
   }
 
-  /* Video clipped to the right 62% — left heading column is never covered */
+  /* Video fills the entire section — no clip */
   .dx .tech-video {
     position: absolute;
     inset: 0;
     z-index: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.85;           /* was 0.55 — much more visible */
+    opacity: 0.55;
     pointer-events: none;
-    clip-path: inset(0 0 0 36%);
   }
 
-  /* Gradient pulls back faster so video dominates the right half */
+  /* Overlay: strong cloud on left (heading readable) → fades right (specs float above) */
   .dx .tech-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(
       to right,
-      var(--cloud) 0%,
-      var(--cloud) 28%,        /* solid zone ends earlier */
-      rgba(232,236,239,0.82) 38%,
-      rgba(232,236,239,0.45) 52%,
-      rgba(232,236,239,0.18) 72%,
-      rgba(232,236,239,0.08) 100%  /* nearly transparent at far right */
+      rgba(232,236,239,0.92) 0%,
+      rgba(232,236,239,0.78) 35%,
+      rgba(232,236,239,0.55) 60%,
+      rgba(232,236,239,0.30) 100%
     );
     pointer-events: none;
   }
@@ -934,14 +931,11 @@
   /* All content above both layers */
   .dx .tech-light .container { position: relative; z-index: 2; }
 
-  /* Mobile: video fills full width at very low opacity — text stays on top */
+  /* Mobile: single-column — uniform semi-transparent overlay throughout */
   @media (max-width: 768px) {
-    .dx .tech-video {
-      clip-path: none;   /* full width on mobile since it's single-column */
-      opacity: 0.12;
-    }
+    .dx .tech-video { opacity: 0.35; }
     .dx .tech-overlay {
-      background: rgba(232,236,239,0.94); /* near-solid so spec rows read clearly */
+      background: rgba(232,236,239,0.82);
     }
   }
 
