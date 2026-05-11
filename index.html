@@ -909,14 +909,12 @@
     z-index: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.55;
+    opacity: 0.85;           /* was 0.55 — much more visible */
     pointer-events: none;
-    /* Clip so video only appears in the right portion of the section */
     clip-path: inset(0 0 0 36%);
   }
 
-  /* Gradient mask: solid cloud on left → fading right → barely there at edge */
-  /* This lets video show through the specsheet area while protecting heading text */
+  /* Gradient pulls back faster so video dominates the right half */
   .dx .tech-overlay {
     position: absolute;
     inset: 0;
@@ -924,11 +922,11 @@
     background: linear-gradient(
       to right,
       var(--cloud) 0%,
-      var(--cloud) 33%,
-      rgba(232,236,239,0.92) 44%,
-      rgba(232,236,239,0.72) 58%,
-      rgba(232,236,239,0.50) 75%,
-      rgba(232,236,239,0.35) 100%
+      var(--cloud) 28%,        /* solid zone ends earlier */
+      rgba(232,236,239,0.82) 38%,
+      rgba(232,236,239,0.45) 52%,
+      rgba(232,236,239,0.18) 72%,
+      rgba(232,236,239,0.08) 100%  /* nearly transparent at far right */
     );
     pointer-events: none;
   }
