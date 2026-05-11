@@ -1315,13 +1315,113 @@
   .seq-counter-n { color: oklch(76% 0.09 240 / 0.8); }
   .seq-counter-sep { opacity: 0.4; }
 
+  /* ── Mobile overrides ───────────────────────────────────────── */
   @media (max-width: 768px) {
-    .seq-wrap   { height: 500vh; }
-    .seq-panel  { max-width: calc(100vw - 48px); }
-    .seq-h2     { font-size: clamp(2.2rem, 8vw, 3.4rem); }
-    .seq-chapter { font-size: clamp(4rem, 30vw, 12rem); opacity: 0.03; }
-    .seq-timeline { width: calc(100vw - 96px); }
-    .seq-fade-left { background: linear-gradient(160deg, oklch(3% 0.006 240 / 0.88) 0%, oklch(3% 0.006 240 / 0.55) 55%, transparent 80%); }
+    /* Seq wrap — shorter scroll distance on mobile */
+    .seq-wrap  { height: 420vh; }
+
+    /* Canvas: sits in top 55% of sticky, text fills bottom */
+    #seq-canvas {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 56%;          /* drone in top half */
+      clip-path: inset(0 0 0 0);
+    }
+
+    /* Gradient covers entire bottom half on mobile */
+    .seq-fade-left {
+      background: linear-gradient(
+        to bottom,
+        oklch(3% 0.006 240 / 0.15) 0%,
+        oklch(3% 0.006 240 / 0.15) 44%,
+        oklch(3% 0.006 240 / 0.96) 58%,
+        oklch(3% 0.006 240 / 1)    100%
+      );
+    }
+
+    /* Panel: anchor to bottom half, full width */
+    .seq-panel {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 100%;
+      transform: translateY(20px);
+      padding: 24px 24px 80px;
+    }
+    .seq-panel.active {
+      transform: translateY(0);
+    }
+
+    /* Smaller headline on mobile */
+    .seq-h2 { font-size: clamp(2rem, 7.5vw, 2.8rem); margin-bottom: 16px; }
+
+    /* Chapter watermark — smaller, subtler */
+    .seq-chapter {
+      font-size: clamp(4rem, 28vw, 9rem);
+      opacity: 0.03;
+      right: 12px;
+      top: 28%;
+    }
+
+    /* HUD brackets smaller */
+    .seq-hud { width: 14px; height: 14px; }
+
+    /* Timeline full width at bottom */
+    .seq-timeline {
+      width: calc(100vw - 48px);
+      bottom: 20px;
+    }
+
+    /* Frame counter smaller */
+    .seq-counter { bottom: 22px; right: 16px; font-size: 9px; }
+
+    /* Tags wrap tighter */
+    .seq-tags { gap: 5px; margin-top: 12px; }
+    .seq-tags span { font-size: 9px; padding: 4px 8px; }
+
+    /* Service list compact */
+    .seq-svc { font-size: 12px; padding: 6px 0; }
+  }
+
+  /* ── Services section — mobile video fix ────────────────────── */
+  @media (max-width: 768px) {
+    .dx .services-video {
+      opacity: 0.12;           /* much dimmer — was 0.45 */
+    }
+    .dx .services-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(21,31,39,0.94) 0%,
+        rgba(21,31,39,0.88) 60%,
+        rgba(21,31,39,0.94) 100%
+      );
+    }
+    /* Service items: fix text overflow */
+    .dx .svc {
+      overflow: visible;
+      padding-right: 0;
+    }
+    .dx .svc .body p {
+      max-width: 100%;
+      word-break: break-word;
+    }
+    .dx .svc .meta .v {
+      font-size: 13px;
+      word-break: break-word;
+    }
+  }
+
+  /* ── Hero video — slightly darker on mobile ─────────────────── */
+  @media (max-width: 768px) {
+    .dx .hero-video-overlay {
+      background: linear-gradient(
+        160deg,
+        rgba(21,31,39,0.85) 0%,
+        rgba(21,31,39,0.70) 50%,
+        rgba(21,31,39,0.82) 100%
+      );
+    }
   }
 
   /* Hero reveals — always visible immediately (hero is in-viewport on load) */
@@ -2457,9 +2557,16 @@
 
         var W  = window.innerWidth,  H  = window.innerHeight;
         var iw = img.naturalWidth || 1280, ih = img.naturalHeight || 720;
-        var sc = Math.max(W / iw, H / ih);   // COVER — 1920×1088 fills any display cleanly
+        // Desktop: COVER (fills viewport edge-to-edge)
+        // Mobile portrait: CONTAIN (shows full drone — black bars invisible vs black bg)
+        var mobile = W < H;
+        var sc = mobile
+          ? Math.min(W / iw, (H * 0.56) / ih)  // contain in top 56% of sticky
+          : Math.max(W / iw, H / ih);           // cover on desktop
         var dw = iw * sc, dh = ih * sc;
-        var dx = (W - dw) / 2, dy = (H - dh) / 2;
+        var canvasH = mobile ? H * 0.56 : H;
+        var dx = (W - dw) / 2;
+        var dy = mobile ? (canvasH - dh) / 2 : (H - dh) / 2;
 
         ctx.clearRect(0, 0, W, H);
         ctx.drawImage(img, dx, dy, dw, dh);
