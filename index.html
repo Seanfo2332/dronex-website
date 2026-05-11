@@ -1006,6 +1006,324 @@
     .dx .manifest-row { gap: 24px; }
   }
 
+  /* ══════════════════════════════════════════════════════════════
+     DRONE SEQUENCE — Aviation Control Room × Apple Product Page
+     ══════════════════════════════════════════════════════════════ */
+  .seq-wrap {
+    position: relative;
+    height: 600vh;
+    background: oklch(3% 0.006 240);
+  }
+  .seq-anchor { position: absolute; left: 0; display: block; pointer-events: none; }
+
+  .seq-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: oklch(3% 0.006 240);
+  }
+
+  /* ── Canvas ─────────────────────────────────────────────────── */
+  #seq-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 5% 0);
+  }
+
+  /* ── Left-to-center gradient — angled for 3D depth feel ─────── */
+  .seq-fade-left {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg,
+        oklch(3% 0.006 240 / 0.88) 0%,
+        oklch(3% 0.006 240 / 0.62) 32%,
+        oklch(3% 0.006 240 / 0.18) 55%,
+        transparent 70%
+      );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── HUD corner brackets ─────────────────────────────────────── */
+  .seq-hud {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    z-index: 12;
+    pointer-events: none;
+    opacity: 0;
+    animation: hudReveal 800ms cubic-bezier(0.16,1,0.3,1) 400ms forwards;
+  }
+  @keyframes hudReveal {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .seq-hud-tl { top: clamp(20px,3vw,44px); left: clamp(20px,3vw,44px); border-top: 1px solid oklch(76% 0.09 240 / 0.55); border-left: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-tr { top: clamp(20px,3vw,44px); right: clamp(20px,3vw,44px); border-top: 1px solid oklch(76% 0.09 240 / 0.55); border-right: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-bl { bottom: clamp(20px,3vw,44px); left: clamp(20px,3vw,44px); border-bottom: 1px solid oklch(76% 0.09 240 / 0.55); border-left: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-br { bottom: clamp(20px,3vw,44px); right: clamp(20px,3vw,44px); border-bottom: 1px solid oklch(76% 0.09 240 / 0.55); border-right: 1px solid oklch(76% 0.09 240 / 0.55); }
+
+  /* ── Scan-line sweep on section transition ───────────────────── */
+  .seq-scanline {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%,
+      oklch(76% 0.09 240 / 0.7) 30%,
+      oklch(76% 0.09 240 / 0.7) 70%,
+      transparent 100%
+    );
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .seq-scanline.sweep {
+    animation: scanDown 700ms cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes scanDown {
+    0%   { top: 0;    opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 0.6; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* ── Chapter watermark ───────────────────────────────────────── */
+  .seq-chapter {
+    position: absolute;
+    right: clamp(32px, 6vw, 80px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--f-mono);
+    font-size: clamp(6rem, 20vw, 22rem);
+    font-weight: 700;
+    letter-spacing: -.06em;
+    line-height: 1;
+    color: oklch(76% 0.09 240 / 0.045);
+    z-index: 3;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 500ms ease;
+  }
+
+  /* ── Panel — positioned left ─────────────────────────────────── */
+  .seq-panel {
+    position: absolute;
+    left: clamp(28px, 6vw, 96px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-30px);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    max-width: clamp(280px, 35vw, 520px);
+    /* Transition handled per-child for stagger — panel itself snaps */
+    transition: opacity 100ms ease;
+  }
+  .seq-panel.active { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+  /* Panel header row */
+  .seq-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .seq-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .26em;
+    color: oklch(76% 0.09 240);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 400ms ease, transform 400ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-rule {
+    height: 1px;
+    background: oklch(76% 0.09 240 / 0.45);
+    flex: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.16,1,0.3,1) 120ms;
+  }
+  .seq-title {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: oklch(93% 0.008 240 / 0.4);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 400ms ease 200ms, transform 400ms cubic-bezier(0.16,1,0.3,1) 200ms;
+  }
+  .seq-panel.active .seq-num   { opacity: 1; transform: none; }
+  .seq-panel.active .seq-rule  { transform: scaleX(1); }
+  .seq-panel.active .seq-title { opacity: 1; transform: none; }
+
+  /* Headline line-by-line reveal (overflow:hidden clip) */
+  .seq-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(2.8rem, 5.4vw, 5.8rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -.035em;
+    color: oklch(99% 0.003 240);
+    margin: 0 0 30px;
+  }
+  .seq-h2 em { font-style: italic; color: oklch(76% 0.09 240); font-weight: 400; }
+  .seq-line {
+    display: block;
+    overflow: hidden;
+  }
+  .seq-li {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 640ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-line-dim .seq-li { color: oklch(93% 0.008 240 / 0.4); font-size: 0.55em; }
+
+  /* Stagger each headline line */
+  .seq-panel.active .seq-line:nth-child(1) .seq-li { transform: none; transition-delay: 80ms; }
+  .seq-panel.active .seq-line:nth-child(2) .seq-li { transform: none; transition-delay: 180ms; }
+  .seq-panel.active .seq-line:nth-child(3) .seq-li { transform: none; transition-delay: 280ms; }
+
+  /* Meta rows — clip-path reveal left-to-right */
+  .seq-meta { display: flex; flex-direction: column; gap: 0; margin-bottom: 0; }
+  .seq-meta div {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    border-top: 1px solid oklch(40% 0.035 240 / 0.35);
+    padding: 10px 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 500ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-meta .k { color: oklch(40% 0.035 240); text-transform: uppercase; flex-shrink: 0; }
+  .seq-meta .v { color: oklch(93% 0.008 240); }
+  .seq-panel.active .seq-meta div:nth-child(1) { clip-path: inset(0 0% 0 0); transition-delay: 440ms; }
+  .seq-panel.active .seq-meta div:nth-child(2) { clip-path: inset(0 0% 0 0); transition-delay: 560ms; }
+  .seq-panel.active .seq-meta div:nth-child(3) { clip-path: inset(0 0% 0 0); transition-delay: 680ms; }
+
+  /* Tags */
+  .seq-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+  .seq-tags span {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: oklch(93% 0.008 240);
+    border: 1px solid oklch(40% 0.035 240 / 0.4);
+    padding: 5px 10px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 380ms ease, transform 380ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-panel.active .seq-tags span:nth-child(1) { opacity:1;transform:none;transition-delay:480ms; }
+  .seq-panel.active .seq-tags span:nth-child(2) { opacity:1;transform:none;transition-delay:550ms; }
+  .seq-panel.active .seq-tags span:nth-child(3) { opacity:1;transform:none;transition-delay:620ms; }
+  .seq-panel.active .seq-tags span:nth-child(4) { opacity:1;transform:none;transition-delay:690ms; }
+  .seq-panel.active .seq-tags span:nth-child(5) { opacity:1;transform:none;transition-delay:760ms; }
+
+  /* Service list */
+  .seq-svc-list { display: flex; flex-direction: column; margin-top: 8px; }
+  .seq-svc {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: var(--f-display);
+    font-size: clamp(12px, 1.05vw, 14px);
+    color: oklch(93% 0.008 240);
+    font-weight: 300;
+    padding: 8px 0;
+    border-bottom: 1px solid oklch(40% 0.035 240 / 0.25);
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 380ms ease, transform 380ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-svc .n { font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em; color: oklch(76% 0.09 240); flex-shrink: 0; }
+  .seq-panel.active .seq-svc:nth-child(1){opacity:1;transform:none;transition-delay:380ms;}
+  .seq-panel.active .seq-svc:nth-child(2){opacity:1;transform:none;transition-delay:450ms;}
+  .seq-panel.active .seq-svc:nth-child(3){opacity:1;transform:none;transition-delay:520ms;}
+  .seq-panel.active .seq-svc:nth-child(4){opacity:1;transform:none;transition-delay:590ms;}
+  .seq-panel.active .seq-svc:nth-child(5){opacity:1;transform:none;transition-delay:660ms;}
+  .seq-panel.active .seq-svc:nth-child(6){opacity:1;transform:none;transition-delay:730ms;}
+
+  /* ── Bottom 3-segment timeline ───────────────────────────────── */
+  .seq-timeline {
+    position: absolute;
+    bottom: clamp(28px, 4vh, 52px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    z-index: 10;
+    width: clamp(240px, 40vw, 560px);
+  }
+  .seq-seg {
+    flex: 1;
+    position: relative;
+    height: 1px;
+    background: oklch(40% 0.035 240 / 0.3);
+  }
+  .seq-seg-fill {
+    position: absolute;
+    inset: 0;
+    background: oklch(76% 0.09 240);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .seq-seg-lbl {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: oklch(40% 0.035 240 / 0.5);
+    white-space: nowrap;
+    transition: color 300ms ease;
+  }
+  .seq-seg.active .seq-seg-lbl { color: oklch(76% 0.09 240); }
+  .seq-seg-gap { width: 12px; flex-shrink: 0; }
+
+  /* ── Frame counter — bottom right ────────────────────────────── */
+  .seq-counter {
+    position: absolute;
+    bottom: clamp(28px, 4vh, 52px);
+    right: clamp(24px, 3vw, 52px);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: oklch(40% 0.035 240 / 0.55);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .seq-counter-n { color: oklch(76% 0.09 240 / 0.8); }
+  .seq-counter-sep { opacity: 0.4; }
+
+  @media (max-width: 768px) {
+    .seq-wrap   { height: 500vh; }
+    .seq-panel  { max-width: calc(100vw - 48px); }
+    .seq-h2     { font-size: clamp(2.2rem, 8vw, 3.4rem); }
+    .seq-chapter { font-size: clamp(4rem, 30vw, 12rem); opacity: 0.03; }
+    .seq-timeline { width: calc(100vw - 96px); }
+    .seq-fade-left { background: linear-gradient(160deg, oklch(3% 0.006 240 / 0.88) 0%, oklch(3% 0.006 240 / 0.55) 55%, transparent 80%); }
+  }
+
   /* Hero reveals — always visible immediately (hero is in-viewport on load) */
   .dx .hero .reveal        { opacity:1; transform:none; }
   .dx .hero .reveal-wipe   { clip-path:inset(0 0% 0 0); }
@@ -1038,6 +1356,8 @@
   }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
@@ -1367,73 +1687,121 @@
         </div>
       </section>
 
-      <!-- ABOUT -->
-      <section class="frame about-light" id="about" aria-label="About Drone X">
-        <span class="section-bgnum" aria-hidden="true">01</span>
-        <div class="container">
-          <div class="section-head reveal">
-            <span class="num">01 —</span><span class="title">Operator&nbsp;Profile</span>
-            <span class="line" aria-hidden="true"></span><span class="meta">Est.&nbsp;Drone&nbsp;X · Malaysia</span>
-          </div>
-          <div class="about">
-            <div class="about-quote reveal">
-              <p class="pq reveal-wipe">Founded for Malaysia's <em>aerial future.</em></p>
-              <div class="annot">
-                <div><span class="k">Origin</span><span class="v">Selangor, MY</span></div>
-                <div><span class="k">Mandate</span><span class="v">Civil &amp; Commercial RPAS</span></div>
-              </div>
-            </div>
-            <div class="about-copy reveal delay-1">
-              <p><strong>Drone X is a Malaysian-grown drone solutions and aerial entertainment company.</strong> We build, fly and operate certified unmanned systems across commercial, industrial, public sector and entertainment work — from agricultural fleets above oil palm acreage to choreographed light shows above coastline cities.</p>
-              <p>Our work sits at the intersection of regulated airspace, industrial reliability and editorial production craft. Every operation is planned, briefed and recorded against the same standard: precision in the air, accountability on the ground.</p>
-              <div class="meta-row">
-                <div class="item"><span class="k">Headquartered</span><span class="v">Kuala Lumpur, MY</span></div>
-                <div class="item"><span class="k">Regulatory</span><span class="v">CAAM-aligned operations</span></div>
-                <div class="item"><span class="k">Coverage</span><span class="v">Nationwide deployment</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <!-- DRONE SEQUENCE — spans sections 01 · 02 · 03 -->
+      <div class="seq-wrap" id="about">
 
-      <!-- OPERATIONAL MANIFEST (replaces hero-metric stats template) -->
-      <section class="manifest" aria-label="Operational manifest">
-        <div class="container">
-          <div class="manifest-row reveal-wipe" role="list">
-            <span class="item" role="listitem"><span class="lbl">Fleet&nbsp;Status</span><span class="val">14&nbsp;active&nbsp;platforms</span></span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span class="item" role="listitem"><span class="lbl">Disciplines</span><span class="val">6&nbsp;commercial&nbsp;+&nbsp;2&nbsp;entertainment</span></span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span class="item" role="listitem"><span class="lbl">Certification</span><span class="val">CAAM&nbsp;RPAS-A1</span></span>
-            <span class="sep" aria-hidden="true">·</span>
-            <span class="item" role="listitem"><span class="lbl">Coverage</span><span class="val">Nationwide,&nbsp;MY</span></span>
-          </div>
-        </div>
-      </section>
+        <!-- nav anchor for #solutions sits 33% down -->
+        <span id="solutions" class="seq-anchor" style="top:33.33%;" aria-hidden="true"></span>
 
-      <!-- PILLARS -->
-      <section class="frame" id="solutions" aria-label="Core pillars">
-        <div class="container">
-          <div class="section-head reveal">
-            <span class="num">02 —</span><span class="title">Core Pillars</span>
-            <span class="line" aria-hidden="true"></span><span class="meta">Two disciplines · One operator</span>
+        <div class="seq-sticky">
+
+          <!-- HUD corner brackets -->
+          <div class="seq-hud seq-hud-tl" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-tr" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-bl" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-br" aria-hidden="true"></div>
+
+          <!-- Scan-line sweep on panel change -->
+          <div class="seq-scanline" id="seq-scanline" aria-hidden="true"></div>
+
+          <!-- Left gradient — angled for depth -->
+          <div class="seq-fade-left" aria-hidden="true"></div>
+
+          <!-- Large chapter watermark — right side -->
+          <div class="seq-chapter" id="seq-chapter" aria-hidden="true">01</div>
+
+          <!-- Canvas -->
+          <canvas id="seq-canvas" aria-hidden="true"></canvas>
+
+          <!-- ── Panel 01 · Operator Profile ── -->
+          <div class="seq-panel" id="seq-panel-1">
+            <div class="seq-panel-head">
+              <span class="seq-num">01</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Operator Profile</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Built for</span></span>
+              <span class="seq-line"><span class="seq-li">Malaysia's</span></span>
+              <span class="seq-line"><span class="seq-li"><em>aerial future.</em></span></span>
+            </h2>
+            <div class="seq-meta">
+              <div><span class="k">Base</span><span class="v">Kuala Lumpur, MY</span></div>
+              <div><span class="k">Cert.</span><span class="v">CAAM RPAS-A1</span></div>
+              <div><span class="k">Coverage</span><span class="v">Nationwide, MY</span></div>
+            </div>
           </div>
-          <div class="pillars">
-            <article class="pillar reveal">
-              <div class="pkey"><span class="bar" aria-hidden="true"></span> Pillar I · Commercial</div>
-              <h3 class="reveal delay-1">Commercial<br/>Drone <span class="it">Solutions.</span></h3>
-              <p>Mission-grade aerial work for Malaysia's industrial and public-sector operators — agriculture, mapping, inspection, delivery exploration and government support.</p>
-              <div class="tags"><span>Agriculture</span><span>Mapping</span><span>Inspection</span><span>Delivery R&amp;D</span><span>Public Sector</span></div>
-            </article>
-            <article class="pillar reveal delay-1">
-              <div class="pkey"><span class="bar" aria-hidden="true"></span> Pillar II · Entertainment</div>
-              <h3 class="reveal delay-2">Drone<br/><span class="it">Entertainment.</span></h3>
-              <p>Choreographed aerial spectacle for events, brands and civic moments — drone shows engineered as production, not novelty.</p>
-              <div class="tags"><span>Drone Show</span><span>Drone Spot</span><span>Live Events</span><span>Brand Activations</span></div>
-            </article>
+
+          <!-- ── Panel 02 · Core Pillars ── -->
+          <div class="seq-panel" id="seq-panel-2">
+            <div class="seq-panel-head">
+              <span class="seq-num">02</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Core Pillars</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Two disciplines.</span></span>
+              <span class="seq-line"><span class="seq-li"><em>One</em> operator.</span></span>
+              <span class="seq-line seq-li-dim"><span class="seq-li">Commercial + Entertainment</span></span>
+            </h2>
+            <div class="seq-meta">
+              <div><span class="k">Pillar I</span><span class="v">Commercial Solutions</span></div>
+              <div><span class="k">Pillar II</span><span class="v">Drone Entertainment</span></div>
+            </div>
+            <div class="seq-tags">
+              <span>Agriculture</span><span>Mapping</span><span>Delivery</span>
+              <span>Drone Show</span><span>Drone Spot</span>
+            </div>
           </div>
+
+          <!-- ── Panel 03 · Commercial Applications ── -->
+          <div class="seq-panel" id="seq-panel-3">
+            <div class="seq-panel-head">
+              <span class="seq-num">03</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Commercial Applications</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Six disciplines.</span></span>
+              <span class="seq-line"><span class="seq-li"><em>One</em> platform.</span></span>
+            </h2>
+            <div class="seq-svc-list">
+              <div class="seq-svc"><span class="n">01</span>Agriculture Drone Support</div>
+              <div class="seq-svc"><span class="n">02</span>Drone Delivery</div>
+              <div class="seq-svc"><span class="n">03</span>Aerial Mapping</div>
+              <div class="seq-svc"><span class="n">04</span>Building / Solar Cleaning</div>
+              <div class="seq-svc"><span class="n">05</span>Public Sector Support</div>
+              <div class="seq-svc"><span class="n">06</span>Drone E-Sport</div>
+            </div>
+          </div>
+
+          <!-- Bottom timeline — 3 segments -->
+          <div class="seq-timeline" aria-hidden="true">
+            <div class="seq-seg" id="seq-seg-0">
+              <div class="seq-seg-fill" id="seq-fill-0"></div>
+              <span class="seq-seg-lbl">Operator Profile</span>
+            </div>
+            <div class="seq-seg-gap"></div>
+            <div class="seq-seg" id="seq-seg-1">
+              <div class="seq-seg-fill" id="seq-fill-1"></div>
+              <span class="seq-seg-lbl">Core Pillars</span>
+            </div>
+            <div class="seq-seg-gap"></div>
+            <div class="seq-seg" id="seq-seg-2">
+              <div class="seq-seg-fill" id="seq-fill-2"></div>
+              <span class="seq-seg-lbl">Applications</span>
+            </div>
+          </div>
+
+          <!-- Frame counter -->
+          <div class="seq-counter" id="seq-counter" aria-hidden="true">
+            <span class="seq-counter-n" id="seq-counter-n">001</span>
+            <span class="seq-counter-sep">/</span>
+            <span>150</span>
+          </div>
+
         </div>
-      </section>
+      </div>
 
       <!-- SERVICES -->
       <section class="frame services" aria-label="Commercial applications">
@@ -1755,38 +2123,255 @@
       tick(); setInterval(tick, 1000);
     }
 
-    // ── Reveal on scroll (handles both .reveal and .reveal-wipe) ─
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
-    document.querySelectorAll('.reveal, .reveal-wipe').forEach(function (el) { io.observe(el); });
+    // ── GSAP Scroll Animation Engine ───────────────────────────
+    // Apple/anime.js style: scroll position drives everything.
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // ── Counter animation ──────────────────────────────────────
-    var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var counterIO = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        var el     = e.target;
-        var target = parseInt(el.getAttribute('data-target'), 10) || 0;
-        var suffix = el.getAttribute('data-suffix') || '';
-        counterIO.unobserve(el);
-        if (prefersReduced) { el.textContent = target + suffix; return; }
-        var dur   = 1600;
-        var start = performance.now();
-        function step(now) {
-          var t = Math.min(1, (now - start) / dur);
-          // ease-out cubic
-          var eased = 1 - Math.pow(1 - t, 3);
-          var val   = Math.round(target * eased);
-          el.textContent = val + (t === 1 ? suffix : '');
-          if (t < 1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
+      // Graceful fallback when GSAP hasn't loaded or user prefers no motion
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || reduced) {
+        document.querySelectorAll('.reveal, .reveal-wipe').forEach(function (el) {
+          el.classList.add('in');
+        });
+        var cIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target, t = parseInt(el.getAttribute('data-target'), 10) || 0;
+            var s = el.getAttribute('data-suffix') || '';
+            cIO.unobserve(el);
+            el.textContent = t + s;
+          });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.counter').forEach(function (el) { cIO.observe(el); });
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── Disable CSS transitions — GSAP owns motion ─────────────
+      document.querySelectorAll('.dx .reveal, .dx .reveal-wipe').forEach(function (el) {
+        el.style.transition = 'none';
+        el.style.transitionDelay = '0ms';
       });
-    }, { threshold: 0.4 });
-    document.querySelectorAll('.counter').forEach(function (el) { counterIO.observe(el); });
+
+      // ── Elements with dedicated cinematic animations ─────────────
+      // These are excluded from the generic fade-up loop below.
+      var cinematic = new Set();
+      ['.dx .pillar', '.dx .svc', '.dx .spec', '.dx .prow',
+       '.dx .ent-product', '.dx .ent-grid .lead',
+       '.dx .partner-inner h2', '.dx .partner-inner .btn-primary',
+       '.dx .partner-inner .right', '.dx .partner-emblem',
+       '.dx .about-quote', '.dx .about-copy'].forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) { cinematic.add(el); });
+      });
+
+      // ── GENERIC FADE-SCRUB — catches all remaining .reveal ────────
+      gsap.utils.toArray('.dx .reveal, .dx .reveal-wipe').forEach(function (el) {
+        if (el.closest('.hero') || cinematic.has(el)) return;
+        gsap.fromTo(el,
+          { opacity: 0, y: 32 },
+          { opacity: 1, y: 0, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', end: 'top 58%', scrub: 0.7 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 1. HERO DISMANTLE
+      // Layers scatter in 3D space as you scroll past the hero —
+      // like a product teardown in reverse.
+      // ══════════════════════════════════════════════════════════════
+      var heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.dx .hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 2.2,
+        }
+      });
+      heroTl
+        // Background layers explode outward
+        .to('.hero-emblem',     { x: 340,  y: -200, scale: 0.45, opacity: 0, ease: 'power2.in' }, 0)
+        .to('.radar-sweep',     { x: -440, y: -260, rotate: 130, scale: 0.45, opacity: 0, ease: 'power2.in' }, 0)
+        .to('.hero-chart-wrap', { opacity: 0, scale: 0.6, ease: 'power2.in' }, 0)
+        .to('.hero-grid',       { scale: 1.7, opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-rail',       { x: -90, opacity: 0, ease: 'power1.in' }, 0)
+        // Text content dismantles — each piece flies to a different corner
+        .to('.hero-headline',   { y: -100, opacity: 0, scale: 0.94, ease: 'power2.in' }, 0)
+        .to('.hero-tag',        { y: -70,  opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-meta',       { y: 90,   opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-actions',    { y: 120,  opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-foot',       { y: 70,   opacity: 0, ease: 'power1.in' }, 0);
+
+      // ══════════════════════════════════════════════════════════════
+      // 2. ABOUT — assembles from opposite sides
+      // Left block slides from left, right from right — meeting center.
+      // ══════════════════════════════════════════════════════════════
+      gsap.fromTo('.dx .about-quote',
+        { x: -140, y: 70, opacity: 0, scale: 0.9 },
+        { x: 0,    y: 0,  opacity: 1, scale: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#about', start: 'top 75%', end: 'top 22%', scrub: 1.3 } }
+      );
+      gsap.fromTo('.dx .about-copy',
+        { x: 140,  y: 70, opacity: 0, scale: 0.9 },
+        { x: 0,    y: 0,  opacity: 1, scale: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#about', start: 'top 68%', end: 'top 16%', scrub: 1.3 } }
+      );
+
+      // ══════════════════════════════════════════════════════════════
+      // 3. PILLARS — split reveal from opposite edges
+      // Like two panels of a blast door parting and coming together.
+      // ══════════════════════════════════════════════════════════════
+      var pillars = document.querySelectorAll('.dx .pillar');
+      if (pillars[0]) {
+        gsap.fromTo(pillars[0],
+          { x: -320, y: 80, opacity: 0, scale: 0.85, rotationY: 12 },
+          { x: 0,    y: 0,  opacity: 1, scale: 1,    rotationY: 0, ease: 'power3.out',
+            scrollTrigger: { trigger: '.dx .pillars', start: 'top 72%', end: 'top 18%', scrub: 1.3 } }
+        );
+      }
+      if (pillars[1]) {
+        gsap.fromTo(pillars[1],
+          { x: 320,  y: 80, opacity: 0, scale: 0.85, rotationY: -12 },
+          { x: 0,    y: 0,  opacity: 1, scale: 1,    rotationY: 0, ease: 'power3.out',
+            scrollTrigger: { trigger: '.dx .pillars', start: 'top 66%', end: 'top 12%', scrub: 1.3 } }
+        );
+      }
+
+      // ══════════════════════════════════════════════════════════════
+      // 4. SERVICES — exploded assembly diagram
+      // Each row flies in from its own unique scatter position,
+      // like parts of a technical drawing reassembling.
+      // ══════════════════════════════════════════════════════════════
+      var svcOffsets = [
+        { x: -220, y: -70 }, { x: 220, y: -90 },
+        { x: -180, y:  50 }, { x: 200, y:  70 },
+        { x: -160, y: 110 }, { x: 180, y:  90 },
+      ];
+      document.querySelectorAll('.dx .svc').forEach(function (svc, i) {
+        var o = svcOffsets[i] || { x: 0, y: 60 };
+        gsap.fromTo(svc,
+          { x: o.x, y: o.y, opacity: 0, scale: 0.86 },
+          { x: 0,   y: 0,   opacity: 1, scale: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: svc, start: 'top 92%', end: 'top 48%', scrub: 1.1 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 5. ENTERTAINMENT DOTS — drone formation scatter & assemble
+      // Dots start at random scattered positions then fly into
+      // their formation pattern as you scroll — exact Blender feel.
+      // ══════════════════════════════════════════════════════════════
+      var dots = document.querySelectorAll('.dx .show-bg circle');
+      if (dots.length) {
+        var xW = gsap.utils.wrap([-420,-300,-190,-90,-10, 80,170,260,370]);
+        var yW = gsap.utils.wrap([-200,-140,-80,-35, 30, 90,150,210]);
+        gsap.fromTo(dots,
+          { x: function (i) { return xW(i); }, y: function (i) { return yW(i); },
+            scale: 0, opacity: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, ease: 'power3.out',
+            stagger: { each: 0.022, from: 'random' },
+            scrollTrigger: {
+              trigger: '.dx .entertainment',
+              start: 'top 82%', end: 'center 38%', scrub: 1.6,
+            } }
+        );
+      }
+
+      // ── Entertainment text blocks ─────────────────────────────
+      gsap.fromTo('.dx .ent-grid .lead',
+        { x: -120, opacity: 0, scale: 0.92 },
+        { x: 0,    opacity: 1, scale: 1,    ease: 'power3.out',
+          scrollTrigger: { trigger: '.dx .ent-grid', start: 'top 76%', end: 'top 28%', scrub: 1.1 } }
+      );
+      document.querySelectorAll('.dx .ent-product').forEach(function (el, i) {
+        gsap.fromTo(el,
+          { x: 160, y: i * 45, opacity: 0 },
+          { x: 0,   y: 0,      opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', end: 'top 50%', scrub: 1 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 6. SPEC SHEET — telemetry readout
+      // Each row slides in from left like data initializing on a
+      // mission control screen. Value text clips in separately.
+      // ══════════════════════════════════════════════════════════════
+      document.querySelectorAll('.dx .spec').forEach(function (spec) {
+        gsap.fromTo(spec,
+          { x: -130, opacity: 0 },
+          { x: 0,    opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: spec, start: 'top 91%', end: 'top 56%', scrub: 0.9 } }
+        );
+        var val = spec.querySelector('.value');
+        if (val) {
+          gsap.fromTo(val,
+            { clipPath: 'inset(0 100% 0 0)' },
+            { clipPath: 'inset(0 0% 0 0)', ease: 'none',
+              scrollTrigger: { trigger: spec, start: 'top 84%', end: 'top 46%', scrub: 0.8 } }
+          );
+        }
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 7. PARTNERS — alternating-side assembly
+      // Odd rows from left, even rows from right — interlocking.
+      // ══════════════════════════════════════════════════════════════
+      document.querySelectorAll('.dx .prow').forEach(function (row, i) {
+        gsap.fromTo(row,
+          { x: i % 2 === 0 ? -110 : 110, opacity: 0 },
+          { x: 0, opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: row, start: 'top 88%', end: 'top 56%', scrub: 0.9 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 8. CTA / CONTACT — cinematic conclusion
+      // The brand emblem assembles from a rotated, scaled state.
+      // Headline and CTA fly up from below. This is the landing.
+      // ══════════════════════════════════════════════════════════════
+      var ctaEl = document.querySelector('.dx .partner.slate') ||
+                  document.querySelector('.dx #contact');
+      if (ctaEl) {
+        var ctaTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ctaEl,
+            start: 'top 76%', end: 'top 18%', scrub: 1.5,
+          }
+        });
+        ctaTl
+          .fromTo('.partner-emblem',
+            { rotate: -60, scale: 0.3, opacity: 0 },
+            { rotate: 0,   scale: 1,   opacity: 0.05, ease: 'power3.out' }, 0)
+          .fromTo('.partner-inner h2',
+            { y: 100, opacity: 0 },
+            { y: 0,   opacity: 1, ease: 'power3.out' }, 0.08)
+          .fromTo('.partner-inner .btn-primary',
+            { y: 56, opacity: 0, scale: 0.87 },
+            { y: 0,  opacity: 1, scale: 1, ease: 'power3.out' }, 0.18)
+          .fromTo('.partner-inner .right',
+            { x: 90, opacity: 0 },
+            { x: 0,  opacity: 1, ease: 'power2.out' }, 0.13);
+      }
+
+      // ── Counter count-up (scroll-triggered) ─────────────────────
+      document.querySelectorAll('.dx .counter').forEach(function (el) {
+        ScrollTrigger.create({
+          trigger: el, start: 'top 80%', once: true,
+          onEnter: function () {
+            var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            var suffix = el.getAttribute('data-suffix') || '';
+            var dur = 2000, t0 = performance.now();
+            (function tick(now) {
+              var t = Math.min(1, (now - t0) / dur);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.round(target * eased) + (t === 1 ? suffix : '');
+              if (t < 1) requestAnimationFrame(tick);
+            })(performance.now());
+          }
+        });
+      });
+
+    })();
 
     // ── Active nav on scroll ────────────────────────────────────
     var links   = [].slice.call(document.querySelectorAll('.dx .nav-list a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
@@ -1798,6 +2383,129 @@
     };
     window.addEventListener('scroll', setActive, { passive: true });
     setActive();
+
+    // ── Drone Sequence — Aviation Control Room player ────────────
+    (function () {
+      var TOTAL  = 150;
+      var DIR    = 'drone-frames/ezgif-frame-';
+      var canvas = document.getElementById('seq-canvas');
+      var wrap   = document.getElementById('about');
+      var scanEl = document.getElementById('seq-scanline');
+      var chapEl = document.getElementById('seq-chapter');
+      var ctrEl  = document.getElementById('seq-counter-n');
+      var PANELS = [1,2,3].map(function(n){ return document.getElementById('seq-panel-'+n); });
+      var SEGS   = [0,1,2].map(function(i){ return document.getElementById('seq-seg-'+i); });
+      var FILLS  = [0,1,2].map(function(i){ return document.getElementById('seq-fill-'+i); });
+      var CHAPS  = ['01','02','03'];
+      if (!canvas || !wrap) return;
+
+      var ctx     = canvas.getContext('2d');
+      var dpr     = 1;
+      var current = -1;
+      var frames  = [];
+      var ready   = false;
+
+      // ── Canvas — window dimensions so it's never 0×0 on init ─────
+      function sizeCanvas() {
+        dpr = window.devicePixelRatio || 1;
+        var W = window.innerWidth, H = window.innerHeight;
+        canvas.width        = Math.floor(W * dpr);
+        canvas.height       = Math.floor(H * dpr);
+        canvas.style.width  = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        current = -1;
+        if (ready) onScroll();
+      }
+      sizeCanvas();
+      requestAnimationFrame(function(){ requestAnimationFrame(sizeCanvas); });
+      window.addEventListener('resize', sizeCanvas, { passive: true });
+
+      // ── Load: frame 0 immediately, rest in batches ────────────────
+      (function(){
+        var img = new Image();
+        img.onload = function(){ frames[0] = img; ready = true; onScroll(); loadRest(); };
+        img.src = DIR + '001.jpg';
+      })();
+
+      function loadRest() {
+        var BATCH = 24, idx = 1;
+        function next() {
+          for (var end = Math.min(idx + BATCH, TOTAL); idx < end; idx++) {
+            (function(n){
+              var im = new Image();
+              im.onload = function(){ frames[n] = im; };
+              im.src = DIR + String(n+1).padStart(3,'0') + '.jpg';
+            })(idx);
+          }
+          if (idx < TOTAL) setTimeout(next, 60);
+        }
+        next();
+      }
+
+      // ── Draw — CONTAIN fit (never stretches beyond source resolution) ─
+      // Source images are 1280×720. Cover-fitting upscales and blurs on
+      // large displays. Contain keeps pixels sharp; black BG is invisible.
+      function drawFrame(idx) {
+        idx = Math.max(0, Math.min(TOTAL - 1, idx));
+        if (current === idx) return;
+        current = idx;
+        var img = frames[idx];
+        if (!img) return;
+
+        var W  = window.innerWidth,  H  = window.innerHeight;
+        var iw = img.naturalWidth || 1280, ih = img.naturalHeight || 720;
+        var sc = Math.max(W / iw, H / ih);   // COVER — 1920×1088 fills any display cleanly
+        var dw = iw * sc, dh = ih * sc;
+        var dx = (W - dw) / 2, dy = (H - dh) / 2;
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(img, dx, dy, dw, dh);
+
+        if (ctrEl) ctrEl.textContent = String(idx + 1).padStart(3, '0');
+      }
+
+      // ── Panel + timeline with scan sweep on change ────────────────
+      var BREAKS = [0, 0.333, 0.666, 1];
+      var activeP = -1;
+
+      function triggerScan() {
+        if (!scanEl) return;
+        scanEl.classList.remove('sweep');
+        void scanEl.offsetWidth;
+        scanEl.classList.add('sweep');
+      }
+
+      function updatePanels(prog) {
+        var p = prog >= 0.666 ? 2 : prog >= 0.333 ? 1 : 0;
+        if (chapEl) chapEl.textContent = CHAPS[p];
+        if (p !== activeP) {
+          if (activeP !== -1) triggerScan();
+          activeP = p;
+          PANELS.forEach(function(el, i){ if (el) el.classList.toggle('active', i === p); });
+        }
+        FILLS.forEach(function(fill, i) {
+          if (!fill) return;
+          var sp = Math.max(0, Math.min(1, (prog - BREAKS[i]) / (BREAKS[i+1] - BREAKS[i])));
+          fill.style.transform = 'scaleX(' + sp + ')';
+        });
+        SEGS.forEach(function(seg, i){ if (seg) seg.classList.toggle('active', i === p); });
+      }
+
+      function onScroll() {
+        var rect  = wrap.getBoundingClientRect();
+        var total = wrap.offsetHeight - window.innerHeight;
+        if (total <= 0) return;
+        var prog = Math.max(0, Math.min(1, -rect.top / total));
+        drawFrame(Math.round(prog * (TOTAL - 1)));
+        updatePanels(prog);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('load',   onScroll);
+    })();
   </script>
 
 </body>
