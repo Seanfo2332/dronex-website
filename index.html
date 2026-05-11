@@ -893,6 +893,59 @@
 
   /* ---------- Tech Light (cloud bg) ---------- */
   .dx .tech-light { background:var(--cloud); color:var(--navy); border-top:1px solid rgba(73,95,119,.3); border-bottom:1px solid rgba(73,95,119,.3); }
+  /* ---------- Technology — dark video background ---------- */
+  .dx .tech-dark {
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dx .tech-video {
+    position: absolute; inset: 0; z-index: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.22;
+    pointer-events: none;
+  }
+
+  .dx .tech-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      135deg,
+      rgba(21,31,39,0.88) 0%,
+      rgba(21,31,39,0.72) 40%,
+      rgba(21,31,39,0.82) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Ensure all content sits above the video */
+  .dx .tech-dark .container { position: relative; z-index: 2; }
+
+  /* Dark-surface text overrides */
+  .dx .tech-dark .section-head .num   { color: var(--sky); }
+  .dx .tech-dark .section-head .title { color: var(--white); }
+  .dx .tech-dark .section-head .line  { background: var(--rule-soft); }
+  .dx .tech-dark .section-head .meta  { color: var(--slate); }
+  .dx .tech-dark .tech-grid h2        { color: var(--white); }
+  .dx .tech-dark .tech-grid h2 em     { color: var(--sky); }
+  .dx .tech-dark .tech-grid .blurb    { color: var(--cloud); }
+  .dx .tech-dark .specsheet           { border-top-color: var(--rule); }
+  .dx .tech-dark .spec                { border-bottom-color: var(--rule-soft); }
+  .dx .tech-dark .spec .id            { color: var(--sky); }
+  .dx .tech-dark .spec .label         { color: var(--cloud); }
+  .dx .tech-dark .spec .value         { color: oklch(93% 0.008 240 / 0.75); }
+  .dx .tech-dark .spec .unit          { color: var(--slate); }
+  .dx .tech-dark .spec:hover          { background: rgba(157,193,245,0.06); }
+
+  /* Mobile: dimmer video so specs stay readable */
+  @media (max-width: 768px) {
+    .dx .tech-video  { opacity: 0.10; }
+    .dx .tech-overlay {
+      background: linear-gradient(to bottom, rgba(21,31,39,0.94) 0%, rgba(21,31,39,0.90) 100%);
+    }
+  }
+
+  /* Keep old tech-light for any remaining references */
   .dx .tech-light .section-head .num   { color:var(--slate); }
   .dx .tech-light .section-head .title { color:var(--navy); }
   .dx .tech-light .section-head .line  { background:rgba(73,95,119,.3); }
@@ -1905,10 +1958,6 @@
 
       <!-- SERVICES -->
       <section class="frame services" aria-label="Commercial applications">
-        <video class="services-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
-          <source src="assets/commercial-bg.mp4" type="video/mp4">
-        </video>
-        <div class="services-overlay" aria-hidden="true"></div>
         <span class="section-bgnum" aria-hidden="true">03</span>
         <div class="container">
           <div class="section-head reveal">
@@ -1955,7 +2004,11 @@
       </section>
 
       <!-- TECHNOLOGY & DATA -->
-      <section class="frame tech-light" id="technology" aria-label="Technology and Data">
+      <section class="frame tech-dark" id="technology" aria-label="Technology and Data">
+        <video class="tech-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/commercial-bg.mp4" type="video/mp4">
+        </video>
+        <div class="tech-overlay" aria-hidden="true"></div>
         <div class="container">
           <div class="section-head reveal">
             <span class="num">05 —</span><span class="title">Technology &amp; Data</span>
