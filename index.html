@@ -909,21 +909,21 @@
     z-index: 0;
     width: 100%; height: 100%;
     object-fit: cover;
-    opacity: 0.55;
+    opacity: 1;
     pointer-events: none;
   }
 
-  /* Overlay: strong cloud on left (heading readable) → fades right (specs float above) */
+  /* Overlay: lightest possible while keeping text readable */
   .dx .tech-overlay {
     position: absolute;
     inset: 0;
     z-index: 1;
     background: linear-gradient(
       to right,
-      rgba(232,236,239,0.92) 0%,
-      rgba(232,236,239,0.78) 35%,
-      rgba(232,236,239,0.55) 60%,
-      rgba(232,236,239,0.30) 100%
+      rgba(232,236,239,0.72) 0%,
+      rgba(232,236,239,0.52) 40%,
+      rgba(232,236,239,0.22) 70%,
+      rgba(232,236,239,0.10) 100%
     );
     pointer-events: none;
   }
@@ -931,12 +931,10 @@
   /* All content above both layers */
   .dx .tech-light .container { position: relative; z-index: 2; }
 
-  /* Mobile: single-column — uniform semi-transparent overlay throughout */
+  /* Mobile: uniform light veil — video fully visible, text still readable */
   @media (max-width: 768px) {
-    .dx .tech-video { opacity: 0.35; }
-    .dx .tech-overlay {
-      background: rgba(232,236,239,0.82);
-    }
+    .dx .tech-video { opacity: 1; }
+    .dx .tech-overlay { background: rgba(232,236,239,0.62); }
   }
 
   /* Keep old tech-light for any remaining references */
