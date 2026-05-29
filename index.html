@@ -2375,8 +2375,8 @@
         </div>
       </div>
 
-      <!-- PLANTATION ANIMATION -->
-      <div id="plantation-anim" aria-label="Agriculture drone over plantation">
+      <!-- PLANTATION ANIMATION REMOVED -->
+      <div id="plantation-anim" aria-label="Agriculture drone over plantation" style="display:none">
       <div class="pl-pin" id="pl-pin">
 
         <!-- Layer 1: Photo background -->
@@ -3255,7 +3255,7 @@
     window.addEventListener('scroll', setActive, { passive: true });
     setActive();
 
-    // ── Drone Sequence — Aviation Control Room player ────────────
+    // ── Drone Sequence — GSAP ScrollTrigger (smooth scrub) ───────
     (function () {
       var TOTAL  = 149;
       var DIR    = 'drone-frames/ezgif-frame-';
@@ -3274,9 +3274,8 @@
       var dpr     = 1;
       var current = -1;
       var frames  = [];
-      var ready   = false;
 
-      // ── Canvas — window dimensions so it's never 0×0 on init ─────
+      // ── Canvas sizing ─────────────────────────────────────────────
       function sizeCanvas() {
         dpr = window.devicePixelRatio || 1;
         var W = window.innerWidth, H = window.innerHeight;
@@ -3288,79 +3287,40 @@
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
         current = -1;
-        if (ready) onScroll();
       }
       sizeCanvas();
-      requestAnimationFrame(function(){ requestAnimationFrame(sizeCanvas); });
       window.addEventListener('resize', sizeCanvas, { passive: true });
 
-      // ── Load: frame 0 immediately, rest in batches ────────────────
-      (function(){
-        var img = new Image();
-        img.onload = function(){ frames[0] = img; ready = true; onScroll(); loadRest(); };
-        img.src = DIR + '001.jpg';
-      })();
-
-      function loadRest() {
-        var BATCH = 24, idx = 1;
-        function next() {
-          for (var end = Math.min(idx + BATCH, TOTAL); idx < end; idx++) {
-            (function(n){
-              var im = new Image();
-              im.onload = function(){ frames[n] = im; };
-              im.src = DIR + String(n+1).padStart(3,'0') + '.jpg';
-            })(idx);
-          }
-          if (idx < TOTAL) setTimeout(next, 60);
-        }
-        next();
-      }
-
-      // ── Draw — CONTAIN fit (never stretches beyond source resolution) ─
-      // Source images are 1280×720. Cover-fitting upscales and blurs on
-      // large displays. Contain keeps pixels sharp; black BG is invisible.
+      // ── Draw ──────────────────────────────────────────────────────
       function drawFrame(idx) {
         idx = Math.max(0, Math.min(TOTAL - 1, idx));
         if (current === idx) return;
         current = idx;
         var img = frames[idx];
         if (!img) return;
-
-        var W  = window.innerWidth,  H  = window.innerHeight;
+        var W = window.innerWidth, H = window.innerHeight;
         var iw = img.naturalWidth || 1280, ih = img.naturalHeight || 720;
-        // Desktop: COVER (fills viewport edge-to-edge)
-        // Mobile portrait: CONTAIN (shows full drone — black bars invisible vs black bg)
         var mobile = W < H;
-        var sc = mobile
-          ? Math.min(W / iw, (H * 0.56) / ih)  // contain in top 56% of sticky
-          : Math.max(W / iw, H / ih);           // cover on desktop
+        var sc = mobile ? Math.min(W / iw, (H * 0.56) / ih) : Math.max(W / iw, H / ih);
         var dw = iw * sc, dh = ih * sc;
         var canvasH = mobile ? H * 0.56 : H;
-        var dx = (W - dw) / 2;
-        var dy = mobile ? (canvasH - dh) / 2 : (H - dh) / 2;
-
         ctx.clearRect(0, 0, W, H);
-        ctx.drawImage(img, dx, dy, dw, dh);
-
+        ctx.drawImage(img, (W - dw) / 2, mobile ? (canvasH - dh) / 2 : (H - dh) / 2, dw, dh);
         if (ctrEl) ctrEl.textContent = String(idx + 1).padStart(3, '0');
       }
 
-      // ── Panel + timeline with scan sweep on change ────────────────
+      // ── Panel transitions ─────────────────────────────────────────
       var BREAKS = [0, 0.333, 0.666, 1];
       var activeP = -1;
-
-      function triggerScan() {
-        if (!scanEl) return;
-        scanEl.classList.remove('sweep');
-        void scanEl.offsetWidth;
-        scanEl.classList.add('sweep');
-      }
-
       function updatePanels(prog) {
         var p = prog >= 0.666 ? 2 : prog >= 0.333 ? 1 : 0;
         if (chapEl) chapEl.textContent = CHAPS[p];
         if (p !== activeP) {
-          if (activeP !== -1) triggerScan();
+          if (activeP !== -1 && scanEl) {
+            scanEl.classList.remove('sweep');
+            void scanEl.offsetWidth;
+            scanEl.classList.add('sweep');
+          }
           activeP = p;
           PANELS.forEach(function(el, i){ if (el) el.classList.toggle('active', i === p); });
         }
@@ -3372,21 +3332,62 @@
         SEGS.forEach(function(seg, i){ if (seg) seg.classList.toggle('active', i === p); });
       }
 
-      function onScroll() {
-        var rect  = wrap.getBoundingClientRect();
-        var total = wrap.offsetHeight - window.innerHeight;
-        if (total <= 0) return;
-        var prog = Math.max(0, Math.min(1, -rect.top / total));
-        drawFrame(Math.round(prog * (TOTAL - 1)));
-        updatePanels(prog);
+      // ── Load frames ───────────────────────────────────────────────
+      var proxy = { frame: 0 };
+
+      // Draw frame 0 immediately when it loads
+      (function () {
+        var img = new Image();
+        img.onload = function () {
+          frames[0] = img;
+          drawFrame(0);
+          loadRest();
+          // Now wire up GSAP — safe to call after first frame is ready
+          initGSAP();
+        };
+        img.src = DIR + '001.jpg';
+      })();
+
+      function loadRest() {
+        var BATCH = 30, idx = 1;
+        function next() {
+          for (var end = Math.min(idx + BATCH, TOTAL); idx < end; idx++) {
+            (function (n) {
+              var im = new Image();
+              im.onload = function () { frames[n] = im; };
+              im.src = DIR + String(n + 1).padStart(3, '0') + '.jpg';
+            })(idx);
+          }
+          if (idx < TOTAL) setTimeout(next, 40);
+        }
+        next();
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('load',   onScroll);
+      // ── GSAP ScrollTrigger — butter-smooth scrub ──────────────────
+      function initGSAP() {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        gsap.to(proxy, {
+          frame: TOTAL - 1,
+          ease: 'none',
+          onUpdate: function () {
+            var idx = Math.round(proxy.frame);
+            drawFrame(idx);
+            updatePanels(idx / (TOTAL - 1));
+          },
+          scrollTrigger: {
+            id: 'drone-seq',
+            trigger: wrap,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.8,       // 0.8s lag — feels cinematic, not laggy
+          }
+        });
+      }
     })();
 
-    // ── Plantation Cinematic — GSAP ScrollTrigger + Timeline ─────
-    (function () {
+    /* plantation section JS removed */
+    if (false) (function () {
       if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
