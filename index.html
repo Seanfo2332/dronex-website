@@ -92,8 +92,7 @@
     position: fixed;
     inset: 0;
     z-index: 200;
-    /* oklch(93% 0.006 235) — cloud with a whisper of navy hue */
-    background: oklch(93% 0.006 235);
+    background: #d0d0d0;
     overflow: hidden;
     transition: transform 1400ms cubic-bezier(0.76, 0, 0.24, 1);
     will-change: transform;
@@ -191,6 +190,19 @@
     );
   }
   /* Touch reveal handled by JS — no static fallback needed */
+
+  .spray-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 7;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    visibility: hidden;
+    opacity: 0;
+  }
 
   /* ── DroneX wordmark ── */
   .h-brand {
@@ -2110,6 +2122,12 @@
              alt="Drone X" draggable="false" />
       </div>
 
+      <!-- Spray mist video -->
+      <video id="spray-video" class="spray-video"
+             src="assets/spray-mist.mp4"
+             muted playsinline preload="auto"
+             aria-hidden="true"></video>
+
       <!-- Edge vignette (on top of everything except scroll hint) -->
       <div class="h-vignette"></div>
 
@@ -3251,141 +3269,6 @@
       }
     })();
 
-    // ── Mist system ───────────────────────────────────────────────
-    // Soft radial-gradient particles — no hard edges, dense accumulation,
-    // gentle physics. Looks like agricultural spray mist, not droplets.
-    var _sprayDone = false;
-    (function () {
-      var container = document.getElementById('unicorn-container');
-      if (!container) return;
-
-      var cv  = document.createElement('canvas');
-      cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:7;';
-      container.appendChild(cv);
-      var cx  = cv.getContext('2d');
-      var raf = null;
-      var dpr = window.devicePixelRatio || 1;
-
-      function size() {
-        dpr = window.devicePixelRatio || 1;
-        cv.width  = container.offsetWidth  * dpr;
-        cv.height = container.offsetHeight * dpr;
-      }
-      size();
-      window.addEventListener('resize', size);
-
-      // 4 nozzle positions (under the 4 arms, spraying downward)
-      var NOZZLES = [
-        { ox: -0.30, oy: -0.08 },
-        { ox:  0.30, oy: -0.08 },
-        { ox: -0.26, oy:  0.10 },
-        { ox:  0.26, oy:  0.10 },
-      ];
-
-      var parts = [];
-
-      function emitMist() {
-        var W = cv.width, H = cv.height;
-        NOZZLES.forEach(function (n) {
-          var nx = W * 0.5 + n.ox * W;
-          var ny = H * 0.5 + n.oy * H;
-
-          // ── Fine mist layer — many tiny soft puffs ──
-          for (var i = 0; i < 55; i++) {
-            var angle  = Math.PI * 0.5 + (Math.random() - 0.5) * Math.PI * 0.75;
-            var spd    = (0.3 + Math.random() * 1.1) * dpr;
-            var radius = (5 + Math.random() * 12) * dpr;
-            parts.push({
-              x:     nx + (Math.random() - 0.5) * 8 * dpr,
-              y:     ny,
-              vx:    Math.cos(angle) * spd,
-              vy:    Math.sin(angle) * spd,
-              r:     radius,
-              rMax:  radius * (1.4 + Math.random() * 0.8), // puff expands
-              life:  0.7 + Math.random() * 0.3,
-              decay: 0.006 + Math.random() * 0.005,        // slow fade
-              peak:  0.07 + Math.random() * 0.06,          // per-particle max opacity
-              layer: 0,
-            });
-          }
-
-          // ── Volume layer — fewer, larger, even softer puffs ──
-          for (var j = 0; j < 18; j++) {
-            var a2  = Math.PI * 0.5 + (Math.random() - 0.5) * Math.PI * 0.9;
-            var s2  = (0.15 + Math.random() * 0.5) * dpr;
-            var r2  = (18 + Math.random() * 28) * dpr;
-            parts.push({
-              x:     nx + (Math.random() - 0.5) * 18 * dpr,
-              y:     ny,
-              vx:    Math.cos(a2) * s2,
-              vy:    Math.sin(a2) * s2,
-              r:     r2,
-              rMax:  r2 * (1.6 + Math.random()),
-              life:  0.5 + Math.random() * 0.4,
-              decay: 0.004 + Math.random() * 0.003,
-              peak:  0.03 + Math.random() * 0.025,
-              layer: 1,
-            });
-          }
-        });
-      }
-
-      function tick() {
-        raf = requestAnimationFrame(tick);
-        cx.clearRect(0, 0, cv.width, cv.height);
-
-        for (var i = parts.length - 1; i >= 0; i--) {
-          var p = parts[i];
-
-          // Physics — very gentle
-          p.x  += p.vx;
-          p.y  += p.vy;
-          p.vy += 0.022 * dpr;   // soft gravity
-          p.vx *= 0.992;          // slight air resistance
-          p.r   = Math.min(p.r * 1.012, p.rMax); // puff expands
-          p.life -= p.decay;
-          if (p.life <= 0) { parts.splice(i, 1); continue; }
-
-          // Opacity: ramps up for first 20% of life, then fades
-          var lifeRatio = p.life;
-          var alpha = p.peak * Math.min(1, lifeRatio * 5) * lifeRatio;
-
-          // Soft radial gradient — no hard edge
-          var g = cx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
-          g.addColorStop(0,    'rgba(190,220,250,' + (alpha * 1.0).toFixed(3) + ')');
-          g.addColorStop(0.35, 'rgba(170,210,245,' + (alpha * 0.7).toFixed(3) + ')');
-          g.addColorStop(0.7,  'rgba(150,195,240,' + (alpha * 0.25).toFixed(3) + ')');
-          g.addColorStop(1,    'rgba(130,180,235,0)');
-
-          cx.fillStyle = g;
-          cx.beginPath();
-          cx.arc(p.x, p.y, p.r, 0, 6.2832);
-          cx.fill();
-        }
-      }
-
-      window._triggerSpray = function (afterFn) {
-        if (_sprayDone) { afterFn(); return; }
-        _sprayDone = true;
-
-        emitMist();
-        tick();
-
-        // 7 waves at 90ms = dense, continuous mist build-up
-        var wave = 0;
-        var iv = setInterval(function () {
-          emitMist();
-          if (++wave >= 6) clearInterval(iv);
-        }, 90);
-
-        // Let mist linger 900ms then exit
-        setTimeout(function () {
-          cancelAnimationFrame(raf);
-          cx.clearRect(0, 0, cv.width, cv.height);
-          afterFn();
-        }, 900);
-      };
-    })();
 
     var isMobile = window.innerWidth <= 768;
 
@@ -3418,36 +3301,48 @@
       }, 1500);
     }
 
-    // Spray-then-leave helper — all exit triggers go through this
-    function sprayLeave() {
-      if (done) return;
-      if (window._triggerSpray) { window._triggerSpray(leave); }
-      else { leave(); }
-    }
+    // ── Spray video on exit ──────────────────────────────────────
+    (function () {
+      var vid = document.getElementById('spray-video');
+      var _done = false;
 
-    // Mouse wheel / trackpad
-    window.addEventListener('wheel', function (e) {
-      if (!done && e.deltaY > 0) { e.preventDefault(); sprayLeave(); }
-    }, { passive: false });
-
-    // Swipe down — both desktop and mobile (touch explore is on the drone, not window)
-    window.addEventListener('touchstart', function (e) {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    window.addEventListener('touchmove', function (e) {
-      if (!done && (touchStartY - e.touches[0].clientY) > 70) sprayLeave();
-    }, { passive: true });
-
-    // Enter button
-    var tapBtn = document.querySelector('.unicorn-tap-btn');
-    if (tapBtn) { tapBtn.addEventListener('click', function () { sprayLeave(); }); }
-
-    // Keyboard arrow / page / space
-    window.addEventListener('keydown', function (e) {
-      if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
-        e.preventDefault(); sprayLeave();
+      function sprayLeave() {
+        if (done) return;
+        if (!vid || _done) { leave(); return; }
+        _done = true;
+        gsap.to(vid, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' });
+        vid.currentTime = 0;
+        vid.play();
+        vid.addEventListener('ended', function () {
+          gsap.to(vid, { autoAlpha: 0, duration: 0.2, onComplete: leave });
+        }, { once: true });
+        setTimeout(function () { if (!done) leave(); }, 8000);
       }
-    });
+
+      // Mouse wheel / trackpad
+      window.addEventListener('wheel', function (e) {
+        if (!done && e.deltaY > 0) { e.preventDefault(); sprayLeave(); }
+      }, { passive: false });
+
+      // Swipe down
+      window.addEventListener('touchstart', function (e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      window.addEventListener('touchmove', function (e) {
+        if (!done && (touchStartY - e.touches[0].clientY) > 70) sprayLeave();
+      }, { passive: true });
+
+      // Enter button
+      var tapBtn = document.querySelector('.unicorn-tap-btn');
+      if (tapBtn) tapBtn.addEventListener('click', sprayLeave);
+
+      // Keyboard
+      window.addEventListener('keydown', function (e) {
+        if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
+          e.preventDefault(); sprayLeave();
+        }
+      });
+    })();
 
     // ── Live UTC+8 clock ────────────────────────────────────────
     var clockEl = document.getElementById('hero-time');
