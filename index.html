@@ -73,27 +73,28 @@
 }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 
   /* =============================================
-     UNICORN INTRO — FIXED OVERLAY
+     DRONEX HERO — IMPECCABLE / GSAP
      ============================================= */
   * { box-sizing: border-box; }
   html { margin: 0; padding: 0; background: #000; }
   body { margin: 0; padding: 0; background: #000; }
-  /* Prevent horizontal scroll at section level, not root — keeps position:sticky working on all browsers */
 
-  /* Unicorn sits fixed on top of everything. Body scroll is locked until it leaves. */
+  /* Slide-up wipe on exit */
   .unicorn-section {
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: #000;
+    /* oklch(93% 0.006 235) — cloud with a whisper of navy hue */
+    background: oklch(93% 0.006 235);
     overflow: hidden;
-    /* slide-up wipe — clearly visible against any background */
     transition: transform 1400ms cubic-bezier(0.76, 0, 0.24, 1);
     will-change: transform;
   }
@@ -102,24 +103,131 @@
     pointer-events: none;
   }
 
-  #unicorn-container { width: 100%; height: 100%; }
-
-  .unicorn-logo {
-    position: absolute;
-    inset: 0;
-    z-index: 10;
+  /* Stage */
+  #unicorn-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: none;
-  }
-  .unicorn-logo img {
-    width: 36%;
-    max-width: 560px;
-    min-width: 260px;
-    height: auto;
   }
 
+  /* Edge vignette — pulls focus to drone center */
+  .h-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    background: radial-gradient(
+      ellipse 80% 80% at 50% 52%,
+      transparent 30%,
+      oklch(82% 0.008 235 / 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── SVG rings ── */
+  .h-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .h-rings-svg {
+    /* fills the shorter dimension; never overflows */
+    width: clamp(320px, 96vmin, 960px);
+    height: clamp(320px, 96vmin, 960px);
+    overflow: visible;
+  }
+
+  /* ── Drone layer ── */
+  .h-drone {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+  /* GSAP will animate this wrapper (float, entrance) */
+  .h-drone-inner {
+    position: relative;
+    width: clamp(340px, 100vmin, 1280px);
+    display: grid;
+    cursor: crosshair;
+  }
+  /* Wire = base layer — renders below in DOM order */
+  .h-drone-wire {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+    opacity: 0.93;
+    pointer-events: none;
+  }
+  /* Real = top layer — hidden behind circular CSS mask, revealed by cursor */
+  .h-drone-real {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    /* Spotlight vars — GSAP updates these every frame */
+    --mx: 50%;
+    --my: 50%;
+    --r:  0px;
+    -webkit-mask-image: radial-gradient(
+      circle var(--r) at var(--mx) var(--my),
+      black 25%, transparent 100%
+    );
+    mask-image: radial-gradient(
+      circle var(--r) at var(--mx) var(--my),
+      black 25%, transparent 100%
+    );
+  }
+  /* Touch reveal handled by JS — no static fallback needed */
+
+  /* ── DroneX wordmark ── */
+  .h-brand {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+  }
+  .h-brand-logo {
+    display: block;
+    width: clamp(160px, 22vw, 340px);
+    height: auto;
+    /* multiply removes white bg — black logo on light surface */
+    mix-blend-mode: multiply;
+  }
+
+  /* ── Scan label (mono coord) ── */
+  .h-coord {
+    position: absolute;
+    z-index: 5;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: oklch(40% 0.035 240 / 0.6); /* slate at 60% */
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .h-coord-tl { top: 28px; left: 32px; }
+  .h-coord-tr { top: 28px; right: 32px; text-align: right; }
+  .h-coord-bl { bottom: 28px; left: 32px; }
+  .h-coord-br { bottom: 28px; right: 32px; text-align: right; }
+
+  /* ── Scroll / Enter affordances ── */
   .unicorn-scroll-hint {
     position: absolute;
     bottom: 44px;
@@ -131,15 +239,14 @@
     align-items: center;
     gap: 14px;
     font-family: "JetBrains Mono", monospace;
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: .28em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.75);
+    color: oklch(40% 0.035 240 / 0.55);
     pointer-events: none;
     transition: opacity 300ms ease;
     white-space: nowrap;
   }
-  /* Mobile: replace scroll hint with a tappable button */
   .unicorn-tap-btn {
     display: none;
     position: absolute;
@@ -148,19 +255,22 @@
     transform: translateX(-50%);
     z-index: 20;
     font-family: "JetBrains Mono", monospace;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: .24em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.9);
-    background: rgba(157,193,245,.12);
-    border: 1px solid rgba(157,193,245,.35);
-    padding: 14px 28px;
+    color: oklch(18% 0.025 240 / 0.8);
+    background: transparent;
+    border: 1px solid oklch(40% 0.035 240 / 0.3);
+    padding: 13px 28px;
     cursor: pointer;
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
-    transition: background 200ms ease;
+    transition: border-color 200ms ease, color 200ms ease;
   }
-  .unicorn-tap-btn:active { background: rgba(157,193,245,.22); }
+  .unicorn-tap-btn:active {
+    border-color: oklch(40% 0.035 240 / 0.6);
+    color: oklch(18% 0.025 240);
+  }
   @media (max-width: 768px) {
     .unicorn-scroll-hint { display: none; }
     .unicorn-tap-btn { display: block; }
@@ -168,7 +278,8 @@
   .unicorn-scroll-hint .drop {
     width: 1px;
     height: 48px;
-    background: linear-gradient(to bottom, rgba(157,193,245,1), transparent);
+    background: linear-gradient(to bottom,
+      oklch(40% 0.035 240 / 0.55), transparent);
     animation: dropLine 2.2s ease-in-out infinite;
   }
   @keyframes dropLine {
@@ -176,11 +287,6 @@
     40%  { transform: scaleY(1) translateY(0);     opacity: 1; }
     100% { transform: scaleY(1) translateY(100%);  opacity: 0; }
   }
-
-  a[href*="unicorn.studio"],
-  [class*="unicorn-badge"],
-  [class*="us-badge"],
-  [id*="us-badge"] { display: none !important; }
 
   /* =============================================
      DRONEХ — DESIGN TOKENS & RESETS
@@ -1933,12 +2039,82 @@
 </head>
 <body>
 
-  <!-- ========== UNICORN INTRO ========== -->
-  <section class="unicorn-section">
-    <div id="unicorn-container"></div>
-    <div class="unicorn-logo">
-      <img src="assets/DroneX_WhiteOnBlack_HorizontalLogo.png" alt="Drone X Malaysia" />
-    </div>
+  <!-- ========== DRONEX HERO INTRO ========== -->
+  <section class="unicorn-section" id="hero-intro">
+    <div id="unicorn-container">
+
+      <!-- Corner coordinate labels (HUD aesthetic) -->
+      <span class="h-coord h-coord-tl">03°08'N 101°41'E</span>
+      <span class="h-coord h-coord-tr">RPAS-A1 — CAAM</span>
+      <span class="h-coord h-coord-bl">ALT 0000 FT</span>
+      <span class="h-coord h-coord-br">STATUS STANDBY</span>
+
+      <!-- Precision rings (GSAP-animated SVG) -->
+      <div class="h-rings">
+        <svg class="h-rings-svg" viewBox="0 0 900 900" fill="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+          <!-- Outer ring — rotates CW slowly -->
+          <g class="rg-outer">
+            <circle cx="450" cy="450" r="430"
+              stroke="oklch(40% 0.035 240 / 0.16)" stroke-width="1"/>
+            <!-- cardinal tick marks -->
+            <line x1="450" y1="18"  x2="450" y2="40"  stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="882" y1="450" x2="860" y2="450" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="450" y1="882" x2="450" y2="860" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="18"  y1="450" x2="40"  y2="450" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+          </g>
+
+          <!-- Mid ring — static -->
+          <circle class="rg-mid" cx="450" cy="450" r="318"
+            stroke="oklch(40% 0.035 240 / 0.12)" stroke-width="1"/>
+
+          <!-- Inner dashed ring — rotates CCW -->
+          <g class="rg-inner">
+            <circle cx="450" cy="450" r="200"
+              stroke="oklch(50% 0.06 240 / 0.45)" stroke-width="1"
+              stroke-dasharray="5 8"/>
+            <!-- tracking dot rides this ring -->
+            <circle class="rg-dot" cx="450" cy="250" r="3.5"
+              fill="oklch(76% 0.09 240)" opacity="0.9"/>
+          </g>
+
+          <!-- Centre reticle — static -->
+          <circle cx="450" cy="450" r="58"
+            stroke="oklch(40% 0.035 240 / 0.15)" stroke-width="1"
+            stroke-dasharray="3 6"/>
+          <circle cx="450" cy="450" r="4"
+            fill="oklch(76% 0.09 240 / 0.5)"/>
+
+        </svg>
+      </div>
+
+      <!-- Drone — wire is base, real is top layer revealed by cursor mask -->
+      <div class="h-drone">
+        <div class="h-drone-inner" id="drone-inner">
+          <!-- wire first = rendered below -->
+          <img class="h-drone-wire" src="assets/drone-wireframe.png"
+               alt="Drone X — wireframe render" draggable="false"
+               width="1050" height="590" />
+          <!-- real second = rendered above, spotlight-masked -->
+          <img class="h-drone-real" src="assets/drone-real.png"
+               alt="" aria-hidden="true" draggable="false"
+               width="1050" height="590" />
+        </div>
+      </div>
+
+      <!-- Brand wordmark -->
+      <div class="h-brand">
+        <img class="h-brand-logo"
+             src="assets/DroneX_BlackOnWhite_HorizontalLogo.png"
+             alt="Drone X" draggable="false" />
+      </div>
+
+      <!-- Edge vignette (on top of everything except scroll hint) -->
+      <div class="h-vignette"></div>
+
+    </div><!-- /#unicorn-container -->
+
     <div class="unicorn-scroll-hint">
       <span>Scroll</span>
       <span class="drop"></span>
@@ -2903,32 +3079,315 @@
       });
     })();
 
-    // ── Unicorn Studio ──────────────────────────────────────────
-    var sdk = document.createElement('script');
-    sdk.src = 'https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v2.1.12/dist/unicornStudio.umd.js';
-    var isMobile = window.innerWidth <= 768;
-    sdk.onload = function () {
-      UnicornStudio.addScene({
-        elementId: 'unicorn-container',
-        projectId: '6mLFPgVthG9QzgBxU3mO',
-        scale: isMobile ? 0.75 : 1,
-        dpi: isMobile ? Math.min(window.devicePixelRatio || 1, 1.5) : (window.devicePixelRatio || 1),
-        fps: isMobile ? 45 : 60,
-        lazyLoad: false,
+    // ── GSAP Hero Animation ─────────────────────────────────────
+    (function () {
+      var isMob = window.innerWidth <= 768;
+
+      // ── Elements ──
+      var droneInner = document.querySelector('.h-drone-inner');
+      var rgOuter    = document.querySelector('.rg-outer');
+      var rgInner    = document.querySelector('.rg-inner');
+      var rgMid      = document.querySelector('.rg-mid');
+      var rgDot      = document.querySelector('.rg-dot');
+      var brand      = document.querySelector('.h-brand');
+      var coords     = document.querySelectorAll('.h-coord');
+      var hint       = document.querySelector('.unicorn-scroll-hint');
+
+      // ── Set initial invisible states ──
+      gsap.set([droneInner, brand, hint], { autoAlpha: 0 });
+      gsap.set(droneInner, { y: 28, scale: 0.94 });
+      gsap.set(brand, { y: 12 });
+      gsap.set(coords, { autoAlpha: 0 });
+
+      // ── Entrance timeline ──────────────────────────────────────
+      var tl = gsap.timeline({ delay: 0.15 });
+
+      // 1. Drone rises in
+      tl.to(droneInner, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: 'power3.out'
       });
-      var obs = new MutationObserver(function (m) {
-        m.forEach(function (mut) {
-          mut.addedNodes.forEach(function (node) {
-            if (node.nodeType !== 1) return;
-            var el = node.querySelector ? node.querySelector('a[href*="unicorn.studio"]') : null;
-            if (el) el.style.display = 'none';
-            if (node.href && node.href.includes && node.href.includes('unicorn.studio')) node.style.display = 'none';
-          });
+
+      // 2. Wordmark fades in at the same moment drone peaks
+      tl.to(brand, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out'
+      }, '-=0.55');
+
+      // 3. HUD corner coords stagger in
+      tl.to(coords, {
+        autoAlpha: 1,
+        duration: 0.5,
+        stagger: 0.12,
+        ease: 'power1.out'
+      }, '-=0.4');
+
+      // 4. Scroll hint
+      tl.to(hint, {
+        autoAlpha: 1,
+        duration: 0.5,
+        ease: 'power1.out'
+      }, '-=0.2');
+
+      // ── Continuous: drone float ────────────────────────────────
+      // Starts after entrance (delay matches tl total ~1.5s)
+      gsap.to(droneInner, {
+        y: isMob ? -8 : -14,
+        duration: isMob ? 3.5 : 4.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1.2
+      });
+
+      // ── Continuous: ring rotation ──────────────────────────────
+      gsap.to(rgOuter, {
+        rotation: 360,
+        transformOrigin: '450px 450px',
+        duration: 34,
+        repeat: -1,
+        ease: 'none'
+      });
+
+      gsap.to(rgInner, {
+        rotation: -360,
+        transformOrigin: '450px 450px',
+        duration: 22,
+        repeat: -1,
+        ease: 'none'
+      });
+
+      // ── Continuous: orbiting dot on inner ring (r=200) ─────────
+      var dotAngle = { deg: 0 };
+      var dotR     = 200;
+      var cx       = 450, cy = 450;
+
+      gsap.to(dotAngle, {
+        deg: 360,
+        duration: 22,
+        repeat: -1,
+        ease: 'none',
+        onUpdate: function () {
+          var rad = (dotAngle.deg - 90) * Math.PI / 180;
+          rgDot.setAttribute('cx', cx + dotR * Math.cos(rad));
+          rgDot.setAttribute('cy', cy + dotR * Math.sin(rad));
+        }
+      });
+
+      // ── prefers-reduced-motion — kill movement, keep fades ─────
+      var mm = gsap.matchMedia();
+      mm.add('(prefers-reduced-motion: reduce)', function () {
+        gsap.globalTimeline.timeScale(0);
+        // Show everything instantly
+        gsap.set([droneInner, brand, hint, coords], { autoAlpha: 1, y: 0, scale: 1 });
+      });
+
+    })();
+
+    // ── Cursor / Touch spotlight reveal ─────────────────────────
+    (function () {
+      var hero    = document.getElementById('unicorn-container');
+      var realImg = document.querySelector('.h-drone-real');
+      if (!hero || !realImg) return;
+
+      var mouse    = { x: 50, y: 50 };
+      var lerped   = { x: 50, y: 50 };
+      var radius   = { val: 0 };
+      var radTween = null;
+      var isTouch  = window.matchMedia('(hover: none)').matches;
+
+      // Ticker: lerp + push CSS vars every frame
+      gsap.ticker.add(function () {
+        lerped.x += (mouse.x - lerped.x) * 0.1;
+        lerped.y += (mouse.y - lerped.y) * 0.1;
+        realImg.style.setProperty('--mx', lerped.x.toFixed(2) + '%');
+        realImg.style.setProperty('--my', lerped.y.toFixed(2) + '%');
+        realImg.style.setProperty('--r',  radius.val.toFixed(1) + 'px');
+      });
+
+      function toPercent(clientX, clientY) {
+        var r = realImg.getBoundingClientRect();
+        mouse.x = ((clientX - r.left) / r.width)  * 100;
+        mouse.y = ((clientY - r.top)  / r.height) * 100;
+      }
+
+      function open(size, dur) {
+        if (radTween) radTween.kill();
+        radTween = gsap.to(radius, { val: size, duration: dur, ease: 'power3.out' });
+      }
+      function close(dur) {
+        if (radTween) radTween.kill();
+        radTween = gsap.to(radius, { val: 0, duration: dur, ease: 'power2.in' });
+      }
+
+      if (!isTouch) {
+        // ── Desktop: mouse hover ──
+        hero.addEventListener('mouseenter', function () { open(175, 0.65); });
+        hero.addEventListener('mouseleave', function () { close(0.45); });
+        hero.addEventListener('mousemove',  function (e) { toPercent(e.clientX, e.clientY); });
+      } else {
+        // ── Mobile: tap + drag to explore ──
+        hero.addEventListener('touchstart', function (e) {
+          var t = e.touches[0];
+          toPercent(t.clientX, t.clientY);
+          // Snap lerped to current so spotlight appears instantly at tap point
+          lerped.x = mouse.x; lerped.y = mouse.y;
+          open(130, 0.4);
+        }, { passive: true });
+
+        hero.addEventListener('touchmove', function (e) {
+          var t = e.touches[0];
+          toPercent(t.clientX, t.clientY);
+        }, { passive: true });
+
+        hero.addEventListener('touchend', function () {
+          close(0.9);
+        }, { passive: true });
+      }
+    })();
+
+    // ── Mist system ───────────────────────────────────────────────
+    // Soft radial-gradient particles — no hard edges, dense accumulation,
+    // gentle physics. Looks like agricultural spray mist, not droplets.
+    var _sprayDone = false;
+    (function () {
+      var container = document.getElementById('unicorn-container');
+      if (!container) return;
+
+      var cv  = document.createElement('canvas');
+      cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:7;';
+      container.appendChild(cv);
+      var cx  = cv.getContext('2d');
+      var raf = null;
+      var dpr = window.devicePixelRatio || 1;
+
+      function size() {
+        dpr = window.devicePixelRatio || 1;
+        cv.width  = container.offsetWidth  * dpr;
+        cv.height = container.offsetHeight * dpr;
+      }
+      size();
+      window.addEventListener('resize', size);
+
+      // 4 nozzle positions (under the 4 arms, spraying downward)
+      var NOZZLES = [
+        { ox: -0.30, oy: -0.08 },
+        { ox:  0.30, oy: -0.08 },
+        { ox: -0.26, oy:  0.10 },
+        { ox:  0.26, oy:  0.10 },
+      ];
+
+      var parts = [];
+
+      function emitMist() {
+        var W = cv.width, H = cv.height;
+        NOZZLES.forEach(function (n) {
+          var nx = W * 0.5 + n.ox * W;
+          var ny = H * 0.5 + n.oy * H;
+
+          // ── Fine mist layer — many tiny soft puffs ──
+          for (var i = 0; i < 55; i++) {
+            var angle  = Math.PI * 0.5 + (Math.random() - 0.5) * Math.PI * 0.75;
+            var spd    = (0.3 + Math.random() * 1.1) * dpr;
+            var radius = (5 + Math.random() * 12) * dpr;
+            parts.push({
+              x:     nx + (Math.random() - 0.5) * 8 * dpr,
+              y:     ny,
+              vx:    Math.cos(angle) * spd,
+              vy:    Math.sin(angle) * spd,
+              r:     radius,
+              rMax:  radius * (1.4 + Math.random() * 0.8), // puff expands
+              life:  0.7 + Math.random() * 0.3,
+              decay: 0.006 + Math.random() * 0.005,        // slow fade
+              peak:  0.07 + Math.random() * 0.06,          // per-particle max opacity
+              layer: 0,
+            });
+          }
+
+          // ── Volume layer — fewer, larger, even softer puffs ──
+          for (var j = 0; j < 18; j++) {
+            var a2  = Math.PI * 0.5 + (Math.random() - 0.5) * Math.PI * 0.9;
+            var s2  = (0.15 + Math.random() * 0.5) * dpr;
+            var r2  = (18 + Math.random() * 28) * dpr;
+            parts.push({
+              x:     nx + (Math.random() - 0.5) * 18 * dpr,
+              y:     ny,
+              vx:    Math.cos(a2) * s2,
+              vy:    Math.sin(a2) * s2,
+              r:     r2,
+              rMax:  r2 * (1.6 + Math.random()),
+              life:  0.5 + Math.random() * 0.4,
+              decay: 0.004 + Math.random() * 0.003,
+              peak:  0.03 + Math.random() * 0.025,
+              layer: 1,
+            });
+          }
         });
-      });
-      obs.observe(document.body, { childList: true, subtree: true });
-    };
-    document.head.appendChild(sdk);
+      }
+
+      function tick() {
+        raf = requestAnimationFrame(tick);
+        cx.clearRect(0, 0, cv.width, cv.height);
+
+        for (var i = parts.length - 1; i >= 0; i--) {
+          var p = parts[i];
+
+          // Physics — very gentle
+          p.x  += p.vx;
+          p.y  += p.vy;
+          p.vy += 0.022 * dpr;   // soft gravity
+          p.vx *= 0.992;          // slight air resistance
+          p.r   = Math.min(p.r * 1.012, p.rMax); // puff expands
+          p.life -= p.decay;
+          if (p.life <= 0) { parts.splice(i, 1); continue; }
+
+          // Opacity: ramps up for first 20% of life, then fades
+          var lifeRatio = p.life;
+          var alpha = p.peak * Math.min(1, lifeRatio * 5) * lifeRatio;
+
+          // Soft radial gradient — no hard edge
+          var g = cx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+          g.addColorStop(0,    'rgba(190,220,250,' + (alpha * 1.0).toFixed(3) + ')');
+          g.addColorStop(0.35, 'rgba(170,210,245,' + (alpha * 0.7).toFixed(3) + ')');
+          g.addColorStop(0.7,  'rgba(150,195,240,' + (alpha * 0.25).toFixed(3) + ')');
+          g.addColorStop(1,    'rgba(130,180,235,0)');
+
+          cx.fillStyle = g;
+          cx.beginPath();
+          cx.arc(p.x, p.y, p.r, 0, 6.2832);
+          cx.fill();
+        }
+      }
+
+      window._triggerSpray = function (afterFn) {
+        if (_sprayDone) { afterFn(); return; }
+        _sprayDone = true;
+
+        emitMist();
+        tick();
+
+        // 7 waves at 90ms = dense, continuous mist build-up
+        var wave = 0;
+        var iv = setInterval(function () {
+          emitMist();
+          if (++wave >= 6) clearInterval(iv);
+        }, 90);
+
+        // Let mist linger 900ms then exit
+        setTimeout(function () {
+          cancelAnimationFrame(raf);
+          cx.clearRect(0, 0, cv.width, cv.height);
+          afterFn();
+        }, 900);
+      };
+    })();
+
+    var isMobile = window.innerWidth <= 768;
 
     // ── Single-scroll intro transition ──────────────────────────
     // Body scroll is locked while the unicorn overlay is up.
@@ -2955,46 +3414,38 @@
       setTimeout(function () {
         unicorn.style.display = 'none';
         document.body.style.overflow = '';
-        // Kill the Unicorn Studio WebGL context so it stops consuming GPU
-        try {
-          if (window.UnicornStudio && typeof UnicornStudio.destroy === 'function') {
-            UnicornStudio.destroy();
-          } else {
-            // Fallback: nuke the canvas directly
-            var canvas = document.querySelector('#unicorn-container canvas');
-            if (canvas) {
-              var gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
-              if (gl) gl.getExtension('WEBGL_lose_context').loseContext();
-              canvas.width = 1; canvas.height = 1;
-            }
-          }
-        } catch(e) {}
+        try { gsap.globalTimeline.kill(); } catch(e) {}
       }, 1500);
+    }
+
+    // Spray-then-leave helper — all exit triggers go through this
+    function sprayLeave() {
+      if (done) return;
+      if (window._triggerSpray) { window._triggerSpray(leave); }
+      else { leave(); }
     }
 
     // Mouse wheel / trackpad
     window.addEventListener('wheel', function (e) {
-      if (!done && e.deltaY > 0) { e.preventDefault(); leave(); }
+      if (!done && e.deltaY > 0) { e.preventDefault(); sprayLeave(); }
     }, { passive: false });
 
-    // Swipe-to-dismiss: desktop/tablet only — mobile uses Enter button exclusively
-    if (!isMobile) {
-      window.addEventListener('touchstart', function (e) {
-        touchStartY = e.touches[0].clientY;
-      }, { passive: true });
-      window.addEventListener('touchmove', function (e) {
-        if (!done && (touchStartY - e.touches[0].clientY) > 70) leave();
-      }, { passive: true });
-    }
+    // Swipe down — both desktop and mobile (touch explore is on the drone, not window)
+    window.addEventListener('touchstart', function (e) {
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener('touchmove', function (e) {
+      if (!done && (touchStartY - e.touches[0].clientY) > 70) sprayLeave();
+    }, { passive: true });
 
-    // Mobile Enter button — only trigger on mobile
+    // Enter button
     var tapBtn = document.querySelector('.unicorn-tap-btn');
-    if (tapBtn) { tapBtn.addEventListener('click', function () { leave(); }); }
+    if (tapBtn) { tapBtn.addEventListener('click', function () { sprayLeave(); }); }
 
     // Keyboard arrow / page / space
     window.addEventListener('keydown', function (e) {
       if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
-        e.preventDefault(); leave();
+        e.preventDefault(); sprayLeave();
       }
     });
 
