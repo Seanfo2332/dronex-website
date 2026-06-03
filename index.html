@@ -523,6 +523,61 @@
   }
   .mobile-nav-sub a:active { color: var(--sky); }
 
+  /* ── Mobile accordion (dropdown) ─────────────────────────── */
+  .mobile-nav-accordion { border-bottom: 1px solid var(--rule); }
+  .mobile-nav-accordion-head {
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 20px 0; cursor: pointer;
+    text-decoration: none; color: var(--white);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 400ms var(--ease-aerial),
+                transform 400ms var(--ease-aerial),
+                color 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .mobile-menu.open .mobile-nav-accordion-head { opacity: 1; transform: translateY(0); }
+  /* stagger: items 3 & 4 in the nav list */
+  .mobile-nav-accordion:nth-child(3) .mobile-nav-accordion-head { transition-delay: 180ms; }
+  .mobile-nav-accordion:nth-child(4) .mobile-nav-accordion-head { transition-delay: 230ms; }
+  .mobile-nav-accordion-caret {
+    margin-left: auto; width: 6px; height: 6px;
+    border-right: 1.5px solid var(--sky); border-bottom: 1.5px solid var(--sky);
+    transform: rotate(45deg); flex-shrink: 0; align-self: center;
+    transition: transform 280ms cubic-bezier(0.76, 0, 0.24, 1), border-color 220ms ease;
+  }
+  .mobile-nav-accordion.open .mobile-nav-accordion-caret { transform: rotate(225deg); }
+  .mobile-nav-accordion-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 380ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .mobile-nav-accordion.open .mobile-nav-accordion-body { max-height: 600px; }
+  .mobile-nav-accordion-eyebrow {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--slate);
+    padding: 10px 0 10px 40px; display: block;
+    border-bottom: 1px solid var(--rule-soft);
+    margin-bottom: 4px;
+  }
+  .mobile-nav-accordion-sub {
+    display: flex; flex-direction: column;
+    padding: 0 0 8px 40px;
+  }
+  .mobile-nav-accordion-sub a {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--rule-soft);
+    text-decoration: none; color: var(--cloud);
+    font-family: var(--f-display); font-size: 14px; font-weight: 300;
+    transition: color 180ms ease, padding-left 180ms ease;
+  }
+  .mobile-nav-accordion-sub a:last-child { border-bottom: none; }
+  .mobile-nav-accordion-sub a:active,
+  .mobile-nav-accordion-sub a:hover { color: var(--sky); padding-left: 6px; }
+  .mobile-nav-accordion-sub .sm-num {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .2em;
+    color: var(--slate); flex-shrink: 0;
+  }
+
   .mobile-menu-foot {
     padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px);
     border-top: 1px solid var(--rule-soft); flex-shrink: 0;
@@ -2222,14 +2277,38 @@
           <span class="mobile-nav-num">02</span>
           <span class="mobile-nav-label">About Us</span>
         </a>
-        <a href="#solutions" class="mobile-nav-item">
-          <span class="mobile-nav-num">03</span>
-          <span class="mobile-nav-label">Commercial Solutions</span>
-        </a>
-        <a href="#entertainment" class="mobile-nav-item">
-          <span class="mobile-nav-num">04</span>
-          <span class="mobile-nav-label">Drone Entertainment</span>
-        </a>
+        <div class="mobile-nav-accordion" id="mob-acc-solutions">
+          <div class="mobile-nav-accordion-head" role="button" aria-expanded="false" aria-controls="mob-acc-solutions-body">
+            <span class="mobile-nav-num">03</span>
+            <span class="mobile-nav-label">Commercial Solutions</span>
+            <span class="mobile-nav-accordion-caret" aria-hidden="true"></span>
+          </div>
+          <div class="mobile-nav-accordion-body" id="mob-acc-solutions-body">
+            <span class="mobile-nav-accordion-eyebrow">Pillar I · Six Disciplines</span>
+            <div class="mobile-nav-accordion-sub">
+              <a href="#svc-01"><span class="sm-num">01</span>Agriculture Drone Support</a>
+              <a href="#svc-02"><span class="sm-num">02</span>Drone Delivery Exploration</a>
+              <a href="#svc-03"><span class="sm-num">03</span>Aerial Mapping</a>
+              <a href="#svc-04"><span class="sm-num">04</span>Building / Solar Cleaning</a>
+              <a href="#svc-05"><span class="sm-num">05</span>Public Sector Support</a>
+              <a href="#svc-06"><span class="sm-num">06</span>Drone E-Sport</a>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-nav-accordion" id="mob-acc-entertainment">
+          <div class="mobile-nav-accordion-head" role="button" aria-expanded="false" aria-controls="mob-acc-entertainment-body">
+            <span class="mobile-nav-num">04</span>
+            <span class="mobile-nav-label">Drone Entertainment</span>
+            <span class="mobile-nav-accordion-caret" aria-hidden="true"></span>
+          </div>
+          <div class="mobile-nav-accordion-body" id="mob-acc-entertainment-body">
+            <span class="mobile-nav-accordion-eyebrow">Pillar II · Productions</span>
+            <div class="mobile-nav-accordion-sub">
+              <a href="#ent-01"><span class="sm-num">P‑01</span>Drone Show</a>
+              <a href="#ent-02"><span class="sm-num">P‑02</span>Drone Spot</a>
+            </div>
+          </div>
+        </div>
         <a href="#technology" class="mobile-nav-item">
           <span class="mobile-nav-num">05</span>
           <span class="mobile-nav-label">Technology &amp; Data</span>
@@ -3049,8 +3128,25 @@
       });
       if (close) close.addEventListener('click', closeMenu);
 
-      // Close on any nav link tap
-      menu.querySelectorAll('a').forEach(function (a) {
+      // Accordion toggles
+      menu.querySelectorAll('.mobile-nav-accordion-head').forEach(function (head) {
+        head.addEventListener('click', function () {
+          var acc = head.closest('.mobile-nav-accordion');
+          var isOpen = acc.classList.contains('open');
+          // Close all first
+          menu.querySelectorAll('.mobile-nav-accordion.open').forEach(function (a) {
+            a.classList.remove('open');
+            a.querySelector('.mobile-nav-accordion-head').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            acc.classList.add('open');
+            head.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Close on any nav link tap (sub-items only — accordion heads handled above)
+      menu.querySelectorAll('.mobile-nav-accordion-sub a, .mobile-nav-item').forEach(function (a) {
         a.addEventListener('click', closeMenu);
       });
 
