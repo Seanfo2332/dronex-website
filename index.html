@@ -73,8 +73,6 @@
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -186,18 +184,7 @@
   }
   /* Touch reveal handled by JS — no static fallback needed */
 
-  .spray-video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 7;
-    pointer-events: none;
-    mix-blend-mode: screen;
-    visibility: hidden;
-    opacity: 0;
-  }
+
 
   /* ── DroneX wordmark ── */
   .h-brand {
@@ -2173,11 +2160,6 @@
       </div>
 
       <!-- Spray mist video -->
-      <video id="spray-video" class="spray-video"
-             src="assets/spray-mist.mp4"
-             muted playsinline preload="auto"
-             aria-hidden="true"></video>
-
       <!-- Edge vignette (on top of everything except scroll hint) -->
       <div class="h-vignette"></div>
 
@@ -3206,7 +3188,7 @@
 
       // ── Continuous: drone float ────────────────────────────────
       // Starts after entrance (delay matches tl total ~1.5s)
-      gsap.to(droneInner, {
+      var floatTween = gsap.to(droneInner, {
         y: isMob ? -8 : -14,
         duration: isMob ? 3.5 : 4.8,
         repeat: -1,
@@ -3216,7 +3198,7 @@
       });
 
       // ── Continuous: ring rotation ──────────────────────────────
-      gsap.to(rgOuter, {
+      var rgOuterTween = gsap.to(rgOuter, {
         rotation: 360,
         transformOrigin: '450px 450px',
         duration: 34,
@@ -3224,7 +3206,7 @@
         ease: 'none'
       });
 
-      gsap.to(rgInner, {
+      var rgInnerTween = gsap.to(rgInner, {
         rotation: -360,
         transformOrigin: '450px 450px',
         duration: 22,
@@ -3237,7 +3219,7 @@
       var dotR     = 200;
       var cx       = 450, cy = 450;
 
-      gsap.to(dotAngle, {
+      var dotTween = gsap.to(dotAngle, {
         deg: 360,
         duration: 22,
         repeat: -1,
@@ -3250,12 +3232,21 @@
       });
 
       // ── prefers-reduced-motion — kill movement, keep fades ─────
-      var mm = gsap.matchMedia();
-      mm.add('(prefers-reduced-motion: reduce)', function () {
-        gsap.globalTimeline.timeScale(0);
-        // Show everything instantly
+      // NOTE: Never use gsap.globalTimeline.timeScale(0) — it freezes ALL GSAP
+      // animations sitewide (including cursor ticker and frame sequence scrub).
+      // Instead, kill only the specific continuous tweens we own.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tl.kill();
+        floatTween.kill();
+        rgOuterTween.kill();
+        rgInnerTween.kill();
+        dotTween.kill();
+        // Snap everything visible immediately
         gsap.set([droneInner, brand, hint, coords], { autoAlpha: 1, y: 0, scale: 1 });
-      });
+        // Reset dot to top of ring
+        rgDot.setAttribute('cx', cx + dotR * Math.cos(-Math.PI / 2));
+        rgDot.setAttribute('cy', cy + dotR * Math.sin(-Math.PI / 2));
+      }
 
     })(); } catch (e) { console.warn('[DroneX] hero-anim error:', e); }
 
@@ -3354,40 +3345,22 @@
       }
     }
 
-    // ── Spray video bonus effect (only if fully preloaded) ──────
+    // -- Exit trigger -- always immediate, no video delay
     (function () {
-      var vid       = document.getElementById('spray-video');
       var triggered = false;
-      var vidReady  = false;
-
-      if (vid) {
-        vid.addEventListener('canplaythrough', function () { vidReady = true; }, { once: true });
-      }
 
       function trigger() {
         if (done || triggered) return;
         triggered = true;
-
-        // If video buffered → play it, then leave
-        if (vid && vidReady) {
-          vid.currentTime = 0;
-          var p = vid.play();
-          if (p) p.catch(leave);
-          vid.style.opacity = '1'; vid.style.visibility = 'visible';
-          vid.addEventListener('ended', leave, { once: true });
-          setTimeout(leave, 3500); // hard cap 3.5 s
-        } else {
-          // Not ready → leave instantly, no waiting
-          leave();
-        }
+        leave();
       }
 
-      // Scroll wheel
+      // Scroll wheel (desktop)
       window.addEventListener('wheel', function (e) {
         if (!done && e.deltaY > 0) { e.preventDefault(); trigger(); }
       }, { passive: false });
 
-      // Touch swipe up
+      // Touch swipe up (mobile)
       window.addEventListener('touchstart', function (e) {
         touchStartY = e.touches[0].clientY;
       }, { passive: true });
@@ -3804,6 +3777,17 @@
       // ── GSAP ScrollTrigger — butter-smooth scrub ──────────────────
       function initGSAP() {
         if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        // Skip GSAP scrub when user prefers reduced motion — frame 0 remains static
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          // Activate panel 1 statically so content is still visible
+          var p1 = document.getElementById('seq-panel-1');
+          if (p1) p1.classList.add('active');
+          var fill0 = document.getElementById('seq-fill-0');
+          if (fill0) fill0.style.transform = 'scaleX(1)';
+          var seg0 = document.getElementById('seq-seg-0');
+          if (seg0) seg0.classList.add('active');
+          return;
+        }
 
         gsap.to(proxy, {
           frame: TOTAL - 1,
