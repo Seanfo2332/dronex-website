@@ -94,6 +94,7 @@
     z-index: 200;
     background: #d0d0d0;
     overflow: hidden;
+    will-change: transform;
   }
 
   /* Stage */
@@ -3332,19 +3333,25 @@
     function leave() {
       if (done) return;
       done = true;
-      // Hide scroll hint
-      if (hint) gsap.to(hint, { autoAlpha: 0, duration: 0.25 });
-      // Slide hero up with GSAP (more reliable than CSS transitions)
-      gsap.to(unicorn, {
-        yPercent: -100,
-        duration: 1.2,
-        ease: 'power3.inOut',
-        onComplete: function () {
+      // Hide scroll hint immediately (pure CSS, no GSAP)
+      if (hint) hint.style.opacity = '0';
+      // Exit animation — pure CSS transition, works even if GSAP timeline is paused
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        // No animation for accessibility
+        unicorn.style.display = 'none';
+        document.body.style.overflow = '';
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      } else {
+        unicorn.style.transition = 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)';
+        unicorn.style.transform  = 'translateY(-100%)';
+        unicorn.style.pointerEvents = 'none';
+        setTimeout(function () {
           unicorn.style.display = 'none';
           document.body.style.overflow = '';
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
-        }
-      });
+        }, 1300);
+      }
     }
 
     // ── Spray video bonus effect (only if fully preloaded) ──────
