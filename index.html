@@ -3350,37 +3350,54 @@
           unicorn.classList.add('leaving');
         });
       });
-      // Unlock scroll and destroy the WebGL scene after transition
+      // Unlock scroll after transition completes
       setTimeout(function () {
         unicorn.style.display = 'none';
         document.body.style.overflow = '';
-        try { gsap.globalTimeline.kill(); } catch(e) {}
+        // Refresh ScrollTrigger so main-site animations pick up from current scroll position
+        if (typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh(); }
       }, 1500);
     }
 
     // ── Spray video on exit ──────────────────────────────────────
+    // Spray effect only plays if video is FULLY buffered (canplaythrough fired).
+    // If not ready, we call leave() immediately — no waiting.
     (function () {
       var vid = document.getElementById('spray-video');
+      var sprayReady = false;
       var _done = false;
+
+      // Track when video is fully buffered
+      if (vid) {
+        vid.addEventListener('canplaythrough', function () { sprayReady = true; }, { once: true });
+        vid.addEventListener('error', function () { sprayReady = false; });
+      }
 
       function sprayLeave() {
         if (done) return;
-        if (!vid || _done) { leave(); return; }
-        // Skip spray if video not ready (canplay not fired yet)
-        if (vid.readyState < 2) { leave(); return; }
+        // Only do spray if video is 100% ready — otherwise exit immediately
+        if (!vid || !sprayReady || _done) { leave(); return; }
         _done = true;
-        gsap.to(vid, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' });
         vid.currentTime = 0;
-        vid.addEventListener('ended', function () {
-          gsap.to(vid, { autoAlpha: 0, duration: 0.2, onComplete: leave });
-        }, { once: true });
-        vid.addEventListener('error', function () { if (!done) leave(); }, { once: true });
-        // Safety net: leave after 5s max (down from 8s)
-        setTimeout(function () { if (!done) leave(); }, 5000);
         var p = vid.play();
+        // If play() rejects, exit immediately
         if (p && typeof p.then === 'function') {
-          p.catch(function () { if (!done) leave(); });
+          p.catch(function () { _done = false; leave(); });
         }
+        // Fade video in after play() succeeds
+        if (typeof gsap !== 'undefined') {
+          gsap.to(vid, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' });
+        } else {
+          vid.style.opacity = '1'; vid.style.visibility = 'visible';
+        }
+        // When video ends, exit
+        vid.addEventListener('ended', function () {
+          if (typeof gsap !== 'undefined') {
+            gsap.to(vid, { autoAlpha: 0, duration: 0.2, onComplete: leave });
+          } else { leave(); }
+        }, { once: true });
+        // Hard cap: 4s max, then exit regardless
+        setTimeout(function () { if (!done) leave(); }, 4000);
       }
 
       // Mouse wheel / trackpad
@@ -3388,7 +3405,7 @@
         if (!done && e.deltaY > 0) { e.preventDefault(); sprayLeave(); }
       }, { passive: false });
 
-      // Swipe down
+      // Swipe up (touch)
       window.addEventListener('touchstart', function (e) {
         touchStartY = e.touches[0].clientY;
       }, { passive: true });
@@ -3396,11 +3413,11 @@
         if (!done && (touchStartY - e.touches[0].clientY) > 70) sprayLeave();
       }, { passive: true });
 
-      // Enter button
+      // Enter button (mobile)
       var tapBtn = document.querySelector('.unicorn-tap-btn');
       if (tapBtn) tapBtn.addEventListener('click', sprayLeave);
 
-      // Keyboard
+      // Keyboard (Space / ArrowDown / PageDown)
       window.addEventListener('keydown', function (e) {
         if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
           e.preventDefault(); sprayLeave();
