@@ -3314,6 +3314,7 @@
 
 
     // ── Hero intro exit (GSAP-powered, bulletproof) ────────────
+    document.documentElement.style.overflow = 'hidden';
     document.body.style.overflow = 'hidden';
 
     var unicorn      = document.querySelector('.unicorn-section');
@@ -3331,6 +3332,7 @@
       if (reduced) {
         // No animation for accessibility
         unicorn.style.display = 'none';
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
         if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
       } else {
@@ -3339,6 +3341,7 @@
         unicorn.style.pointerEvents = 'none';
         setTimeout(function () {
           unicorn.style.display = 'none';
+          document.documentElement.style.overflow = '';
           document.body.style.overflow = '';
           if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
         }, 1300);
@@ -3774,12 +3777,12 @@
         next();
       }
 
-      // ── GSAP ScrollTrigger — butter-smooth scrub ──────────────────
+      // ── Native scroll listener — no GSAP ScrollTrigger dependency ──────
+      // ScrollTrigger can be miscalibrated by scroll drift during the intro exit.
+      // A direct getBoundingClientRect() calculation is immune to that.
       function initGSAP() {
-        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-        // Skip GSAP scrub when user prefers reduced motion — frame 0 remains static
+        // Reduced motion: show panel 1 statically
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          // Activate panel 1 statically so content is still visible
           var p1 = document.getElementById('seq-panel-1');
           if (p1) p1.classList.add('active');
           var fill0 = document.getElementById('seq-fill-0');
@@ -3789,22 +3792,36 @@
           return;
         }
 
-        gsap.to(proxy, {
-          frame: TOTAL - 1,
-          ease: 'none',
-          onUpdate: function () {
-            var idx = Math.round(proxy.frame);
-            drawFrame(idx);
-            updatePanels(idx / (TOTAL - 1));
-          },
-          scrollTrigger: {
-            id: 'drone-seq',
-            trigger: wrap,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.8,       // 0.8s lag — feels cinematic, not laggy
+        var rafId      = 0;
+        var targetIdx  = 0;
+        var lerpedIdx  = 0;
+
+        function calcProgress() {
+          var wrapH    = wrap.offsetHeight;
+          var viewH    = window.innerHeight;
+          var wrapTop  = wrap.getBoundingClientRect().top;
+          var progress = -wrapTop / (wrapH - viewH);
+          return Math.max(0, Math.min(1, progress));
+        }
+
+        function tick() {
+          rafId = 0;
+          // Lerp toward target (0.12 per frame ≈ 0.8s lag at 60 fps)
+          lerpedIdx += (targetIdx - lerpedIdx) * 0.12;
+          drawFrame(Math.round(lerpedIdx));
+          updatePanels(lerpedIdx / (TOTAL - 1));
+          if (Math.abs(lerpedIdx - targetIdx) > 0.25) {
+            rafId = requestAnimationFrame(tick);
           }
-        });
+        }
+
+        function onScroll() {
+          targetIdx = calcProgress() * (TOTAL - 1);
+          if (!rafId) rafId = requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // seed on first call
       }
     })();
 
