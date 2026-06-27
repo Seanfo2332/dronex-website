@@ -3366,14 +3366,21 @@
       function sprayLeave() {
         if (done) return;
         if (!vid || _done) { leave(); return; }
+        // Skip spray if video not ready (canplay not fired yet)
+        if (vid.readyState < 2) { leave(); return; }
         _done = true;
         gsap.to(vid, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' });
         vid.currentTime = 0;
-        vid.play();
         vid.addEventListener('ended', function () {
           gsap.to(vid, { autoAlpha: 0, duration: 0.2, onComplete: leave });
         }, { once: true });
-        setTimeout(function () { if (!done) leave(); }, 8000);
+        vid.addEventListener('error', function () { if (!done) leave(); }, { once: true });
+        // Safety net: leave after 5s max (down from 8s)
+        setTimeout(function () { if (!done) leave(); }, 5000);
+        var p = vid.play();
+        if (p && typeof p.then === 'function') {
+          p.catch(function () { if (!done) leave(); });
+        }
       }
 
       // Mouse wheel / trackpad
