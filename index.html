@@ -135,6 +135,27 @@
     overflow: visible;
   }
 
+  /* ── Ring rotation — pure CSS so it works even without GSAP ── */
+  .rg-outer {
+    animation: rgOuterSpin 34s linear infinite;
+    transform-origin: 450px 450px;
+  }
+  .rg-inner {
+    animation: rgInnerSpin 22s linear infinite;
+    transform-origin: 450px 450px;
+  }
+  @keyframes rgOuterSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes rgInnerSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rg-outer, .rg-inner { animation: none; }
+  }
+
   /* ── Drone layer ── */
   .h-drone {
     position: absolute;
@@ -3197,120 +3218,69 @@
         delay: 1.2
       });
 
-      // ── Continuous: ring rotation ──────────────────────────────
-      var rgOuterTween = gsap.to(rgOuter, {
-        rotation: 360,
-        transformOrigin: '450px 450px',
-        duration: 34,
-        repeat: -1,
-        ease: 'none'
-      });
+      // ── Ring rotation + dot orbit: handled by CSS animation ──────
+      // Rings rotate via @keyframes rgOuterSpin / rgInnerSpin in CSS.
+      // The dot (child of rg-inner) orbits automatically with the group.
+      // No GSAP dependency — works even if GSAP fails to load.
 
-      var rgInnerTween = gsap.to(rgInner, {
-        rotation: -360,
-        transformOrigin: '450px 450px',
-        duration: 22,
-        repeat: -1,
-        ease: 'none'
-      });
-
-      // ── Continuous: orbiting dot on inner ring (r=200) ─────────
-      var dotAngle = { deg: 0 };
-      var dotR     = 200;
-      var cx       = 450, cy = 450;
-
-      var dotTween = gsap.to(dotAngle, {
-        deg: 360,
-        duration: 22,
-        repeat: -1,
-        ease: 'none',
-        onUpdate: function () {
-          var rad = (dotAngle.deg - 90) * Math.PI / 180;
-          rgDot.setAttribute('cx', cx + dotR * Math.cos(rad));
-          rgDot.setAttribute('cy', cy + dotR * Math.sin(rad));
-        }
-      });
-
-      // ── prefers-reduced-motion — kill movement, keep fades ─────
-      // NOTE: Never use gsap.globalTimeline.timeScale(0) — it freezes ALL GSAP
-      // animations sitewide (including cursor ticker and frame sequence scrub).
-      // Instead, kill only the specific continuous tweens we own.
+      // ── prefers-reduced-motion — kill entrance + float only ────
+      // Ring CSS animation is already paused by @media prefers-reduced-motion.
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         tl.kill();
         floatTween.kill();
-        rgOuterTween.kill();
-        rgInnerTween.kill();
-        dotTween.kill();
         // Snap everything visible immediately
         gsap.set([droneInner, brand, hint, coords], { autoAlpha: 1, y: 0, scale: 1 });
-        // Reset dot to top of ring
-        rgDot.setAttribute('cx', cx + dotR * Math.cos(-Math.PI / 2));
-        rgDot.setAttribute('cy', cy + dotR * Math.sin(-Math.PI / 2));
       }
 
     })(); } catch (e) { console.warn('[DroneX] hero-anim error:', e); }
 
-    // ── Cursor / Touch spotlight reveal ─────────────────────────
-    try { (function () {
+    // ── Cursor / Touch spotlight reveal — pure RAF, zero GSAP ──────────
+    // No isTouch gate: register BOTH mouse + touch so touchscreen laptops work.
+    (function () {
       var hero    = document.getElementById('unicorn-container');
       var realImg = document.querySelector('.h-drone-real');
       if (!hero || !realImg) return;
 
-      var mouse    = { x: 50, y: 50 };
-      var lerped   = { x: 50, y: 50 };
-      var radius   = { val: 0 };
-      var radTween = null;
-      var isTouch  = window.matchMedia('(hover: none)').matches;
+      var mx = 50, my = 50;        // target position (%)
+      var lx = 50, ly = 50;        // lerped position
+      var targetR = 0, curR = 0;   // spotlight radius (px)
 
-      // Ticker: lerp + push CSS vars every frame
-      gsap.ticker.add(function () {
-        lerped.x += (mouse.x - lerped.x) * 0.1;
-        lerped.y += (mouse.y - lerped.y) * 0.1;
-        realImg.style.setProperty('--mx', lerped.x.toFixed(2) + '%');
-        realImg.style.setProperty('--my', lerped.y.toFixed(2) + '%');
-        realImg.style.setProperty('--r',  radius.val.toFixed(1) + 'px');
-      });
+      // Single RAF loop — updates CSS custom props every frame
+      (function tick() {
+        lx += (mx - lx) * 0.1;
+        ly += (my - ly) * 0.1;
+        // Open fast (power3.out feel), close slower (power2.in feel)
+        var rate = targetR > curR ? 0.14 : 0.10;
+        curR += (targetR - curR) * rate;
+        realImg.style.setProperty('--mx', lx.toFixed(2) + '%');
+        realImg.style.setProperty('--my', ly.toFixed(2) + '%');
+        realImg.style.setProperty('--r',  curR.toFixed(1) + 'px');
+        requestAnimationFrame(tick);
+      })();
 
       function toPercent(clientX, clientY) {
         var r = realImg.getBoundingClientRect();
-        mouse.x = ((clientX - r.left) / r.width)  * 100;
-        mouse.y = ((clientY - r.top)  / r.height) * 100;
+        mx = ((clientX - r.left) / r.width)  * 100;
+        my = ((clientY - r.top)  / r.height) * 100;
       }
 
-      function open(size, dur) {
-        if (radTween) radTween.kill();
-        radTween = gsap.to(radius, { val: size, duration: dur, ease: 'power3.out' });
-      }
-      function close(dur) {
-        if (radTween) radTween.kill();
-        radTween = gsap.to(radius, { val: 0, duration: dur, ease: 'power2.in' });
-      }
+      // ── Mouse (desktop + touchscreen laptops using mouse) ───────
+      hero.addEventListener('mouseenter', function () { targetR = 175; });
+      hero.addEventListener('mouseleave', function () { targetR = 0; });
+      hero.addEventListener('mousemove',  function (e) { toPercent(e.clientX, e.clientY); });
 
-      if (!isTouch) {
-        // ── Desktop: mouse hover ──
-        hero.addEventListener('mouseenter', function () { open(175, 0.65); });
-        hero.addEventListener('mouseleave', function () { close(0.45); });
-        hero.addEventListener('mousemove',  function (e) { toPercent(e.clientX, e.clientY); });
-      } else {
-        // ── Mobile: tap + drag to explore ──
-        hero.addEventListener('touchstart', function (e) {
-          var t = e.touches[0];
-          toPercent(t.clientX, t.clientY);
-          // Snap lerped to current so spotlight appears instantly at tap point
-          lerped.x = mouse.x; lerped.y = mouse.y;
-          open(130, 0.4);
-        }, { passive: true });
-
-        hero.addEventListener('touchmove', function (e) {
-          var t = e.touches[0];
-          toPercent(t.clientX, t.clientY);
-        }, { passive: true });
-
-        hero.addEventListener('touchend', function () {
-          close(0.9);
-        }, { passive: true });
-      }
-    })(); } catch (e) { console.warn('[DroneX] spotlight error:', e); }
+      // ── Touch (mobile + touchscreen laptops using finger) ────────
+      hero.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        toPercent(t.clientX, t.clientY);
+        lx = mx; ly = my; // snap position so spotlight appears instantly
+        targetR = 130;
+      }, { passive: true });
+      hero.addEventListener('touchmove', function (e) {
+        toPercent(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      hero.addEventListener('touchend',  function () { targetR = 0; }, { passive: true });
+    })();
 
 
     // ── Hero intro exit (GSAP-powered, bulletproof) ────────────
