@@ -87,19 +87,13 @@
   html { margin: 0; padding: 0; background: #000; }
   body { margin: 0; padding: 0; background: #000; }
 
-  /* Slide-up wipe on exit */
+  /* Hero overlay */
   .unicorn-section {
     position: fixed;
     inset: 0;
     z-index: 200;
     background: #d0d0d0;
     overflow: hidden;
-    transition: transform 1400ms cubic-bezier(0.76, 0, 0.24, 1);
-    will-change: transform;
-  }
-  .unicorn-section.leaving {
-    transform: translateY(-100%);
-    pointer-events: none;
   }
 
   /* Stage */
@@ -3327,100 +3321,84 @@
     })();
 
 
-    var isMobile = window.innerWidth <= 768;
-
-    // ── Single-scroll intro transition ──────────────────────────
-    // Body scroll is locked while the unicorn overlay is up.
-    // One scroll/wheel/swipe triggers the CSS exit, then scroll is unlocked.
+    // ── Hero intro exit (GSAP-powered, bulletproof) ────────────
     document.body.style.overflow = 'hidden';
 
-    var unicorn     = document.querySelector('.unicorn-section');
-    var hint        = document.querySelector('.unicorn-scroll-hint');
-    var done        = false;
-    var touchStartY = 0;
+    var unicorn      = document.querySelector('.unicorn-section');
+    var hint         = document.querySelector('.unicorn-scroll-hint');
+    var done         = false;
+    var touchStartY  = 0;
 
     function leave() {
       if (done) return;
       done = true;
-      if (hint) hint.style.opacity = '0';
-      // Double rAF ensures the browser has painted the initial state
-      // before the transition-triggering class is added
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          unicorn.classList.add('leaving');
-        });
+      // Hide scroll hint
+      if (hint) gsap.to(hint, { autoAlpha: 0, duration: 0.25 });
+      // Slide hero up with GSAP (more reliable than CSS transitions)
+      gsap.to(unicorn, {
+        yPercent: -100,
+        duration: 1.2,
+        ease: 'power3.inOut',
+        onComplete: function () {
+          unicorn.style.display = 'none';
+          document.body.style.overflow = '';
+          if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        }
       });
-      // Unlock scroll after transition completes
-      setTimeout(function () {
-        unicorn.style.display = 'none';
-        document.body.style.overflow = '';
-        // Refresh ScrollTrigger so main-site animations pick up from current scroll position
-        if (typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh(); }
-      }, 1500);
     }
 
-    // ── Spray video on exit ──────────────────────────────────────
-    // Spray effect only plays if video is FULLY buffered (canplaythrough fired).
-    // If not ready, we call leave() immediately — no waiting.
+    // ── Spray video bonus effect (only if fully preloaded) ──────
     (function () {
-      var vid = document.getElementById('spray-video');
-      var sprayReady = false;
-      var _done = false;
+      var vid       = document.getElementById('spray-video');
+      var triggered = false;
+      var vidReady  = false;
 
-      // Track when video is fully buffered
       if (vid) {
-        vid.addEventListener('canplaythrough', function () { sprayReady = true; }, { once: true });
-        vid.addEventListener('error', function () { sprayReady = false; });
+        vid.addEventListener('canplaythrough', function () { vidReady = true; }, { once: true });
       }
 
-      function sprayLeave() {
-        if (done) return;
-        // Only do spray if video is 100% ready — otherwise exit immediately
-        if (!vid || !sprayReady || _done) { leave(); return; }
-        _done = true;
-        vid.currentTime = 0;
-        var p = vid.play();
-        // If play() rejects, exit immediately
-        if (p && typeof p.then === 'function') {
-          p.catch(function () { _done = false; leave(); });
-        }
-        // Fade video in after play() succeeds
-        if (typeof gsap !== 'undefined') {
-          gsap.to(vid, { autoAlpha: 1, duration: 0.2, ease: 'power2.out' });
-        } else {
+      function trigger() {
+        if (done || triggered) return;
+        triggered = true;
+
+        // If video buffered → play it, then leave
+        if (vid && vidReady) {
+          vid.currentTime = 0;
+          var p = vid.play();
+          if (p) p.catch(leave);
           vid.style.opacity = '1'; vid.style.visibility = 'visible';
+          vid.addEventListener('ended', leave, { once: true });
+          setTimeout(leave, 3500); // hard cap 3.5 s
+        } else {
+          // Not ready → leave instantly, no waiting
+          leave();
         }
-        // When video ends, exit
-        vid.addEventListener('ended', function () {
-          if (typeof gsap !== 'undefined') {
-            gsap.to(vid, { autoAlpha: 0, duration: 0.2, onComplete: leave });
-          } else { leave(); }
-        }, { once: true });
-        // Hard cap: 4s max, then exit regardless
-        setTimeout(function () { if (!done) leave(); }, 4000);
       }
 
-      // Mouse wheel / trackpad
+      // Scroll wheel
       window.addEventListener('wheel', function (e) {
-        if (!done && e.deltaY > 0) { e.preventDefault(); sprayLeave(); }
+        if (!done && e.deltaY > 0) { e.preventDefault(); trigger(); }
       }, { passive: false });
 
-      // Swipe up (touch)
+      // Touch swipe up
       window.addEventListener('touchstart', function (e) {
         touchStartY = e.touches[0].clientY;
       }, { passive: true });
       window.addEventListener('touchmove', function (e) {
-        if (!done && (touchStartY - e.touches[0].clientY) > 70) sprayLeave();
+        if (!done && (touchStartY - e.touches[0].clientY) > 60) trigger();
       }, { passive: true });
+
+      // Click / tap anywhere on hero (extra fallback)
+      if (unicorn) unicorn.addEventListener('click', trigger);
 
       // Enter button (mobile)
       var tapBtn = document.querySelector('.unicorn-tap-btn');
-      if (tapBtn) tapBtn.addEventListener('click', sprayLeave);
+      if (tapBtn) tapBtn.addEventListener('click', function (e) { e.stopPropagation(); trigger(); });
 
-      // Keyboard (Space / ArrowDown / PageDown)
+      // Keyboard Space / ArrowDown / PageDown
       window.addEventListener('keydown', function (e) {
         if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
-          e.preventDefault(); sprayLeave();
+          e.preventDefault(); trigger();
         }
       });
     })();
