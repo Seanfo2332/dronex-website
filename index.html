@@ -3150,7 +3150,7 @@
     })();
 
     // ── GSAP Hero Animation ─────────────────────────────────────
-    (function () {
+    try { (function () {
       var isMob = window.innerWidth <= 768;
 
       // ── Elements ──
@@ -3257,10 +3257,10 @@
         gsap.set([droneInner, brand, hint, coords], { autoAlpha: 1, y: 0, scale: 1 });
       });
 
-    })();
+    })(); } catch (e) { console.warn('[DroneX] hero-anim error:', e); }
 
     // ── Cursor / Touch spotlight reveal ─────────────────────────
-    (function () {
+    try { (function () {
       var hero    = document.getElementById('unicorn-container');
       var realImg = document.querySelector('.h-drone-real');
       if (!hero || !realImg) return;
@@ -3319,7 +3319,7 @@
           close(0.9);
         }, { passive: true });
       }
-    })();
+    })(); } catch (e) { console.warn('[DroneX] spotlight error:', e); }
 
 
     // ── Hero intro exit (GSAP-powered, bulletproof) ────────────
@@ -3410,6 +3410,9 @@
       });
     })();
 
+    // ── Emergency auto-exit: if no interaction within 20 s, proceed ────────
+    setTimeout(function () { if (!done) leave(); }, 20000);
+
     // ── Live UTC+8 clock ────────────────────────────────────────
     var clockEl = document.getElementById('hero-time');
     if (clockEl) {
@@ -3451,6 +3454,13 @@
       document.querySelectorAll('.dx .reveal, .dx .reveal-wipe').forEach(function (el) {
         el.style.transition = 'none';
         el.style.transitionDelay = '0ms';
+      });
+
+      // ── Hero text must start VISIBLE — heroTl dismantles them on scroll ──
+      // .reveal/.reveal-wipe inside .hero are excluded from the fromTo loop.
+      // Adding .in now is instant because CSS transitions were just disabled.
+      document.querySelectorAll('.dx .hero .reveal, .dx .hero .reveal-wipe').forEach(function (el) {
+        el.classList.add('in');
       });
 
       // ── Elements with dedicated cinematic animations ─────────────
