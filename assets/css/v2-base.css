@@ -1,0 +1,321 @@
+/* ============================================================
+   Drone X Malaysia — V2 Design System (base)
+   Direction: white, Montserrat, Grab-style minimal corporate
+   Audience: farmers 30+ — big type, clear CTAs, zero clutter
+   ============================================================ */
+
+:root {
+  /* ============================================================
+     Color tokens — strict 3-color monochrome (client-specified):
+     White #FFFFFF, Cloud #E8ECEF, Black #000000. No other hue is
+     introduced; --ink-2/--cloud-2 are zero-chroma (pure gray) steps
+     interpolated between these three, not a fourth color.
+     Exception: --wa (WhatsApp) is a third-party brand mark, kept for
+     platform recognition, and the semantic form-error red, kept for
+     universal accessibility convention — both called out in DESIGN.md.
+     ============================================================ */
+  --white:       oklch(100% 0 0);   /* #FFFFFF — page bg, light surfaces */
+  --cloud:       oklch(94.09% 0.0059 239.8); /* #E8ECEF — alternating section bg (client-specified) */
+  --cloud-2:     oklch(90% 0 0);    /* pure-gray elevation step, between cloud and ink-2 */
+  --black:       oklch(0% 0 0);     /* #000000 — primary accent, footer, maximum contrast */
+
+  /* Semantic aliases */
+  --bg:          var(--white);
+  --surface:     var(--cloud);
+  --surface-2:   var(--cloud-2);
+  --ink:         var(--black);              /* primary text/icons/buttons */
+  --ink-2:       oklch(42% 0 0);             /* #4d4d4d secondary/muted text: 8.46:1 on white, 7.12:1 on cloud */
+  --line:        rgba(0, 0, 0, 0.12);        /* pure-black hairline rule */
+  --line-soft:   rgba(0, 0, 0, 0.06);
+  --wa:          #25d366;                    /* WhatsApp brand, intentionally untouched */
+  --wa-bubble:   oklch(93% 0.09 152);         /* light WhatsApp chat-bubble tint, same --wa exception — testimonial cards only (B2) */
+  --wa-check:    #34b7f1;                     /* WhatsApp's own read-receipt blue tick, same --wa exception */
+
+  /* Type — Montserrat (client-specified) + Noto Sans SC for 中文 */
+  --font: "Montserrat", "Noto Sans SC", "Segoe UI", sans-serif;
+  --text-hero:  clamp(2.1rem, 4.6vw, 3.9rem);
+  --text-h2:    clamp(1.6rem, 3vw, 2.5rem);
+  --text-h3:    clamp(1.15rem, 1.8vw, 1.45rem);
+  --text-lead:  clamp(1.02rem, 1.3vw, 1.2rem);
+  --text-body:  1rem;
+  --text-small: 0.875rem;
+
+  /* Rhythm */
+  --space-section: clamp(4rem, 8vw, 7.5rem);
+  --space-block:   clamp(2rem, 4vw, 3.5rem);
+  --wrap: 1180px;
+  --radius: 14px;         /* Grab-style friendly rounding */
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);   /* ease-out-quint */
+  --dur: 480ms;
+
+  /* z-scale: dropdown < sticky < overlay < modal < toast */
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { line-height: 1.2; margin: 0 0 0.6em; text-wrap: balance; }
+p { margin: 0 0 1em; max-width: 68ch; text-wrap: pretty; }
+ul { padding-left: 1.2em; }
+button { font-family: inherit; }
+
+h1 { font-size: var(--text-hero); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: var(--text-h2);  font-weight: 800; letter-spacing: -0.015em; }
+h3 { font-size: var(--text-h3);  font-weight: 700; }
+
+.lead { font-size: var(--text-lead); color: var(--ink-2); }
+.wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: clamp(1.1rem, 4vw, 2rem); }
+
+/* ---------- Language toggle (CSS-driven) ----------
+   Every bilingual node: <span class="en">…</span><span class="zh">…</span>
+   html[data-lang] controls which shows. Default: en            */
+html[data-lang="en"] .zh { display: none !important; }
+html[data-lang="zh"] .en { display: none !important; }
+
+/* ---------- Buttons ----------
+   Monochrome pair: solid black (primary) / outline black (secondary+ghost),
+   each inverting fully on hover. Elements placed on a dark section (video
+   hero, footer) get their own override further down so black-on-black
+   never happens. */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  padding: 0.95em 1.9em;
+  border-radius: var(--radius-pill);
+  font-weight: 700; font-size: var(--text-small);
+  letter-spacing: 0.01em;
+  text-decoration: none; border: 2px solid transparent;
+  cursor: pointer; transition: background 200ms ease, color 200ms ease,
+    border-color 200ms ease, transform 200ms var(--ease), box-shadow 200ms ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--black); color: var(--white); border-color: var(--black); }
+.btn-primary:hover { background: var(--white); color: var(--black); border-color: var(--black); box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.35); }
+.btn-secondary, .btn-ghost { background: transparent; color: var(--black); border-color: var(--black); }
+.btn-secondary:hover, .btn-ghost:hover { background: var(--black); color: var(--white); }
+.btn-light { background: var(--white); color: var(--black); }
+.btn-light:hover { background: var(--surface-2); }
+.btn:focus-visible, a:focus-visible, button:focus-visible {
+  outline: 3px solid var(--black); outline-offset: 2px;
+}
+
+/* Dark-section context: invert the pairing so buttons stay visible against
+   a black/near-black backdrop (video heroes, footer) instead of disappearing. */
+.hero-v2 .btn-primary, .page-hero-video .btn-primary, .section-video .btn-primary, .site-footer .btn-primary {
+  background: var(--white); color: var(--black); border-color: var(--white);
+}
+.hero-v2 .btn-primary:hover, .page-hero-video .btn-primary:hover, .section-video .btn-primary:hover, .site-footer .btn-primary:hover {
+  background: transparent; color: var(--white); border-color: var(--white);
+}
+.hero-v2 .btn-secondary, .hero-v2 .btn-ghost,
+.page-hero-video .btn-secondary, .page-hero-video .btn-ghost,
+.section-video .btn-secondary, .section-video .btn-ghost,
+.site-footer .btn-secondary, .site-footer .btn-ghost {
+  color: var(--white); border-color: var(--white);
+}
+.hero-v2 .btn-secondary:hover, .hero-v2 .btn-ghost:hover,
+.page-hero-video .btn-secondary:hover, .page-hero-video .btn-ghost:hover,
+.section-video .btn-secondary:hover, .section-video .btn-ghost:hover,
+.site-footer .btn-secondary:hover, .site-footer .btn-ghost:hover {
+  background: var(--white); color: var(--black);
+}
+.hero-v2 .btn:focus-visible, .page-hero-video .btn:focus-visible, .section-video .btn:focus-visible, .site-footer .btn:focus-visible {
+  outline-color: var(--white);
+}
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  /* Solid bg (no backdrop-filter): a filter here would become the containing
+     block for the fixed-position mobile menu and break its layout */
+  position: sticky; top: 0; z-index: var(--z-sticky);
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 220ms ease;
+}
+.site-header.scrolled { box-shadow: 0 8px 28px -16px rgba(21, 31, 39, 0.22); }  /* navy-tinted */
+.nav {
+  display: flex; align-items: center; gap: 1.5rem;
+  max-width: var(--wrap); margin-inline: auto;
+  padding: 0.7rem clamp(1.1rem, 4vw, 2rem);
+}
+.nav-logo { flex-shrink: 0; }
+.nav-logo img { height: 36px; width: auto; }
+.nav-links {
+  display: flex; gap: clamp(0.8rem, 1.6vw, 1.6rem);
+  list-style: none; margin: 0 auto; padding: 0;
+}
+.nav-links li { white-space: nowrap; }
+.nav-links a {
+  text-decoration: none; font-weight: 600; font-size: var(--text-small);
+  color: var(--ink-2); padding: 0.5em 0.4em;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] { color: var(--black); border-color: var(--black); }
+.nav-cta { white-space: nowrap; flex-shrink: 0; }
+
+.lang-toggle {
+  /* flex-shrink:0 is required: overflow:hidden resets a flex item's automatic
+     min-width to 0, so without this the pill can shrink below its buttons'
+     content width under tight nav space and clip the 中文 label. */
+  display: inline-flex; flex-shrink: 0;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill); overflow: hidden;
+}
+.lang-toggle button {
+  white-space: nowrap;
+  border: 0; background: transparent; padding: 0.55em 1em;
+  font-weight: 700; font-size: 0.8rem; color: var(--ink-2); cursor: pointer;
+}
+.lang-toggle button.active { background: var(--ink); color: var(--white); }
+
+.nav-burger {
+  display: none; border: 0; background: none; cursor: pointer; padding: 0.4rem;
+}
+.nav-burger span {
+  display: block; width: 24px; height: 2.5px; background: var(--ink);
+  margin: 5px 0; border-radius: 2px; transition: transform 200ms ease, opacity 200ms ease;
+}
+
+@media (max-width: 1180px) {
+  .nav-links, .nav .nav-cta { display: none; }
+  /* Language toggle moves into the mobile menu below (.mobile-menu-lang);
+     hide the header's copy so the compact mobile bar isn't crowded. */
+  .nav .lang-toggle { display: none; }
+  .nav-burger { display: block; margin-left: auto; }
+  .mobile-menu {
+    position: fixed; inset: 0; top: 67px; z-index: var(--z-overlay);
+    background: var(--white); padding: 1.5rem; overflow-y: auto;
+    display: none; flex-direction: column; gap: 0.4rem;
+  }
+  .mobile-menu.open { display: flex; }
+  /* :not(.btn) keeps this generic link color from out-specificity-ing
+     .btn-primary's own color (class+tag beats single class, which made
+     the CTA button's white text render invisible on its black fill). */
+  .mobile-menu a:not(.btn) {
+    text-decoration: none; font-weight: 700; font-size: 1.15rem;
+    padding: 0.85rem 0.5rem; border-bottom: 1px solid var(--line); color: var(--ink);
+  }
+  .mobile-menu-lang {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 0.5rem 0.2rem; margin-top: 0.6rem;
+  }
+  .mobile-menu-lang-label { font-weight: 700; font-size: 0.95rem; color: var(--ink-2); }
+  .mobile-menu .btn { margin-top: 1.2rem; }
+}
+@media (min-width: 1181px) { .mobile-menu { display: none !important; } }
+
+/* ---------- Sticky WhatsApp button ---------- */
+.wa-float {
+  position: fixed; right: clamp(0.9rem, 2.5vw, 1.6rem); bottom: clamp(0.9rem, 2.5vw, 1.6rem);
+  z-index: var(--z-toast);
+  display: flex; align-items: center; gap: 0.55em;
+  background: var(--wa); color: var(--white);
+  padding: 0.8em 1.25em; border-radius: var(--radius-pill);
+  font-weight: 700; font-size: var(--text-small); text-decoration: none;
+  box-shadow: 0 10px 30px -8px rgba(37, 211, 102, 0.55);
+  transition: transform 200ms var(--ease), box-shadow 200ms ease;
+}
+.wa-float:hover { transform: translateY(-3px); box-shadow: 0 14px 34px -8px rgba(37, 211, 102, 0.65); }
+.wa-float svg { width: 22px; height: 22px; flex: none; }
+@media (max-width: 600px) { .wa-float .wa-label { display: none; } .wa-float { padding: 0.9em; } }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--black); color: oklch(88% 0 0); margin-top: var(--space-section); }
+.footer-cta {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+  padding: var(--space-block) 0; border-bottom: 1px solid oklch(35% 0 0);
+}
+.footer-cta h2 { color: var(--white); margin: 0; font-size: var(--text-h3); }
+.footer-cta-buttons { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+/* 3 buttons in a wrapping flex row produce an uneven 2-then-1 orphan line
+   in the ~500-767px zone (2 fit, 1 wraps alone) — reads as an accidental
+   layout bug rather than a deliberate one. Stack to one clean column
+   instead of leaving it to chance. */
+@media (max-width: 767px) {
+  .footer-cta { flex-direction: column; align-items: flex-start; }
+  .footer-cta-buttons { flex-direction: column; width: 100%; }
+  .footer-cta-buttons .btn { width: 100%; }
+}
+.footer-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem; padding: var(--space-block) 0;
+}
+.footer-grid h3 {
+  color: var(--white); font-size: var(--text-small); font-weight: 700;
+  margin-bottom: 0.9em;
+}
+.footer-grid ul { list-style: none; padding: 0; margin: 0; }
+.footer-grid li { margin-bottom: 0.55em; }
+.footer-grid a {
+  color: oklch(78% 0 0); text-decoration: none; font-size: var(--text-small);
+  display: inline-block; padding-block: 0.3em;  /* >=24px touch height */
+}
+.footer-grid .soc-pending { color: oklch(60% 0 0); font-size: var(--text-small); }
+.footer-grid a:hover { color: var(--white); }
+.footer-base {
+  display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
+  padding: 1.2rem 0 2rem; border-top: 1px solid oklch(35% 0 0);
+  font-size: 0.8rem; color: oklch(65% 0 0);
+}
+/* Required CC BY 3.0 attribution for the homepage coverage-map SVG (see
+   index.html footer comment) — kept minimal/muted, matching .footer-base. */
+.footer-credit { margin: -0.6rem 0 1.4rem; font-size: 0.72rem; color: oklch(58% 0 0); text-align: center; }
+.footer-credit a { color: inherit; }
+.footer-logo img { height: 34px; width: auto; }
+
+/* ---------- Scroll motion system (content visible by default; JS only enhances)
+   .reveal   = single element fade-rise (section heads, standalone blocks)
+   .stagger  = parent whose direct children rise in sequence (cards, grids, lists)
+   Both gated behind html.js + prefers-reduced-motion. ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .reveal { opacity: 0; transform: translateY(22px); }
+  html.js .reveal.in {
+    opacity: 1; transform: none;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  html.js .stagger > * { opacity: 0; transform: translateY(18px); }
+  html.js .stagger.in > * {
+    opacity: 1; transform: none;
+    transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  }
+  /* Sibling cadence, capped at ~420ms total */
+  html.js .stagger.in > *:nth-child(2) { transition-delay: 70ms; }
+  html.js .stagger.in > *:nth-child(3) { transition-delay: 140ms; }
+  html.js .stagger.in > *:nth-child(4) { transition-delay: 210ms; }
+  html.js .stagger.in > *:nth-child(5) { transition-delay: 280ms; }
+  html.js .stagger.in > *:nth-child(n+6) { transition-delay: 350ms; }
+}
+
+/* ---------- Screen-reader-only utility ---------- */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- Utilities ---------- */
+.section { padding-block: var(--space-section); }
+.section-tight { padding-block: var(--space-block); }
+.on-surface { background: var(--surface); }
+.center { text-align: center; }
+.center p { margin-inline: auto; }
+.section-head { max-width: 720px; margin-bottom: var(--space-block); }
+.section-head.center { margin-inline: auto; }

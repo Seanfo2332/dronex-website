@@ -1,0 +1,3965 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- Primary SEO -->
+<title>Drone X Malaysia | Commercial Drone Solutions &amp; Drone Entertainment</title>
+<meta name="description" content="Drone X Malaysia is a future-ready drone technology and aerial platform company designed to support Malaysia’s Low Altitude Economy through drone services, digital platform infrastructure, operational data, drone rental, pilot ecosystem support, agricultural drone deployment, marketplace connectivity and future ASEAN expansion." />
+<meta name="keywords" content="Drone X Malaysia, drone company Malaysia, drone service Malaysia, drone solutions Malaysia, commercial drone Malaysia, drone technology Malaysia, agriculture drone Malaysia, drone fertilizing Malaysia, drone spraying Malaysia, drone mapping Malaysia, aerial mapping Malaysia, drone survey Malaysia, drone delivery Malaysia, drone logistics Malaysia, drone solar panel cleaning Malaysia, building cleaning drone Malaysia, public safety drone Malaysia, drone monitoring Malaysia, drone show Malaysia, drone light show Malaysia, drone entertainment Malaysia, drone e-sport Malaysia, drone racing Malaysia, drone spot Malaysia, interactive drone experience Malaysia, aerial data Malaysia, drone data processing, aerial intelligence Malaysia" />
+<meta name="author" content="Drone X Malaysia" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://dronex-website.vercel.app/" />
+
+<!-- Geo targeting -->
+<meta name="geo.region" content="MY" />
+<meta name="geo.placename" content="Kuala Lumpur, Malaysia" />
+<meta name="geo.position" content="3.139;101.686" />
+<meta name="ICBM" content="3.139, 101.686" />
+
+<!-- Open Graph (Facebook / LinkedIn) -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dronex-website.vercel.app/" />
+<meta property="og:title" content="Drone X Malaysia | Commercial Drone Solutions &amp; Drone Entertainment" />
+<meta property="og:description" content="Drone X Malaysia is a future-ready drone technology and aerial platform company designed to support Malaysia’s Low Altitude Economy through drone services, digital platform infrastructure, operational data, drone rental, pilot ecosystem support, agricultural drone deployment, marketplace connectivity and future ASEAN expansion." />
+<meta property="og:site_name" content="Drone X Malaysia" />
+<meta property="og:locale" content="en_MY" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Drone X Malaysia | Commercial Drone Solutions &amp; Drone Entertainment" />
+<meta name="twitter:description" content="Drone X Malaysia is a future-ready drone technology and aerial platform company designed to support Malaysia’s Low Altitude Economy through drone services, digital platform infrastructure, operational data, drone rental, pilot ecosystem support, agricultural drone deployment, marketplace connectivity and future ASEAN expansion." />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Drone X Malaysia",
+  "description": "Drone X Malaysia is a future-ready drone technology and aerial platform company designed to support Malaysia’s Low Altitude Economy through drone services, digital platform infrastructure, operational data, drone rental, pilot ecosystem support, agricultural drone deployment, marketplace connectivity and future ASEAN expansion.",
+  "url": "https://dronex-website.vercel.app/",
+  "email": "contact@dronex.my",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Kuala Lumpur",
+    "addressRegion": "Wilayah Persekutuan",
+    "addressCountry": "MY"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 3.13944,
+    "longitude": 101.68694
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Malaysia"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Drone Solutions",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Agriculture Drone Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone Delivery Exploration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Aerial Mapping" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Building / Solar Cleaning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Public Sector Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone E-Sport" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone Show" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Drone Spot" } }
+    ]
+  },
+  "sameAs": []
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* =============================================
+     DRONEX HERO — IMPECCABLE / GSAP
+     ============================================= */
+  * { box-sizing: border-box; }
+  html { margin: 0; padding: 0; background: #000; }
+  body { margin: 0; padding: 0; background: #000; }
+
+  /* Hero overlay */
+  .unicorn-section {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: #d0d0d0;
+    overflow: hidden;
+    will-change: transform;
+  }
+
+  /* Stage */
+  #unicorn-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Edge vignette — pulls focus to drone center */
+  .h-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    background: radial-gradient(
+      ellipse 80% 80% at 50% 52%,
+      transparent 30%,
+      oklch(82% 0.008 235 / 0.6) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* ── SVG rings ── */
+  .h-rings {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .h-rings-svg {
+    /* fills the shorter dimension; never overflows */
+    width: clamp(320px, 96vmin, 960px);
+    height: clamp(320px, 96vmin, 960px);
+    overflow: visible;
+  }
+
+  /* ── Ring rotation — pure CSS so it works even without GSAP ── */
+  .rg-outer {
+    animation: rgOuterSpin 34s linear infinite;
+    transform-origin: 450px 450px;
+  }
+  .rg-inner {
+    animation: rgInnerSpin 22s linear infinite;
+    transform-origin: 450px 450px;
+  }
+  @keyframes rgOuterSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes rgInnerSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .rg-outer, .rg-inner { animation: none; }
+  }
+
+  /* ── Drone layer ── */
+  .h-drone {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    pointer-events: none;
+  }
+  /* GSAP will animate this wrapper (float, entrance) */
+  .h-drone-inner {
+    position: relative;
+    width: clamp(340px, 100vmin, 1280px);
+    display: grid;
+    cursor: crosshair;
+  }
+  /* Wire = base layer — renders below in DOM order */
+  .h-drone-wire {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: multiply;
+    opacity: 0.93;
+    pointer-events: none;
+  }
+  /* Real = top layer — hidden behind circular CSS mask, revealed by cursor */
+  .h-drone-real {
+    grid-area: 1 / 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    /* Spotlight vars — GSAP updates these every frame */
+    --mx: 50%;
+    --my: 50%;
+    --r:  0px;
+    -webkit-mask-image: radial-gradient(
+      circle var(--r) at var(--mx) var(--my),
+      black 25%, transparent 100%
+    );
+    mask-image: radial-gradient(
+      circle var(--r) at var(--mx) var(--my),
+      black 25%, transparent 100%
+    );
+  }
+  /* Touch reveal handled by JS — no static fallback needed */
+
+
+
+  /* ── DroneX wordmark ── */
+  .h-brand {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+  }
+  .h-brand-logo {
+    display: block;
+    width: clamp(160px, 22vw, 340px);
+    height: auto;
+    /* multiply removes white bg — black logo on light surface */
+    mix-blend-mode: multiply;
+  }
+
+  /* ── Scan label (mono coord) ── */
+  .h-coord {
+    position: absolute;
+    z-index: 5;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: oklch(40% 0.035 240 / 0.6); /* slate at 60% */
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .h-coord-tl { top: 28px; left: 32px; }
+  .h-coord-tr { top: 28px; right: 32px; text-align: right; }
+  .h-coord-bl { bottom: 28px; left: 32px; }
+  .h-coord-br { bottom: 28px; right: 32px; text-align: right; }
+
+  /* ── Scroll / Enter affordances ── */
+  .unicorn-scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: oklch(40% 0.035 240 / 0.55);
+    pointer-events: none;
+    transition: opacity 300ms ease;
+    white-space: nowrap;
+  }
+  .unicorn-tap-btn {
+    display: none;
+    position: absolute;
+    bottom: 36px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    color: oklch(18% 0.025 240 / 0.8);
+    background: transparent;
+    border: 1px solid oklch(40% 0.035 240 / 0.3);
+    padding: 13px 28px;
+    cursor: pointer;
+    pointer-events: auto;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 200ms ease, color 200ms ease;
+  }
+  .unicorn-tap-btn:active {
+    border-color: oklch(40% 0.035 240 / 0.6);
+    color: oklch(18% 0.025 240);
+  }
+  @media (max-width: 768px) {
+    .unicorn-scroll-hint { display: none; }
+    .unicorn-tap-btn { display: block; }
+  }
+  .unicorn-scroll-hint .drop {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom,
+      oklch(40% 0.035 240 / 0.55), transparent);
+    animation: dropLine 2.2s ease-in-out infinite;
+  }
+  @keyframes dropLine {
+    0%   { transform: scaleY(0) translateY(-100%); opacity: 0; }
+    40%  { transform: scaleY(1) translateY(0);     opacity: 1; }
+    100% { transform: scaleY(1) translateY(100%);  opacity: 0; }
+  }
+
+  /* =============================================
+     DRONEХ — DESIGN TOKENS & RESETS
+     ============================================= */
+  :root {
+    --navy:    #151F27;
+    --slate:   #495F77;
+    --sky:     #9DC1F5;
+    --cloud:   #E8ECEF;
+    --white:   #FFFFFF;
+    --black:   #000000;
+    --navy-1:  #1B262F;
+    --navy-2:  #202D38;
+    --rule:         rgba(73,95,119,.35);
+    --rule-soft:    rgba(73,95,119,.18);
+    --rule-strong:  rgba(73,95,119,.55);
+    --grid:         rgba(157,193,245,.04);
+    --f-display: "Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --f-body:    "Geist","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --f-mono:    "JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+    --gutter: clamp(20px,3.4vw,56px);
+    --maxw:   1440px;
+    --ease-aerial: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .dx {
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.6;
+    background: var(--navy);
+    color: var(--cloud);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .dx *, .dx *::before, .dx *::after { box-sizing: border-box; }
+  .dx ::selection { background: var(--sky); color: var(--navy); }
+  .dx a { color: inherit; text-decoration: none; }
+  .dx img { display: block; max-width: 100%; }
+
+  .dx .brand-stripe { height: 3px; background: var(--sky); width: 100%; }
+
+  .dx .container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+  .dx .rule      { height:1px; background:var(--rule);      width:100%; border:0; }
+  .dx .rule-soft { height:1px; background:var(--rule-soft); width:100%; border:0; }
+  .dx .mono {
+    font-family: var(--f-mono);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-size: 11px;
+    color: var(--slate);
+    font-weight: 400;
+  }
+  .dx .mono.cloud { color: var(--cloud); }
+  .dx .mono.sky   { color: var(--sky); }
+  .dx .lede {
+    font-family: var(--f-body);
+    font-size: clamp(15px,1.05vw,17px);
+    line-height: 1.65;
+    color: var(--cloud);
+    font-weight: 300;
+    max-width: 60ch;
+  }
+
+  /* ---------- Buttons ---------- */
+  .dx .btn {
+    display: inline-flex; align-items: center; gap: 14px;
+    padding: 18px 22px;
+    font-family: var(--f-mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase;
+    border-radius: 2px;
+    transition: background-color 240ms ease, color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
+    cursor: pointer; white-space: nowrap; border: 1px solid transparent; line-height: 1;
+  }
+  .dx .btn .arrow {
+    width:18px; height:1px; background:currentColor; position:relative; display:inline-block;
+    transition: width 260ms var(--ease-aerial);
+  }
+  .dx .btn .arrow::after {
+    content:""; position:absolute; right:-1px; top:-3px; width:7px; height:7px;
+    border-top:1px solid currentColor; border-right:1px solid currentColor; transform:rotate(45deg);
+  }
+  .dx .btn:hover .arrow { width: 28px; }
+  .dx .btn-primary { background:var(--sky); color:var(--navy); }
+  .dx .btn-primary:hover {
+    background:var(--cloud);
+    box-shadow: 0 0 0 1px rgba(157,193,245,0.30), 0 8px 28px -16px rgba(157,193,245,0.45);
+  }
+  .dx .btn-ghost { border-color:var(--slate); color:var(--cloud); background:transparent; }
+  .dx .btn-ghost:hover {
+    border-color:var(--sky); color:var(--sky);
+    background: rgba(157,193,245,0.06);
+  }
+
+  /* ---------- Nav ---------- */
+  .dx .nav {
+    position: -webkit-sticky; position: sticky; top: 0; z-index: 100;
+    background: rgba(21,31,39,.82);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(157,193,245,.12);
+  }
+  .dx .nav-inner {
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+  }
+  .dx .nav-logo { display:flex; align-items:center; }
+  .dx .nav-logo .wordmark { height:26px; width:auto; display:block; }
+  @media (max-width:520px){ .dx .nav-logo .wordmark{ height:22px; } }
+
+  /* ── Hamburger button (mobile only) ──────────────────────── */
+  .nav-hamburger {
+    display: none; position: relative;
+    align-items: center; justify-content: center;
+    width: 44px; height: 44px;
+    background: none; border: none; padding: 0; cursor: pointer;
+    -webkit-tap-highlight-color: transparent; flex-shrink: 0;
+    color: var(--cloud);
+  }
+  .nav-hamburger:hover { color: var(--sky); }
+  .hbg-drone, .hbg-close {
+    position: absolute; inset: 0; margin: auto;
+    transition: opacity 260ms ease, transform 300ms cubic-bezier(0.76,0,0.24,1);
+  }
+  .hbg-close { opacity: 0; transform: rotate(-45deg) scale(0.8); }
+  .nav-hamburger.open .hbg-drone { opacity: 0; transform: rotate(45deg) scale(0.8); }
+  .nav-hamburger.open .hbg-close { opacity: 1; transform: rotate(0deg) scale(1); }
+
+  /* ── Mobile full-screen menu ──────────────────────────────── */
+  .mobile-menu {
+    position: fixed; inset: 0; z-index: 90;
+    background: var(--navy);
+    display: flex; flex-direction: column;
+    transform: translateY(-100%);
+    transition: transform 480ms cubic-bezier(0.76, 0, 0.24, 1);
+    overflow-y: auto; overflow-x: hidden;
+    pointer-events: none;
+  }
+  .mobile-menu.open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mobile-menu-head {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px; padding: 0 clamp(20px, 5vw, 40px);
+    border-bottom: 1px solid var(--rule-soft); flex-shrink: 0;
+  }
+  .mobile-menu-head .wordmark { height: 22px; width: auto; }
+  .mobile-menu-close {
+    display: flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; background: none; border: none;
+    cursor: pointer; padding: 0; position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .mobile-menu-close::before,
+  .mobile-menu-close::after {
+    content: ''; position: absolute;
+    width: 20px; height: 1.5px; background: var(--cloud);
+    transition: background 200ms ease;
+  }
+  .mobile-menu-close::before { transform: rotate(45deg); }
+  .mobile-menu-close::after  { transform: rotate(-45deg); }
+  .mobile-menu-close:active::before,
+  .mobile-menu-close:active::after { background: var(--sky); }
+
+  .mobile-nav {
+    flex: 1; display: flex; flex-direction: column;
+    padding: 8px clamp(20px, 5vw, 40px) 0;
+  }
+  .mobile-nav-item {
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 20px 0; border-bottom: 1px solid var(--rule);
+    text-decoration: none; color: var(--white);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 400ms var(--ease-aerial),
+                transform 400ms var(--ease-aerial),
+                color 200ms ease;
+  }
+  .mobile-menu.open .mobile-nav-item { opacity: 1; transform: translateY(0); }
+  .mobile-menu.open .mobile-nav-item:nth-child(1) { transition-delay: 80ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(2) { transition-delay: 130ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(3) { transition-delay: 180ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(4) { transition-delay: 230ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(5) { transition-delay: 280ms; }
+  .mobile-menu.open .mobile-nav-item:nth-child(6) { transition-delay: 330ms; }
+  .mobile-nav-item:active { color: var(--sky); }
+  .mobile-nav-num {
+    font-family: var(--f-mono); font-size: 10px; letter-spacing: .22em;
+    text-transform: uppercase; color: var(--sky); flex-shrink: 0; padding-top: 4px;
+  }
+  .mobile-nav-label {
+    font-family: var(--f-display); font-size: clamp(1.7rem, 7vw, 2.6rem);
+    font-weight: 500; line-height: 1; letter-spacing: -0.02em;
+  }
+  .mobile-nav-sub {
+    display: flex; flex-direction: column; gap: 0;
+    padding: 0 0 4px 40px;
+  }
+  .mobile-nav-sub a {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--rule-soft);
+    text-decoration: none; color: var(--cloud);
+    font-family: var(--f-display); font-size: 14px; font-weight: 300;
+    transition: color 180ms ease;
+    opacity: 0; transform: translateY(8px);
+    transition: opacity 350ms var(--ease-aerial), transform 350ms var(--ease-aerial), color 180ms ease;
+  }
+  .mobile-nav-sub a:last-child { border-bottom: none; }
+  .mobile-menu.open .mobile-nav-sub a { opacity: 1; transform: translateY(0); }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(1) { transition-delay: 220ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(2) { transition-delay: 260ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(3) { transition-delay: 300ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(4) { transition-delay: 340ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(5) { transition-delay: 380ms; }
+  .mobile-menu.open .mobile-nav-sub a:nth-child(6) { transition-delay: 420ms; }
+  .mobile-nav-sub .sm-num {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .2em;
+    color: var(--slate); flex-shrink: 0;
+  }
+  .mobile-nav-sub a:active { color: var(--sky); }
+
+  /* ── Mobile accordion (dropdown) ─────────────────────────── */
+  .mobile-nav-accordion { border-bottom: 1px solid var(--rule); }
+  .mobile-nav-accordion-head {
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 20px 0; cursor: pointer;
+    text-decoration: none; color: var(--white);
+    opacity: 0; transform: translateY(14px);
+    transition: opacity 400ms var(--ease-aerial),
+                transform 400ms var(--ease-aerial),
+                color 200ms ease;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  .mobile-menu.open .mobile-nav-accordion-head { opacity: 1; transform: translateY(0); }
+  /* stagger: items 3 & 4 in the nav list */
+  .mobile-nav-accordion:nth-child(3) .mobile-nav-accordion-head { transition-delay: 180ms; }
+  .mobile-nav-accordion:nth-child(4) .mobile-nav-accordion-head { transition-delay: 230ms; }
+  .mobile-nav-accordion-caret {
+    margin-left: auto; width: 6px; height: 6px;
+    border-right: 1.5px solid var(--sky); border-bottom: 1.5px solid var(--sky);
+    transform: rotate(45deg); flex-shrink: 0; align-self: center;
+    transition: transform 280ms cubic-bezier(0.76, 0, 0.24, 1), border-color 220ms ease;
+  }
+  .mobile-nav-accordion.open .mobile-nav-accordion-caret { transform: rotate(225deg); }
+  .mobile-nav-accordion-body {
+    max-height: 0; overflow: hidden;
+    transition: max-height 380ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .mobile-nav-accordion.open .mobile-nav-accordion-body { max-height: 600px; }
+  .mobile-nav-accordion-eyebrow {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .24em;
+    text-transform: uppercase; color: var(--slate);
+    padding: 10px 0 10px 40px; display: block;
+    border-bottom: 1px solid var(--rule-soft);
+    margin-bottom: 4px;
+  }
+  .mobile-nav-accordion-sub {
+    display: flex; flex-direction: column;
+    padding: 0 0 8px 40px;
+  }
+  .mobile-nav-accordion-sub a {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--rule-soft);
+    text-decoration: none; color: var(--cloud);
+    font-family: var(--f-display); font-size: 14px; font-weight: 300;
+    transition: color 180ms ease, padding-left 180ms ease;
+  }
+  .mobile-nav-accordion-sub a:last-child { border-bottom: none; }
+  .mobile-nav-accordion-sub a:active,
+  .mobile-nav-accordion-sub a:hover { color: var(--sky); padding-left: 6px; }
+  .mobile-nav-accordion-sub .sm-num {
+    font-family: var(--f-mono); font-size: 9px; letter-spacing: .2em;
+    color: var(--slate); flex-shrink: 0;
+  }
+
+  .mobile-menu-foot {
+    padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px);
+    border-top: 1px solid var(--rule-soft); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .mobile-menu-foot .creds {
+    font-family: var(--f-mono); font-size: 10px; letter-spacing: .2em;
+    text-transform: uppercase; color: var(--slate);
+  }
+  .mobile-menu-foot .btn { font-size: 10px; padding: 14px 20px; }
+
+  /* ── Responsive show/hide ─────────────────────────────── */
+  @media (max-width: 860px) {
+    .dx .nav-list { display: none; }
+    .nav-hamburger { display: flex; }
+  }
+
+  .dx .nav-list {
+    display: flex; align-items: center; gap: 30px;
+    list-style: none; margin: 0; padding: 0;
+  }
+  .dx .nav-list li { position: relative; }
+  .dx .nav-list .caret {
+    display: inline-block; width:5px; height:5px;
+    border-right:1px solid var(--cloud); border-bottom:1px solid var(--cloud);
+    transform: rotate(45deg); margin-left: 6px; transform-origin: 55% 55%;
+    transition: transform 220ms ease, border-color 220ms ease; vertical-align: middle;
+  }
+  .dx .nav-list .has-menu:hover .caret,
+  .dx .nav-list .has-menu:focus-within .caret { transform:rotate(225deg); border-color:var(--sky); }
+
+  .dx .nav-list .submenu {
+    position: absolute; top: calc(100% + 14px); left: -20px;
+    min-width: 320px;
+    background: rgba(21,31,39,.96);
+    border: 1px solid var(--rule); border-top: 1px solid var(--sky);
+    padding: 18px 20px;
+    display: flex; flex-direction: column; gap: 2px;
+    opacity: 0; pointer-events: none; transform: translateY(-4px);
+    transition: opacity 200ms ease, transform 200ms ease;
+    z-index: 60;
+  }
+  .dx .nav-list .has-menu:hover > .submenu,
+  .dx .nav-list .has-menu:focus-within > .submenu { opacity:1; pointer-events:auto; transform:translateY(0); }
+  .dx .nav-list .submenu::before {
+    content:""; position:absolute; left:0; right:0; top:-14px; height:14px;
+  }
+  .dx .nav-list .submenu-eyebrow {
+    font-family:var(--f-mono); font-size:9px; letter-spacing:.24em; text-transform:uppercase;
+    color:var(--slate); padding-bottom:10px; margin-bottom:6px; border-bottom:1px solid var(--rule-soft);
+  }
+  .dx .nav-list .submenu a {
+    display:grid; grid-template-columns:36px 1fr; gap:10px; align-items:baseline;
+    padding:9px 6px; color:var(--cloud); font-family:var(--f-display); font-size:14px;
+    border-left:1px solid transparent;
+    transition: border-color 220ms ease, color 220ms ease, padding-left 220ms ease, background-color 220ms ease;
+  }
+  .dx .nav-list .submenu a::after { display:none; }
+  .dx .nav-list .submenu a .sm-num { font-family:var(--f-mono); font-size:10px; letter-spacing:.18em; color:var(--slate); }
+  .dx .nav-list .submenu a:hover { color:var(--white); border-left-color:var(--sky); padding-left:12px; background:rgba(157,193,245,.04); }
+  .dx .nav-list .submenu a:hover .sm-num { color:var(--sky); }
+
+  .dx .nav-list a {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--cloud); position:relative; padding:6px 0;
+    transition: opacity 260ms var(--ease-aerial), color 220ms ease;
+  }
+  /* Replaced underline scale with opacity fade — feels more premium and confident */
+  .dx .nav-list a:hover { opacity: 0.7; color: var(--white); }
+  .dx .nav-list a::after {
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:1px; background:var(--sky);
+    transform:scaleX(0); transform-origin:left; transition:transform 260ms ease;
+  }
+  .dx .nav-list a.active::after { transform:scaleX(1); }
+  /* Submenu and nav-cta still need the underline override */
+  .dx .nav-list .submenu a::after,
+  .dx .nav-list .nav-cta::after { display:none !important; }
+  .dx .nav-list .nav-cta:hover { opacity: 1; }
+
+  /* Nav CTA: border-only treatment, lighter touch in nav */
+  .dx .nav-cta {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.20em; text-transform:uppercase;
+    color:var(--sky); background:transparent;
+    border:1px solid var(--sky); padding:12px 22px; border-radius:2px;
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+  }
+  .dx .nav-cta:hover {
+    background:rgba(157,193,245,0.08); color:var(--white); border-color:var(--white);
+  }
+  .dx .nav-cta .arrow {
+    width:14px; height:1px; background:currentColor; position:relative; display:inline-block;
+    transition: width 240ms var(--ease-aerial);
+  }
+  .dx .nav-cta .arrow::after {
+    content:""; position:absolute; right:-1px; top:-3px; width:6px; height:6px;
+    border-top:1px solid currentColor; border-right:1px solid currentColor; transform:rotate(45deg);
+  }
+  .dx .nav-cta:hover .arrow { width: 22px; }
+  @media (max-width:1100px){ .dx .nav-list{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .dx .hero {
+    position:relative; height:100svh; min-height:560px; background:var(--navy); overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+
+  /* Video background */
+  .dx .hero-video {
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; object-fit:cover;
+    pointer-events:none;
+  }
+  /* Navy overlay — keeps brand palette, ensures text contrast */
+  .dx .hero-video-overlay {
+    position:absolute; inset:0; z-index:1;
+    background: linear-gradient(
+      160deg,
+      rgba(21,31,39,0.75) 0%,
+      rgba(21,31,39,0.55) 50%,
+      rgba(21,31,39,0.72) 100%
+    );
+    pointer-events:none;
+  }
+
+  .dx .hero-grid {
+    position:absolute; inset:0; z-index:2;
+    background-image:
+      linear-gradient(to right, rgba(157,193,245,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(157,193,245,0.06) 1px, transparent 1px);
+    background-size:80px 80px; pointer-events:none;
+  }
+  .dx .hero::before, .dx .hero::after {
+    content:""; position:absolute; pointer-events:none; z-index:4; width:14px; height:14px;
+  }
+  .dx .hero::before { top:96px; left:var(--gutter); border-top:1px solid var(--sky); border-left:1px solid var(--sky); }
+  .dx .hero::after  { bottom:96px; right:var(--gutter); border-bottom:1px solid var(--sky); border-right:1px solid var(--sky); }
+
+  .dx .hero-emblem {
+    position:absolute; right:-20vw; top:-8vw; width:80vw; max-width:1200px; aspect-ratio:1/1;
+    opacity:.06; pointer-events:none; z-index:2;
+  }
+  .dx .hero-emblem svg { width:100%; height:100%; display:block; }
+  .dx .hero-emblem .x-stroke {
+    fill: none;
+    stroke: var(--sky);
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: var(--len, 1800);
+    stroke-dashoffset: var(--len, 1800);
+    animation: drawStroke 2s var(--ease-aerial) forwards;
+  }
+  .dx .hero-emblem .x-stroke.s1 { animation-delay: 0.3s; }
+  .dx .hero-emblem .x-stroke.s2 { animation-delay: 1s; }
+  @keyframes drawStroke {
+    to { stroke-dashoffset: 0; }
+  }
+  /* Scroll-driven emblem parallax (modern browsers) */
+  @supports (animation-timeline: scroll()) {
+    .dx .hero-emblem {
+      animation: emblemParallax linear both;
+      animation-timeline: scroll();
+      animation-range: 0 40vh;
+    }
+    @keyframes emblemParallax {
+      from { transform: translateY(0) scale(1); opacity: 0.045; }
+      to   { transform: translateY(-8%) scale(1.06); opacity: 0; }
+    }
+  }
+
+  .dx .hero-chart-wrap {
+    position:absolute; right:-4vw; top:50%; transform:translateY(-50%);
+    width:64vw; max-width:1080px; aspect-ratio:1/0.78; pointer-events:none; z-index:3;
+    opacity: 0.5;
+  }
+  .dx .hero-chart { width:100%; height:100%; color:var(--slate); }
+
+  .dx .radar-sweep {
+    position:absolute; right:8vw; top:22%; width:32vw; max-width:460px; aspect-ratio:1/1;
+    pointer-events:none; z-index:3;
+  }
+  .dx .radar-sweep .sweep-blade { transform-origin:50% 50%; animation:sweep 8s linear infinite; }
+  @keyframes sweep    { from{transform:rotate(0)}   to{transform:rotate(360deg)} }
+  @keyframes pulseRing{ 0%{r:6;opacity:.9} 100%{r:30;opacity:0} }
+  @keyframes draw     { from{stroke-dashoffset:1800} to{stroke-dashoffset:0} }
+
+  .dx .hero-rail {
+    position:absolute; left:0; top:96px; bottom:140px; width:var(--gutter);
+    border-right:1px solid var(--rule-soft); pointer-events:none; z-index:2;
+  }
+  .dx .hero-rail .ticks {
+    position:absolute; inset:0;
+    background: linear-gradient(to bottom, transparent 0, transparent calc(100% - 1px), var(--rule-soft) 100%) 0 0/100% 12.5%;
+  }
+  .dx .hero-rail .vlabel {
+    position:absolute; left:8px;
+    font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate);
+    writing-mode:vertical-rl; transform:rotate(180deg);
+  }
+  .dx .hero-rail .vlabel.t { top:8px; }
+  .dx .hero-rail .vlabel.m { top:50%; transform:translateY(-50%) rotate(180deg); }
+  .dx .hero-rail .vlabel.b { bottom:8px; }
+
+  .dx .mission-bar {
+    border-bottom:1px solid var(--rule-soft); padding:14px 0;
+    display:grid; grid-template-columns:auto 1fr auto auto auto;
+    gap:32px; align-items:center;
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+    color:oklch(68% 0.018 240);
+    position:relative; z-index:2;
+  }
+  .dx .mission-bar .live { display:inline-flex; align-items:center; gap:10px; color:var(--cloud); }
+  .dx .mission-bar .live .rec { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--cloud); border:1px solid rgba(157,193,245,.3); padding:3px 6px; }
+  .dx .mission-bar .ticker { overflow:hidden; white-space:nowrap; mask-image:linear-gradient(to right,transparent,black 12%,black 88%,transparent); }
+  .dx .mission-bar .ticker-track { display:inline-flex; gap:48px; animation:scroll 40s linear infinite; }
+  @keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .dx .mission-bar .ticker-track span b { color:var(--cloud); font-weight:400; margin-right:8px; }
+  .dx .mission-bar .clock { color:oklch(75% 0.016 240); }
+  .dx .mission-bar .clock b { color:var(--white); font-weight:400; }
+
+  .dx .hero-body {
+    flex:1; display:flex; flex-direction:column; justify-content:center;
+    padding-top:clamp(32px,6vh,64px); padding-bottom:40px;
+    position:relative; z-index:2;
+  }
+  .dx .hero-body .hero-left {
+    display:flex; flex-direction:column; min-width:0;
+    max-width:min(55vw,700px);
+  }
+  .dx .hero-body .hero-right { display:none; }
+
+  .dx .hero-tag {
+    display:inline-flex; align-items:stretch; gap:0; margin-bottom:40px;
+    border:1px solid var(--rule); background:rgba(27,38,47,.75);
+  }
+  .dx .hero-tag .cell {
+    padding:9px 14px; font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--cloud); border-right:1px solid var(--rule-soft); display:flex; align-items:center; gap:8px;
+  }
+  .dx .hero-tag .cell:last-child { border-right:none; color:var(--sky); }
+  .dx .hero-tag .cell .marker { font-family:var(--f-mono); font-size:11px; color:var(--sky); margin-right:2px; }
+
+  .dx .hero-headline {
+    font-family:var(--f-display); font-weight:500;
+    font-size:clamp(3rem,5.5vw,8rem); line-height:0.9; letter-spacing:-0.03em;
+    color:var(--white); margin:0; position:relative;
+  }
+  .dx .hero-headline .l       { display:block; }
+  .dx .hero-headline .l-dim   { display:block; font-weight:300; color:oklch(93% 0.008 240 / 0.55); padding-left:0.15em; }
+  .dx .hero-headline .num {
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.22em;
+    color:var(--slate); vertical-align:super; margin-right:6px; font-weight:400; text-transform:uppercase;
+  }
+  .dx .hero-headline .arrow-glyph {
+    display:inline-block; width:.7em; height:.04em; background:var(--sky);
+    vertical-align:middle; margin:0 .25em 0 .15em; position:relative;
+  }
+  .dx .hero-headline .arrow-glyph::after {
+    content:""; position:absolute; right:0; top:-.18em; width:.18em; height:.18em;
+    border-top:.04em solid var(--sky); border-right:.04em solid var(--sky); transform:rotate(45deg);
+  }
+
+  .dx .hero-meta {
+    margin-top:40px;
+  }
+  .dx .hero-meta .lede { max-width:48ch; }
+  .dx .hero-meta .col h6 {
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.22em;
+    color:var(--slate); text-transform:uppercase; margin:0 0 14px; font-weight:400;
+    padding-bottom:10px; border-bottom:1px solid var(--rule-soft);
+  }
+  .dx .hero-meta .col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .dx .hero-meta .col li {
+    display:flex; align-items:baseline; gap:10px;
+    font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:300;
+  }
+  .dx .hero-meta .col li::before { content:""; width:8px; height:1px; background:var(--sky); flex:none; transform:translateY(-3px); }
+
+  .dx .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:28px; align-items:center; }
+  .dx .hero-actions .stat {
+    display:flex; flex-direction:column; gap:4px;
+    padding-left:18px; margin-left:8px; border-left:1px solid var(--rule-soft);
+  }
+  .dx .hero-actions .stat .k { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate); text-transform:uppercase; }
+  .dx .hero-actions .stat .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:400; }
+
+  .dx .hero-foot {
+    border-top:1px solid var(--rule); border-bottom:1px solid var(--rule);
+    display:grid; grid-template-columns:repeat(5,1fr) auto; gap:0; position:relative; z-index:2;
+  }
+  .dx .hero-foot .cell {
+    padding:16px 22px 16px 0; border-right:1px solid var(--rule-soft);
+    display:flex; flex-direction:column; gap:6px; min-width:0;
+  }
+  .dx .hero-foot .cell:first-child { padding-left:0; }
+  .dx .hero-foot .cell:last-child  { border-right:none; padding-right:0; }
+  .dx .hero-foot .cell .k { font-family:var(--f-mono); font-size:9px; letter-spacing:.22em; color:var(--slate); text-transform:uppercase; }
+  .dx .hero-foot .cell .v {
+    font-family:var(--f-mono); font-size:14px; letter-spacing:.04em; color:var(--white); font-weight:400;
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .dx .hero-foot .cell .v small { font-size:9px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; }
+  .dx .hero-foot .scroll {
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--f-mono); font-size:10px; letter-spacing:.24em; color:var(--cloud); text-transform:uppercase;
+    padding:16px 0 16px 22px; border-left:1px solid var(--rule-soft);
+  }
+  .dx .hero-foot .scroll .down {
+    width:1px; height:18px; background:var(--cloud); animation:drop 2.4s ease-in-out infinite;
+  }
+  @keyframes drop { 0%{transform:translateY(-6px);opacity:.2} 50%{transform:translateY(0);opacity:1} 100%{transform:translateY(6px);opacity:.2} }
+
+  @media (max-width:1100px){ .dx .hero-meta{ grid-template-columns:1.2fr 1fr; } .dx .hero-meta .col.last{ display:none; } }
+  @media (max-width:860px){
+    .dx .hero-rail{ display:none; }
+    .dx .hero-chart-wrap{ width:130vw; right:-30vw; opacity:.35; }
+    .dx .radar-sweep{ display:none; }
+    .dx .hero-emblem{ width:120vw; right:-30vw; top:-10vw; }
+    /* Hero body: full width on mobile */
+    .dx .hero-body .hero-left{ max-width:100%; width:100%; }
+    .dx .hero-body{ padding-top:clamp(20px,5vh,48px); padding-bottom:24px; }
+    /* Hero tag: wrap and trim to 2 cells */
+    .dx .hero-tag{ flex-wrap:wrap; }
+    .dx .hero-tag .cell:nth-child(n+3){ display:none; }
+    /* Hero headline */
+    .dx .hero-headline{ font-size:clamp(2.8rem,10vw,5rem); }
+    .dx .hero-headline .indent{ padding-left:0; }
+    /* Hero meta */
+    .dx .hero-meta{ margin-top:24px; }
+    .dx .hero-meta .lede{ font-size:15px; max-width:100%; }
+    /* Hero actions: stack on mobile */
+    .dx .hero-actions{ margin-top:28px; flex-direction:column; gap:10px; }
+    .dx .hero-actions .btn{ width:100%; justify-content:center; }
+    /* Hero foot: 2-col, hide excess cells */
+    .dx .hero-foot{ grid-template-columns:1fr 1fr; }
+    .dx .hero-foot .cell:nth-child(n+3){ display:none; }
+    .dx .hero-foot .scroll{ grid-column:1/-1; border-left:none; padding-left:0; padding-top:8px; border-top:1px solid var(--rule-soft); }
+    /* Mission bar */
+    .dx .mission-bar{ grid-template-columns:auto 1fr auto; gap:14px; }
+    .dx .mission-bar .ticker, .dx .mission-bar .clock{ display:none; }
+    /* Section heads: hide decorative rule line */
+    .dx .section-head .line{ display:none; }
+    .dx .section-head{ margin-bottom:36px; }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════
+     PLANTATION ANIMATION — CINEMATIC SCROLL SEQUENCE
+  ═══════════════════════════════════════════════════════════════ */
+
+  #plantation-anim {
+    position: relative;
+    height: 450vh;
+  }
+
+  .pl-pin {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #020608;
+  }
+
+  /* ── Background photo ── */
+  .pl-bg-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .pl-bg-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 38%;
+    display: block;
+    opacity: 0;
+    transform: scale(1.07);
+  }
+  .pl-bg-dark {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to right,
+        rgba(2,6,8,.97)  0%,
+        rgba(2,6,8,.82) 26%,
+        rgba(2,6,8,.46) 50%,
+        rgba(2,6,8,.18) 72%,
+        rgba(2,6,8,.08) 100%
+      ),
+      linear-gradient(to bottom,
+        rgba(2,6,8,.60) 0%,
+        transparent 22%,
+        transparent 78%,
+        rgba(2,6,8,.75) 100%
+      );
+  }
+  .pl-bg-gold {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 65% 55%,
+      oklch(42% 0.14 68 / 0.50) 0%,
+      oklch(28% 0.08 80 / 0.22) 45%,
+      transparent 68%
+    );
+    opacity: 0;
+  }
+
+  /* ── Drone photo ── */
+  .pl-drone-layer {
+    position: absolute;
+    right: -6%;
+    top: 0;
+    width: 78%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  .pl-drone-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right 38%;
+    mix-blend-mode: screen;
+  }
+
+  /* ── HUD targeting overlay ── */
+  .pl-hud-layer {
+    position: absolute;
+    right: 3.5%;
+    bottom: 17%;
+    width: clamp(220px, 32vw, 460px);
+    height: clamp(148px, 20vh, 280px);
+    z-index: 8;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pl-reticle-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .pl-scan-rect {
+    animation: plScanDash 6s linear infinite;
+  }
+  @keyframes plScanDash {
+    to { stroke-dashoffset: -520; }
+  }
+  .pl-cover-rect { opacity: 0; }
+
+  .pl-scan-sweep {
+    position: absolute;
+    left: 0; right: 0;
+    top: 0;
+    height: 1.5px;
+    background: linear-gradient(to right,
+      transparent 0%,
+      oklch(62% 0.22 150 / 0.6) 30%,
+      oklch(68% 0.24 155) 50%,
+      oklch(62% 0.22 150 / 0.6) 70%,
+      transparent 100%
+    );
+    box-shadow: 0 0 10px 1px oklch(62% 0.22 150 / 0.5);
+    opacity: 0;
+  }
+  .pl-scan-sweep.pl-scanning {
+    animation: plSweep 2.2s ease-in-out infinite;
+  }
+  @keyframes plSweep {
+    0%   { top: 0%;   opacity: 0; }
+    6%   { opacity: 1; }
+    92%  { opacity: 0.7; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* ── Spray canvas ── */
+  .pl-spray-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 6;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pl-spray-canvas { width: 100%; height: 100%; display: block; }
+
+  /* ── Left editorial text ── */
+  .pl-text-panel {
+    position: absolute;
+    left: clamp(24px, 5.5vw, 88px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 15;
+    width: clamp(260px, 36vw, 540px);
+    pointer-events: none;
+  }
+  .pl-phase-block {
+    position: absolute;
+    top: 0; left: 0;
+    opacity: 0;
+    transform: translateY(18px);
+    pointer-events: none;
+    transition: opacity .45s ease, transform .45s ease;
+  }
+  .pl-phase-block.pl-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .pl-phase-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .28em;
+    color: oklch(62% 0.22 150);
+    display: block;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+  }
+  .pl-ph {
+    font-family: var(--f-display);
+    font-size: clamp(2.2rem, 4.8vw, 4.4rem);
+    font-weight: 700;
+    line-height: 1.04;
+    color: oklch(96% 0.005 240);
+    margin: 0 0 18px;
+    letter-spacing: -.025em;
+  }
+  .pl-ph em {
+    font-style: italic;
+    color: oklch(64% 0.22 150);
+  }
+  .pl-ph-body {
+    font-family: var(--f-body);
+    font-size: clamp(.82rem, 1.1vw, .97rem);
+    line-height: 1.68;
+    color: oklch(68% 0.02 220);
+    margin: 0 0 26px;
+    max-width: 330px;
+  }
+  .pl-cta-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .pl-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: oklch(62% 0.22 150);
+    animation: plPulse 1.7s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes plPulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50%     { opacity: .35; transform: scale(.65); }
+  }
+  .pl-cta-text {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .24em;
+    color: oklch(50% 0.04 220);
+    text-transform: uppercase;
+  }
+
+  /* ── Right data HUD ── */
+  .pl-data-hud {
+    position: absolute;
+    right: clamp(18px, 3vw, 48px);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pl-data-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+  }
+  .pl-dk {
+    font-family: var(--f-mono);
+    font-size: 8px;
+    letter-spacing: .30em;
+    color: oklch(45% 0.04 200);
+    text-transform: uppercase;
+  }
+  .pl-dv {
+    font-family: var(--f-mono);
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    font-weight: 700;
+    line-height: 1;
+    color: oklch(76% 0.08 200);
+    font-variant-numeric: tabular-nums;
+    min-width: 3ch;
+    text-align: right;
+  }
+  .pl-du {
+    font-family: var(--f-mono);
+    font-size: 8px;
+    color: oklch(42% 0.04 200);
+  }
+  .pl-sys-val {
+    font-size: clamp(.75rem, 1.1vw, .9rem);
+    letter-spacing: .14em;
+    color: oklch(50% 0.06 200);
+  }
+  .pl-active-spray {
+    color: oklch(64% 0.22 150) !important;
+    animation: plBlink 1.1s ease-in-out infinite;
+  }
+  @keyframes plBlink {
+    0%,100% { opacity: 1; }
+    50%     { opacity: .35; }
+  }
+
+  /* ── Bottom progress strip ── */
+  .pl-progress {
+    position: absolute;
+    bottom: clamp(18px, 3.5vh, 36px);
+    left: clamp(24px, 5.5vw, 88px);
+    right: clamp(18px, 3vw, 48px);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .pl-prog-track {
+    width: 100%;
+    height: 1px;
+    background: oklch(25% 0.02 220);
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pl-prog-bar {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    width: 0%;
+    background: oklch(62% 0.22 150);
+    box-shadow: 0 0 8px oklch(62% 0.22 150 / 0.7);
+  }
+  .pl-prog-labels {
+    display: flex;
+    justify-content: space-between;
+  }
+  .pl-prog-lbl {
+    font-family: var(--f-mono);
+    font-size: 8.5px;
+    letter-spacing: .18em;
+    color: oklch(38% 0.03 220);
+    text-transform: uppercase;
+    transition: color .3s ease;
+  }
+  .pl-prog-lbl.pl-lbl-active { color: oklch(62% 0.22 150); }
+
+  /* ── Corner brackets ── */
+  .pl-corner {
+    position: absolute;
+    width: 22px; height: 22px;
+    z-index: 25;
+    pointer-events: none;
+    opacity: .45;
+  }
+  .pl-tl { top: 18px;    left: 18px;    border-top: 1px solid oklch(62% 0.22 150 / .55); border-left: 1px solid oklch(62% 0.22 150 / .55); }
+  .pl-tr { top: 18px;    right: 18px;   border-top: 1px solid oklch(62% 0.22 150 / .55); border-right: 1px solid oklch(62% 0.22 150 / .55); }
+  .pl-bl { bottom: 18px; left: 18px;    border-bottom: 1px solid oklch(62% 0.22 150 / .55); border-left: 1px solid oklch(62% 0.22 150 / .55); }
+  .pl-br { bottom: 18px; right: 18px;   border-bottom: 1px solid oklch(62% 0.22 150 / .55); border-right: 1px solid oklch(62% 0.22 150 / .55); }
+
+  @media (max-width: 768px) {
+    .pl-drone-layer  { right: -18%; width: 95%; }
+    .pl-hud-layer    { right: 2%; width: 58vw; bottom: 24%; }
+    .pl-data-hud     { right: 10px; gap: 14px; }
+    .pl-dv           { font-size: 1.2rem; }
+    .pl-ph           { font-size: clamp(1.8rem, 8vw, 3rem); }
+  }
+
+  /* ═══════════════════════════════════════════════════════════════ */
+
+  /* ---------- Section frame ---------- */
+  .dx section.frame { padding:clamp(80px,9vw,144px) 0; position:relative; overflow:hidden; }
+  .dx .section-head { display:flex; align-items:baseline; gap:16px; margin-bottom:56px; flex-wrap:wrap; position:relative; z-index:2; }
+  /* The container inside section frames sits above the background numeric */
+  .dx section.frame > .container { position:relative; z-index:2; }
+  /* Giant background section number — typographic anchor */
+  .dx .section-bgnum {
+    position:absolute;
+    top: 6vw;
+    left: 0;
+    font-family: var(--f-mono);
+    font-size: clamp(8rem, 15vw, 20rem);
+    font-weight: 700;
+    color: rgba(73,95,119,0.08);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    white-space: nowrap;
+  }
+  /* Light-bg variants tone the bgnum down differently */
+  .dx .about-light .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .tech-light  .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .partners-light .section-bgnum { color: rgba(21,31,39,0.05); }
+  .dx .section-head .num   { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); }
+  .dx .section-head .title { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--cloud); text-transform:uppercase; }
+  .dx .section-head .line  { flex:1; height:1px; background:var(--rule-soft); min-width:80px; }
+  .dx .section-head .meta  { font-family:var(--f-mono); font-size:11px; color:var(--slate); letter-spacing:.18em; }
+
+  /* ---------- About ---------- */
+  .dx .about { display:grid; grid-template-columns:5fr 7fr; gap:clamp(32px,5vw,96px); align-items:start; position:relative; }
+  .dx .about-quote .pq { font-family:var(--f-display); font-weight:400; font-size:clamp(2.6rem,4.2vw,4.6rem); line-height:1.0; letter-spacing:-0.025em; color:var(--white); margin:0; }
+  .dx .about-quote .pq em { font-style:italic; font-weight:400; color:var(--sky); }
+  .dx .about-quote .annot { margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:18px; border-top:1px solid var(--rule-soft); padding-top:18px; max-width:380px; }
+  .dx .about-quote .annot .k { font-family:var(--f-mono); font-size:10px; color:var(--slate); letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:6px; }
+  .dx .about-quote .annot .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; }
+  .dx .about-copy { padding-left:24px; border-left:1px solid var(--sky); }
+  .dx .about-copy p { font-family:var(--f-body); font-size:clamp(16px,1.2vw,19px); color:var(--cloud); line-height:1.65; font-weight:300; margin:0 0 22px; max-width:60ch; }
+  .dx .about-copy p strong { color:var(--white); font-weight:500; }
+  .dx .about-copy .meta-row { display:flex; gap:48px; flex-wrap:wrap; margin-top:32px; border-top:1px solid var(--rule-soft); padding-top:24px; }
+  .dx .about-copy .meta-row .item .k { font-family:var(--f-mono); font-size:10px; color:var(--slate); letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:8px; }
+  .dx .about-copy .meta-row .item .v { font-family:var(--f-display); font-size:15px; color:var(--cloud); font-weight:400; }
+  @media (max-width:960px){ .dx .about{ grid-template-columns:1fr; } .dx .about-copy{ border-left:none; border-top:1px solid var(--sky); padding-left:0; padding-top:24px; margin-top:8px; } }
+  @media (max-width:640px){
+    .dx .about-copy .meta-row{ gap:24px; }
+    .dx .about-copy p{ font-size:16px; }
+    .dx .about-quote .pq{ font-size:clamp(2rem,9vw,3rem); }
+    .dx .ent-product h4{ font-size:22px; }
+    .dx .ent-grid .lead h2{ font-size:clamp(2.2rem,8vw,3.6rem); }
+    .dx .pillar h3{ font-size:clamp(2rem,8vw,3rem); }
+    .dx section.frame{ padding:clamp(56px,7vw,80px) 0; }
+  }
+
+  /* ---------- Pillars ---------- */
+  .dx .pillars { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); margin-top:8px; }
+  .dx .pillar { padding:clamp(40px,5vw,80px) clamp(20px,3vw,48px) clamp(40px,5vw,80px) 0; position:relative; }
+  .dx .pillar + .pillar { border-left:1px solid var(--rule); padding-left:clamp(20px,3vw,48px); }
+  .dx .pillar .pkey { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:36px; }
+  .dx .pillar .pkey .bar { width:24px; height:1px; background:var(--sky); }
+  .dx .pillar h3 { font-family:var(--f-display); font-size:clamp(2.4rem,4.95vw,5rem); line-height:0.94; letter-spacing:-.035em; margin:0 0 28px; color:var(--white); font-weight:500; }
+  .dx .pillar h3 .it { font-style:italic; font-weight:400; color:var(--cloud); }
+  .dx .pillar p  { color:var(--cloud); font-weight:300; line-height:1.6; max-width:46ch; margin:0 0 28px; font-size:16px; }
+  .dx .pillar .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+  .dx .pillar .tags span { font-family:var(--f-mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--cloud); border:1px solid var(--rule); padding:7px 10px; border-radius:2px; }
+  @media (max-width:860px){ .dx .pillars{ grid-template-columns:1fr; } .dx .pillar + .pillar{ border-left:none; border-top:1px solid var(--rule); padding-left:0; } }
+
+  /* ---------- Services section video ---------- */
+  .dx .services-video {
+    position:absolute; inset:0; z-index:0;
+    width:100%; height:100%; object-fit:cover;
+    opacity:0.45; pointer-events:none;
+  }
+  .dx .services-overlay {
+    position:absolute; inset:0; z-index:1;
+    background:linear-gradient(160deg, rgba(21,31,39,0.65) 0%, rgba(21,31,39,0.50) 50%, rgba(21,31,39,0.70) 100%);
+    pointer-events:none;
+  }
+
+  /* ---------- Services ---------- */
+  .dx .svc {
+    display:grid; grid-template-columns:100px 1fr 180px; gap:24px;
+    padding:36px 0; border-top:1px solid var(--rule); align-items:start; position:relative;
+    transition:padding-left 260ms ease;
+  }
+  .dx .svc::before { content:""; position:absolute; left:-1px; top:0; bottom:0; width:1px; background:var(--sky); transform:scaleY(0); transform-origin:top; transition:transform 320ms ease; }
+  .dx .svc:hover::before { transform:scaleY(1); }
+  .dx .svc:hover { padding-left:14px; }
+  .dx .svc:last-child { border-bottom:1px solid var(--rule); }
+  .dx .svc .num { font-family:var(--f-mono); font-size:clamp(48px,5vw,72px); line-height:0.9; color:var(--rule); font-weight:300; letter-spacing:-.02em; }
+  .dx .svc .body h4 { font-family:var(--f-display); font-weight:500; font-size:clamp(22px,2vw,30px); line-height:1.1; letter-spacing:-.015em; margin:0 0 12px; color:var(--white); }
+  .dx .svc .body p  { color:var(--cloud); font-weight:300; line-height:1.55; margin:0; font-size:15px; max-width:52ch; }
+  .dx .svc .meta .k { font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--slate); display:block; margin-bottom:8px; }
+  .dx .svc .meta .v { font-family:var(--f-display); color:var(--cloud); font-size:14px; line-height:1.5; }
+  @media (max-width:720px){ .dx .svc{ grid-template-columns:64px 1fr; } .dx .svc .meta{ grid-column:1/-1; } .dx .svc .num{ font-size:38px; } }
+
+  /* ---------- Entertainment ---------- */
+  .dx .entertainment { background:var(--navy-1); position:relative; overflow:hidden; border-top:1px solid var(--rule-soft); border-bottom:1px solid var(--rule-soft); }
+  .dx .entertainment::before {
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(to right,rgba(157,193,245,.04) 1px,transparent 1px),linear-gradient(to bottom,rgba(157,193,245,.04) 1px,transparent 1px);
+    background-size:48px 48px; pointer-events:none;
+    mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+    -webkit-mask-image:linear-gradient(to bottom,transparent,black 30%,black 70%,transparent);
+  }
+  .dx .show-bg { position:absolute; inset:0; pointer-events:none; opacity:.55; }
+  .dx .ent-grid { display:grid; grid-template-columns:7fr 5fr; gap:clamp(32px,5vw,80px); align-items:start; position:relative; z-index:1; }
+  .dx .ent-grid .lead h2 { font-family:var(--f-display); font-size:clamp(3rem,6.6vw,7.15rem); font-weight:500; line-height:0.94; letter-spacing:-.035em; margin:24px 0 24px; color:var(--white); max-width:18ch; }
+  .dx .ent-grid .lead h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .ent-grid .lead p { color:var(--cloud); font-weight:300; font-size:17px; max-width:52ch; margin:0; }
+  .dx .ent-products { display:flex; flex-direction:column; gap:32px; border-top:1px solid var(--rule-soft); padding-top:32px; }
+  .dx .ent-product { display:grid; grid-template-columns:64px 1fr; gap:18px; padding-bottom:32px; border-bottom:1px solid var(--rule-soft); }
+  .dx .ent-product:last-child { border-bottom:none; padding-bottom:0; }
+  .dx .ent-product .id { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--sky); }
+  .dx .ent-product h4 { font-family:var(--f-display); font-size:26px; line-height:1; color:var(--white); font-weight:500; margin:0 0 10px; letter-spacing:-.01em; }
+  .dx .ent-product p  { color:var(--cloud); font-size:15px; font-weight:300; line-height:1.55; margin:0; }
+  @media (max-width:960px){ .dx .ent-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Tech & Data ---------- */
+  .dx .tech-grid { display:grid; grid-template-columns:4fr 8fr; gap:clamp(32px,5vw,96px); align-items:start; }
+  .dx .tech-grid h2 { font-family:var(--f-display); font-size:clamp(2rem,3.6vw,3.4rem); line-height:1; letter-spacing:-.022em; color:var(--white); font-weight:500; margin:0 0 24px; max-width:14ch; }
+  .dx .tech-grid h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .tech-grid .blurb { color:var(--cloud); font-weight:300; font-size:16px; max-width:36ch; }
+  .dx .specsheet { border-top:1px solid var(--rule); }
+  .dx .spec { display:grid; grid-template-columns:80px 1fr 1fr 220px; gap:24px; padding:22px 0; border-bottom:1px solid var(--rule-soft); align-items:baseline; transition:background-color 220ms ease; }
+  .dx .spec:hover { background:rgba(157,193,245,.04); }
+  .dx .spec .id    { font-family:var(--f-mono); font-size:11px; color:var(--slate); letter-spacing:.2em; }
+  .dx .spec .label { font-family:var(--f-display); color:var(--white); font-weight:500; font-size:18px; letter-spacing:-.01em; }
+  .dx .spec .value { font-family:var(--f-display); color:var(--cloud); font-weight:300; font-size:15px; }
+  .dx .spec .unit  { font-family:var(--f-mono); font-size:10px; color:var(--sky); letter-spacing:.2em; text-transform:uppercase; text-align:right; }
+  @media (max-width:760px){
+    .dx .tech-grid{ grid-template-columns:1fr; }
+    .dx .spec{
+      grid-template-columns:44px 1fr auto;
+      grid-template-rows:auto auto;
+      column-gap:12px; row-gap:4px;
+      padding:16px 0;
+    }
+    .dx .spec .id   { grid-row:1; grid-column:1; font-size:9px; padding-top:2px; }
+    .dx .spec .label{ grid-row:1; grid-column:2; font-size:16px; }
+    .dx .spec .unit { grid-row:1; grid-column:3; text-align:right; align-self:center; font-size:9px; color:var(--sky); letter-spacing:.18em; }
+    .dx .spec .value{ grid-row:2; grid-column:1/-1; padding-left:56px; font-size:13px; color:oklch(68% 0.018 240); }
+  }
+
+  /* ---------- Partners ---------- */
+  .dx .partner-row { display:flex; flex-direction:column; }
+  .dx .prow {
+    display:grid; grid-template-columns:140px 1fr 1fr; gap:24px;
+    padding:22px 0; border-bottom:1px solid var(--rule-soft); align-items:baseline;
+    transition:padding-left 240ms ease, background-color 240ms ease; position:relative;
+  }
+  .dx .prow::before { content:""; position:absolute; left:-1px; top:0; bottom:0; width:1px; background:var(--sky); transform:scaleY(0); transform-origin:top; transition:transform 280ms ease; }
+  .dx .prow:hover { padding-left:14px; }
+  .dx .prow:hover::before { transform:scaleY(1); }
+  .dx .prow .pcat  { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--slate); }
+  .dx .prow .pname { font-family:var(--f-display); color:var(--white); font-size:18px; font-weight:500; letter-spacing:-.01em; }
+  .dx .prow .pmeta { font-family:var(--f-display); color:var(--cloud); font-size:14px; font-weight:300; }
+  @media (max-width:720px){ .dx .prow{ grid-template-columns:1fr; gap:6px; padding:18px 0; } }
+
+  /* ---------- Partnership CTA ---------- */
+  .dx .partner { background:var(--navy); position:relative; overflow:hidden; border-top:1px solid var(--rule); }
+  .dx .partner-inner { padding:clamp(80px,9vw,160px) 0; display:grid; grid-template-columns:8fr 4fr; gap:clamp(32px,5vw,96px); align-items:end; position:relative; z-index:2; }
+  .dx .partner-inner h2 { font-family:var(--f-display); font-size:clamp(2.85rem,6vw,6.6rem); line-height:0.96; letter-spacing:-.035em; color:var(--white); font-weight:500; margin:24px 0 0; max-width:22ch; }
+  .dx .partner-inner h2 em { font-style:italic; color:var(--sky); font-weight:400; }
+  .dx .partner-inner .right { display:flex; flex-direction:column; gap:24px; border-left:1px solid var(--sky); padding-left:24px; }
+  .dx .partner-inner .right p { color:var(--cloud); font-weight:300; font-size:15px; margin:0; line-height:1.55; }
+  .dx .partner-emblem { position:absolute; right:-8vw; bottom:-12vw; width:45vw; max-width:560px; aspect-ratio:1/1; color:var(--sky); opacity:.05; pointer-events:none; z-index:1; }
+  @media (max-width:860px){ .dx .partner-inner{ grid-template-columns:1fr; } }
+  .dx .partner.slate { background:var(--slate); }
+  .dx .partner.slate .section-head .num   { color:var(--cloud); }
+  .dx .partner.slate .section-head .title { color:var(--white); }
+  .dx .partner.slate .section-head .line  { background:rgba(232,236,239,.25); }
+  .dx .partner.slate .section-head .meta  { color:var(--cloud); }
+  .dx .partner.slate .partner-emblem      { color:var(--white); opacity:.06; }
+  .dx .partner.slate .right               { border-left-color:var(--white); }
+  .dx .partner.slate .right p             { color:var(--cloud); }
+  .dx .partner.slate .btn-primary         { background:var(--white); color:var(--navy); }
+  .dx .partner.slate .btn-primary:hover   { background:var(--sky); }
+
+  /* ---------- Light variants ---------- */
+  .dx .about-light { background:var(--white); color:var(--navy); }
+  .dx .about-light .section-head .num   { color:var(--slate); }
+  .dx .about-light .section-head .title { color:var(--navy); }
+  .dx .about-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .about-light .section-head .meta  { color:var(--slate); }
+  .dx .about-light .about-quote .pq     { color:var(--navy); }
+  .dx .about-light .about-quote .pq em  { color:var(--slate); }
+  .dx .about-light .about-quote .annot  { border-top-color:rgba(73,95,119,.3); }
+  .dx .about-light .about-quote .annot .k { color:var(--slate); }
+  .dx .about-light .about-quote .annot .v { color:var(--navy); }
+  .dx .about-light .about-copy         { border-left-color:var(--slate); }
+  .dx .about-light .about-copy p       { color:var(--slate); }
+  .dx .about-light .about-copy p strong{ color:var(--navy); }
+  .dx .about-light .about-copy .meta-row { border-top-color:rgba(73,95,119,.3); }
+  .dx .about-light .about-copy .meta-row .item .k { color:var(--slate); }
+  .dx .about-light .about-copy .meta-row .item .v { color:var(--navy); }
+  @media (max-width:960px){ .dx .about-light .about-copy{ border-top-color:var(--slate); } }
+
+  .dx .partners-light { background:var(--white); color:var(--navy); border-top:1px solid rgba(73,95,119,.3); border-bottom:1px solid rgba(73,95,119,.3); }
+  .dx .partners-light .section-head .num   { color:var(--slate); }
+  .dx .partners-light .section-head .title { color:var(--navy); }
+  .dx .partners-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .partners-light .section-head .meta  { color:var(--slate); }
+  .dx .partners-light .prow                { border-bottom-color:rgba(73,95,119,.25); }
+  .dx .partners-light .prow .pcat          { color:var(--slate); }
+  .dx .partners-light .prow .pname         { color:var(--navy); }
+  .dx .partners-light .prow .pmeta         { color:var(--slate); }
+  .dx .partners-light .prow:hover          { background:rgba(73,95,119,.06); }
+
+  /* ---------- Tech Light (cloud bg) ---------- */
+  .dx .tech-light { background:var(--cloud); color:var(--navy); border-top:1px solid rgba(73,95,119,.3); border-bottom:1px solid rgba(73,95,119,.3); }
+  /* ---------- Technology — dark video background ---------- */
+  /* ---------- Technology section — video on right, text protected on left ---------- */
+
+  /* Section stays on original cloud/white — only position:relative added */
+  .dx .tech-light {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Video fills the entire section — no clip */
+  .dx .tech-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  /* Light cloud overlay — reverted to Image 23 look, video visible */
+  .dx .tech-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgba(232,236,239,0.72) 0%,
+      rgba(232,236,239,0.52) 40%,
+      rgba(232,236,239,0.22) 70%,
+      rgba(232,236,239,0.10) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* All content above both layers */
+  .dx .tech-light .container { position: relative; z-index: 2; }
+
+  /* Font colors: near-black so they cut through the grey video clearly */
+  .dx .tech-light .section-head .num   { color: var(--navy); }
+  .dx .tech-light .section-head .title { color: var(--navy); font-weight: 600; }
+  .dx .tech-light .section-head .line  { background: rgba(73,95,119,0.35); }
+  .dx .tech-light .section-head .meta  { color: var(--slate); }
+  .dx .tech-light .tech-grid h2        { color: oklch(8% 0.006 240); }
+  .dx .tech-light .tech-grid h2 em     { color: var(--slate); }
+  .dx .tech-light .tech-grid .blurb    { color: oklch(12% 0.01 240); }
+  .dx .tech-light .specsheet           { border-top-color: rgba(73,95,119,0.4); }
+  .dx .tech-light .spec                { border-bottom-color: rgba(73,95,119,0.25); }
+  .dx .tech-light .spec .id            { color: var(--navy); font-weight: 600; }
+  .dx .tech-light .spec .label         { color: oklch(6% 0.004 240); font-weight: 600; }
+  .dx .tech-light .spec .value         {
+    color: oklch(6% 0.004 240);
+    font-weight: 500;
+    text-shadow: 0 0 12px rgba(232,236,239,0.9), 0 1px 3px rgba(232,236,239,0.95);
+  }
+  .dx .tech-light .spec .unit          {
+    color: oklch(6% 0.004 240);
+    font-weight: 600;
+    text-shadow: 0 0 10px rgba(232,236,239,0.9);
+  }
+  .dx .tech-light .spec:hover          { background: rgba(73,95,119,0.08); }
+
+  /* Mobile: uniform semi-opaque cloud overlay */
+  @media (max-width: 768px) {
+    .dx .tech-video { opacity: 1; }
+    .dx .tech-overlay { background: rgba(232,236,239,0.82); }
+  }
+
+  /* Keep old tech-light for any remaining references */
+  .dx .tech-light .section-head .num   { color:var(--slate); }
+  .dx .tech-light .section-head .title { color:var(--navy); }
+  .dx .tech-light .section-head .line  { background:rgba(73,95,119,.3); }
+  .dx .tech-light .section-head .meta  { color:var(--slate); }
+  .dx .tech-light .tech-grid h2        { color:var(--navy); }
+  .dx .tech-light .tech-grid h2 em     { color:var(--slate); }
+  .dx .tech-light .tech-grid .blurb    { color:var(--slate); }
+  .dx .tech-light .specsheet           { border-top-color:rgba(73,95,119,.35); }
+  .dx .tech-light .spec                { border-bottom-color:rgba(73,95,119,.18); }
+  .dx .tech-light .spec .id            { color:var(--slate); }
+  .dx .tech-light .spec .label         { color:var(--navy); }
+  .dx .tech-light .spec .value         { color:var(--slate); }
+  .dx .tech-light .spec .unit          { color:var(--slate); }
+  .dx .tech-light .spec:hover          { background:rgba(157,193,245,.18); }
+
+  /* ---------- Footer ---------- */
+  .dx footer { background:var(--black); border-top:1px solid var(--rule); padding:48px 0 32px; color:var(--cloud); }
+  .dx .foot-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; align-items:start; }
+  .dx .foot-grid .col h5 { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; text-transform:uppercase; color:var(--slate); margin:0 0 18px; font-weight:400; }
+  .dx .foot-grid .col ul { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+  .dx .foot-grid .col a  { font-size:14px; color:var(--cloud); transition:color 200ms; }
+  .dx .foot-grid .col a:hover { color:var(--sky); }
+  .dx .foot-brand p { color:var(--cloud); font-weight:300; font-size:14px; max-width:38ch; margin:18px 0 0; line-height:1.55; }
+  .dx .foot-bottom { display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; margin-top:48px; padding-top:24px; border-top:1px solid var(--rule-soft); font-family:var(--f-mono); font-size:10px; letter-spacing:.2em; color:var(--slate); text-transform:uppercase; }
+  .dx .foot-bottom .coord b { color:var(--cloud); font-weight:400; }
+  @media (max-width:760px){ .dx .foot-grid{ grid-template-columns:1fr 1fr; } .dx .foot-brand{ grid-column:1/-1; } }
+
+  /* ---------- Stats Band (animated counters) ---------- */
+  .dx .stats-band { background:var(--navy); border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); position:relative; overflow:hidden; }
+  .dx .stats-band::before {
+    content:""; position:absolute; inset:0;
+    background-image:linear-gradient(to right,rgba(157,193,245,.04) 1px,transparent 1px);
+    background-size:25% 100%; pointer-events:none;
+  }
+  .dx .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:clamp(56px,7vw,104px) 0; position:relative; z-index:1; }
+  .dx .stat-cell { padding:0 clamp(20px,3vw,48px); border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:18px; min-width:0; }
+  .dx .stat-cell:first-child { padding-left:0; }
+  .dx .stat-cell:last-child  { border-right:none; padding-right:0; }
+  .dx .stat-cell .stat-id { font-family:var(--f-mono); font-size:10px; letter-spacing:.22em; color:var(--sky); text-transform:uppercase; }
+  .dx .stat-cell .stat-num {
+    font-family:var(--f-mono); font-weight:300;
+    font-size:clamp(2.6rem,5.6vw,5.6rem);
+    line-height:0.95; letter-spacing:-.02em; color:var(--white);
+    display:flex; align-items:baseline; gap:6px;
+  }
+  .dx .stat-cell .stat-num small { font-family:var(--f-mono); font-size:.36em; color:var(--sky); letter-spacing:.04em; font-weight:400; }
+  .dx .stat-cell .stat-label { font-family:var(--f-mono); font-size:11px; letter-spacing:.22em; color:var(--cloud); text-transform:uppercase; padding-top:14px; border-top:1px solid var(--rule-soft); }
+  @media (max-width:860px){
+    .dx .stats-grid { grid-template-columns:repeat(2,1fr); gap:32px 0; }
+    .dx .stat-cell { border-right:none; padding:24px clamp(16px,3vw,32px); border-bottom:1px solid var(--rule-soft); }
+    .dx .stat-cell:nth-child(odd) { padding-left:0; }
+    .dx .stat-cell:nth-child(2n)  { padding-right:0; }
+    .dx .stat-cell:nth-last-child(-n+2) { border-bottom:none; }
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  .dx .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+      opacity 600ms var(--ease-aerial),
+      transform 600ms var(--ease-aerial);
+  }
+  .dx .reveal.in { opacity: 1; transform: translateY(0); }
+  .dx .reveal.delay-1 { transition-delay: 80ms; }
+  .dx .reveal.delay-2 { transition-delay: 160ms; }
+  .dx .reveal.delay-3 { transition-delay: 240ms; }
+  .dx .reveal.delay-4 { transition-delay: 320ms; }
+  .dx .reveal.delay-5 { transition-delay: 400ms; }
+
+  /* Horizontal wipe — headlines only, GPU-friendly clip-path */
+  .dx .reveal-wipe {
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 750ms cubic-bezier(0.76, 0, 0.24, 1);
+  }
+  .dx .reveal-wipe.in { clip-path: inset(0 0% 0 0); }
+  .dx .reveal-wipe.delay-1 { transition-delay: 80ms; }
+  .dx .reveal-wipe.delay-2 { transition-delay: 160ms; }
+  .dx .reveal-wipe.delay-3 { transition-delay: 240ms; }
+
+  /* ---------- Operational Manifest (replaces hero-metric stats template) ---------- */
+  .dx .manifest {
+    background: var(--navy);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 22px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .dx .manifest::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--sky);
+    opacity:0.5;
+  }
+  .dx .manifest-row {
+    display:flex; align-items:center; gap: 36px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-left: 4px;
+  }
+  .dx .manifest-row::-webkit-scrollbar { display: none; }
+  .dx .manifest-row .item { display:inline-flex; align-items:baseline; gap:10px; }
+  .dx .manifest-row .item .lbl { color: var(--slate); font-size: 10px; letter-spacing: .22em; }
+  .dx .manifest-row .item .val { color: var(--white); font-size: 12px; letter-spacing: .08em; }
+  .dx .manifest-row .sep { color: var(--sky); opacity: 0.65; flex: none; }
+  @media (max-width: 760px) {
+    .dx .manifest-row { gap: 24px; }
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     DRONE SEQUENCE — Aviation Control Room × Apple Product Page
+     ══════════════════════════════════════════════════════════════ */
+  .seq-wrap {
+    position: relative;
+    height: 600vh;
+    background: oklch(3% 0.006 240);
+  }
+  .seq-anchor { position: absolute; left: 0; display: block; pointer-events: none; }
+
+  .seq-sticky {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: oklch(3% 0.006 240);
+  }
+
+  /* ── Canvas ─────────────────────────────────────────────────── */
+  #seq-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    clip-path: inset(0 0 5% 0);
+  }
+
+  /* ── Left-to-center gradient — angled for 3D depth feel ─────── */
+  .seq-fade-left {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(105deg,
+        oklch(3% 0.006 240 / 0.88) 0%,
+        oklch(3% 0.006 240 / 0.62) 32%,
+        oklch(3% 0.006 240 / 0.18) 55%,
+        transparent 70%
+      );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ── HUD corner brackets ─────────────────────────────────────── */
+  .seq-hud {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    z-index: 12;
+    pointer-events: none;
+    opacity: 0;
+    animation: hudReveal 800ms cubic-bezier(0.16,1,0.3,1) 400ms forwards;
+  }
+  @keyframes hudReveal {
+    from { opacity: 0; transform: scale(0.7); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .seq-hud-tl { top: clamp(20px,3vw,44px); left: clamp(20px,3vw,44px); border-top: 1px solid oklch(76% 0.09 240 / 0.55); border-left: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-tr { top: clamp(20px,3vw,44px); right: clamp(20px,3vw,44px); border-top: 1px solid oklch(76% 0.09 240 / 0.55); border-right: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-bl { bottom: clamp(20px,3vw,44px); left: clamp(20px,3vw,44px); border-bottom: 1px solid oklch(76% 0.09 240 / 0.55); border-left: 1px solid oklch(76% 0.09 240 / 0.55); }
+  .seq-hud-br { bottom: clamp(20px,3vw,44px); right: clamp(20px,3vw,44px); border-bottom: 1px solid oklch(76% 0.09 240 / 0.55); border-right: 1px solid oklch(76% 0.09 240 / 0.55); }
+
+  /* ── Scan-line sweep on section transition ───────────────────── */
+  .seq-scanline {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 1px;
+    background: linear-gradient(to right,
+      transparent 0%,
+      oklch(76% 0.09 240 / 0.7) 30%,
+      oklch(76% 0.09 240 / 0.7) 70%,
+      transparent 100%
+    );
+    z-index: 15;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .seq-scanline.sweep {
+    animation: scanDown 700ms cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes scanDown {
+    0%   { top: 0;    opacity: 0; }
+    5%   { opacity: 1; }
+    95%  { opacity: 0.6; }
+    100% { top: 100%; opacity: 0; }
+  }
+
+  /* ── Chapter watermark ───────────────────────────────────────── */
+  .seq-chapter {
+    position: absolute;
+    right: clamp(32px, 6vw, 80px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--f-mono);
+    font-size: clamp(6rem, 20vw, 22rem);
+    font-weight: 700;
+    letter-spacing: -.06em;
+    line-height: 1;
+    color: oklch(76% 0.09 240 / 0.045);
+    z-index: 3;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 500ms ease;
+  }
+
+  /* ── Panel — positioned left ─────────────────────────────────── */
+  .seq-panel {
+    position: absolute;
+    left: clamp(28px, 6vw, 96px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-30px);
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    max-width: clamp(280px, 35vw, 520px);
+    /* Transition handled per-child for stagger — panel itself snaps */
+    transition: opacity 100ms ease;
+  }
+  .seq-panel.active { opacity: 1; transform: translateY(-50%) translateX(0); }
+
+  /* Panel header row */
+  .seq-panel-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .seq-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .26em;
+    color: oklch(76% 0.09 240);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 400ms ease, transform 400ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-rule {
+    height: 1px;
+    background: oklch(76% 0.09 240 / 0.45);
+    flex: 1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms cubic-bezier(0.16,1,0.3,1) 120ms;
+  }
+  .seq-title {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: oklch(93% 0.008 240 / 0.4);
+    flex-shrink: 0;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 400ms ease 200ms, transform 400ms cubic-bezier(0.16,1,0.3,1) 200ms;
+  }
+  .seq-panel.active .seq-num   { opacity: 1; transform: none; }
+  .seq-panel.active .seq-rule  { transform: scaleX(1); }
+  .seq-panel.active .seq-title { opacity: 1; transform: none; }
+
+  /* Headline line-by-line reveal (overflow:hidden clip) */
+  .seq-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(2.8rem, 5.4vw, 5.8rem);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -.035em;
+    color: oklch(99% 0.003 240);
+    margin: 0 0 30px;
+  }
+  .seq-h2 em { font-style: italic; color: oklch(76% 0.09 240); font-weight: 400; }
+  .seq-line {
+    display: block;
+    overflow: hidden;
+  }
+  .seq-li {
+    display: block;
+    transform: translateY(110%);
+    transition: transform 640ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-line-dim .seq-li { color: oklch(93% 0.008 240 / 0.4); font-size: 0.55em; }
+
+  /* Stagger each headline line */
+  .seq-panel.active .seq-line:nth-child(1) .seq-li { transform: none; transition-delay: 80ms; }
+  .seq-panel.active .seq-line:nth-child(2) .seq-li { transform: none; transition-delay: 180ms; }
+  .seq-panel.active .seq-line:nth-child(3) .seq-li { transform: none; transition-delay: 280ms; }
+
+  /* Meta rows — clip-path reveal left-to-right */
+  .seq-meta { display: flex; flex-direction: column; gap: 0; margin-bottom: 0; }
+  .seq-meta div {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    border-top: 1px solid oklch(40% 0.035 240 / 0.35);
+    padding: 10px 0;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 500ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-meta .k { color: oklch(40% 0.035 240); text-transform: uppercase; flex-shrink: 0; }
+  .seq-meta .v { color: oklch(93% 0.008 240); }
+  .seq-panel.active .seq-meta div:nth-child(1) { clip-path: inset(0 0% 0 0); transition-delay: 440ms; }
+  .seq-panel.active .seq-meta div:nth-child(2) { clip-path: inset(0 0% 0 0); transition-delay: 560ms; }
+  .seq-panel.active .seq-meta div:nth-child(3) { clip-path: inset(0 0% 0 0); transition-delay: 680ms; }
+
+  /* Tags */
+  .seq-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; }
+  .seq-tags span {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: oklch(93% 0.008 240);
+    border: 1px solid oklch(40% 0.035 240 / 0.4);
+    padding: 5px 10px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 380ms ease, transform 380ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-panel.active .seq-tags span:nth-child(1) { opacity:1;transform:none;transition-delay:480ms; }
+  .seq-panel.active .seq-tags span:nth-child(2) { opacity:1;transform:none;transition-delay:550ms; }
+  .seq-panel.active .seq-tags span:nth-child(3) { opacity:1;transform:none;transition-delay:620ms; }
+  .seq-panel.active .seq-tags span:nth-child(4) { opacity:1;transform:none;transition-delay:690ms; }
+  .seq-panel.active .seq-tags span:nth-child(5) { opacity:1;transform:none;transition-delay:760ms; }
+
+  /* Service list */
+  .seq-svc-list { display: flex; flex-direction: column; margin-top: 8px; }
+  .seq-svc {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-family: var(--f-display);
+    font-size: clamp(12px, 1.05vw, 14px);
+    color: oklch(93% 0.008 240);
+    font-weight: 300;
+    padding: 8px 0;
+    border-bottom: 1px solid oklch(40% 0.035 240 / 0.25);
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 380ms ease, transform 380ms cubic-bezier(0.16,1,0.3,1);
+  }
+  .seq-svc .n { font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em; color: oklch(76% 0.09 240); flex-shrink: 0; }
+  .seq-panel.active .seq-svc:nth-child(1){opacity:1;transform:none;transition-delay:380ms;}
+  .seq-panel.active .seq-svc:nth-child(2){opacity:1;transform:none;transition-delay:450ms;}
+  .seq-panel.active .seq-svc:nth-child(3){opacity:1;transform:none;transition-delay:520ms;}
+  .seq-panel.active .seq-svc:nth-child(4){opacity:1;transform:none;transition-delay:590ms;}
+  .seq-panel.active .seq-svc:nth-child(5){opacity:1;transform:none;transition-delay:660ms;}
+  .seq-panel.active .seq-svc:nth-child(6){opacity:1;transform:none;transition-delay:730ms;}
+
+  /* ── Bottom 3-segment timeline ───────────────────────────────── */
+  .seq-timeline {
+    position: absolute;
+    bottom: clamp(28px, 4vh, 52px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    z-index: 10;
+    width: clamp(240px, 40vw, 560px);
+  }
+  .seq-seg {
+    flex: 1;
+    position: relative;
+    height: 1px;
+    background: oklch(40% 0.035 240 / 0.3);
+  }
+  .seq-seg-fill {
+    position: absolute;
+    inset: 0;
+    background: oklch(76% 0.09 240);
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .seq-seg-lbl {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: oklch(40% 0.035 240 / 0.5);
+    white-space: nowrap;
+    transition: color 300ms ease;
+  }
+  .seq-seg.active .seq-seg-lbl { color: oklch(76% 0.09 240); }
+  .seq-seg-gap { width: 12px; flex-shrink: 0; }
+
+  /* ── Frame counter — bottom right ────────────────────────────── */
+  .seq-counter {
+    position: absolute;
+    bottom: clamp(28px, 4vh, 52px);
+    right: clamp(24px, 3vw, 52px);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    color: oklch(40% 0.035 240 / 0.55);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .seq-counter-n { color: oklch(76% 0.09 240 / 0.8); }
+  .seq-counter-sep { opacity: 0.4; }
+
+  /* ── Mobile overrides ───────────────────────────────────────── */
+  @media (max-width: 768px) {
+    /* Seq wrap — shorter scroll distance on mobile */
+    .seq-wrap  { height: 420vh; }
+
+    /* Canvas: sits in top 55% of sticky, text fills bottom */
+    #seq-canvas {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 56%;          /* drone in top half */
+      clip-path: inset(0 0 0 0);
+    }
+
+    /* Gradient covers entire bottom half on mobile */
+    .seq-fade-left {
+      background: linear-gradient(
+        to bottom,
+        oklch(3% 0.006 240 / 0.15) 0%,
+        oklch(3% 0.006 240 / 0.15) 44%,
+        oklch(3% 0.006 240 / 0.96) 58%,
+        oklch(3% 0.006 240 / 1)    100%
+      );
+    }
+
+    /* Panel: anchor to bottom half, full width */
+    .seq-panel {
+      top: auto;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      max-width: 100%;
+      transform: translateY(20px);
+      padding: 24px 24px 80px;
+    }
+    .seq-panel.active {
+      transform: translateY(0);
+    }
+
+    /* Smaller headline on mobile */
+    .seq-h2 { font-size: clamp(2rem, 7.5vw, 2.8rem); margin-bottom: 16px; }
+
+    /* Chapter watermark — smaller, subtler */
+    .seq-chapter {
+      font-size: clamp(4rem, 28vw, 9rem);
+      opacity: 0.03;
+      right: 12px;
+      top: 28%;
+    }
+
+    /* HUD brackets smaller */
+    .seq-hud { width: 14px; height: 14px; }
+
+    /* Timeline full width at bottom */
+    .seq-timeline {
+      width: calc(100vw - 48px);
+      bottom: 20px;
+    }
+
+    /* Frame counter smaller */
+    .seq-counter { bottom: 22px; right: 16px; font-size: 9px; }
+
+    /* Tags wrap tighter */
+    .seq-tags { gap: 5px; margin-top: 12px; }
+    .seq-tags span { font-size: 9px; padding: 4px 8px; }
+
+    /* Service list compact */
+    .seq-svc { font-size: 12px; padding: 6px 0; }
+  }
+
+  /* ── Services section — mobile video fix ────────────────────── */
+  @media (max-width: 768px) {
+    .dx .services-video {
+      opacity: 0.12;           /* much dimmer — was 0.45 */
+    }
+    .dx .services-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(21,31,39,0.94) 0%,
+        rgba(21,31,39,0.88) 60%,
+        rgba(21,31,39,0.94) 100%
+      );
+    }
+    /* Service items: fix text overflow */
+    .dx .svc {
+      overflow: visible;
+      padding-right: 0;
+    }
+    .dx .svc .body p {
+      max-width: 100%;
+      word-break: break-word;
+    }
+    .dx .svc .meta .v {
+      font-size: 13px;
+      word-break: break-word;
+    }
+  }
+
+  /* ── Hero video — slightly darker on mobile ─────────────────── */
+  @media (max-width: 768px) {
+    .dx .hero-video-overlay {
+      background: linear-gradient(
+        160deg,
+        rgba(21,31,39,0.85) 0%,
+        rgba(21,31,39,0.70) 50%,
+        rgba(21,31,39,0.82) 100%
+      );
+    }
+  }
+
+  /* Hero reveals — always visible immediately (hero is in-viewport on load) */
+  .dx .hero .reveal        { opacity:1; transform:none; }
+  .dx .hero .reveal-wipe   { clip-path:inset(0 0% 0 0); }
+
+  /* ---------- Reduced motion (mandatory) ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .dx *, .dx *::before, .dx *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .dx .reveal,
+    .dx .reveal-wipe {
+      opacity: 1 !important;
+      transform: none !important;
+      clip-path: none !important;
+      -webkit-clip-path: none !important;
+      filter: none !important;
+    }
+    .dx .radar-sweep .sweep-blade { animation: none; }
+    .dx .mission-bar .ticker-track { animation: none; }
+    .dx .hero-grid { animation: none; }
+    .dx .hero-emblem .x-stroke {
+      stroke-dashoffset: 0;
+      animation: none;
+    }
+    @supports (animation-timeline: scroll()) {
+      .dx .hero-emblem { animation: none; }
+    }
+  }
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+  <!-- ========== DRONEX HERO INTRO ========== -->
+  <section class="unicorn-section" id="hero-intro">
+    <div id="unicorn-container">
+
+      <!-- Corner coordinate labels (HUD aesthetic) -->
+      <span class="h-coord h-coord-tl">03°08'N 101°41'E</span>
+      <span class="h-coord h-coord-tr">RPAS-A1 — CAAM</span>
+      <span class="h-coord h-coord-bl">ALT 0000 FT</span>
+      <span class="h-coord h-coord-br">STATUS STANDBY</span>
+
+      <!-- Precision rings (GSAP-animated SVG) -->
+      <div class="h-rings">
+        <svg class="h-rings-svg" viewBox="0 0 900 900" fill="none"
+             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+
+          <!-- Outer ring — rotates CW slowly -->
+          <g class="rg-outer">
+            <circle cx="450" cy="450" r="430"
+              stroke="oklch(40% 0.035 240 / 0.16)" stroke-width="1"/>
+            <!-- cardinal tick marks -->
+            <line x1="450" y1="18"  x2="450" y2="40"  stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="882" y1="450" x2="860" y2="450" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="450" y1="882" x2="450" y2="860" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+            <line x1="18"  y1="450" x2="40"  y2="450" stroke="oklch(40% 0.035 240 / 0.3)" stroke-width="1"/>
+          </g>
+
+          <!-- Mid ring — static -->
+          <circle class="rg-mid" cx="450" cy="450" r="318"
+            stroke="oklch(40% 0.035 240 / 0.12)" stroke-width="1"/>
+
+          <!-- Inner dashed ring — rotates CCW -->
+          <g class="rg-inner">
+            <circle cx="450" cy="450" r="200"
+              stroke="oklch(50% 0.06 240 / 0.45)" stroke-width="1"
+              stroke-dasharray="5 8"/>
+            <!-- tracking dot rides this ring -->
+            <circle class="rg-dot" cx="450" cy="250" r="3.5"
+              fill="oklch(76% 0.09 240)" opacity="0.9"/>
+          </g>
+
+          <!-- Centre reticle — static -->
+          <circle cx="450" cy="450" r="58"
+            stroke="oklch(40% 0.035 240 / 0.15)" stroke-width="1"
+            stroke-dasharray="3 6"/>
+          <circle cx="450" cy="450" r="4"
+            fill="oklch(76% 0.09 240 / 0.5)"/>
+
+        </svg>
+      </div>
+
+      <!-- Drone — wire is base, real is top layer revealed by cursor mask -->
+      <div class="h-drone">
+        <div class="h-drone-inner" id="drone-inner">
+          <!-- wire first = rendered below -->
+          <img class="h-drone-wire" src="assets/drone-wireframe.png"
+               alt="Drone X — wireframe render" draggable="false"
+               width="1050" height="590" />
+          <!-- real second = rendered above, spotlight-masked -->
+          <img class="h-drone-real" src="assets/drone-real.png"
+               alt="" aria-hidden="true" draggable="false"
+               width="1050" height="590" />
+        </div>
+      </div>
+
+      <!-- Brand wordmark -->
+      <div class="h-brand">
+        <img class="h-brand-logo"
+             src="assets/DroneX_BlackOnWhite_HorizontalLogo.png"
+             alt="Drone X" draggable="false" />
+      </div>
+
+      <!-- Spray mist video -->
+      <!-- Edge vignette (on top of everything except scroll hint) -->
+      <div class="h-vignette"></div>
+
+    </div><!-- /#unicorn-container -->
+
+    <div class="unicorn-scroll-hint">
+      <span>Scroll</span>
+      <span class="drop"></span>
+    </div>
+    <button class="unicorn-tap-btn" aria-label="Enter site">Enter</button>
+  </section>
+
+  <!-- ========== DRONEХ HOMEPAGE ========== -->
+  <div class="dx">
+
+    <div class="brand-stripe" aria-hidden="true"></div>
+
+    <header class="nav" role="banner">
+      <div class="container nav-inner">
+        <a href="#" class="nav-logo" aria-label="Drone X — Home">
+          <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
+        </a>
+        <nav aria-label="Primary">
+          <ul class="nav-list">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#about">About&nbsp;Us</a></li>
+            <li class="has-menu">
+              <a href="#solutions" aria-haspopup="true">Commercial&nbsp;Solutions <span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu" role="menu">
+                <span class="submenu-eyebrow">Pillar I · Six Disciplines</span>
+                <a href="#svc-01" role="menuitem"><span class="sm-num">01</span><span>Agriculture Drone Support</span></a>
+                <a href="#svc-03" role="menuitem"><span class="sm-num">02</span><span>Aerial Mapping</span></a>
+              </div>
+            </li>
+            <li class="has-menu" style="display:none">
+              <a href="#entertainment" aria-haspopup="true">Drone&nbsp;Entertainment <span class="caret" aria-hidden="true"></span></a>
+              <div class="submenu" role="menu">
+                <span class="submenu-eyebrow">Pillar II · Productions</span>
+                <a href="#ent-01" role="menuitem"><span class="sm-num">P‑01</span><span>Drone Show</span></a>
+                <a href="#ent-02" role="menuitem"><span class="sm-num">P‑02</span><span>Drone Spot</span></a>
+              </div>
+            </li>
+            <li><a href="#technology">Technology&nbsp;&amp;&nbsp;Data</a></li>
+            <li><a href="#partners">Partners</a></li>
+            <li><a href="#careers">Join&nbsp;Us</a></li>
+            <li><a href="#contact" class="nav-cta">Contact&nbsp;Us <span class="arrow" aria-hidden="true"></span></a></li>
+          </ul>
+        </nav>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <!-- Drone icon (closed state) -->
+          <svg class="hbg-drone" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <!-- Arms -->
+            <line x1="14" y1="14" x2="8.5" y2="8.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="19.5" y2="8.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="8.5" y2="19.5" stroke-width="1.4"/>
+            <line x1="14" y1="14" x2="19.5" y2="19.5" stroke-width="1.4"/>
+            <!-- Propeller rings -->
+            <circle cx="7" cy="7" r="4.2" stroke-width="1.2"/>
+            <circle cx="21" cy="7" r="4.2" stroke-width="1.2"/>
+            <circle cx="7" cy="21" r="4.2" stroke-width="1.2"/>
+            <circle cx="21" cy="21" r="4.2" stroke-width="1.2"/>
+            <!-- Propeller blades (× inside each ring) -->
+            <line x1="5.1" y1="5.1" x2="8.9" y2="8.9" stroke-width="1"/>
+            <line x1="8.9" y1="5.1" x2="5.1" y2="8.9" stroke-width="1"/>
+            <line x1="19.1" y1="5.1" x2="22.9" y2="8.9" stroke-width="1"/>
+            <line x1="22.9" y1="5.1" x2="19.1" y2="8.9" stroke-width="1"/>
+            <line x1="5.1" y1="19.1" x2="8.9" y2="22.9" stroke-width="1"/>
+            <line x1="8.9" y1="19.1" x2="5.1" y2="22.9" stroke-width="1"/>
+            <line x1="19.1" y1="19.1" x2="22.9" y2="22.9" stroke-width="1"/>
+            <line x1="22.9" y1="19.1" x2="19.1" y2="22.9" stroke-width="1"/>
+          </svg>
+          <!-- Close × (open state) -->
+          <svg class="hbg-close" viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <line x1="7" y1="7" x2="21" y2="21"/>
+            <line x1="21" y1="7" x2="7" y2="21"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Mobile menu overlay ── -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Site navigation">
+      <div class="mobile-menu-head">
+        <img src="assets/dronex-wordmark.png" alt="Drone X" class="wordmark" />
+        <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu"></button>
+      </div>
+      <nav class="mobile-nav" aria-label="Mobile primary">
+        <a href="#" class="mobile-nav-item">
+          <span class="mobile-nav-num">01</span>
+          <span class="mobile-nav-label">Home</span>
+        </a>
+        <a href="#about" class="mobile-nav-item">
+          <span class="mobile-nav-num">02</span>
+          <span class="mobile-nav-label">About Us</span>
+        </a>
+        <div class="mobile-nav-accordion" id="mob-acc-solutions">
+          <div class="mobile-nav-accordion-head" role="button" aria-expanded="false" aria-controls="mob-acc-solutions-body">
+            <span class="mobile-nav-num">03</span>
+            <span class="mobile-nav-label">Commercial Solutions</span>
+            <span class="mobile-nav-accordion-caret" aria-hidden="true"></span>
+          </div>
+          <div class="mobile-nav-accordion-body" id="mob-acc-solutions-body">
+            <span class="mobile-nav-accordion-eyebrow">Pillar I · Six Disciplines</span>
+            <div class="mobile-nav-accordion-sub">
+              <a href="#svc-01"><span class="sm-num">01</span>Agriculture Drone Support</a>
+              <a href="#svc-03"><span class="sm-num">02</span>Aerial Mapping</a>
+            </div>
+          </div>
+        </div>
+        <div class="mobile-nav-accordion" id="mob-acc-entertainment" style="display:none">
+          <div class="mobile-nav-accordion-head" role="button" aria-expanded="false" aria-controls="mob-acc-entertainment-body">
+            <span class="mobile-nav-num">04</span>
+            <span class="mobile-nav-label">Drone Entertainment</span>
+            <span class="mobile-nav-accordion-caret" aria-hidden="true"></span>
+          </div>
+          <div class="mobile-nav-accordion-body" id="mob-acc-entertainment-body">
+            <span class="mobile-nav-accordion-eyebrow">Pillar II · Productions</span>
+            <div class="mobile-nav-accordion-sub">
+              <a href="#ent-01"><span class="sm-num">P‑01</span>Drone Show</a>
+              <a href="#ent-02"><span class="sm-num">P‑02</span>Drone Spot</a>
+            </div>
+          </div>
+        </div>
+        <a href="#technology" class="mobile-nav-item">
+          <span class="mobile-nav-num">05</span>
+          <span class="mobile-nav-label">Technology &amp; Data</span>
+        </a>
+        <a href="#partners" class="mobile-nav-item">
+          <span class="mobile-nav-num">06</span>
+          <span class="mobile-nav-label">Partners</span>
+        </a>
+        <a href="#careers" class="mobile-nav-item">
+          <span class="mobile-nav-num">07</span>
+          <span class="mobile-nav-label">Join Us</span>
+        </a>
+      </nav>
+      <div class="mobile-menu-foot">
+        <span class="creds">CAAM · RPAS-A1 · KUL · MY</span>
+        <a href="#contact" class="btn btn-primary mobile-menu-cta">Contact Drone X <span class="arrow" aria-hidden="true"></span></a>
+      </div>
+    </div>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero" aria-label="Introduction">
+        <!-- Video background -->
+        <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/hero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-video-overlay" aria-hidden="true"></div>
+
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-emblem" aria-hidden="true">
+          <svg viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet">
+            <!-- Two crossing wing strokes that draw themselves on load -->
+            <path class="x-stroke s1"
+                  d="M 100 200 C 240 300, 380 360, 500 500 C 620 640, 760 740, 900 800"
+                  style="--len: 1300;" />
+            <path class="x-stroke s2"
+                  d="M 100 800 C 240 700, 380 640, 500 500 C 620 360, 760 260, 900 200"
+                  style="--len: 1300;" />
+          </svg>
+        </div>
+
+        <div class="hero-chart-wrap" aria-hidden="true">
+          <svg class="hero-chart" viewBox="0 0 1000 780" fill="none" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <pattern id="micro" width="22" height="22" patternUnits="userSpaceOnUse">
+                <path d="M 22 0 L 0 0 0 22" fill="none" stroke="currentColor" stroke-width="0.4" opacity=".26"/>
+              </pattern>
+              <radialGradient id="fadeMask" cx="55%" cy="50%" r="62%">
+                <stop offset="0%" stop-color="white" stop-opacity="1"/>
+                <stop offset="100%" stop-color="white" stop-opacity="0"/>
+              </radialGradient>
+              <mask id="m1"><rect width="1000" height="780" fill="url(#fadeMask)"/></mask>
+              <linearGradient id="pathLine" x1="0" y1="1" x2="1" y2="0">
+                <stop offset="0%" stop-color="#9DC1F5" stop-opacity="0.05"/>
+                <stop offset="40%" stop-color="#9DC1F5" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#9DC1F5" stop-opacity="1"/>
+              </linearGradient>
+            </defs>
+            <g mask="url(#m1)" stroke="currentColor">
+              <rect x="0" y="0" width="1000" height="780" fill="url(#micro)"/>
+              <g opacity="0.5" stroke-width="0.6">
+                <path d="M0 195 H1000"/><path d="M0 390 H1000"/><path d="M0 585 H1000"/>
+                <path d="M200 0 V780"/><path d="M400 0 V780"/><path d="M600 0 V780"/><path d="M800 0 V780"/>
+              </g>
+              <g font-family="JetBrains Mono,monospace" font-size="9" fill="#495F77" letter-spacing="1.2">
+                <text x="6" y="190">400M</text><text x="6" y="385">300M</text><text x="6" y="580">200M</text><text x="6" y="770">SURFACE</text>
+                <text x="200" y="775">+02</text><text x="400" y="775">+04</text><text x="600" y="775">+06</text><text x="800" y="775">+08 KM</text>
+              </g>
+              <g opacity="0.42" stroke-width="0.8" fill="none">
+                <path d="M -50 620 C 200 500, 360 560, 520 480 S 820 380, 1080 300"/>
+                <path d="M -50 680 C 200 560, 360 620, 520 540 S 820 440, 1080 360"/>
+                <path d="M -50 560 C 200 440, 360 500, 520 420 S 820 320, 1080 240"/>
+                <path d="M -50 500 C 200 380, 360 440, 520 360 S 820 260, 1080 180"/>
+                <path d="M -50 440 C 200 320, 360 380, 520 300 S 820 200, 1080 120"/>
+              </g>
+              <g fill="none" opacity="0.35">
+                <path d="M 110 700 Q 280 620, 400 560 T 700 380 T 900 220" stroke="#9DC1F5" stroke-width="0.6" stroke-dasharray="3 5"/>
+                <path d="M 60 660 Q 240 580, 360 520 T 680 320 T 940 160" stroke="#9DC1F5" stroke-width="0.5" stroke-dasharray="2 6"/>
+              </g>
+              <g fill="none">
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="#9DC1F5" stroke-width="8" opacity=".08"/>
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="url(#pathLine)" stroke-width="1.4" opacity=".95" stroke-dasharray="1800" stroke-dashoffset="1800" style="animation:draw 4s ease-out 0.6s forwards;"/>
+                <path d="M 80 680 C 220 540, 360 620, 480 460 S 720 220, 920 120" stroke="#9DC1F5" stroke-width="0.6" opacity=".45" stroke-dasharray="2 5"/>
+              </g>
+              <g stroke="#9DC1F5" fill="none" stroke-width="1">
+                <g transform="translate(80,680)"><rect x="-9" y="-9" width="18" height="18" stroke-width="0.8"/><circle r="4"/><path d="M-16 0 H-10 M10 0 H16 M0 -16 V-10 M0 10 V16"/></g>
+                <g transform="translate(290,540)"><circle r="4"/><path d="M-12 0 H-7 M7 0 H12 M0 -12 V-7 M0 7 V12"/></g>
+                <g transform="translate(480,460)"><rect x="-6" y="-6" width="12" height="12"/><path d="M-16 0 H-9 M9 0 H16 M0 -16 V-9 M0 9 V16"/></g>
+                <g transform="translate(710,260)"><circle r="4"/><path d="M-12 0 H-7 M7 0 H12 M0 -12 V-7 M0 7 V12"/></g>
+                <g transform="translate(920,120)">
+                  <circle r="14" stroke="#9DC1F5" stroke-width="0.6" opacity=".5"/>
+                  <circle r="6" stroke="#9DC1F5"/><circle r="2" fill="#9DC1F5" stroke="none"/>
+                  <circle r="6" fill="none" stroke="#9DC1F5" style="animation:pulseRing 2.8s ease-out infinite;"/>
+                  <path d="M-18 0 H-10 M10 0 H18 M0 -18 V-10 M0 10 V18" stroke-width="0.8"/>
+                </g>
+              </g>
+              <g font-family="JetBrains Mono,monospace" font-size="10" letter-spacing="1.4" fill="#9DC1F5" opacity=".9">
+                <text x="98" y="710">WP-01 · ORIGIN</text><text x="306" y="534">WP-02</text>
+                <text x="498" y="448">04°N 102°E · ALT 120M</text><text x="726" y="254">WP-04</text><text x="948" y="118">▸ TGT</text>
+              </g>
+              <g transform="translate(870,700)" fill="none" stroke="currentColor" opacity=".75">
+                <circle r="32" stroke-width="0.6"/><circle r="24" stroke-width="0.4" stroke-dasharray="2 3"/>
+                <path d="M0 -36 V-26 M0 36 V26 M-36 0 H-26 M36 0 H26" stroke-width="0.6"/>
+                <path d="M0 -28 L5 0 L0 28 L-5 0 Z" fill="#9DC1F5" opacity="0.95" stroke="none"/>
+                <text x="-3" y="-40" font-family="JetBrains Mono,monospace" font-size="9" fill="#9DC1F5" stroke="none">N</text>
+                <text x="38" y="3" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">E</text>
+                <text x="-40" y="3" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">W</text>
+                <text x="-3" y="48" font-family="JetBrains Mono,monospace" font-size="8" fill="#495F77" stroke="none">S</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <svg class="radar-sweep" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#9DC1F5" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#9DC1F5" stop-opacity="0.55"/>
+            </linearGradient>
+            <radialGradient id="rfade" cx="50%" cy="50%" r="50%">
+              <stop offset="60%" stop-color="white" stop-opacity="1"/>
+              <stop offset="100%" stop-color="white" stop-opacity="0"/>
+            </radialGradient>
+            <mask id="rmask"><rect width="200" height="200" fill="url(#rfade)"/></mask>
+          </defs>
+          <g mask="url(#rmask)" stroke="#9DC1F5" fill="none" opacity=".42">
+            <circle cx="100" cy="100" r="92" stroke-width="0.5"/><circle cx="100" cy="100" r="68" stroke-width="0.5"/>
+            <circle cx="100" cy="100" r="44" stroke-width="0.5"/><circle cx="100" cy="100" r="20" stroke-width="0.5"/>
+            <path d="M100 8 V192 M8 100 H192" stroke-width="0.4"/>
+            <path d="M35 35 L165 165 M165 35 L35 165" stroke-width="0.3" stroke-dasharray="2 3"/>
+          </g>
+          <g class="sweep-blade">
+            <path d="M100 100 L100 8 A92 92 0 0 1 192 100 Z" fill="url(#sweepGrad)" opacity=".55"/>
+            <line x1="100" y1="100" x2="100" y2="8" stroke="#9DC1F5" stroke-width="0.8" opacity=".9"/>
+          </g>
+          <circle cx="138" cy="64" r="3" fill="#9DC1F5"/>
+          <circle cx="138" cy="64" r="3" fill="none" stroke="#9DC1F5" style="animation:pulseRing 2.8s ease-out infinite;"/>
+          <text x="148" y="60" font-family="JetBrains Mono,monospace" font-size="7" letter-spacing="1.2" fill="#9DC1F5">DX-04</text>
+        </svg>
+
+        <div class="hero-rail" aria-hidden="true">
+          <div class="ticks"></div>
+          <span class="vlabel t">N · 03°08′</span>
+          <span class="vlabel m">ALT 0–400 M</span>
+          <span class="vlabel b">E · 101°41′</span>
+        </div>
+
+        <div class="container">
+          <div class="mission-bar" role="status" aria-label="Mission status">
+            <span class="live"><span class="rec" aria-hidden="true">OPS</span> Operations Channel · Active</span>
+            <span class="ticker" aria-hidden="true">
+              <span class="ticker-track">
+                <span><b>FL-04·26</b> KUL→PEN · BVLOS</span>
+                <span><b>WX</b> 28°C · WIND 06KT 080°</span>
+                <span><b>CLR</b> CAAM · RPAS-A1</span>
+                <span><b>FLEET</b> 14 ACTIVE · 3 EN-ROUTE</span>
+                <span><b>PILOT</b> ALOR-2 · IBRAHIM, A.</span>
+                <span><b>FL-04·26</b> KUL→PEN · BVLOS</span>
+                <span><b>WX</b> 28°C · WIND 06KT 080°</span>
+                <span><b>CLR</b> CAAM · RPAS-A1</span>
+                <span><b>FLEET</b> 14 ACTIVE · 3 EN-ROUTE</span>
+                <span><b>PILOT</b> ALOR-2 · IBRAHIM, A.</span>
+              </span>
+            </span>
+            <span class="clock">CHANNEL <b>OPS·01</b></span>
+            <span class="clock">UTC+8</span>
+            <span class="clock"><b id="hero-time">--:--:--</b></span>
+          </div>
+        </div>
+
+        <div class="container hero-body">
+          <div class="hero-left">
+            <div class="hero-tag reveal">
+              <span class="cell"><span class="marker" aria-hidden="true">+</span>Drone&nbsp;X · Malaysia</span>
+              <span class="cell">CAAM&nbsp;RPAS-A1</span>
+              <span class="cell">KUL · MY</span>
+              <span class="cell">Est.&nbsp;2024</span>
+            </div>
+            <h1 class="hero-headline reveal-wipe delay-1">
+              <span class="l">Building the Future of</span>
+              <span class="l">Low Altitude Economy</span>
+            </h1>
+            <div class="hero-meta reveal delay-2">
+              <p class="lede">Drone X Malaysia is a future-ready drone technology and aerial platform company designed to support Malaysia’s Low Altitude Economy through drone services, digital platform infrastructure, operational data, drone rental, pilot ecosystem support, agricultural drone deployment, marketplace connectivity and future ASEAN expansion.</p>
+            </div>
+            <div class="hero-actions reveal delay-3">
+              <a href="#solutions" class="btn btn-primary">Explore Solutions <span class="arrow" aria-hidden="true"></span></a>
+              <a href="#contact"   class="btn btn-ghost">Contact Drone&nbsp;X <span class="arrow" aria-hidden="true"></span></a>
+            </div>
+          </div>
+          <div class="hero-right" aria-hidden="true"></div>
+        </div>
+
+        <div class="container">
+          <div class="hero-foot" aria-label="Telemetry">
+            <div class="cell"><span class="k">Position · Lat / Lon</span><span class="v">03°08′22″N · 101°41′13″E</span></div>
+            <div class="cell"><span class="k">Altitude AGL</span><span class="v">120 <small>M</small></span></div>
+            <div class="cell"><span class="k">Heading</span><span class="v">045° <small>NE</small></span></div>
+            <div class="cell"><span class="k">Ground Speed</span><span class="v">38 <small>KTS</small></span></div>
+            <div class="cell"><span class="k">Clearance</span><span class="v">RPAS-A1 <small>CAAM</small></span></div>
+            <div class="scroll"><span>Scroll</span><span class="down" aria-hidden="true"></span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DRONE SEQUENCE — spans sections 01 · 02 · 03 -->
+      <div class="seq-wrap" id="about" style="display:none" data-hidden-per-v2="scroll-frame-sequence hidden per V2 amendment 2026-07-15">
+
+        <!-- nav anchor for #solutions sits 33% down -->
+        <span id="solutions" class="seq-anchor" style="top:33.33%;" aria-hidden="true"></span>
+
+        <div class="seq-sticky">
+
+          <!-- HUD corner brackets -->
+          <div class="seq-hud seq-hud-tl" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-tr" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-bl" aria-hidden="true"></div>
+          <div class="seq-hud seq-hud-br" aria-hidden="true"></div>
+
+          <!-- Scan-line sweep on panel change -->
+          <div class="seq-scanline" id="seq-scanline" aria-hidden="true"></div>
+
+          <!-- Left gradient — angled for depth -->
+          <div class="seq-fade-left" aria-hidden="true"></div>
+
+          <!-- Large chapter watermark — right side -->
+          <div class="seq-chapter" id="seq-chapter" aria-hidden="true">01</div>
+
+          <!-- Canvas -->
+          <canvas id="seq-canvas" aria-hidden="true"></canvas>
+
+          <!-- ── Panel 01 · Operator Profile ── -->
+          <div class="seq-panel" id="seq-panel-1">
+            <div class="seq-panel-head">
+              <span class="seq-num">01</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Operator Profile</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Built for</span></span>
+              <span class="seq-line"><span class="seq-li">Malaysia's</span></span>
+              <span class="seq-line"><span class="seq-li"><em>aerial future.</em></span></span>
+            </h2>
+            <div class="seq-meta">
+              <div><span class="k">Base</span><span class="v">Kuala Lumpur, MY</span></div>
+              <div><span class="k">Coverage</span><span class="v">Nationwide, MY</span></div>
+            </div>
+          </div>
+
+          <!-- ── Panel 02 · Core Pillars ── -->
+          <div class="seq-panel" id="seq-panel-2">
+            <div class="seq-panel-head">
+              <span class="seq-num">02</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Core Pillars</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Two disciplines.</span></span>
+              <span class="seq-line"><span class="seq-li"><em>One</em> operator.</span></span>
+            </h2>
+            <div class="seq-meta">
+              <div><span class="k">Pillar I</span><span class="v">Commercial Solutions</span></div>
+              <div><span class="k">Pillar II</span><span class="v">Drone Entertainment</span></div>
+            </div>
+            <div class="seq-tags">
+              <span>Agriculture</span><span>Mapping</span>
+            </div>
+          </div>
+
+          <!-- ── Panel 03 · Commercial Applications ── -->
+          <div class="seq-panel" id="seq-panel-3">
+            <div class="seq-panel-head">
+              <span class="seq-num">03</span>
+              <span class="seq-rule" aria-hidden="true"></span>
+              <span class="seq-title">Commercial Applications</span>
+            </div>
+            <h2 class="seq-h2">
+              <span class="seq-line"><span class="seq-li">Two disciplines.</span></span>
+              <span class="seq-line"><span class="seq-li"><em>One</em> platform.</span></span>
+            </h2>
+            <div class="seq-svc-list">
+              <div class="seq-svc"><span class="n">01</span>Agriculture Drone Support</div>
+              <div class="seq-svc"><span class="n">02</span>Aerial Mapping</div>
+            </div>
+          </div>
+
+          <!-- Bottom timeline — 3 segments -->
+          <div class="seq-timeline" aria-hidden="true">
+            <div class="seq-seg" id="seq-seg-0">
+              <div class="seq-seg-fill" id="seq-fill-0"></div>
+              <span class="seq-seg-lbl">Operator Profile</span>
+            </div>
+            <div class="seq-seg-gap"></div>
+            <div class="seq-seg" id="seq-seg-1">
+              <div class="seq-seg-fill" id="seq-fill-1"></div>
+              <span class="seq-seg-lbl">Core Pillars</span>
+            </div>
+            <div class="seq-seg-gap"></div>
+            <div class="seq-seg" id="seq-seg-2">
+              <div class="seq-seg-fill" id="seq-fill-2"></div>
+              <span class="seq-seg-lbl">Applications</span>
+            </div>
+          </div>
+
+          <!-- Frame counter -->
+          <div class="seq-counter" id="seq-counter" aria-hidden="true">
+            <span class="seq-counter-n" id="seq-counter-n">001</span>
+            <span class="seq-counter-sep">/</span>
+            <span>150</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PLANTATION ANIMATION REMOVED -->
+      <div id="plantation-anim" aria-label="Agriculture drone over plantation" style="display:none">
+      <div class="pl-pin" id="pl-pin">
+
+        <!-- Layer 1: Photo background -->
+        <div class="pl-bg-layer">
+          <img src="assets/plantation-bg.jpg" class="pl-bg-photo" id="pl-bg-photo" alt="" aria-hidden="true">
+          <div class="pl-bg-dark"></div>
+          <div class="pl-bg-gold" id="pl-bg-gold"></div>
+        </div>
+
+        <!-- Layer 2: Drone photo (blended via mix-blend-mode:screen) -->
+        <div class="pl-drone-layer" id="pl-drone-layer">
+          <img src="drone-frames/ezgif-frame-001.jpg" class="pl-drone-photo" alt="Agricultural drone" aria-hidden="true">
+        </div>
+
+        <!-- Layer 3: HUD targeting overlay -->
+        <div class="pl-hud-layer" id="pl-hud-layer" aria-hidden="true">
+          <svg class="pl-reticle-svg" viewBox="0 0 300 200" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="pl-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="1.5" result="b"/>
+                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect class="pl-scan-rect" x="8" y="8" width="284" height="184" fill="none"
+              stroke="oklch(62% 0.22 150)" stroke-width="0.8" stroke-dasharray="55 200" opacity="0.65"
+              filter="url(#pl-glow)"/>
+            <path d="M8,38 L8,8 L38,8"   fill="none" stroke="oklch(62% 0.22 150)" stroke-width="2" filter="url(#pl-glow)"/>
+            <path d="M262,8 L292,8 L292,38" fill="none" stroke="oklch(62% 0.22 150)" stroke-width="2" filter="url(#pl-glow)"/>
+            <path d="M292,162 L292,192 L262,192" fill="none" stroke="oklch(62% 0.22 150)" stroke-width="2" filter="url(#pl-glow)"/>
+            <path d="M38,192 L8,192 L8,162" fill="none" stroke="oklch(62% 0.22 150)" stroke-width="2" filter="url(#pl-glow)"/>
+            <line x1="100" y1="8" x2="100" y2="192" stroke="oklch(62% 0.22 150 / 0.2)" stroke-width="0.5"/>
+            <line x1="200" y1="8" x2="200" y2="192" stroke="oklch(62% 0.22 150 / 0.2)" stroke-width="0.5"/>
+            <line x1="8"   y1="70" x2="292" y2="70"  stroke="oklch(62% 0.22 150 / 0.2)" stroke-width="0.5"/>
+            <line x1="8"   y1="130" x2="292" y2="130" stroke="oklch(62% 0.22 150 / 0.2)" stroke-width="0.5"/>
+            <text x="12" y="22"  fill="oklch(62% 0.22 150 / 0.75)" font-family="JetBrains Mono,monospace" font-size="6.5" letter-spacing="2.5">ZONE A</text>
+            <text x="104" y="22" fill="oklch(62% 0.22 150 / 0.75)" font-family="JetBrains Mono,monospace" font-size="6.5" letter-spacing="2.5">ZONE B</text>
+            <text x="204" y="22" fill="oklch(62% 0.22 150 / 0.75)" font-family="JetBrains Mono,monospace" font-size="6.5" letter-spacing="2.5">ZONE C</text>
+            <rect class="pl-cover-rect" x="8"   y="70"  width="92"  height="60" fill="oklch(62% 0.22 150 / 0.12)"/>
+            <rect class="pl-cover-rect" x="100" y="8"   width="100" height="62" fill="oklch(62% 0.22 150 / 0.12)"/>
+          </svg>
+          <div class="pl-scan-sweep" id="pl-scan-sweep"></div>
+        </div>
+
+        <!-- Layer 4: Spray particles canvas -->
+        <div class="pl-spray-layer" id="pl-spray-layer">
+          <canvas class="pl-spray-canvas" id="pl-spray-canvas"></canvas>
+        </div>
+
+        <!-- Layer 5: Left editorial text -->
+        <div class="pl-text-panel">
+          <div class="pl-phase-block pl-active" id="pl-pb-1">
+            <span class="pl-phase-tag">01 / Approach</span>
+            <h2 class="pl-ph">Agriculture<br>Drone <em>Support.</em></h2>
+            <p class="pl-ph-body">CAAM-certified precision operations across Malaysia's plantations, estates, and agricultural zones.</p>
+            <div class="pl-cta-row">
+              <span class="pl-dot"></span>
+              <span class="pl-cta-text">Scroll to deploy</span>
+            </div>
+          </div>
+          <div class="pl-phase-block" id="pl-pb-2">
+            <span class="pl-phase-tag">02 / Survey</span>
+            <h2 class="pl-ph">Scanning<br>Canopy <em>Health.</em></h2>
+            <p class="pl-ph-body">Multi-spectral sensors capture crop density, stress indicators, and coverage gaps in real-time.</p>
+          </div>
+          <div class="pl-phase-block" id="pl-pb-3">
+            <span class="pl-phase-tag">03 / Spray Active</span>
+            <h2 class="pl-ph">Precision<br>Spray <em>On.</em></h2>
+            <p class="pl-ph-body">Variable-rate application targeting stress zones. Zero over-spray. Maximum yield per hectare.</p>
+          </div>
+        </div>
+
+        <!-- Layer 6: Right data HUD -->
+        <div class="pl-data-hud" id="pl-data-hud" aria-hidden="true">
+          <div class="pl-data-item">
+            <span class="pl-dk">ALT</span>
+            <span class="pl-dv" id="pl-alt">120</span>
+            <span class="pl-du">m</span>
+          </div>
+          <div class="pl-data-item">
+            <span class="pl-dk">CVG</span>
+            <span class="pl-dv" id="pl-cvg">0</span>
+            <span class="pl-du">%</span>
+          </div>
+          <div class="pl-data-item">
+            <span class="pl-dk">ROWS</span>
+            <span class="pl-dv" id="pl-rows">0</span>
+            <span class="pl-du">/24</span>
+          </div>
+          <div class="pl-data-item">
+            <span class="pl-dk">SYS</span>
+            <span class="pl-dv pl-sys-val" id="pl-sys">STANDBY</span>
+          </div>
+        </div>
+
+        <!-- Bottom progress strip -->
+        <div class="pl-progress" id="pl-progress" aria-hidden="true">
+          <div class="pl-prog-track">
+            <div class="pl-prog-bar" id="pl-prog-bar"></div>
+          </div>
+          <div class="pl-prog-labels">
+            <span class="pl-prog-lbl pl-lbl-active" id="pl-lbl-1">Approach</span>
+            <span class="pl-prog-lbl" id="pl-lbl-2">Survey</span>
+            <span class="pl-prog-lbl" id="pl-lbl-3">Spray Active</span>
+          </div>
+        </div>
+
+        <!-- Corner HUD brackets -->
+        <div class="pl-corner pl-tl" aria-hidden="true"></div>
+        <div class="pl-corner pl-tr" aria-hidden="true"></div>
+        <div class="pl-corner pl-bl" aria-hidden="true"></div>
+        <div class="pl-corner pl-br" aria-hidden="true"></div>
+
+      </div>
+
+        <!-- DEAD HTML BELOW — replaced, kept only as outer wrapper closing tag -->
+        <div class="pl-field-wrap" id="pl-field-wrap" style="display:none">
+          <svg class="pl-field-svg" viewBox="0 0 1400 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <!-- Ground base -->
+            <rect width="1400" height="700" fill="#1b3a1b"/>
+            <!-- Plantation row bands (alternating crown / path) -->
+            <g class="pl-rows">
+              <rect x="0" y="0"   width="1400" height="38" fill="#153215" opacity="0.9"/>
+              <rect x="0" y="38"  width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="56"  width="1400" height="38" fill="#1e4a1e" opacity="0.9"/>
+              <rect x="0" y="94"  width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="112" width="1400" height="38" fill="#234e23" opacity="0.9"/>
+              <rect x="0" y="150" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="168" width="1400" height="38" fill="#1e4a1e" opacity="0.9"/>
+              <rect x="0" y="206" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="224" width="1400" height="38" fill="#1b3a1b" opacity="0.9"/>
+              <rect x="0" y="262" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="280" width="1400" height="38" fill="#234e23" opacity="0.9"/>
+              <rect x="0" y="318" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="336" width="1400" height="38" fill="#1e4a1e" opacity="0.9"/>
+              <rect x="0" y="374" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="392" width="1400" height="38" fill="#153215" opacity="0.9"/>
+              <rect x="0" y="430" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="448" width="1400" height="38" fill="#1e4a1e" opacity="0.9"/>
+              <rect x="0" y="486" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="504" width="1400" height="38" fill="#234e23" opacity="0.9"/>
+              <rect x="0" y="542" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="560" width="1400" height="38" fill="#1b3a1b" opacity="0.9"/>
+              <rect x="0" y="598" width="1400" height="18" fill="#0e2b0e" opacity="0.5"/>
+              <rect x="0" y="616" width="1400" height="38" fill="#1e4a1e" opacity="0.9"/>
+              <rect x="0" y="654" width="1400" height="46" fill="#153215" opacity="0.9"/>
+            </g>
+            <!-- Palm tree crowns — scattered circles along rows (aerial view) -->
+            <g class="pl-crowns" fill="#2d6b2d" opacity="0.85">
+              <!-- Row 1 -->
+              <circle cx="60"  cy="19" r="14"/><circle cx="130" cy="19" r="13"/><circle cx="200" cy="19" r="15"/>
+              <circle cx="270" cy="19" r="13"/><circle cx="340" cy="19" r="14"/><circle cx="410" cy="19" r="13"/>
+              <circle cx="480" cy="19" r="15"/><circle cx="550" cy="19" r="13"/><circle cx="620" cy="19" r="14"/>
+              <circle cx="690" cy="19" r="13"/><circle cx="760" cy="19" r="14"/><circle cx="830" cy="19" r="13"/>
+              <circle cx="900" cy="19" r="15"/><circle cx="970" cy="19" r="13"/><circle cx="1040" cy="19" r="14"/>
+              <circle cx="1110" cy="19" r="13"/><circle cx="1180" cy="19" r="14"/><circle cx="1250" cy="19" r="13"/>
+              <circle cx="1320" cy="19" r="15"/><circle cx="1390" cy="19" r="13"/>
+              <!-- Row 2 -->
+              <circle cx="60"  cy="75" r="14"/><circle cx="130" cy="75" r="13"/><circle cx="200" cy="75" r="15"/>
+              <circle cx="270" cy="75" r="13"/><circle cx="340" cy="75" r="14"/><circle cx="410" cy="75" r="13"/>
+              <circle cx="480" cy="75" r="15"/><circle cx="550" cy="75" r="13"/><circle cx="620" cy="75" r="14"/>
+              <circle cx="690" cy="75" r="13"/><circle cx="760" cy="75" r="14"/><circle cx="830" cy="75" r="13"/>
+              <circle cx="900" cy="75" r="15"/><circle cx="970" cy="75" r="13"/><circle cx="1040" cy="75" r="14"/>
+              <circle cx="1110" cy="75" r="13"/><circle cx="1180" cy="75" r="14"/><circle cx="1250" cy="75" r="13"/>
+              <circle cx="1320" cy="75" r="15"/><circle cx="1390" cy="75" r="13"/>
+              <!-- Row 3 -->
+              <circle cx="60"  cy="131" r="14"/><circle cx="130" cy="131" r="13"/><circle cx="200" cy="131" r="15"/>
+              <circle cx="270" cy="131" r="13"/><circle cx="340" cy="131" r="14"/><circle cx="410" cy="131" r="13"/>
+              <circle cx="480" cy="131" r="15"/><circle cx="550" cy="131" r="13"/><circle cx="620" cy="131" r="14"/>
+              <circle cx="690" cy="131" r="13"/><circle cx="760" cy="131" r="14"/><circle cx="830" cy="131" r="13"/>
+              <circle cx="900" cy="131" r="15"/><circle cx="970" cy="131" r="13"/><circle cx="1040" cy="131" r="14"/>
+              <circle cx="1110" cy="131" r="13"/><circle cx="1180" cy="131" r="14"/><circle cx="1250" cy="131" r="13"/>
+              <circle cx="1320" cy="131" r="15"/><circle cx="1390" cy="131" r="13"/>
+              <!-- Rows 4-10 abbreviated for brevity -->
+              <circle cx="60"  cy="187" r="14"/><circle cx="200" cy="187" r="15"/><circle cx="340" cy="187" r="14"/>
+              <circle cx="480" cy="187" r="15"/><circle cx="620" cy="187" r="14"/><circle cx="760" cy="187" r="14"/>
+              <circle cx="900" cy="187" r="15"/><circle cx="1040" cy="187" r="14"/><circle cx="1180" cy="187" r="14"/>
+              <circle cx="1320" cy="187" r="15"/>
+              <circle cx="60"  cy="243" r="14"/><circle cx="200" cy="243" r="15"/><circle cx="340" cy="243" r="14"/>
+              <circle cx="480" cy="243" r="15"/><circle cx="620" cy="243" r="14"/><circle cx="760" cy="243" r="14"/>
+              <circle cx="900" cy="243" r="15"/><circle cx="1040" cy="243" r="14"/><circle cx="1180" cy="243" r="14"/>
+              <circle cx="1320" cy="243" r="15"/>
+              <circle cx="60"  cy="299" r="14"/><circle cx="200" cy="299" r="15"/><circle cx="340" cy="299" r="14"/>
+              <circle cx="480" cy="299" r="15"/><circle cx="620" cy="299" r="14"/><circle cx="760" cy="299" r="14"/>
+              <circle cx="900" cy="299" r="15"/><circle cx="1040" cy="299" r="14"/><circle cx="1180" cy="299" r="14"/>
+              <circle cx="1320" cy="299" r="15"/>
+              <circle cx="60"  cy="355" r="14"/><circle cx="200" cy="355" r="15"/><circle cx="340" cy="355" r="14"/>
+              <circle cx="480" cy="355" r="15"/><circle cx="620" cy="355" r="14"/><circle cx="760" cy="355" r="14"/>
+              <circle cx="900" cy="355" r="15"/><circle cx="1040" cy="355" r="14"/><circle cx="1180" cy="355" r="14"/>
+              <circle cx="1320" cy="355" r="15"/>
+              <circle cx="60"  cy="411" r="14"/><circle cx="200" cy="411" r="15"/><circle cx="340" cy="411" r="14"/>
+              <circle cx="480" cy="411" r="15"/><circle cx="620" cy="411" r="14"/><circle cx="760" cy="411" r="14"/>
+              <circle cx="900" cy="411" r="15"/><circle cx="1040" cy="411" r="14"/><circle cx="1180" cy="411" r="14"/>
+              <circle cx="1320" cy="411" r="15"/>
+              <circle cx="60"  cy="467" r="14"/><circle cx="200" cy="467" r="15"/><circle cx="340" cy="467" r="14"/>
+              <circle cx="480" cy="467" r="15"/><circle cx="620" cy="467" r="14"/><circle cx="760" cy="467" r="14"/>
+              <circle cx="900" cy="467" r="15"/><circle cx="1040" cy="467" r="14"/><circle cx="1180" cy="467" r="14"/>
+              <circle cx="1320" cy="467" r="15"/>
+              <circle cx="60"  cy="523" r="14"/><circle cx="200" cy="523" r="15"/><circle cx="340" cy="523" r="14"/>
+              <circle cx="480" cy="523" r="15"/><circle cx="620" cy="523" r="14"/><circle cx="760" cy="523" r="14"/>
+              <circle cx="900" cy="523" r="15"/><circle cx="1040" cy="523" r="14"/><circle cx="1180" cy="523" r="14"/>
+              <circle cx="1320" cy="523" r="15"/>
+              <circle cx="60"  cy="579" r="14"/><circle cx="200" cy="579" r="15"/><circle cx="340" cy="579" r="14"/>
+              <circle cx="480" cy="579" r="15"/><circle cx="620" cy="579" r="14"/><circle cx="760" cy="579" r="14"/>
+              <circle cx="900" cy="579" r="15"/><circle cx="1040" cy="579" r="14"/><circle cx="1180" cy="579" r="14"/>
+              <circle cx="1320" cy="579" r="15"/>
+              <circle cx="60"  cy="635" r="14"/><circle cx="200" cy="635" r="15"/><circle cx="340" cy="635" r="14"/>
+              <circle cx="480" cy="635" r="15"/><circle cx="620" cy="635" r="14"/><circle cx="760" cy="635" r="14"/>
+              <circle cx="900" cy="635" r="15"/><circle cx="1040" cy="635" r="14"/><circle cx="1180" cy="635" r="14"/>
+              <circle cx="1320" cy="635" r="15"/>
+            </g>
+            <!-- Spray mist overlay — hidden until Phase 3 -->
+            <g id="pl-mist" opacity="0">
+              <ellipse cx="700" cy="320" rx="180" ry="60" fill="rgba(180,230,255,0.18)"/>
+              <ellipse cx="700" cy="360" rx="220" ry="50" fill="rgba(180,230,255,0.12)"/>
+              <ellipse cx="700" cy="400" rx="260" ry="45" fill="rgba(180,230,255,0.08)"/>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Spray droplets — animated from drone downward -->
+        <div class="pl-spray-wrap" id="pl-spray-wrap" aria-hidden="true">
+          <div class="pl-drop" style="left:43%;animation-delay:0s"></div>
+          <div class="pl-drop" style="left:46%;animation-delay:.12s"></div>
+          <div class="pl-drop" style="left:49%;animation-delay:.05s"></div>
+          <div class="pl-drop" style="left:52%;animation-delay:.18s"></div>
+          <div class="pl-drop" style="left:55%;animation-delay:.08s"></div>
+          <div class="pl-drop" style="left:57%;animation-delay:.22s"></div>
+          <div class="pl-drop" style="left:40%;animation-delay:.15s"></div>
+          <div class="pl-drop" style="left:60%;animation-delay:.03s"></div>
+          <div class="pl-drop" style="left:38%;animation-delay:.25s"></div>
+          <div class="pl-drop" style="left:62%;animation-delay:.10s"></div>
+        </div>
+
+        <!-- Drone (top-down SVG silhouette) — stays centered -->
+        <div class="pl-drone" id="pl-drone" aria-label="Agricultural drone">
+          <svg class="pl-drone-svg" viewBox="0 0 200 200" aria-hidden="true">
+            <!-- Rotor arms -->
+            <line x1="100" y1="100" x2="28"  y2="28"  stroke="#aac" stroke-width="6" stroke-linecap="round"/>
+            <line x1="100" y1="100" x2="172" y2="28"  stroke="#aac" stroke-width="6" stroke-linecap="round"/>
+            <line x1="100" y1="100" x2="28"  y2="172" stroke="#aac" stroke-width="6" stroke-linecap="round"/>
+            <line x1="100" y1="100" x2="172" y2="172" stroke="#aac" stroke-width="6" stroke-linecap="round"/>
+            <!-- Rotor circles -->
+            <circle cx="28"  cy="28"  r="22" fill="none" stroke="#7a9ab8" stroke-width="3" opacity="0.9"/>
+            <circle cx="172" cy="28"  r="22" fill="none" stroke="#7a9ab8" stroke-width="3" opacity="0.9"/>
+            <circle cx="28"  cy="172" r="22" fill="none" stroke="#7a9ab8" stroke-width="3" opacity="0.9"/>
+            <circle cx="172" cy="172" r="22" fill="none" stroke="#7a9ab8" stroke-width="3" opacity="0.9"/>
+            <!-- Rotor spin lines -->
+            <line x1="6"  y1="28"  x2="50" y2="28"  stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="28" y1="6"   x2="28" y2="50"  stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="150" y1="28" x2="194" y2="28" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="172" y1="6"  x2="172" y2="50" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="6"  y1="172" x2="50"  y2="172" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="28" y1="150" x2="28"  y2="194" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="150" y1="172" x2="194" y2="172" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <line x1="172" y1="150" x2="172" y2="194" stroke="#9bbdd4" stroke-width="1.5" stroke-linecap="round"/>
+            <!-- Body -->
+            <rect x="76" y="76" width="48" height="48" rx="8" fill="#c8d8e8" stroke="#8aa8c8" stroke-width="2"/>
+            <!-- Camera lens -->
+            <circle cx="100" cy="100" r="12" fill="#1a2a3a" stroke="#7a9ab8" stroke-width="2"/>
+            <circle cx="100" cy="100" r="6"  fill="#2a3a4a"/>
+            <circle cx="96"  cy="96"  r="2"  fill="#ffffff" opacity="0.4"/>
+            <!-- LED indicators -->
+            <circle cx="82" cy="82" r="3" fill="#00ff88" opacity="0.8"/>
+            <circle cx="118" cy="82" r="3" fill="#ff4444" opacity="0.8"/>
+            <!-- Spray nozzles -->
+            <rect x="60" y="97" width="12" height="6" rx="2" fill="#8aa8c8"/>
+            <rect x="128" y="97" width="12" height="6" rx="2" fill="#8aa8c8"/>
+            <!-- Drone shadow -->
+            <ellipse cx="100" cy="105" rx="38" ry="8" fill="rgba(0,0,0,0.18)"/>
+          </svg>
+          <!-- Rotor spin animation rings -->
+          <div class="pl-rotor pl-rotor-tl" aria-hidden="true"></div>
+          <div class="pl-rotor pl-rotor-tr" aria-hidden="true"></div>
+          <div class="pl-rotor pl-rotor-bl" aria-hidden="true"></div>
+          <div class="pl-rotor pl-rotor-br" aria-hidden="true"></div>
+        </div>
+
+        <!-- Phase caption text -->
+        <div class="pl-caption-wrap" id="pl-caption-wrap">
+          <div class="pl-caption" id="pl-cap-1">
+            <span class="pl-cap-tag">01 — Agriculture</span>
+            <p class="pl-cap-h">Drone positioned<br><em>for deployment.</em></p>
+          </div>
+          <div class="pl-caption" id="pl-cap-2">
+            <span class="pl-cap-tag">02 — Plantation Coverage</span>
+            <p class="pl-cap-h">Scanning <em>plantation</em><br>canopy below.</p>
+          </div>
+          <div class="pl-caption" id="pl-cap-3">
+            <span class="pl-cap-tag">03 — Precision Spray</span>
+            <p class="pl-cap-h">Precision spray<br><em>activated.</em></p>
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <!-- SERVICES -->
+      <section class="frame services" aria-label="Commercial applications">
+        <span class="section-bgnum" aria-hidden="true">03</span>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">03 —</span><span class="title">Commercial&nbsp;Applications</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Two disciplines</span>
+          </div>
+          <div class="svc-list">
+            <div class="svc reveal" id="svc-01"><div class="num">01</div><div class="body"><h4>Agriculture Drone Support</h4><p>Drone spraying, fertilizing and scouting support for farms and plantations across Malaysia. Engineered for tropical canopies and large-acreage agriculture workflows.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">Plantations · Estates · Co-operatives</span></div></div>
+            <div class="svc reveal" id="svc-03"><div class="num">02</div><div class="body"><h4>Aerial Mapping</h4><p>Drone mapping and aerial survey services across Malaysia — photogrammetry, LiDAR and orthomosaic capture for survey-grade terrain, site and infrastructure outputs.</p></div><div class="meta"><span class="k">Suitable for</span><span class="v">GIS · Surveyors · Construction</span></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ENTERTAINMENT -->
+      <section class="frame entertainment" id="entertainment" aria-label="Drone Entertainment" style="display:none">
+        <svg class="show-bg" viewBox="0 0 1600 600" preserveAspectRatio="none" aria-hidden="true">
+          <defs><radialGradient id="dot" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#9DC1F5" stop-opacity="1"/><stop offset="100%" stop-color="#9DC1F5" stop-opacity="0"/></radialGradient></defs>
+          <g fill="url(#dot)">
+            <circle cx="500" cy="120" r="3"/><circle cx="560" cy="160" r="3"/><circle cx="620" cy="200" r="3"/><circle cx="680" cy="240" r="3"/><circle cx="740" cy="280" r="4"/><circle cx="800" cy="320" r="4"/><circle cx="860" cy="280" r="3"/><circle cx="920" cy="240" r="3"/><circle cx="980" cy="200" r="3"/><circle cx="1040" cy="160" r="3"/><circle cx="1100" cy="120" r="3"/>
+            <circle cx="500" cy="520" r="3"/><circle cx="560" cy="480" r="3"/><circle cx="620" cy="440" r="3"/><circle cx="680" cy="400" r="3"/><circle cx="740" cy="360" r="4"/><circle cx="860" cy="360" r="3"/><circle cx="920" cy="400" r="3"/><circle cx="980" cy="440" r="3"/><circle cx="1040" cy="480" r="3"/><circle cx="1100" cy="520" r="3"/>
+            <circle cx="200" cy="80" r="2" opacity=".5"/><circle cx="260" cy="380" r="2" opacity=".5"/><circle cx="140" cy="500" r="2" opacity=".5"/><circle cx="1300" cy="100" r="2" opacity=".5"/><circle cx="1380" cy="320" r="2" opacity=".5"/><circle cx="1440" cy="500" r="2" opacity=".5"/>
+          </g>
+        </svg>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">04 —</span><span class="title">Drone&nbsp;Entertainment</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Choreographed · Permitted · Insured</span>
+          </div>
+          <div class="ent-grid">
+            <div class="lead reveal">
+              <h2 class="reveal delay-1">Spectacle, <em>flown</em> with the precision of an industrial operation.</h2>
+              <p>Our entertainment division designs and operates aerial drone shows for civic events, festivals, brand activations and private occasions — at scale, with the same flight-planning rigour as our commercial work.</p>
+            </div>
+            <div class="ent-products reveal delay-1">
+              <div class="ent-product" id="ent-01"><span class="id">P-01</span><div><h4>Drone Show</h4><p>Drone show and drone light show productions across Malaysia — choreographed swarms above stadiums, waterfronts and skylines, delivered as a complete concept-to-flight production package.</p></div></div>
+              <div class="ent-product" id="ent-02"><span class="id">P-02</span><div><h4>Drone Spot</h4><p>Interactive drone experience and drone spot activations across Malaysia — compact aerial set-pieces for product launches, hospitality and brand moments at venues of any scale.</p></div></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNOLOGY & DATA -->
+      <section class="frame tech-light" id="technology" aria-label="Technology and Data">
+        <video class="tech-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+          <source src="assets/commercial-bg.mp4" type="video/mp4">
+        </video>
+        <div class="tech-overlay" aria-hidden="true"></div>
+        <div class="container">
+          <div class="section-head reveal">
+            <span class="num">05 —</span><span class="title">Technology &amp; Data</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Specification sheet</span>
+          </div>
+          <div class="tech-grid">
+            <div class="reveal">
+              <h2 class="reveal delay-1">Engineered as a <em>system</em>, not a fleet.</h2>
+              <p class="blurb">Drone platform, aerial data capture and drone data processing stack as one integrated system for Malaysia — delivering aerial intelligence that is auditable, repeatable and deployable across all operations.</p>
+            </div>
+            <div class="specsheet reveal delay-1" role="list">
+              <div class="spec" role="listitem"><span class="id">SPEC-01</span><span class="label">Platforms</span><span class="value">Multirotor · Fixed-wing · VTOL hybrid · FPV</span><span class="unit">Fleet</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-02</span><span class="label">Operating Envelope</span><span class="value">0-400 ft AGL (VLOS) / BVLOS-capable</span><span class="unit">Altitude</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-03</span><span class="label">Sensing</span><span class="value">RGB · Multispectral · Thermal · LiDAR</span><span class="unit">Payload</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-04</span><span class="label">Data Pipeline</span><span class="value">Capture → Process → Deliver, audit-trailed</span><span class="unit">Workflow</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-05</span><span class="label">Compliance</span><span class="value">CAAM-aligned / SORA-compliant processes</span><span class="unit">Reg.</span></div>
+              <div class="spec" role="listitem"><span class="id">SPEC-06</span><span class="label">Operations</span><span class="value">PIC · Visual Observers · Ground Control · Comms</span><span class="unit">Crew</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- COLLABORATION CTA -->
+      <section class="partner slate" id="contact" aria-label="Collaboration">
+        <svg class="partner-emblem" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M8 78 C 35 64, 44 58, 50 50 C 56 42, 61 35, 92 22 L 88 30 C 60 42, 55 47, 50 50 C 45 53, 40 58, 12 70 Z" fill="currentColor"/>
+          <path d="M8 22 C 35 36, 44 42, 50 50 C 56 58, 61 65, 92 78 L 88 70 C 60 58, 55 53, 50 50 C 45 47, 40 42, 12 30 Z" fill="currentColor"/>
+        </svg>
+        <div class="container">
+          <div class="section-head reveal" style="margin-bottom:0;">
+            <span class="num">07 —</span><span class="title">Collaborate with Drone X</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Drone &amp; eVTOL · Open partnerships</span>
+          </div>
+          <div class="partner-inner">
+            <div class="reveal">
+              <h2 class="reveal delay-1">Invite Drone &amp; eVTOL<br><em>Collaboration.</em></h2>
+              <p style="color:var(--cloud);font-weight:300;font-size:15px;line-height:1.7;margin-top:24px;max-width:44ch;">We welcome partnerships with drone operators, eVTOL innovators, aviation companies, technology providers, government agencies, and investors who share our vision for the future of smart aviation.</p>
+              <p style="color:var(--cloud);font-weight:300;font-size:15px;line-height:1.7;margin-top:16px;max-width:44ch;">Whether you are exploring drone services, urban air mobility, aerial logistics, training, demonstrations, or commercial collaboration, Drone X is open to building meaningful partnerships that create real impact.</p>
+              <p style="color:var(--sky);font-style:italic;font-size:15px;margin-top:16px;max-width:44ch;">Let's shape the future of drone and eVTOL aviation together.</p>
+              <div style="margin-top:40px;">
+                <a href="mailto:contact@dronexmalaysia.com" class="btn btn-primary">Get in Touch <span class="arrow" aria-hidden="true"></span></a>
+                <span style="display:inline-flex;align-items:center;gap:14px;margin-left:18px;font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;color:var(--cloud);text-transform:uppercase;">contact@dronexmalaysia.com</span>
+              </div>
+            </div>
+            <div class="right reveal delay-1">
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Drone Operators</span> Joint operations, fleet expansion, sub-contracting.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">eVTOL &amp; Aviation</span> Urban air mobility, aerial logistics, R&amp;D collaboration.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Technology Providers</span> Software, sensors, AI, payload integration.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Government &amp; Investors</span> Smart city, public safety, investment partnership.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HIRING -->
+      <section class="partner" id="careers" aria-label="Careers" style="background:var(--navy);border-top:1px solid rgba(73,95,119,.25);">
+        <svg class="partner-emblem" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="36" r="18" fill="none" stroke="currentColor" stroke-width="3"/>
+          <path d="M18 85 C18 65 82 65 82 85" fill="none" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <div class="container">
+          <div class="section-head reveal" style="margin-bottom:0;">
+            <span class="num">08 —</span><span class="title">We're Hiring</span>
+            <span class="line" aria-hidden="true"></span><span class="meta">Join the team · Malaysia</span>
+          </div>
+          <div class="partner-inner">
+            <div class="reveal">
+              <h2 class="reveal delay-1">Build the future of<br><em>drone aviation</em> with us.</h2>
+              <p style="color:var(--cloud);font-weight:300;font-size:15px;line-height:1.7;margin-top:24px;max-width:44ch;">We are looking for passionate individuals who want to be part of Malaysia's growing drone industry — pilots, engineers, operators, and business development professionals.</p>
+              <div style="margin-top:40px;">
+                <a href="mailto:hr@dronexmalaysia.com" class="btn btn-primary">Apply Now <span class="arrow" aria-hidden="true"></span></a>
+                <span style="display:inline-flex;align-items:center;gap:14px;margin-left:18px;font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;color:var(--cloud);text-transform:uppercase;">hr@dronexmalaysia.com</span>
+              </div>
+            </div>
+            <div class="right reveal delay-1">
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Drone Pilots</span> CAAM-certified, commercial operations.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Safety Manager</span> Risk &amp; Compliance, Safety Audit.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Authorised Technical Personnel (ATP)</span> Drone Maintenance, Technical Expert.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Business Development</span> Client acquisition, partnerships, proposals.</p>
+              <p><span class="mono" style="display:block;margin-bottom:6px;">Apply to</span> hr@dronexmalaysia.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="foot-grid">
+          <div class="col foot-brand">
+            <img src="assets/dronex-wordmark-light.png" alt="Drone X" style="height:44px;width:auto;display:block;" />
+            <p>Elevating Malaysia's drone future — commercial solutions and aerial entertainment, engineered as one operation.</p>
+          </div>
+          <div class="col">
+            <h5>Commercial Solutions</h5>
+            <ul>
+              <li><a href="#svc-01">Agriculture Drone Support</a></li>
+              <li><a href="#svc-03">Aerial Mapping</a></li>
+              <li><a href="#contact">Collaborate with Us</a></li>
+              <li><a href="#careers">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col" style="display:none">
+            <h5>Drone Entertainment</h5>
+            <ul><li><a href="#ent-01">Drone Show</a></li><li><a href="#ent-02">Drone Spot</a></li></ul>
+          </div>
+          <div class="col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#about">About&nbsp;Us</a></li>
+              <li><a href="#technology">Technology &amp; Data</a></li>
+              <li><a href="#partners">Partners</a></li>
+              <li><a href="#contact">Contact&nbsp;Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          <span class="coord"><b>© Drone&nbsp;X&nbsp;Malaysia</b> · All&nbsp;rights&nbsp;reserved · 2026</span>
+          <span class="coord">RPAS-A1 · CAAM-aligned · KUL · MY</span>
+          <span class="coord">03°08′22″N · 101°41′13″E</span>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.dx -->
+
+  <script>
+    // ── Mobile menu ─────────────────────────────────────────────
+    (function () {
+      var btn   = document.getElementById('nav-hamburger');
+      var menu  = document.getElementById('mobile-menu');
+      var close = document.getElementById('mobile-menu-close');
+      if (!btn || !menu) return;
+
+      function openMenu() {
+        menu.classList.add('open');
+        menu.setAttribute('aria-hidden', 'false');
+        btn.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeMenu() {
+        menu.classList.remove('open');
+        menu.setAttribute('aria-hidden', 'true');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      btn.addEventListener('click', function () {
+        menu.classList.contains('open') ? closeMenu() : openMenu();
+      });
+      if (close) close.addEventListener('click', closeMenu);
+
+      // Accordion toggles
+      menu.querySelectorAll('.mobile-nav-accordion-head').forEach(function (head) {
+        head.addEventListener('click', function () {
+          var acc = head.closest('.mobile-nav-accordion');
+          var isOpen = acc.classList.contains('open');
+          // Close all first
+          menu.querySelectorAll('.mobile-nav-accordion.open').forEach(function (a) {
+            a.classList.remove('open');
+            a.querySelector('.mobile-nav-accordion-head').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            acc.classList.add('open');
+            head.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+
+      // Close on any nav link tap (sub-items only — accordion heads handled above)
+      menu.querySelectorAll('.mobile-nav-accordion-sub a, .mobile-nav-item').forEach(function (a) {
+        a.addEventListener('click', closeMenu);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
+
+    // ── GSAP Hero Animation ─────────────────────────────────────
+    try { (function () {
+      var isMob = window.innerWidth <= 768;
+
+      // ── Elements ──
+      var droneInner = document.querySelector('.h-drone-inner');
+      var rgOuter    = document.querySelector('.rg-outer');
+      var rgInner    = document.querySelector('.rg-inner');
+      var rgMid      = document.querySelector('.rg-mid');
+      var rgDot      = document.querySelector('.rg-dot');
+      var brand      = document.querySelector('.h-brand');
+      var coords     = document.querySelectorAll('.h-coord');
+      var hint       = document.querySelector('.unicorn-scroll-hint');
+
+      // ── Set initial invisible states ──
+      gsap.set([droneInner, brand, hint], { autoAlpha: 0 });
+      gsap.set(droneInner, { y: 28, scale: 0.94 });
+      gsap.set(brand, { y: 12 });
+      gsap.set(coords, { autoAlpha: 0 });
+
+      // ── Entrance timeline ──────────────────────────────────────
+      var tl = gsap.timeline({ delay: 0.15 });
+
+      // 1. Drone rises in
+      tl.to(droneInner, {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.1,
+        ease: 'power3.out'
+      });
+
+      // 2. Wordmark fades in at the same moment drone peaks
+      tl.to(brand, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power2.out'
+      }, '-=0.55');
+
+      // 3. HUD corner coords stagger in
+      tl.to(coords, {
+        autoAlpha: 1,
+        duration: 0.5,
+        stagger: 0.12,
+        ease: 'power1.out'
+      }, '-=0.4');
+
+      // 4. Scroll hint
+      tl.to(hint, {
+        autoAlpha: 1,
+        duration: 0.5,
+        ease: 'power1.out'
+      }, '-=0.2');
+
+      // ── Continuous: drone float ────────────────────────────────
+      // Starts after entrance (delay matches tl total ~1.5s)
+      var floatTween = gsap.to(droneInner, {
+        y: isMob ? -8 : -14,
+        duration: isMob ? 3.5 : 4.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+        delay: 1.2
+      });
+
+      // ── Ring rotation + dot orbit: handled by CSS animation ──────
+      // Rings rotate via @keyframes rgOuterSpin / rgInnerSpin in CSS.
+      // The dot (child of rg-inner) orbits automatically with the group.
+      // No GSAP dependency — works even if GSAP fails to load.
+
+      // ── prefers-reduced-motion — kill entrance + float only ────
+      // Ring CSS animation is already paused by @media prefers-reduced-motion.
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tl.kill();
+        floatTween.kill();
+        // Snap everything visible immediately
+        gsap.set([droneInner, brand, hint, coords], { autoAlpha: 1, y: 0, scale: 1 });
+      }
+
+    })(); } catch (e) { console.warn('[DroneX] hero-anim error:', e); }
+
+    // ── Cursor / Touch spotlight reveal — pure RAF, zero GSAP ──────────
+    // No isTouch gate: register BOTH mouse + touch so touchscreen laptops work.
+    (function () {
+      var hero    = document.getElementById('unicorn-container');
+      var realImg = document.querySelector('.h-drone-real');
+      if (!hero || !realImg) return;
+
+      var mx = 50, my = 50;        // target position (%)
+      var lx = 50, ly = 50;        // lerped position
+      var targetR = 0, curR = 0;   // spotlight radius (px)
+
+      // Single RAF loop — updates CSS custom props every frame
+      (function tick() {
+        lx += (mx - lx) * 0.1;
+        ly += (my - ly) * 0.1;
+        // Open fast (power3.out feel), close slower (power2.in feel)
+        var rate = targetR > curR ? 0.14 : 0.10;
+        curR += (targetR - curR) * rate;
+        realImg.style.setProperty('--mx', lx.toFixed(2) + '%');
+        realImg.style.setProperty('--my', ly.toFixed(2) + '%');
+        realImg.style.setProperty('--r',  curR.toFixed(1) + 'px');
+        requestAnimationFrame(tick);
+      })();
+
+      function toPercent(clientX, clientY) {
+        var r = realImg.getBoundingClientRect();
+        mx = ((clientX - r.left) / r.width)  * 100;
+        my = ((clientY - r.top)  / r.height) * 100;
+      }
+
+      // ── Mouse (desktop + touchscreen laptops using mouse) ───────
+      hero.addEventListener('mouseenter', function () { targetR = 175; });
+      hero.addEventListener('mouseleave', function () { targetR = 0; });
+      hero.addEventListener('mousemove',  function (e) { toPercent(e.clientX, e.clientY); });
+
+      // ── Touch (mobile + touchscreen laptops using finger) ────────
+      hero.addEventListener('touchstart', function (e) {
+        var t = e.touches[0];
+        toPercent(t.clientX, t.clientY);
+        lx = mx; ly = my; // snap position so spotlight appears instantly
+        targetR = 130;
+      }, { passive: true });
+      hero.addEventListener('touchmove', function (e) {
+        toPercent(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+      hero.addEventListener('touchend',  function () { targetR = 0; }, { passive: true });
+    })();
+
+
+    // ── Hero intro exit (GSAP-powered, bulletproof) ────────────
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    var unicorn      = document.querySelector('.unicorn-section');
+    var hint         = document.querySelector('.unicorn-scroll-hint');
+    var done         = false;
+    var touchStartY  = 0;
+
+    function leave() {
+      if (done) return;
+      done = true;
+      // Hide scroll hint immediately (pure CSS, no GSAP)
+      if (hint) hint.style.opacity = '0';
+      // Exit animation — pure CSS transition, works even if GSAP timeline is paused
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        // No animation for accessibility
+        unicorn.style.display = 'none';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      } else {
+        unicorn.style.transition = 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)';
+        unicorn.style.transform  = 'translateY(-100%)';
+        unicorn.style.pointerEvents = 'none';
+        setTimeout(function () {
+          unicorn.style.display = 'none';
+          document.documentElement.style.overflow = '';
+          document.body.style.overflow = '';
+          if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+        }, 1300);
+      }
+    }
+
+    // -- Exit trigger -- always immediate, no video delay
+    (function () {
+      var triggered = false;
+
+      function trigger() {
+        if (done || triggered) return;
+        triggered = true;
+        leave();
+      }
+
+      // Scroll wheel (desktop)
+      window.addEventListener('wheel', function (e) {
+        if (!done && e.deltaY > 0) { e.preventDefault(); trigger(); }
+      }, { passive: false });
+
+      // Touch swipe up (mobile)
+      window.addEventListener('touchstart', function (e) {
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      window.addEventListener('touchmove', function (e) {
+        if (!done && (touchStartY - e.touches[0].clientY) > 60) trigger();
+      }, { passive: true });
+
+      // Click / tap anywhere on hero (extra fallback)
+      if (unicorn) unicorn.addEventListener('click', trigger);
+
+      // Enter button (mobile)
+      var tapBtn = document.querySelector('.unicorn-tap-btn');
+      if (tapBtn) tapBtn.addEventListener('click', function (e) { e.stopPropagation(); trigger(); });
+
+      // Keyboard Space / ArrowDown / PageDown
+      window.addEventListener('keydown', function (e) {
+        if (!done && [' ', 'ArrowDown', 'PageDown'].indexOf(e.key) !== -1) {
+          e.preventDefault(); trigger();
+        }
+      });
+    })();
+
+    // ── Emergency auto-exit: if no interaction within 20 s, proceed ────────
+    setTimeout(function () { if (!done) leave(); }, 20000);
+
+    // ── Live UTC+8 clock ────────────────────────────────────────
+    var clockEl = document.getElementById('hero-time');
+    if (clockEl) {
+      var tick = function () {
+        var now = new Date();
+        var my  = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + 8 * 3600000);
+        var p   = function (n) { return String(n).padStart(2, '0'); };
+        clockEl.textContent = p(my.getHours()) + ':' + p(my.getMinutes()) + ':' + p(my.getSeconds());
+      };
+      tick(); setInterval(tick, 1000);
+    }
+
+    // ── GSAP Scroll Animation Engine ───────────────────────────
+    // Apple/anime.js style: scroll position drives everything.
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Graceful fallback when GSAP hasn't loaded or user prefers no motion
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || reduced) {
+        document.querySelectorAll('.reveal, .reveal-wipe').forEach(function (el) {
+          el.classList.add('in');
+        });
+        var cIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            var el = e.target, t = parseInt(el.getAttribute('data-target'), 10) || 0;
+            var s = el.getAttribute('data-suffix') || '';
+            cIO.unobserve(el);
+            el.textContent = t + s;
+          });
+        }, { threshold: 0.4 });
+        document.querySelectorAll('.counter').forEach(function (el) { cIO.observe(el); });
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // ── Disable CSS transitions — GSAP owns motion ─────────────
+      document.querySelectorAll('.dx .reveal, .dx .reveal-wipe').forEach(function (el) {
+        el.style.transition = 'none';
+        el.style.transitionDelay = '0ms';
+      });
+
+      // ── Hero text must start VISIBLE — heroTl dismantles them on scroll ──
+      // .reveal/.reveal-wipe inside .hero are excluded from the fromTo loop.
+      // Adding .in now is instant because CSS transitions were just disabled.
+      document.querySelectorAll('.dx .hero .reveal, .dx .hero .reveal-wipe').forEach(function (el) {
+        el.classList.add('in');
+      });
+
+      // ── Elements with dedicated cinematic animations ─────────────
+      // These are excluded from the generic fade-up loop below.
+      var cinematic = new Set();
+      ['.dx .pillar', '.dx .svc', '.dx .spec', '.dx .prow',
+       '.dx .ent-product', '.dx .ent-grid .lead',
+       '.dx .partner-inner h2', '.dx .partner-inner .btn-primary',
+       '.dx .partner-inner .right', '.dx .partner-emblem',
+       '.dx .about-quote', '.dx .about-copy'].forEach(function (sel) {
+        document.querySelectorAll(sel).forEach(function (el) { cinematic.add(el); });
+      });
+
+      // ── GENERIC FADE-SCRUB — catches all remaining .reveal ────────
+      gsap.utils.toArray('.dx .reveal, .dx .reveal-wipe').forEach(function (el) {
+        if (el.closest('.hero') || cinematic.has(el)) return;
+        gsap.fromTo(el,
+          { opacity: 0, y: 32 },
+          { opacity: 1, y: 0, ease: 'power2.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', end: 'top 58%', scrub: 0.7 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 1. HERO DISMANTLE
+      // Layers scatter in 3D space as you scroll past the hero —
+      // like a product teardown in reverse.
+      // ══════════════════════════════════════════════════════════════
+      var heroTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.dx .hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 2.2,
+        }
+      });
+      heroTl
+        // Background layers explode outward
+        .to('.hero-emblem',     { x: 340,  y: -200, scale: 0.45, opacity: 0, ease: 'power2.in' }, 0)
+        .to('.radar-sweep',     { x: -440, y: -260, rotate: 130, scale: 0.45, opacity: 0, ease: 'power2.in' }, 0)
+        .to('.hero-chart-wrap', { opacity: 0, scale: 0.6, ease: 'power2.in' }, 0)
+        .to('.hero-grid',       { scale: 1.7, opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-rail',       { x: -90, opacity: 0, ease: 'power1.in' }, 0)
+        // Text content dismantles — each piece flies to a different corner
+        .to('.hero-headline',   { y: -100, opacity: 0, scale: 0.94, ease: 'power2.in' }, 0)
+        .to('.hero-tag',        { y: -70,  opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-meta',       { y: 90,   opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-actions',    { y: 120,  opacity: 0, ease: 'power1.in' }, 0)
+        .to('.hero-foot',       { y: 70,   opacity: 0, ease: 'power1.in' }, 0);
+
+      // ══════════════════════════════════════════════════════════════
+      // 2. ABOUT — assembles from opposite sides
+      // Left block slides from left, right from right — meeting center.
+      // ══════════════════════════════════════════════════════════════
+      gsap.fromTo('.dx .about-quote',
+        { x: -140, y: 70, opacity: 0, scale: 0.9 },
+        { x: 0,    y: 0,  opacity: 1, scale: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#about', start: 'top 75%', end: 'top 22%', scrub: 1.3 } }
+      );
+      gsap.fromTo('.dx .about-copy',
+        { x: 140,  y: 70, opacity: 0, scale: 0.9 },
+        { x: 0,    y: 0,  opacity: 1, scale: 1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#about', start: 'top 68%', end: 'top 16%', scrub: 1.3 } }
+      );
+
+      // ══════════════════════════════════════════════════════════════
+      // 3. PILLARS — split reveal from opposite edges
+      // Like two panels of a blast door parting and coming together.
+      // ══════════════════════════════════════════════════════════════
+      var pillars = document.querySelectorAll('.dx .pillar');
+      if (pillars[0]) {
+        gsap.fromTo(pillars[0],
+          { x: -320, y: 80, opacity: 0, scale: 0.85, rotationY: 12 },
+          { x: 0,    y: 0,  opacity: 1, scale: 1,    rotationY: 0, ease: 'power3.out',
+            scrollTrigger: { trigger: '.dx .pillars', start: 'top 72%', end: 'top 18%', scrub: 1.3 } }
+        );
+      }
+      if (pillars[1]) {
+        gsap.fromTo(pillars[1],
+          { x: 320,  y: 80, opacity: 0, scale: 0.85, rotationY: -12 },
+          { x: 0,    y: 0,  opacity: 1, scale: 1,    rotationY: 0, ease: 'power3.out',
+            scrollTrigger: { trigger: '.dx .pillars', start: 'top 66%', end: 'top 12%', scrub: 1.3 } }
+        );
+      }
+
+      // ══════════════════════════════════════════════════════════════
+      // 4. SERVICES — exploded assembly diagram
+      // Each row flies in from its own unique scatter position,
+      // like parts of a technical drawing reassembling.
+      // ══════════════════════════════════════════════════════════════
+      var svcOffsets = [
+        { x: -220, y: -70 }, { x: 220, y: -90 },
+        { x: -180, y:  50 }, { x: 200, y:  70 },
+        { x: -160, y: 110 }, { x: 180, y:  90 },
+      ];
+      document.querySelectorAll('.dx .svc').forEach(function (svc, i) {
+        var o = svcOffsets[i] || { x: 0, y: 60 };
+        gsap.fromTo(svc,
+          { x: o.x, y: o.y, opacity: 0, scale: 0.86 },
+          { x: 0,   y: 0,   opacity: 1, scale: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: svc, start: 'top 92%', end: 'top 48%', scrub: 1.1 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 5. ENTERTAINMENT DOTS — drone formation scatter & assemble
+      // Dots start at random scattered positions then fly into
+      // their formation pattern as you scroll — exact Blender feel.
+      // ══════════════════════════════════════════════════════════════
+      var dots = document.querySelectorAll('.dx .show-bg circle');
+      if (dots.length) {
+        var xW = gsap.utils.wrap([-420,-300,-190,-90,-10, 80,170,260,370]);
+        var yW = gsap.utils.wrap([-200,-140,-80,-35, 30, 90,150,210]);
+        gsap.fromTo(dots,
+          { x: function (i) { return xW(i); }, y: function (i) { return yW(i); },
+            scale: 0, opacity: 0 },
+          { x: 0, y: 0, scale: 1, opacity: 1, ease: 'power3.out',
+            stagger: { each: 0.022, from: 'random' },
+            scrollTrigger: {
+              trigger: '.dx .entertainment',
+              start: 'top 82%', end: 'center 38%', scrub: 1.6,
+            } }
+        );
+      }
+
+      // ── Entertainment text blocks ─────────────────────────────
+      gsap.fromTo('.dx .ent-grid .lead',
+        { x: -120, opacity: 0, scale: 0.92 },
+        { x: 0,    opacity: 1, scale: 1,    ease: 'power3.out',
+          scrollTrigger: { trigger: '.dx .ent-grid', start: 'top 76%', end: 'top 28%', scrub: 1.1 } }
+      );
+      document.querySelectorAll('.dx .ent-product').forEach(function (el, i) {
+        gsap.fromTo(el,
+          { x: 160, y: i * 45, opacity: 0 },
+          { x: 0,   y: 0,      opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 88%', end: 'top 50%', scrub: 1 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 6. SPEC SHEET — telemetry readout
+      // Each row slides in from left like data initializing on a
+      // mission control screen. Value text clips in separately.
+      // ══════════════════════════════════════════════════════════════
+      document.querySelectorAll('.dx .spec').forEach(function (spec) {
+        gsap.fromTo(spec,
+          { x: -130, opacity: 0 },
+          { x: 0,    opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: spec, start: 'top 91%', end: 'top 56%', scrub: 0.9 } }
+        );
+        var val = spec.querySelector('.value');
+        if (val) {
+          gsap.fromTo(val,
+            { clipPath: 'inset(0 100% 0 0)' },
+            { clipPath: 'inset(0 0% 0 0)', ease: 'none',
+              scrollTrigger: { trigger: spec, start: 'top 84%', end: 'top 46%', scrub: 0.8 } }
+          );
+        }
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 7. PARTNERS — alternating-side assembly
+      // Odd rows from left, even rows from right — interlocking.
+      // ══════════════════════════════════════════════════════════════
+      document.querySelectorAll('.dx .prow').forEach(function (row, i) {
+        gsap.fromTo(row,
+          { x: i % 2 === 0 ? -110 : 110, opacity: 0 },
+          { x: 0, opacity: 1, ease: 'power3.out',
+            scrollTrigger: { trigger: row, start: 'top 88%', end: 'top 56%', scrub: 0.9 } }
+        );
+      });
+
+      // ══════════════════════════════════════════════════════════════
+      // 8. CTA / CONTACT — cinematic conclusion
+      // The brand emblem assembles from a rotated, scaled state.
+      // Headline and CTA fly up from below. This is the landing.
+      // ══════════════════════════════════════════════════════════════
+      var ctaEl = document.querySelector('.dx .partner.slate') ||
+                  document.querySelector('.dx #contact');
+      if (ctaEl) {
+        var ctaTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: ctaEl,
+            start: 'top 76%', end: 'top 18%', scrub: 1.5,
+          }
+        });
+        ctaTl
+          .fromTo('.partner-emblem',
+            { rotate: -60, scale: 0.3, opacity: 0 },
+            { rotate: 0,   scale: 1,   opacity: 0.05, ease: 'power3.out' }, 0)
+          .fromTo('.partner-inner h2',
+            { y: 100, opacity: 0 },
+            { y: 0,   opacity: 1, ease: 'power3.out' }, 0.08)
+          .fromTo('.partner-inner .btn-primary',
+            { y: 56, opacity: 0, scale: 0.87 },
+            { y: 0,  opacity: 1, scale: 1, ease: 'power3.out' }, 0.18)
+          .fromTo('.partner-inner .right',
+            { x: 90, opacity: 0 },
+            { x: 0,  opacity: 1, ease: 'power2.out' }, 0.13);
+      }
+
+      // ── Counter count-up (scroll-triggered) ─────────────────────
+      document.querySelectorAll('.dx .counter').forEach(function (el) {
+        ScrollTrigger.create({
+          trigger: el, start: 'top 80%', once: true,
+          onEnter: function () {
+            var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+            var suffix = el.getAttribute('data-suffix') || '';
+            var dur = 2000, t0 = performance.now();
+            (function tick(now) {
+              var t = Math.min(1, (now - t0) / dur);
+              var eased = 1 - Math.pow(1 - t, 3);
+              el.textContent = Math.round(target * eased) + (t === 1 ? suffix : '');
+              if (t < 1) requestAnimationFrame(tick);
+            })(performance.now());
+          }
+        });
+      });
+
+    })();
+
+    // ── Active nav on scroll ────────────────────────────────────
+    var links   = [].slice.call(document.querySelectorAll('.dx .nav-list a[href^="#"]')).filter(function (a) { return a.getAttribute('href').length > 1; });
+    var targets = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+    var setActive = function () {
+      var y = window.scrollY + 120; var active = null;
+      targets.forEach(function (t) { if (t.offsetTop <= y) active = t.id; });
+      links.forEach(function (l) { l.classList.toggle('active', l.getAttribute('href') === '#' + active); });
+    };
+    window.addEventListener('scroll', setActive, { passive: true });
+    setActive();
+
+    // ── Drone Sequence — GSAP ScrollTrigger (smooth scrub) ───────
+    (function () {
+      var TOTAL  = 150;
+      var DIR    = 'drone-frames/ezgif-frame-';
+      var canvas = document.getElementById('seq-canvas');
+      var wrap   = document.getElementById('about');
+      var scanEl = document.getElementById('seq-scanline');
+      var chapEl = document.getElementById('seq-chapter');
+      var ctrEl  = document.getElementById('seq-counter-n');
+      var PANELS = [1,2,3].map(function(n){ return document.getElementById('seq-panel-'+n); });
+      var SEGS   = [0,1,2].map(function(i){ return document.getElementById('seq-seg-'+i); });
+      var FILLS  = [0,1,2].map(function(i){ return document.getElementById('seq-fill-'+i); });
+      var CHAPS  = ['01','02','03'];
+      if (!canvas || !wrap) return;
+
+      var ctx     = canvas.getContext('2d');
+      var dpr     = 1;
+      var current = -1;
+      var frames  = [];
+
+      // ── Canvas sizing ─────────────────────────────────────────────
+      function sizeCanvas() {
+        dpr = window.devicePixelRatio || 1;
+        var W = window.innerWidth, H = window.innerHeight;
+        canvas.width        = Math.floor(W * dpr);
+        canvas.height       = Math.floor(H * dpr);
+        canvas.style.width  = W + 'px';
+        canvas.style.height = H + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        current = -1;
+      }
+      sizeCanvas();
+      window.addEventListener('resize', sizeCanvas, { passive: true });
+
+      // ── Draw ──────────────────────────────────────────────────────
+      function drawFrame(idx) {
+        idx = Math.max(0, Math.min(TOTAL - 1, idx));
+        if (current === idx) return;
+        current = idx;
+        var img = frames[idx];
+        if (!img) return;
+        var W = window.innerWidth, H = window.innerHeight;
+        var iw = img.naturalWidth || 1280, ih = img.naturalHeight || 720;
+        var mobile = W < H;
+        var sc = mobile ? Math.min(W / iw, (H * 0.56) / ih) : Math.max(W / iw, H / ih);
+        var dw = iw * sc, dh = ih * sc;
+        var canvasH = mobile ? H * 0.56 : H;
+        ctx.clearRect(0, 0, W, H);
+        ctx.drawImage(img, (W - dw) / 2, mobile ? (canvasH - dh) / 2 : (H - dh) / 2, dw, dh);
+        if (ctrEl) ctrEl.textContent = String(idx + 1).padStart(3, '0');
+      }
+
+      // ── Panel transitions ─────────────────────────────────────────
+      var BREAKS = [0, 0.333, 0.666, 1];
+      var activeP = -1;
+      function updatePanels(prog) {
+        var p = prog >= 0.666 ? 2 : prog >= 0.333 ? 1 : 0;
+        if (chapEl) chapEl.textContent = CHAPS[p];
+        if (p !== activeP) {
+          if (activeP !== -1 && scanEl) {
+            scanEl.classList.remove('sweep');
+            void scanEl.offsetWidth;
+            scanEl.classList.add('sweep');
+          }
+          activeP = p;
+          PANELS.forEach(function(el, i){ if (el) el.classList.toggle('active', i === p); });
+        }
+        FILLS.forEach(function(fill, i) {
+          if (!fill) return;
+          var sp = Math.max(0, Math.min(1, (prog - BREAKS[i]) / (BREAKS[i+1] - BREAKS[i])));
+          fill.style.transform = 'scaleX(' + sp + ')';
+        });
+        SEGS.forEach(function(seg, i){ if (seg) seg.classList.toggle('active', i === p); });
+      }
+
+      // ── Load frames ───────────────────────────────────────────────
+      var proxy = { frame: 0 };
+
+      // Draw frame 0 immediately when it loads
+      (function () {
+        var img = new Image();
+        img.onload = function () {
+          frames[0] = img;
+          drawFrame(0);
+          loadRest();
+          // Now wire up GSAP — safe to call after first frame is ready
+          initGSAP();
+        };
+        img.src = DIR + '001.jpg';
+      })();
+
+      function loadRest() {
+        var BATCH = 30, idx = 1;
+        function next() {
+          for (var end = Math.min(idx + BATCH, TOTAL); idx < end; idx++) {
+            (function (n) {
+              var im = new Image();
+              im.onload = function () { frames[n] = im; };
+              im.src = DIR + String(n + 1).padStart(3, '0') + '.jpg';
+            })(idx);
+          }
+          if (idx < TOTAL) setTimeout(next, 40);
+        }
+        next();
+      }
+
+      // ── Native scroll listener — no GSAP ScrollTrigger dependency ──────
+      // ScrollTrigger can be miscalibrated by scroll drift during the intro exit.
+      // A direct getBoundingClientRect() calculation is immune to that.
+      function initGSAP() {
+        // Reduced motion: show panel 1 statically
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          var p1 = document.getElementById('seq-panel-1');
+          if (p1) p1.classList.add('active');
+          var fill0 = document.getElementById('seq-fill-0');
+          if (fill0) fill0.style.transform = 'scaleX(1)';
+          var seg0 = document.getElementById('seq-seg-0');
+          if (seg0) seg0.classList.add('active');
+          return;
+        }
+
+        var rafId      = 0;
+        var targetIdx  = 0;
+        var lerpedIdx  = 0;
+
+        function calcProgress() {
+          var wrapH    = wrap.offsetHeight;
+          var viewH    = window.innerHeight;
+          var wrapTop  = wrap.getBoundingClientRect().top;
+          var progress = -wrapTop / (wrapH - viewH);
+          return Math.max(0, Math.min(1, progress));
+        }
+
+        function tick() {
+          rafId = 0;
+          // Lerp toward target (0.12 per frame ≈ 0.8s lag at 60 fps)
+          lerpedIdx += (targetIdx - lerpedIdx) * 0.12;
+          drawFrame(Math.round(lerpedIdx));
+          updatePanels(lerpedIdx / (TOTAL - 1));
+          if (Math.abs(lerpedIdx - targetIdx) > 0.25) {
+            rafId = requestAnimationFrame(tick);
+          }
+        }
+
+        function onScroll() {
+          targetIdx = calcProgress() * (TOTAL - 1);
+          if (!rafId) rafId = requestAnimationFrame(tick);
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll(); // seed on first call
+      }
+    })();
+
+    /* plantation section JS removed */
+    if (false) (function () {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      var section    = document.getElementById('plantation-anim');
+      if (!section) return;
+
+      var bgPhoto    = document.getElementById('pl-bg-photo');
+      var bgGold     = document.getElementById('pl-bg-gold');
+      var droneLayer = document.getElementById('pl-drone-layer');
+      var hudLayer   = document.getElementById('pl-hud-layer');
+      var sprayLayer = document.getElementById('pl-spray-layer');
+      var sprayCanvas= document.getElementById('pl-spray-canvas');
+      var pb1        = document.getElementById('pl-pb-1');
+      var pb2        = document.getElementById('pl-pb-2');
+      var pb3        = document.getElementById('pl-pb-3');
+      var dataHud    = document.getElementById('pl-data-hud');
+      var progressEl = document.getElementById('pl-progress');
+      var progBar    = document.getElementById('pl-prog-bar');
+      var lbl1       = document.getElementById('pl-lbl-1');
+      var lbl2       = document.getElementById('pl-lbl-2');
+      var lbl3       = document.getElementById('pl-lbl-3');
+      var altEl      = document.getElementById('pl-alt');
+      var cvgEl      = document.getElementById('pl-cvg');
+      var rowsEl     = document.getElementById('pl-rows');
+      var sysEl      = document.getElementById('pl-sys');
+      var scanSweep  = document.getElementById('pl-scan-sweep');
+      var coverRects = document.querySelectorAll('.pl-cover-rect');
+
+      // ── Spray particle system ─────────────────────────────────────
+      var sprayCtx    = sprayCanvas ? sprayCanvas.getContext('2d') : null;
+      var particles   = [];
+      var sprayActive = false;
+      var sprayRAF    = null;
+
+      function resizeSpray() {
+        var pin = document.getElementById('pl-pin');
+        if (!sprayCanvas || !pin) return;
+        sprayCanvas.width  = pin.offsetWidth;
+        sprayCanvas.height = pin.offsetHeight;
+      }
+      resizeSpray();
+      window.addEventListener('resize', resizeSpray, { passive: true });
+
+      function spawnParticle() {
+        if (!sprayCanvas) return null;
+        var cx = sprayCanvas.width  * 0.635;
+        var cy = sprayCanvas.height * 0.42;
+        var spread = (Math.random() - 0.5) * 0.75;
+        var spd    = 2.2 + Math.random() * 2.6;
+        return {
+          x:     cx + (Math.random() - 0.5) * 55,
+          y:     cy,
+          vx:    Math.sin(spread) * spd * 0.35,
+          vy:    Math.cos(spread) * spd,
+          life:  1,
+          decay: 0.007 + Math.random() * 0.011,
+          r:     0.9 + Math.random() * 2.2,
+          hue:   Math.random() > 0.45 ? '160,228,195' : '200,238,255'
+        };
+      }
+
+      function tickSpray() {
+        if (!sprayCtx || !sprayCanvas) return;
+        sprayCtx.clearRect(0, 0, sprayCanvas.width, sprayCanvas.height);
+        if (sprayActive) {
+          for (var s = 0; s < 7; s++) { var p = spawnParticle(); if (p) particles.push(p); }
+        }
+        for (var i = particles.length - 1; i >= 0; i--) {
+          var pt = particles[i];
+          pt.x += pt.vx; pt.y += pt.vy; pt.vy += 0.045;
+          pt.life -= pt.decay;
+          if (pt.life <= 0) { particles.splice(i, 1); continue; }
+          sprayCtx.beginPath();
+          sprayCtx.arc(pt.x, pt.y, pt.r, 0, Math.PI * 2);
+          sprayCtx.fillStyle = 'rgba(' + pt.hue + ',' + pt.life.toFixed(2) + ')';
+          sprayCtx.fill();
+        }
+        if (sprayActive || particles.length > 0) sprayRAF = requestAnimationFrame(tickSpray);
+      }
+
+      function startSpray() {
+        if (sprayActive) return;
+        sprayActive = true;
+        cancelAnimationFrame(sprayRAF);
+        tickSpray();
+      }
+      function stopSpray() { sprayActive = false; }
+
+      // ── Phase state machine ───────────────────────────────────────
+      var activePhase = -1;
+      function setPhase(n) {
+        if (n === activePhase) return;
+        activePhase = n;
+        [pb1, pb2, pb3].forEach(function (el, i) {
+          if (el) el.classList.toggle('pl-active', i === n);
+        });
+        [lbl1, lbl2, lbl3].forEach(function (el, i) {
+          if (el) el.classList.toggle('pl-lbl-active', i === n);
+        });
+        if (n === 1 && scanSweep) {
+          scanSweep.style.opacity = '1';
+          scanSweep.classList.add('pl-scanning');
+        } else if (scanSweep) {
+          scanSweep.classList.remove('pl-scanning');
+          scanSweep.style.opacity = '0';
+        }
+        if (n === 2) {
+          startSpray();
+          if (sysEl) { sysEl.textContent = 'SPRAYING'; sysEl.classList.add('pl-active-spray'); }
+        } else {
+          stopSpray();
+          if (sysEl) { sysEl.classList.remove('pl-active-spray'); sysEl.textContent = n === 0 ? 'STANDBY' : 'SCANNING'; }
+        }
+      }
+
+      // ── GSAP Timeline ─────────────────────────────────────────────
+      var tl = gsap.timeline({
+        defaults: { ease: 'none' },
+        scrollTrigger: {
+          trigger: section,
+          start: 'top top',
+          end: 'bottom bottom',
+          scrub: 1.6,
+          onUpdate: function (self) {
+            var p = self.progress;
+            if (progBar) progBar.style.width = (p * 100).toFixed(1) + '%';
+            if      (p < 0.30) setPhase(0);
+            else if (p < 0.65) setPhase(1);
+            else               setPhase(2);
+            var alt = p < 0.30 ? 120 : p < 0.65
+              ? Math.round(120 - (p - 0.30) / 0.35 * 80)
+              : Math.round(40  - (p - 0.65) / 0.35 * 15);
+            if (altEl)  altEl.textContent  = Math.max(25, alt);
+            var cvg = p < 0.65 ? 0 : Math.round((p - 0.65) / 0.35 * 86);
+            if (cvgEl)  cvgEl.textContent  = Math.min(86, cvg);
+            var rows = p < 0.65 ? 0 : Math.round((p - 0.65) / 0.35 * 20);
+            if (rowsEl) rowsEl.textContent = Math.min(20, rows);
+          }
+        }
+      });
+
+      // Phase 1: APPROACH
+      tl.addLabel('approach', 0);
+      tl.fromTo(bgPhoto,    { opacity: 0, scale: 1.07 }, { opacity: 0.90, scale: 1.0, duration: 3, ease: 'power2.out' }, 'approach');
+      tl.fromTo(droneLayer, { opacity: 0, x: 55 },       { opacity: 1, x: 0, duration: 3, ease: 'power3.out' },         'approach+=0.6');
+      tl.fromTo(dataHud,    { opacity: 0, x: 18 },       { opacity: 1, x: 0, duration: 2 },                             'approach+=0.4');
+      tl.fromTo(progressEl, { opacity: 0 },              { opacity: 1, duration: 1.5 },                                 'approach+=0.4');
+
+      // Phase 2: SURVEY
+      tl.addLabel('survey', 3);
+      tl.fromTo(hudLayer,   { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 2, ease: 'power2.out' }, 'survey');
+      tl.fromTo(coverRects, { opacity: 0 },              { opacity: 1, duration: 1.5, stagger: 0.5 },              'survey+=1');
+      tl.to(droneLayer,                                  { y: -18, duration: 3.5, ease: 'sine.inOut' },             'survey');
+
+      // Phase 3: SPRAY
+      tl.addLabel('spray', 6.5);
+      tl.fromTo(sprayLayer, { opacity: 0 }, { opacity: 1, duration: 1.5, ease: 'power1.in' },         'spray');
+      tl.fromTo(bgGold,     { opacity: 0 }, { opacity: 1, duration: 2 },                              'spray+=0.4');
+      tl.to(bgPhoto,        { opacity: 0.96, filter: 'brightness(1.12) saturate(1.18)', duration: 2.5 }, 'spray+=0.4');
+      tl.to(droneLayer,     { y: 12, duration: 3, ease: 'sine.inOut' },                               'spray');
+
+    })();
+  </script>
+
+</body>
+</html>

@@ -5,3 +5,17 @@ node_modules/
 .env
 
 .vercel
+
+# Local Netlify folder
+.netlify
+
+# Local tooling cache/config (impeccable design-linter)
+.impeccable/
+
+# Stale manual-deploy snapshot, linked to a separate/disconnected Netlify site
+_netlify-deploy/
+
+# Crash dumps and ad-hoc verification screenshots (not site content)
+*.stackdump
+/ss-*.png
+/check-intro*.png
