@@ -16,9 +16,9 @@
     });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode: keep in-page state only */ }
   }
-  var saved = "en";
-  try { saved = localStorage.getItem(LANG_KEY) || "en"; } catch (e) { /* ignore */ }
-  applyLang(saved === "zh" ? "zh" : "en");
+  var saved = "zh";
+  try { saved = localStorage.getItem(LANG_KEY) || "zh"; } catch (e) { /* ignore */ }
+  applyLang(saved === "en" ? "en" : "zh");
 
   document.addEventListener("click", function (ev) {
     var btn = ev.target.closest(".lang-toggle button");
@@ -97,18 +97,27 @@
   }
 
   /* ---------- Tabs (Media Centre) ---------- */
+  function selectTab(tabs, btn) {
+    tabs.querySelectorAll(".tab-btn").forEach(function (b) {
+      b.setAttribute("aria-selected", b === btn ? "true" : "false");
+    });
+    var scope = tabs.parentElement;
+    scope.querySelectorAll(".tab-panel").forEach(function (p) {
+      p.hidden = p.id !== btn.getAttribute("aria-controls");
+    });
+  }
   document.querySelectorAll(".tabs").forEach(function (tabs) {
     tabs.addEventListener("click", function (ev) {
       var btn = ev.target.closest(".tab-btn");
       if (!btn) return;
-      tabs.querySelectorAll(".tab-btn").forEach(function (b) {
-        b.setAttribute("aria-selected", b === btn ? "true" : "false");
-      });
-      var scope = tabs.parentElement;
-      scope.querySelectorAll(".tab-panel").forEach(function (p) {
-        p.hidden = p.id !== btn.getAttribute("aria-controls");
-      });
+      selectTab(tabs, btn);
     });
+    // Deep-link support: /media.html#tab-news opens straight to that tab
+    // (e.g. a "back to Media Centre" link from a news article page).
+    if (location.hash) {
+      var targetBtn = tabs.querySelector('.tab-btn[aria-controls="' + location.hash.slice(1) + '"]');
+      if (targetBtn) selectTab(tabs, targetBtn);
+    }
   });
 
   /* ---------- Dynamic year (never hardcode) ---------- */

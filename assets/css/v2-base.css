@@ -6,10 +6,12 @@
 
 :root {
   /* ============================================================
-     Color tokens — strict 3-color monochrome (client-specified):
-     White #FFFFFF, Cloud #E8ECEF, Black #000000. No other hue is
-     introduced; --ink-2/--cloud-2 are zero-chroma (pure gray) steps
-     interpolated between these three, not a fourth color.
+     Color tokens — 3-color monochrome-plus-brand system:
+     White #FFFFFF, Cloud #E8ECEF, near-black #151F27 (brand navy-black,
+     replaces flat #000000 site-wide as of the 2026-07-24 brand update).
+     --ink-2/--cloud-2 remain zero-chroma (pure gray) steps between
+     these — only the darkest anchor color itself carries the brand's
+     subtle navy hue now, not the whole gray ramp.
      Exception: --wa (WhatsApp) is a third-party brand mark, kept for
      platform recognition, and the semantic form-error red, kept for
      universal accessibility convention — both called out in DESIGN.md.
@@ -17,7 +19,7 @@
   --white:       oklch(100% 0 0);   /* #FFFFFF — page bg, light surfaces */
   --cloud:       oklch(94.09% 0.0059 239.8); /* #E8ECEF — alternating section bg (client-specified) */
   --cloud-2:     oklch(90% 0 0);    /* pure-gray elevation step, between cloud and ink-2 */
-  --black:       oklch(0% 0 0);     /* #000000 — primary accent, footer, maximum contrast */
+  --black:       oklch(23.35% 0.0211 242.91); /* #151F27 — brand near-black: primary accent, footer, maximum contrast */
 
   /* Semantic aliases */
   --bg:          var(--white);
@@ -25,8 +27,8 @@
   --surface-2:   var(--cloud-2);
   --ink:         var(--black);              /* primary text/icons/buttons */
   --ink-2:       oklch(42% 0 0);             /* #4d4d4d secondary/muted text: 8.46:1 on white, 7.12:1 on cloud */
-  --line:        rgba(0, 0, 0, 0.12);        /* pure-black hairline rule */
-  --line-soft:   rgba(0, 0, 0, 0.06);
+  --line:        rgba(21, 31, 39, 0.12);     /* #151F27 hairline rule */
+  --line-soft:   rgba(21, 31, 39, 0.06);
   --wa:          #25d366;                    /* WhatsApp brand, intentionally untouched */
   --wa-bubble:   oklch(93% 0.09 152);         /* light WhatsApp chat-bubble tint, same --wa exception — testimonial cards only (B2) */
   --wa-check:    #34b7f1;                     /* WhatsApp's own read-receipt blue tick, same --wa exception */
@@ -60,7 +62,12 @@
 
 /* ---------- Reset ---------- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+/* html's own background paints the full viewport canvas (including any
+   gutter below a short page's content, and mobile rubber-band overscroll
+   at top/bottom) independently of body's box height. Match it to the
+   footer's black so short pages never reveal a white gap under the
+   footer instead of a plain white canvas default. */
+html { scroll-behavior: smooth; background: var(--black); }
 body {
   margin: 0;
   font-family: var(--font);
@@ -107,7 +114,7 @@ html[data-lang="zh"] .en { display: none !important; }
 }
 .btn:active { transform: scale(0.97); }
 .btn-primary { background: var(--black); color: var(--white); border-color: var(--black); }
-.btn-primary:hover { background: var(--white); color: var(--black); border-color: var(--black); box-shadow: 0 8px 24px -10px rgba(0, 0, 0, 0.35); }
+.btn-primary:hover { background: var(--white); color: var(--black); border-color: var(--black); box-shadow: 0 8px 24px -10px rgba(21, 31, 39, 0.35); }
 .btn-secondary, .btn-ghost { background: transparent; color: var(--black); border-color: var(--black); }
 .btn-secondary:hover, .btn-ghost:hover { background: var(--black); color: var(--white); }
 .btn-light { background: var(--white); color: var(--black); }
