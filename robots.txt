@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /legacy-v1-index.html
+
+Sitemap: https://www.dronexmalaysia.com/sitemap.xml
