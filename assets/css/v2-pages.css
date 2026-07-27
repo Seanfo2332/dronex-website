@@ -105,6 +105,24 @@
   .crop-card, .crop-card img { transition: none; }
 }
 
+/* ---------- Why Drone Spraying (S3) — scoped accent green ----------
+   2026-07-27: client-requested redesign introduces a distinct accent
+   color for this section only (benefit cards, before/after, comparison
+   table). Defined as custom properties scoped to .why-section so it can
+   never leak into the site's documented 3-color system elsewhere — see
+   DESIGN.md, which still governs every other page/section. Deliberately
+   NOT the same green as --wa (WhatsApp), to avoid implying a WhatsApp
+   connection where there isn't one. */
+.why-section {
+  --accent: #1c8f52;
+  --accent-soft: #e6f4ea;
+  --accent-ink: #0f5c34;
+}
+.why-head .why-rule {
+  display: block; width: 64px; height: 4px; border-radius: 2px;
+  background: var(--accent); margin: 0.9rem auto 0;
+}
+
 /* ---------- Benefits (Why Drone Spraying) ---------- */
 .benefit-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -113,16 +131,17 @@
 .benefit {
   background: var(--white); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 1.8rem 1.6rem;
+  box-shadow: 0 10px 30px -22px rgba(21, 31, 39, 0.35);
   transition: transform 220ms var(--ease), box-shadow 220ms ease, border-color 220ms ease;
 }
 .benefit:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 40px -20px rgba(21, 31, 39, 0.28);
-  border-color: var(--ink);
+  border-color: var(--accent);
 }
 .benefit-icon {
-  width: 52px; height: 52px; border-radius: 12px;
-  background: var(--cloud-2); color: var(--ink);
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
   display: grid; place-items: center; margin-bottom: 1.1rem;
 }
 .benefit-icon svg { width: 26px; height: 26px; }
@@ -218,9 +237,10 @@
 }
 .compare-label { font-weight: 700; color: var(--ink); background: var(--surface); }
 .compare-col-traditional { color: var(--ink-2); }
-.compare-col-drone { color: var(--ink); font-weight: 700; background: var(--cloud-2); }
-.compare-row-head .compare-col-drone { background: var(--ink); color: var(--white); }
-.compare-check { font-weight: 900; flex: none; }
+.compare-col-drone { color: var(--ink); font-weight: 700; background: var(--accent-soft); }
+.compare-row-head .compare-col-traditional { background: var(--ink); color: var(--white); }
+.compare-row-head .compare-col-drone { background: var(--accent); color: var(--white); }
+.compare-check { font-weight: 900; flex: none; color: var(--accent); }
 .compare-mobile-label { display: none; font-weight: 700; color: var(--ink-2); }
 
 @media (max-width: 640px) {
@@ -703,36 +723,56 @@
 }
 .cta-strip h2 { color: var(--white); margin: 0; font-size: var(--text-h3); max-width: 28ch; }
 
-/* ---------- Before & After (B1, PDF v3) ----------
-   New component: not previously in the design system. The green accent on
-   the After side intentionally reuses --wa, the one documented brand-color
-   exception (see DESIGN.md), rather than introducing a new hue. */
+/* ---------- Before & After (B1, PDF v3; redesigned 2026-07-27) ----------
+   Overlay badges + stat strips per client reference design. Uses the
+   .why-section accent green (see above) for the After side and the
+   drone-column table cells, replacing the earlier --wa-reuse approach so
+   the whole section reads as one consistent accent instead of two
+   slightly different greens. */
 .before-after {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem;
   margin-block: var(--space-block);
 }
 .ba-media {
+  position: relative;
   aspect-ratio: 4/3; border-radius: var(--radius); background: var(--surface-2);
   display: grid; place-items: center; color: var(--ink-2); overflow: hidden;
   font-size: 0.8rem; font-weight: 600; margin-bottom: 0.9rem;
 }
 .ba-media img, .ba-media video { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ba-after .ba-media { border: 3px solid var(--wa); }
-.ba-tag {
-  display: inline-flex; align-items: center; gap: 0.4em;
-  font-weight: 800; font-size: 1.05rem; margin-bottom: 0.3em;
+.ba-after .ba-media { border: 3px solid var(--accent); }
+.ba-badge {
+  position: absolute; top: 0.9rem; left: 0.9rem; z-index: 2;
+  display: inline-flex; align-items: center;
+  padding: 0.5em 0.9em; border-radius: var(--radius-pill);
+  font-weight: 700; font-size: 0.8rem; color: var(--white);
+  background: rgba(21, 31, 39, 0.72);
 }
-.ba-tag svg { width: 20px; height: 20px; flex: none; }
-.ba-after .ba-tag { color: var(--wa); }
-.ba-caption { margin: 0; font-size: var(--text-small); color: var(--ink-2); }
+.ba-badge-accent { background: var(--accent); }
+.ba-stats { list-style: none; margin: 0; padding: 0; display: flex; gap: 0.6rem; }
+.ba-stat {
+  flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center;
+  text-align: center; gap: 0.3em; padding: 0.8rem 0.4rem; border-radius: var(--radius);
+  background: var(--surface-2);
+}
+.ba-after .ba-stat { background: var(--accent-soft); }
+.ba-stat-icon { display: inline-flex; color: var(--ink-2); }
+.ba-after .ba-stat-icon { color: var(--accent); }
+.ba-stat-icon svg { width: 18px; height: 18px; }
+.ba-stat b { font-size: 0.82rem; font-weight: 800; color: var(--ink); line-height: 1.3; }
+.ba-stat span { font-size: 0.7rem; color: var(--ink-2); line-height: 1.3; }
+.compare-dash { color: var(--accent); font-weight: 700; }
 @media (max-width: 700px) {
   .before-after { grid-template-columns: 1fr; }
 }
+@media (max-width: 420px) {
+  .ba-stat b { font-size: 0.76rem; }
+  .ba-stat span { font-size: 0.66rem; }
+}
 
-/* ---------- Compare-table row icons (B6, PDF v3) ----------
-   Kept monochrome to match the existing check-mark styling in this table
-   and the site-wide 3-color system, rather than introducing a new accent. */
-.compare-icon { display: inline-flex; flex: none; color: var(--ink-2); }
+/* ---------- Compare-table row icons (B6, PDF v3; recolored 2026-07-27
+   to the .why-section accent green per client reference design) ---------- */
+.compare-icon { display: inline-flex; flex: none; color: var(--accent); }
 .compare-icon svg { width: 18px; height: 18px; }
 
 /* ---------- Video-background content section (Coverage, follow-up request) ----------

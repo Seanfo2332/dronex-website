@@ -67,7 +67,7 @@
    at top/bottom) independently of body's box height. Match it to the
    footer's black so short pages never reveal a white gap under the
    footer instead of a plain white canvas default. */
-html { scroll-behavior: smooth; background: var(--black); }
+html { scroll-behavior: smooth; background: var(--black); overflow-x: hidden; }
 body {
   margin: 0;
   font-family: var(--font);
@@ -76,6 +76,14 @@ body {
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  /* Safety net: several sections use load/scroll-triggered transforms
+     (hero media settle/parallax scale, before/after panel reveal, etc.)
+     that can transiently extend a few px past the viewport edge while
+     animating in. Without clipping this at the html/body level, a mobile
+     swipe during that brief window can drag the page into that transient
+     overflow and leave it stuck shifted right once the animation settles
+     back — reported as a bug 2026-07-27 (page swipeable off-screen right). */
+  overflow-x: hidden;
 }
 img, video { max-width: 100%; display: block; }
 a { color: inherit; }
@@ -326,3 +334,14 @@ html[data-lang="zh"] .en { display: none !important; }
 .center p { margin-inline: auto; }
 .section-head { max-width: 720px; margin-bottom: var(--space-block); }
 .section-head.center { margin-inline: auto; }
+/* Keeps a CJK phrase (e.g. 交给, 持牌) from being split across a line
+   break by the browser's default char-by-char CJK wrapping — the pair
+   moves to the next line together instead of being torn apart. */
+.no-break { white-space: nowrap; }
+/* Forces a line break only below the 600px zh-mobile hero breakpoint —
+   hidden (no break) at every wider size so desktop/tablet keep their
+   natural wrap. Used to break CJK copy at a clause boundary (comma/period)
+   instead of the default char-by-char wrap landing mid-phrase (reported
+   2026-07-27, hero H1 + crop-card descriptions). */
+.br-mobile { display: none; }
+@media (max-width: 600px) { .br-mobile { display: inline; } }
