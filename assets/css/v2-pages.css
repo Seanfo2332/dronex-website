@@ -795,3 +795,114 @@
 @media (prefers-reduced-motion: reduce) {
   .section-video .hero-media video { display: none; }
 }
+/* ============================================================
+   Partners page — "Explore Partnership Areas" / process timeline / CTA
+   banner (2026-07-28, per client reference design; switched 2026-07-28
+   from a continuous dark page to light sections with a dark CTA banner
+   as the one accent card, per client request — CTAs are meant to stand
+   out, not blend into a dark page, and light sections here now match
+   the site's existing .section/.on-surface alternating-rhythm pattern
+   used on the homepage's "Why Choose" cards.)
+   ============================================================ */
+/* Scoped blue accent — isolated from the site's documented 3-color
+   system (DESIGN.md) and from the separate green used on the homepage's
+   "Why Choose" section. */
+.partners-explore, .process-section, .partners-cta-section {
+  --accent: #2f6fed;
+  --accent-soft: #eaf1ff;
+  --accent-ink: #1d4fc2;
+}
+
+/* ---------- Explore Partnership Areas cards ----------
+   Light section (on-surface, matches the homepage's benefit-grid
+   pattern) with white cards for definition against the light-gray bg. */
+.partners-explore { background: var(--white); }
+/* Two separate grid rows (4-up then 3-up) rather than one 7-item 4-column
+   grid — the reference's second row spans the SAME full width as the
+   first, making its 3 cards proportionally wider, not just 3-of-4 equal
+   columns with an empty gap on the right. */
+.explore-grid, .explore-grid-row2 {
+  display: grid; grid-template-columns: 1fr; gap: 0.85rem;
+}
+.explore-grid { margin-top: 1.8rem; }
+.explore-grid-row2 { margin-top: 0.85rem; }
+@media (min-width: 560px) {
+  .explore-grid, .explore-grid-row2 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .explore-grid { grid-template-columns: repeat(4, 1fr); }
+  .explore-grid-row2 { grid-template-columns: repeat(3, 1fr); }
+}
+.explore-card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+  padding: 1.2rem 1.3rem 1.3rem; display: flex; flex-direction: column; gap: 0.7rem;
+  transition: transform 220ms var(--ease), box-shadow 220ms ease, border-color 220ms ease;
+}
+.explore-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px -22px rgba(21, 31, 39, 0.32);
+  border-color: var(--accent);
+}
+.explore-card-head { display: flex; align-items: center; gap: 0.8rem; }
+/* Plain icon, no colored badge box — matches reference exactly. */
+.explore-icon { display: grid; place-items: center; color: var(--ink); flex: none; }
+.explore-icon svg { width: 38px; height: 38px; }
+.explore-card h3 { font-size: 0.98rem; margin: 0; color: var(--ink); }
+.explore-card p { margin: 0; font-size: 0.84rem; line-height: 1.5; color: var(--ink-2); }
+
+/* ---------- Partnership Process (plain white — alternates with the
+   light-gray explore section above for the site's usual section rhythm) ----------
+   Heading sits inline as the first item in the timeline row (not stacked
+   above it as a separate block) — matches reference exactly. */
+.process-section { background: var(--white); padding-top: 0; }
+.process-timeline {
+  display: flex; align-items: center; gap: 1.8rem; flex-wrap: wrap; row-gap: 1.5rem;
+}
+.process-heading {
+  font-size: var(--text-h2); font-weight: 800; letter-spacing: -0.015em;
+  color: var(--ink); margin: 0; flex: none;
+}
+.process-step { display: flex; align-items: center; gap: 0.9rem; flex: 0 0 auto; }
+.process-line {
+  flex: 1 1 40px; height: 2px; background: var(--line);
+  margin-inline: 0.6rem; min-width: 24px;
+}
+.process-icon {
+  width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--accent);
+  display: grid; place-items: center; color: var(--accent); flex: none;
+}
+.process-icon svg { width: 22px; height: 22px; }
+.process-num { display: block; font-size: 0.78rem; font-weight: 700; color: var(--ink-2); }
+.process-label { display: block; font-size: 0.95rem; font-weight: 700; color: var(--ink); white-space: nowrap; }
+@media (max-width: 900px) {
+  .process-timeline { flex-direction: column; align-items: flex-start; gap: 1.3rem; }
+  .process-line { display: none; }
+  .process-step { width: 100%; }
+  .process-label { white-space: normal; }
+  .process-heading { font-size: var(--text-h3); }
+}
+
+/* ---------- Partners CTA banner ----------
+   The one deliberately dark accent on this page — CTAs are meant to
+   stand out against a light page, not blend into a dark one. Subtle
+   wave/circuit texture built from layered gradients rather than a
+   raster asset, so it's crisp at any size and needs no extra request. */
+.partners-cta-section { padding-block: var(--space-block); background: var(--white); }
+.partners-cta {
+  background:
+    radial-gradient(ellipse 140% 90% at 15% 120%, rgba(47, 111, 237, 0.35), transparent 60%),
+    radial-gradient(ellipse 120% 100% at 85% -20%, rgba(47, 111, 237, 0.22), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255, 255, 255, 0.05) 0px, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 34px),
+    var(--ink);
+  color: var(--white); border-radius: var(--radius); border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: clamp(1.8rem, 4vw, 2.6rem);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem;
+  position: relative; overflow: hidden;
+  box-shadow: 0 24px 60px -32px rgba(21, 31, 39, 0.45);
+}
+.partners-cta-text h2 { color: var(--white); margin: 0 0 0.4em; font-size: var(--text-h3); }
+.partners-cta-text p { margin: 0; color: oklch(85% 0 0); max-width: 46ch; }
+.partners-cta .btn-primary {
+  background: var(--accent); border-color: var(--accent); color: var(--white); flex: none;
+}
+.partners-cta .btn-primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
