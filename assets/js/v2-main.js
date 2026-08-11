@@ -1,28 +1,68 @@
 /* Drone X Malaysia — V2 shared behaviour
-   Language toggle · mobile nav · reveal · tabs · dynamic year */
+   Language dropdown · mobile nav · reveal · tabs · dynamic year */
 (function () {
   "use strict";
 
   var html = document.documentElement;
   html.classList.add("js");
 
-  /* ---------- Language (EN / 中文) ---------- */
+  /* ---------- Language (EN / 中文 / Bahasa Malaysia) ---------- */
   var LANG_KEY = "dronex-lang";
+  var LANG_CODES = { zh: "ZH", en: "EN", bm: "BM" };
+
+  function closeAllLangDropdowns(exceptDd) {
+    document.querySelectorAll(".lang-dd").forEach(function (dd) {
+      if (dd === exceptDd) return;
+      dd.classList.remove("open");
+      var toggle = dd.querySelector(".lang-dd-toggle");
+      var menu = dd.querySelector(".lang-dd-menu");
+      if (toggle) toggle.setAttribute("aria-expanded", "false");
+      if (menu) menu.hidden = true;
+    });
+  }
+
   function applyLang(lang) {
+    if (lang !== "en" && lang !== "bm") lang = "zh";
     html.setAttribute("data-lang", lang);
-    html.setAttribute("lang", lang === "zh" ? "zh-Hans" : "en");
-    document.querySelectorAll(".lang-toggle button").forEach(function (b) {
-      b.classList.toggle("active", b.getAttribute("data-lang") === lang);
+    html.setAttribute("lang", lang === "zh" ? "zh-Hans" : lang === "bm" ? "ms" : "en");
+    document.querySelectorAll(".lang-dd").forEach(function (dd) {
+      var codeEl = dd.querySelector(".lang-dd-code");
+      if (codeEl) codeEl.textContent = LANG_CODES[lang];
+      dd.querySelectorAll(".lang-dd-menu [data-lang]").forEach(function (li) {
+        var active = li.getAttribute("data-lang") === lang;
+        li.classList.toggle("active", active);
+        li.setAttribute("aria-selected", active ? "true" : "false");
+      });
     });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode: keep in-page state only */ }
   }
   var saved = "zh";
   try { saved = localStorage.getItem(LANG_KEY) || "zh"; } catch (e) { /* ignore */ }
-  applyLang(saved === "en" ? "en" : "zh");
+  applyLang(saved);
 
   document.addEventListener("click", function (ev) {
-    var btn = ev.target.closest(".lang-toggle button");
-    if (btn) applyLang(btn.getAttribute("data-lang") === "zh" ? "zh" : "en");
+    var toggleBtn = ev.target.closest(".lang-dd-toggle");
+    if (toggleBtn) {
+      var dd = toggleBtn.closest(".lang-dd");
+      var menu = dd.querySelector(".lang-dd-menu");
+      var willOpen = !!(menu && menu.hidden);
+      closeAllLangDropdowns(willOpen ? dd : null);
+      if (menu) menu.hidden = !willOpen;
+      toggleBtn.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      dd.classList.toggle("open", willOpen);
+      return;
+    }
+    var option = ev.target.closest(".lang-dd-menu [data-lang]");
+    if (option) {
+      applyLang(option.getAttribute("data-lang"));
+      closeAllLangDropdowns(null);
+      return;
+    }
+    if (!ev.target.closest(".lang-dd")) closeAllLangDropdowns(null);
+  });
+
+  document.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape" || ev.key === "Esc") closeAllLangDropdowns(null);
   });
 
   /* ---------- Mobile menu ---------- */

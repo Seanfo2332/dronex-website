@@ -36,7 +36,7 @@
   "logo": "https://www.dronexmalaysia.com/assets/logo-dark-trim.png",
   "description": "Drone X Malaysia provides licensed, insured agriculture drone spraying, fertilizing and aerial solutions for farmers and plantations across Malaysia.",
   "areaServed": "MY",
-  "knowsLanguage": ["en", "zh"],
+  "knowsLanguage": ["en", "zh", "ms"],
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61589607842133",
     "https://www.instagram.com/dronexmalaysia",
@@ -47,7 +47,7 @@
     "contactType": "customer service",
     "email": "hello@dronexmalaysia.com",
     "areaServed": "MY",
-    "availableLanguage": ["en", "zh"]
+    "availableLanguage": ["en", "zh", "ms"]
   }
 }
 </script>
@@ -61,35 +61,49 @@
       <img src="assets/logo-dark-trim.png" alt="Drone X Malaysia" width="150" height="42">
     </a>
     <ul class="nav-links">
-      <li><a href="index.html" aria-current="page"><span class="en">Home</span><span class="zh">首页</span></a></li>
-      <li><a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span></a></li>
-      <li><a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span></a></li>
-      <li><a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span></a></li>
-      <li><a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span></a></li>
-      <li><a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span></a></li>
+      <li><a href="index.html" aria-current="page"><span class="en">Home</span><span class="zh">首页</span><span class="bm">Laman Utama</span></a></li>
+      <li><a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span><span class="bm">Penyelesaian Petani</span></a></li>
+      <li><a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span><span class="bm">Jadi Juruterbang</span></a></li>
+      <li><a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span><span class="bm">Tentang Kami</span></a></li>
+      <li><a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span><span class="bm">Media</span></a></li>
+      <li><a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span><span class="bm">Hubungi Kami</span></a></li>
     </ul>
-    <div class="lang-toggle" role="group" aria-label="Language">
-      <button type="button" data-lang="en">EN</button>
-      <button type="button" data-lang="zh" class="active">中文</button>
+    <div class="lang-dd">
+      <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
+        <span class="lang-dd-code">ZH</span>
+        <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
+        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
+        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
+      </ul>
     </div>
-    <a class="btn btn-primary nav-cta" href="contact-us.html"><span class="en">Get a Free Quote</span><span class="zh">免费询价</span></a>
+    <a class="btn btn-primary nav-cta" href="contact-us.html"><span class="en">Get a Free Quote</span><span class="zh">免费询价</span><span class="bm">Sebut Harga Percuma</span></a>
     <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </nav>
   <div class="mobile-menu">
-    <a href="index.html"><span class="en">Home</span><span class="zh">首页</span></a>
-    <a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span></a>
-    <a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span></a>
-    <a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span></a>
-    <a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span></a>
-    <a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span></a>
+    <a href="index.html"><span class="en">Home</span><span class="zh">首页</span><span class="bm">Laman Utama</span></a>
+    <a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span><span class="bm">Penyelesaian Petani</span></a>
+    <a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span><span class="bm">Jadi Juruterbang</span></a>
+    <a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span><span class="bm">Tentang Kami</span></a>
+    <a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span><span class="bm">Media</span></a>
+    <a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span><span class="bm">Hubungi Kami</span></a>
     <div class="mobile-menu-lang">
-      <span class="mobile-menu-lang-label"><span class="en">Language</span><span class="zh">语言</span></span>
-      <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="zh">中文</button>
-      </div>
+      <span class="mobile-menu-lang-label"><span class="en">Language</span><span class="zh">语言</span><span class="bm">Bahasa</span></span>
+      <div class="lang-dd">
+      <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
+        <span class="lang-dd-code">ZH</span>
+        <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
+        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
+        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
+      </ul>
     </div>
-    <a class="btn btn-primary" href="contact-us.html"><span class="en">Get a Free Quote</span><span class="zh">免费询价</span></a>
+    </div>
+    <a class="btn btn-primary" href="contact-us.html"><span class="en">Get a Free Quote</span><span class="zh">免费询价</span><span class="bm">Sebut Harga Percuma</span></a>
   </div>
 </header>
 
@@ -110,14 +124,14 @@
   </div>
   <div class="wrap">
     <div class="hero-inner">
-      <h1 id="hero-heading"><span class="en">Spraying &amp; Fertilizing Leave It to the Drone.</span><span class="zh">喷药施肥，<br>交给无人机就好</span></h1>
+      <h1 id="hero-heading"><span class="en">Spraying &amp; Fertilizing Leave It to the Drone.</span><span class="zh">喷药施肥，<br>交给无人机就好</span><span class="bm">Semburan &amp; Baja, Serahkan Sahaja Kepada Dron.</span></h1>
       <p class="lead">
         <span class="en">Drone spraying &amp; fertilizing for durian orchards, paddy fields and oil palm — licensed pilots, fully insured operations.</span>
-        <span class="zh">榴莲园、稻田、油棕园的无人机喷洒与施肥服务 <br>— 持牌飞手操作，作业有保险保障。</span>
+        <span class="zh">榴莲园、稻田、油棕园的无人机喷洒与施肥服务 <br>— 持牌飞手操作，作业有保险保障。</span><span class="bm">Semburan &amp; pembajaan dron untuk kebun durian, sawah padi dan ladang kelapa sawit — juruterbang bertauliah, operasi dilindungi insurans sepenuhnya.</span>
       </p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Free Quote</span><span class="zh">WhatsApp 免费询价</span></a>
-        <a class="btn btn-ghost" href="#how-it-works"><span class="en">See How It Works</span><span class="zh">看服务流程</span></a>
+        <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Free Quote</span><span class="zh">WhatsApp 免费询价</span><span class="bm">Sebut Harga Percuma WhatsApp</span></a>
+        <a class="btn btn-ghost" href="#how-it-works"><span class="en">See How It Works</span><span class="zh">看服务流程</span><span class="bm">Lihat Cara Ia Berfungsi</span></a>
       </div>
     </div>
   </div>
@@ -126,9 +140,9 @@
 <!-- Trust bar — wording tightened per PDF v3 §A2 -->
 <div class="trust-bar" role="note" aria-label="Trust points">
   <div class="wrap trust-bar-inner">
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Licensed Pilots</span><span class="zh">持牌飞手</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">CAAM Compliant</span><span class="zh">CAAM合规</span></span>
-    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Insured Operations</span><span class="zh">作业受保险保障</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Licensed Pilots</span><span class="zh">持牌飞手</span><span class="bm">Juruterbang Bertauliah</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">CAAM Compliant</span><span class="zh">CAAM合规</span><span class="bm">Mematuhi CAAM</span></span>
+    <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span class="en">Insured Operations</span><span class="zh">作业受保险保障</span><span class="bm">Operasi Dilindungi Insurans</span></span>
   </div>
 </div>
 
@@ -136,32 +150,32 @@
 <section class="section" aria-labelledby="crops-heading">
   <div class="wrap">
     <div class="section-head center reveal">
-      <h2 id="crops-heading"><span class="en">Drone Spraying For Your Crops</span><span class="zh">无人机喷洒服务</span></h2>
-      <p class="lead"><span class="en">We help farmers spray and fertilize the crops that matter most in Malaysia.</span><span class="zh">我们协助农夫为马来西亚最重要的农作物<br class="br-mobile">进行喷洒与施肥。</span></p>
+      <h2 id="crops-heading"><span class="en">Drone Spraying For Your Crops</span><span class="zh">无人机喷洒服务</span><span class="bm">Semburan Dron Untuk Tanaman Anda</span></h2>
+      <p class="lead"><span class="en">We help farmers spray and fertilize the crops that matter most in Malaysia.</span><span class="zh">我们协助农夫为马来西亚最重要的农作物<br class="br-mobile">进行喷洒与施肥。</span><span class="bm">Kami membantu petani menyembur dan membaja tanaman yang paling penting di Malaysia.</span></p>
     </div>
     <div class="crop-grid stagger">
       <a class="crop-card crop-card-featured" href="farmer-solutions.html">
         <img src="assets/crops/durian.jpg" data-parallax-speed="0.08" alt="Durian fruits ripening on the tree in a Malaysian orchard" loading="lazy" width="1200" height="800">
         <div class="crop-card-body">
-          <h3><span class="en">Durian Trees</span><span class="zh">喷洒榴莲树</span></h3>
-          <p><span class="en">Tall trees are hard and risky to spray by hand. Our drones cover every canopy evenly, even on hillside orchards.</span><span class="zh">榴莲树高，人工喷洒困难又危险。<br class="br-mobile">无人机可均匀覆盖每个树冠，山坡果园也没问题。</span></p>
-          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span> →</span>
+          <h3><span class="en">Durian Trees</span><span class="zh">喷洒榴莲树</span><span class="bm">Pokok Durian</span></h3>
+          <p><span class="en">Tall trees are hard and risky to spray by hand. Our drones cover every canopy evenly, even on hillside orchards.</span><span class="zh">榴莲树高，人工喷洒困难又危险。<br class="br-mobile">无人机可均匀覆盖每个树冠，山坡果园也没问题。</span><span class="bm">Pokok yang tinggi sukar dan berisiko disembur secara manual. Dron kami meliputi setiap kanopi secara sekata, walaupun di kebun berbukit.</span></p>
+          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span><span class="bm">Lihat cara kami membantu</span> →</span>
         </div>
       </a>
       <a class="crop-card" href="farmer-solutions.html">
         <img src="assets/crops/paddy-aerial.jpg" data-parallax-speed="0.08" alt="Aerial view of green paddy fields from a drone" loading="lazy" width="1200" height="800">
         <div class="crop-card-body">
-          <h3><span class="en">Paddy Fields</span><span class="zh">喷洒稻田</span></h3>
-          <p><span class="en">Large paddy fields finished in hours, without trampling your crop, and with even coverage on every plot.</span><span class="zh">几小时内完成大面积稻田喷洒，<br class="br-mobile">不踩坏秧苗，每块田都均匀覆盖。</span></p>
-          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span> →</span>
+          <h3><span class="en">Paddy Fields</span><span class="zh">喷洒稻田</span><span class="bm">Sawah Padi</span></h3>
+          <p><span class="en">Large paddy fields finished in hours, without trampling your crop, and with even coverage on every plot.</span><span class="zh">几小时内完成大面积稻田喷洒，<br class="br-mobile">不踩坏秧苗，每块田都均匀覆盖。</span><span class="bm">Sawah padi yang luas siap dalam beberapa jam, tanpa merosakkan tanaman anda, dengan liputan sekata pada setiap plot.</span></p>
+          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span><span class="bm">Lihat cara kami membantu</span> →</span>
         </div>
       </a>
       <a class="crop-card" href="farmer-solutions.html">
         <img src="assets/crops/palm-road.jpg" data-parallax-speed="0.08" alt="Oil palm plantation with a red laterite road under blue sky" loading="lazy" width="1200" height="800">
         <div class="crop-card-body">
-          <h3><span class="en">Oil Palm</span><span class="zh">喷洒油棕</span></h3>
-          <p><span class="en">Scheduled spraying and fertilizing for estates of any size, with a work report after every job.</span><span class="zh">为任何规模的油棕园提供定期喷洒与施肥，<br class="br-mobile">每次作业后附工作报告。</span></p>
-          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span> →</span>
+          <h3><span class="en">Oil Palm</span><span class="zh">喷洒油棕</span><span class="bm">Kelapa Sawit</span></h3>
+          <p><span class="en">Scheduled spraying and fertilizing for estates of any size, with a work report after every job.</span><span class="zh">为任何规模的油棕园提供定期喷洒与施肥，<br class="br-mobile">每次作业后附工作报告。</span><span class="bm">Semburan dan pembajaan berjadual untuk ladang pelbagai saiz, dengan laporan kerja selepas setiap tugasan.</span></p>
+          <span class="crop-link"><span class="en">See how we help</span><span class="zh">了解服务详情</span><span class="bm">Lihat cara kami membantu</span> →</span>
         </div>
       </a>
     </div>
@@ -174,30 +188,30 @@
 <section class="section on-surface why-section" aria-labelledby="why-heading">
   <div class="wrap">
     <div class="section-head center reveal why-head">
-      <h2 id="why-heading"><span class="en">Why Choose Drone Spraying?</span><span class="zh">为什么选择无人机喷药？</span></h2>
+      <h2 id="why-heading"><span class="en">Why Choose Drone Spraying?</span><span class="zh">为什么选择无人机喷药？</span><span class="bm">Mengapa Pilih Semburan Dron?</span></h2>
       <span class="why-rule" aria-hidden="true"></span>
-      <p class="lead"><span class="en">Technology-powered farming, so every ringgit you invest returns more.</span><span class="zh">科技赋能农业，让每一分投入，都收获更大回报。</span></p>
+      <p class="lead"><span class="en">Technology-powered farming, so every ringgit you invest returns more.</span><span class="zh">科技赋能农业，让每一分投入，都收获更大回报。</span><span class="bm">Pertanian berkuasakan teknologi, supaya setiap ringgit yang anda laburkan memberi pulangan lebih besar.</span></p>
     </div>
     <div class="benefit-grid stagger">
       <article class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-        <h3><span class="en">Save Time</span><span class="zh">节省时间</span></h3>
-        <p><span class="en">Work several times faster and shorten your spraying cycle, so you never miss the season.</span><span class="zh">作业效率提升数倍，大幅缩短喷洒周期，不误农时。</span></p>
+        <h3><span class="en">Save Time</span><span class="zh">节省时间</span><span class="bm">Jimat Masa</span></h3>
+        <p><span class="en">Work several times faster and shorten your spraying cycle, so you never miss the season.</span><span class="zh">作业效率提升数倍，大幅缩短喷洒周期，不误农时。</span><span class="bm">Bekerja beberapa kali lebih pantas dan pendekkan kitaran semburan anda, supaya anda tidak terlepas musim.</span></p>
       </article>
       <article class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20M17 7H9.5a2.5 2.5 0 000 5h5a2.5 2.5 0 010 5H6"/></svg></div>
-        <h3><span class="en">Lower Cost</span><span class="zh">降低成本</span></h3>
-        <p><span class="en">Less chemical waste and no repeat passes — lower overall cost and faster return on investment.</span><span class="zh">减少药剂浪费与重复作业，综合成本更低，投资回报更快。</span></p>
+        <h3><span class="en">Lower Cost</span><span class="zh">降低成本</span><span class="bm">Kos Lebih Rendah</span></h3>
+        <p><span class="en">Less chemical waste and no repeat passes — lower overall cost and faster return on investment.</span><span class="zh">减少药剂浪费与重复作业，综合成本更低，投资回报更快。</span><span class="bm">Kurangkan pembaziran bahan kimia dan tiada lintasan berulang — kos keseluruhan lebih rendah dan pulangan pelaburan lebih pantas.</span></p>
       </article>
       <article class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <h3><span class="en">Save Manpower</span><span class="zh">节省人力</span></h3>
-        <p><span class="en">Just 1 operator needed, with less physical strain and lower labour risk.</span><span class="zh">仅需 1 名操作员，减少人工作业强度，降低用工风险。</span></p>
+        <h3><span class="en">Save Manpower</span><span class="zh">节省人力</span><span class="bm">Jimat Tenaga Kerja</span></h3>
+        <p><span class="en">Just 1 operator needed, with less physical strain and lower labour risk.</span><span class="zh">仅需 1 名操作员，减少人工作业强度，降低用工风险。</span><span class="bm">Hanya memerlukan 1 operator, dengan tekanan fizikal yang kurang dan risiko buruh yang lebih rendah.</span></p>
       </article>
       <article class="benefit">
         <div class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
-        <h3><span class="en">Boost Efficiency</span><span class="zh">提升效率</span></h3>
-        <p><span class="en">Even, complete coverage for healthier crops — higher yield and better quality.</span><span class="zh">喷洒均匀、覆盖全面，作物更健康，产量与品质双提升。</span></p>
+        <h3><span class="en">Boost Efficiency</span><span class="zh">提升效率</span><span class="bm">Tingkatkan Kecekapan</span></h3>
+        <p><span class="en">Even, complete coverage for healthier crops — higher yield and better quality.</span><span class="zh">喷洒均匀、覆盖全面，作物更健康，产量与品质双提升。</span><span class="bm">Liputan sekata dan menyeluruh untuk tanaman yang lebih sihat — hasil lebih tinggi dan kualiti lebih baik.</span></p>
       </article>
     </div>
 
@@ -205,30 +219,30 @@
          Before photo generated via Nano Banana Pro (kie.ai) per PDF v3 §B1
          "先ai" — swap in a real photo from the group if/when one is provided. -->
     <div class="section-head center reveal" style="margin-top:var(--space-block)">
-      <h3 style="font-size:var(--text-h3)"><span class="compare-dash" aria-hidden="true">—</span> <span class="en">Results Comparison</span><span class="zh">效果对比</span> <span class="compare-dash" aria-hidden="true">—</span></h3>
-      <p class="lead"><span class="en">Traditional method vs. Drone X smart spraying.</span><span class="zh">传统方式 VS Drone X 智能喷洒。</span></p>
+      <h3 style="font-size:var(--text-h3)"><span class="compare-dash" aria-hidden="true">—</span> <span class="en">Results Comparison</span><span class="zh">效果对比</span><span class="bm">Perbandingan Hasil</span> <span class="compare-dash" aria-hidden="true">—</span></h3>
+      <p class="lead"><span class="en">Traditional method vs. Drone X smart spraying.</span><span class="zh">传统方式 VS Drone X 智能喷洒。</span><span class="bm">Kaedah tradisional berbanding semburan pintar Drone X.</span></p>
     </div>
     <div class="before-after">
       <div class="ba-panel ba-before">
         <div class="ba-media">
           <img src="assets/ba-before-manual.jpg" alt="Farm workers manually spraying pesticide on tall durian trees from a ladder with backpack sprayers" loading="lazy" width="2400" height="1792">
-          <div class="ba-badge"><span class="en">Traditional Manual Spraying</span><span class="zh">传统人工喷洒</span></div>
+          <div class="ba-badge"><span class="en">Traditional Manual Spraying</span><span class="zh">传统人工喷洒</span><span class="bm">Semburan Manual Tradisional</span></div>
         </div>
         <ul class="ba-stats">
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
-            <b><span class="en">8–10 Workers</span><span class="zh">8-10 人工</span></b>
-            <span><span class="en">Multi-Person Crew</span><span class="zh">多人协作</span></span>
+            <b><span class="en">8–10 Workers</span><span class="zh">8-10 人工</span><span class="bm">8–10 Pekerja</span></b>
+            <span><span class="en">Multi-Person Crew</span><span class="zh">多人协作</span><span class="bm">Pasukan Ramai Orang</span></span>
           </li>
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-            <b><span class="en">2–3 Days</span><span class="zh">2-3 天</span></b>
-            <span><span class="en">Time-Consuming</span><span class="zh">耗时长</span></span>
+            <b><span class="en">2–3 Days</span><span class="zh">2-3 天</span><span class="bm">2–3 Hari</span></b>
+            <span><span class="en">Time-Consuming</span><span class="zh">耗时长</span><span class="bm">Mengambil Masa Lama</span></span>
           </li>
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></span>
-            <b><span class="en">Dangerous &amp; Exhausting</span><span class="zh">危险又辛苦</span></b>
-            <span><span class="en">Working-at-Height Risk</span><span class="zh">高空作业风险</span></span>
+            <b><span class="en">Dangerous &amp; Exhausting</span><span class="zh">危险又辛苦</span><span class="bm">Berbahaya &amp; Meletihkan</span></b>
+            <span><span class="en">Working-at-Height Risk</span><span class="zh">高空作业风险</span><span class="bm">Risiko Bekerja di Ketinggian</span></span>
           </li>
         </ul>
       </div>
@@ -238,23 +252,23 @@
           <video autoplay muted loop playsinline aria-hidden="true">
             <source src="assets/ba-after-durian.mp4" type="video/mp4">
           </video>
-          <div class="ba-badge ba-badge-accent"><span class="en">Drone X Smart Spraying</span><span class="zh">Drone X 智能喷洒</span></div>
+          <div class="ba-badge ba-badge-accent"><span class="en">Drone X Smart Spraying</span><span class="zh">Drone X 智能喷洒</span><span class="bm">Semburan Pintar Drone X</span></div>
         </div>
         <ul class="ba-stats">
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
-            <b><span class="en">1 Operator</span><span class="zh">1 名操作员</span></b>
-            <span><span class="en">Easy to Operate</span><span class="zh">轻松操控</span></span>
+            <b><span class="en">1 Operator</span><span class="zh">1 名操作员</span><span class="bm">1 Operator</span></b>
+            <span><span class="en">Easy to Operate</span><span class="zh">轻松操控</span><span class="bm">Mudah Dikendalikan</span></span>
           </li>
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
-            <b><span class="en">Under 3 Hours</span><span class="zh">3 小时内</span></b>
-            <span><span class="en">Fast Completion</span><span class="zh">快速完成</span></span>
+            <b><span class="en">Under 3 Hours</span><span class="zh">3 小时内</span><span class="bm">Bawah 3 Jam</span></b>
+            <span><span class="en">Fast Completion</span><span class="zh">快速完成</span><span class="bm">Siap Dengan Pantas</span></span>
           </li>
           <li class="ba-stat">
             <span class="ba-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
-            <b><span class="en">Safe &amp; Efficient</span><span class="zh">安全高效</span></b>
-            <span><span class="en">No Need to Enter Orchard</span><span class="zh">无需进入果园</span></span>
+            <b><span class="en">Safe &amp; Efficient</span><span class="zh">安全高效</span><span class="bm">Selamat &amp; Cekap</span></b>
+            <span><span class="en">No Need to Enter Orchard</span><span class="zh">无需进入果园</span><span class="bm">Tidak Perlu Masuk Kebun</span></span>
           </li>
         </ul>
       </div>
@@ -265,48 +279,48 @@
          per client reference design (previously kept strictly monochrome). -->
     <div class="compare-table" role="table" aria-label="Traditional spraying compared with Drone X spraying">
       <div class="compare-row compare-row-head" role="row">
-        <div class="compare-cell compare-label" role="columnheader"><span class="en">Comparison</span><span class="zh">对比项目</span></div>
-        <div class="compare-cell compare-col-traditional" role="columnheader"><span class="en">Traditional Spraying</span><span class="zh">传统人工喷洒</span></div>
-        <div class="compare-cell compare-col-drone" role="columnheader"><span class="en">Drone X Spraying</span><span class="zh">Drone X 无人机喷洒</span></div>
+        <div class="compare-cell compare-label" role="columnheader"><span class="en">Comparison</span><span class="zh">对比项目</span><span class="bm">Perbandingan</span></div>
+        <div class="compare-cell compare-col-traditional" role="columnheader"><span class="en">Traditional Spraying</span><span class="zh">传统人工喷洒</span><span class="bm">Semburan Tradisional</span></div>
+        <div class="compare-cell compare-col-drone" role="columnheader"><span class="en">Drone X Spraying</span><span class="zh">Drone X 无人机喷洒</span><span class="bm">Semburan Drone X</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="en">Work Time (50-Acre Example)</span><span class="zh">作业时间（50 英亩）</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">2–3 days</span><span class="zh">2–3 天</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Completed within 3 hours</span><span class="zh">3 小时内完成</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="en">Work Time (50-Acre Example)</span><span class="zh">作业时间（50 英亩）</span><span class="bm">Masa Kerja (Contoh 50 Ekar)</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">2–3 days</span><span class="zh">2–3 天</span><span class="bm">2–3 hari</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Completed within 3 hours</span><span class="zh">3 小时内完成</span><span class="bm">Siap dalam 3 jam</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span><span class="en">Manpower Needed</span><span class="zh">所需人力</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">8–10 workers</span><span class="zh">8–10 名工人</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">1 operator + drone</span><span class="zh">1 名操作员＋无人机</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span><span class="en">Manpower Needed</span><span class="zh">所需人力</span><span class="bm">Tenaga Kerja Diperlukan</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">8–10 workers</span><span class="zh">8–10 名工人</span><span class="bm">8–10 pekerja</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">1 operator + drone</span><span class="zh">1 名操作员＋无人机</span><span class="bm">1 operator + dron</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2S5 11 5 15.5A7 7 0 0019 15.5C19 11 12 2 12 2z"/></svg></span><span class="en">Chemical Usage</span><span class="zh">农药使用</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">Uneven, more waste</span><span class="zh">不均匀，浪费较多</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Even atomization, less waste</span><span class="zh">均匀雾化，浪费更少</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2S5 11 5 15.5A7 7 0 0019 15.5C19 11 12 2 12 2z"/></svg></span><span class="en">Chemical Usage</span><span class="zh">农药使用</span><span class="bm">Penggunaan Bahan Kimia</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">Uneven, more waste</span><span class="zh">不均匀，浪费较多</span><span class="bm">Tidak sekata, lebih banyak pembaziran</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Even atomization, less waste</span><span class="zh">均匀雾化，浪费更少</span><span class="bm">Pengabusan sekata, pembaziran kurang</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20M17 7H9.5a2.5 2.5 0 000 5h5a2.5 2.5 0 010 5H6"/></svg></span><span class="en">Long-Term Cost</span><span class="zh">长期成本</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">Higher (labour + time + chemical waste)</span><span class="zh">较高（人工+时间+药剂浪费）</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Lower (saves labour, boosts efficiency)</span><span class="zh">较低（节省人工、提高效率）</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2v20M17 7H9.5a2.5 2.5 0 000 5h5a2.5 2.5 0 010 5H6"/></svg></span><span class="en">Long-Term Cost</span><span class="zh">长期成本</span><span class="bm">Kos Jangka Panjang</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">Higher (labour + time + chemical waste)</span><span class="zh">较高（人工+时间+药剂浪费）</span><span class="bm">Lebih tinggi (tenaga kerja + masa + pembaziran bahan kimia)</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Lower (saves labour, boosts efficiency)</span><span class="zh">较低（节省人工、提高效率）</span><span class="bm">Lebih rendah (jimat tenaga kerja, tingkatkan kecekapan)</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="en">Safety Risk</span><span class="zh">安全风险</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">High (chemical exposure, uneven-terrain falls, etc.)</span><span class="zh">高（人工接触农药、地形滑倒等）</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Low (no need to enter hazardous areas)</span><span class="zh">低（无需进入危险区域）</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><span class="en">Safety Risk</span><span class="zh">安全风险</span><span class="bm">Risiko Keselamatan</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">High (chemical exposure, uneven-terrain falls, etc.)</span><span class="zh">高（人工接触农药、地形滑倒等）</span><span class="bm">Tinggi (pendedahan bahan kimia, jatuh akibat medan tidak rata, dll.)</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Low (no need to enter hazardous areas)</span><span class="zh">低（无需进入危险区域）</span><span class="bm">Rendah (tidak perlu masuk kawasan berbahaya)</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="en">Spray Coverage</span><span class="zh">喷洒效果</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">Uneven coverage, easy to miss spots</span><span class="zh">覆盖不均，易遗漏</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Full, even coverage — better results</span><span class="zh">覆盖全面均匀，效果更佳</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></span><span class="en">Spray Coverage</span><span class="zh">喷洒效果</span><span class="bm">Liputan Semburan</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">Uneven coverage, easy to miss spots</span><span class="zh">覆盖不均，易遗漏</span><span class="bm">Liputan tidak sekata, mudah terlepas bahagian tertentu</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Full, even coverage — better results</span><span class="zh">覆盖全面均匀，效果更佳</span><span class="bm">Liputan penuh dan sekata — hasil lebih baik</span></div>
       </div>
       <div class="compare-row" role="row">
-        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="en">Impact on Crops</span><span class="zh">对作物影响</span></div>
-        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span></span><span class="en">May damage branches and leaves</span><span class="zh">可能造成枝叶损伤</span></div>
-        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span></span><span class="compare-check">✓</span> <span class="en">Low-pressure operation protects crops</span><span class="zh">低风压作业，保护作物</span></div>
+        <div class="compare-cell compare-label" role="rowheader"><span class="compare-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span><span class="en">Impact on Crops</span><span class="zh">对作物影响</span><span class="bm">Kesan Terhadap Tanaman</span></div>
+        <div class="compare-cell compare-col-traditional" role="cell"><span class="compare-mobile-label"><span class="en">Traditional: </span><span class="zh">传统：</span><span class="bm">Tradisional: </span></span><span class="en">May damage branches and leaves</span><span class="zh">可能造成枝叶损伤</span><span class="bm">Boleh merosakkan dahan dan daun</span></div>
+        <div class="compare-cell compare-col-drone" role="cell"><span class="compare-mobile-label"><span class="en">Drone X: </span><span class="zh">Drone X：</span><span class="bm">Drone X: </span></span><span class="compare-check">✓</span> <span class="en">Low-pressure operation protects crops</span><span class="zh">低风压作业，保护作物</span><span class="bm">Operasi tekanan rendah melindungi tanaman</span></div>
       </div>
     </div>
     <!-- Neutral wording per PDF v3 §A3 (no verified data yet, so no "sample figures" caveat) -->
-    <p class="calc-note center" style="margin-top:1rem"><span class="en">Typical results based on field operations.</span><span class="zh">依一般田间作业情况。</span></p>
+    <p class="calc-note center" style="margin-top:1rem"><span class="en">Typical results based on field operations.</span><span class="zh">依一般田间作业情况。</span><span class="bm">Hasil biasa berdasarkan operasi lapangan sebenar.</span></p>
   </div>
 </section>
 
@@ -314,43 +328,43 @@
 <section class="section" id="how-it-works" aria-labelledby="how-heading">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 id="how-heading"><span class="en">How It Works</span><span class="zh">服务流程</span></h2>
-      <p class="lead"><span class="en">From inquiry to full report in four simple steps.</span><span class="zh">从询价到完整报告，只需四个简单步骤。</span></p>
+      <h2 id="how-heading"><span class="en">How It Works</span><span class="zh">服务流程</span><span class="bm">Cara Ia Berfungsi</span></h2>
+      <p class="lead"><span class="en">From inquiry to full report in four simple steps.</span><span class="zh">从询价到完整报告，只需四个简单步骤。</span><span class="bm">Daripada pertanyaan hingga laporan penuh dalam empat langkah mudah.</span></p>
     </div>
     <div class="steps steps--visual">
       <article class="step">
         <div class="step-media"><img src="assets/steps/submit-inquiry.jpg" alt="Farmer's hands filling in a simple inquiry form on a smartphone at the edge of a durian orchard" loading="lazy" width="2528" height="1696"></div>
         <div class="step-body">
-          <h3><span class="en">Submit Enquiry</span><span class="zh">提交询价</span></h3>
-          <p><span class="en">Submit your enquiry through the Drone X website. Quick and simple to get started.</span><span class="zh">透过 Drone X 网站提交询价，轻松踏出第一步。</span></p>
+          <h3><span class="en">Submit Enquiry</span><span class="zh">提交询价</span><span class="bm">Hantar Pertanyaan</span></h3>
+          <p><span class="en">Submit your enquiry through the Drone X website. Quick and simple to get started.</span><span class="zh">透过 Drone X 网站提交询价，轻松踏出第一步。</span><span class="bm">Hantar pertanyaan anda melalui laman web Drone X. Cepat dan mudah untuk bermula.</span></p>
         </div>
       </article>
       <article class="step">
         <div class="step-media"><img src="assets/steps/free-consultation.jpg" alt="Drone X consultant reviewing farm data on a tablet with a farmer in an oil palm plantation" loading="lazy" width="2528" height="1696"></div>
         <div class="step-body">
-          <h3><span class="en">Initial Consultation</span><span class="zh">初步咨询</span></h3>
-          <p><span class="en">We contact you to understand your farm condition, crop type, land size and service needs.</span><span class="zh">我们将联系您，了解农地状况、作物类型、面积与服务需求。</span></p>
+          <h3><span class="en">Initial Consultation</span><span class="zh">初步咨询</span><span class="bm">Rundingan Awal</span></h3>
+          <p><span class="en">We contact you to understand your farm condition, crop type, land size and service needs.</span><span class="zh">我们将联系您，了解农地状况、作物类型、面积与服务需求。</span><span class="bm">Kami menghubungi anda untuk memahami keadaan ladang, jenis tanaman, keluasan tanah dan keperluan perkhidmatan anda.</span></p>
         </div>
       </article>
       <article class="step">
         <div class="step-media"><img src="assets/steps/custom-plan.jpg" alt="Planning a drone flight route and chemical volume on a tablet map at the edge of a plantation" loading="lazy" width="2528" height="1696"></div>
         <div class="step-body">
-          <h3><span class="en">Service Proposal</span><span class="zh">服务方案</span></h3>
-          <p><span class="en">Based on your needs, we propose a suitable service scope, timeline and pricing.</span><span class="zh">根据您的需求，提出合适的服务范围、时间与报价。</span></p>
+          <h3><span class="en">Service Proposal</span><span class="zh">服务方案</span><span class="bm">Cadangan Perkhidmatan</span></h3>
+          <p><span class="en">Based on your needs, we propose a suitable service scope, timeline and pricing.</span><span class="zh">根据您的需求，提出合适的服务范围、时间与报价。</span><span class="bm">Berdasarkan keperluan anda, kami mencadangkan skop perkhidmatan, garis masa dan harga yang sesuai.</span></p>
         </div>
       </article>
       <article class="step">
         <div class="step-media"><img src="assets/steps/execution-report.jpg" alt="Agriculture drone spraying a fine mist over crop rows during a job" loading="lazy" width="2528" height="1696"></div>
         <div class="step-body">
-          <h3><span class="en">On-Site Service</span><span class="zh">现场作业</span></h3>
-          <p><span class="en">Once confirmed, our drone team carries out the agreed service at your farm or orchard.</span><span class="zh">确认方案后，无人机团队将到您的农地或果园执行服务。</span></p>
+          <h3><span class="en">On-Site Service</span><span class="zh">现场作业</span><span class="bm">Perkhidmatan Di Tapak</span></h3>
+          <p><span class="en">Once confirmed, our drone team carries out the agreed service at your farm or orchard.</span><span class="zh">确认方案后，无人机团队将到您的农地或果园执行服务。</span><span class="bm">Setelah disahkan, pasukan dron kami menjalankan perkhidmatan yang dipersetujui di ladang atau kebun anda.</span></p>
         </div>
       </article>
     </div>
     <!-- WhatsApp added as the primary conversion path alongside the form, per PDF v3 §A5 -->
     <div class="steps-cta reveal" style="display:flex;flex-wrap:wrap;gap:0.8rem;justify-content:center">
-      <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Us Now</span><span class="zh">立即 WhatsApp 联系</span></a>
-      <a class="btn btn-ghost" href="contact-us.html"><span class="en">Start Your Inquiry Now</span><span class="zh">立即提交询价</span></a>
+      <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Us Now</span><span class="zh">立即 WhatsApp 联系</span><span class="bm">WhatsApp Kami Sekarang</span></a>
+      <a class="btn btn-ghost" href="contact-us.html"><span class="en">Start Your Inquiry Now</span><span class="zh">立即提交询价</span><span class="bm">Mulakan Pertanyaan Anda Sekarang</span></a>
     </div>
   </div>
 </section>
@@ -365,14 +379,14 @@
 <section class="section" aria-labelledby="trust-heading">
   <div class="wrap">
     <div class="section-head reveal">
-      <h2 id="trust-heading"><span class="en">Real Results in the Field</span><span class="zh">真实作业成果</span></h2>
+      <h2 id="trust-heading"><span class="en">Real Results in the Field</span><span class="zh">真实作业成果</span><span class="bm">Hasil Sebenar Di Lapangan</span></h2>
     </div>
     <div class="proof-layout">
       <div class="reveal">
         <ul class="cred-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Licensed &amp; Certified Pilots</span><span class="zh">持牌飞手</span></span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Insured Operations</span><span class="zh">作业保险保障</span></span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Professional Planning Team</span><span class="zh">专业团队规划</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Licensed &amp; Certified Pilots</span><span class="zh">持牌飞手</span><span class="bm">Juruterbang Bertauliah &amp; Bersijil</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Insured Operations</span><span class="zh">作业保险保障</span><span class="bm">Operasi Dilindungi Insurans</span></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span><span class="en">Professional Planning Team</span><span class="zh">专业团队规划</span><span class="bm">Pasukan Perancangan Profesional</span></span></li>
         </ul>
       </div>
       <div class="case-grid stagger">
@@ -384,30 +398,30 @@
       <a class="case-card" href="media.html#case-studies">
         <img src="assets/crops/durian.jpg" alt="Hillside durian orchard sprayed by Drone X" loading="lazy" width="300" height="220">
         <div class="case-card-body">
-          <h3><span class="en">Durian Orchard, Raub</span><span class="zh">劳勿榴莲园</span></h3>
-          <p><span class="en">An 8-acre hillside orchard where manual spraying meant workers carrying tanks up steep, uneven ground.</span><span class="zh">8 英亩的山坡果园，过去人工喷洒需要工人背着药桶爬上崎岖山坡。</span></p>
-          <p class="case-result"><span class="en">Full orchard covered in under 3 hours, no one on the slope.</span><span class="zh">3 小时内完成全园喷洒，山坡上无需人力作业。</span></p>
+          <h3><span class="en">Durian Orchard, Raub</span><span class="zh">劳勿榴莲园</span><span class="bm">Kebun Durian, Raub</span></h3>
+          <p><span class="en">An 8-acre hillside orchard where manual spraying meant workers carrying tanks up steep, uneven ground.</span><span class="zh">8 英亩的山坡果园，过去人工喷洒需要工人背着药桶爬上崎岖山坡。</span><span class="bm">Kebun seluas 8 ekar di lereng bukit di mana semburan manual bermakna pekerja perlu mengangkat tangki menaiki tanah curam dan tidak rata.</span></p>
+          <p class="case-result"><span class="en">Full orchard covered in under 3 hours, no one on the slope.</span><span class="zh">3 小时内完成全园喷洒，山坡上无需人力作业。</span><span class="bm">Seluruh kebun diliputi dalam masa kurang 3 jam, tiada sesiapa perlu berada di lereng.</span></p>
         </div>
       </a>
       <a class="case-card" href="media.html#case-studies">
         <img src="assets/crops/paddy-aerial.jpg" alt="Paddy field sprayed evenly by Drone X" loading="lazy" width="300" height="220">
         <div class="case-card-body">
-          <h3><span class="en">Paddy Field, Sekinchan</span><span class="zh">适耕庄稻田</span></h3>
-          <p><span class="en">A 40-acre paddy plot that used to take a large crew several days to spray evenly.</span><span class="zh">40 英亩稻田，过去需要大批人力花上数天才能均匀喷洒。</span></p>
-          <p class="case-result"><span class="en">Whole plot sprayed in a single morning, even coverage edge to edge.</span><span class="zh">一个早上完成整片田喷洒，覆盖均匀无死角。</span></p>
+          <h3><span class="en">Paddy Field, Sekinchan</span><span class="zh">适耕庄稻田</span><span class="bm">Sawah Padi, Sekinchan</span></h3>
+          <p><span class="en">A 40-acre paddy plot that used to take a large crew several days to spray evenly.</span><span class="zh">40 英亩稻田，过去需要大批人力花上数天才能均匀喷洒。</span><span class="bm">Plot padi seluas 40 ekar yang dahulunya memerlukan pasukan besar beberapa hari untuk disembur secara sekata.</span></p>
+          <p class="case-result"><span class="en">Whole plot sprayed in a single morning, even coverage edge to edge.</span><span class="zh">一个早上完成整片田喷洒，覆盖均匀无死角。</span><span class="bm">Keseluruhan plot disembur dalam satu pagi sahaja, liputan sekata dari hujung ke hujung.</span></p>
         </div>
       </a>
       <a class="case-card" href="media.html#case-studies">
         <img src="assets/crops/palm-road.jpg" alt="Oil palm estate fertilized on schedule by Drone X" loading="lazy" width="300" height="220">
         <div class="case-card-body">
-          <h3><span class="en">Oil Palm Estate, Kluang</span><span class="zh">居銮油棕园</span></h3>
-          <p><span class="en">A mid-size estate where wet-season access roads often delayed manual fertilizing rounds.</span><span class="zh">中型油棕园，过去雨季道路泥泞常拖延人工施肥进度。</span></p>
-          <p class="case-result"><span class="en">Fertilizing completed on schedule despite the wet ground.</span><span class="zh">即使地面湿滑，施肥仍按时完成。</span></p>
+          <h3><span class="en">Oil Palm Estate, Kluang</span><span class="zh">居銮油棕园</span><span class="bm">Ladang Kelapa Sawit, Kluang</span></h3>
+          <p><span class="en">A mid-size estate where wet-season access roads often delayed manual fertilizing rounds.</span><span class="zh">中型油棕园，过去雨季道路泥泞常拖延人工施肥进度。</span><span class="bm">Ladang bersaiz sederhana di mana jalan akses semasa musim hujan sering melewatkan pusingan pembajaan manual.</span></p>
+          <p class="case-result"><span class="en">Fertilizing completed on schedule despite the wet ground.</span><span class="zh">即使地面湿滑，施肥仍按时完成。</span><span class="bm">Pembajaan selesai mengikut jadual walaupun tanah basah.</span></p>
         </div>
       </a>
         <div style="display:flex;flex-wrap:wrap;gap:0.7rem;margin-top:0.4rem">
-          <a class="btn btn-ghost" href="media.html"><span class="en">View More in Media Centre</span><span class="zh">前往媒体中心查看更多案例</span></a>
-          <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Us</span><span class="zh">WhatsApp 联系我们</span></a>
+          <a class="btn btn-ghost" href="media.html"><span class="en">View More in Media Centre</span><span class="zh">前往媒体中心查看更多案例</span><span class="bm">Lihat Lebih Banyak di Pusat Media</span></a>
+          <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Us</span><span class="zh">WhatsApp 联系我们</span><span class="bm">WhatsApp Kami</span></a>
         </div>
       </div>
     </div>
@@ -421,7 +435,7 @@
          duplicated (aria-hidden on the 2nd set) so the CSS marquee loop in
          v2-pages.css is seamless. -->
     <div class="section-head reveal" style="margin-top:var(--space-block)">
-      <h2><span class="en">Real Experiences From Orchard Farmers</span><span class="zh">果园农户的真实使用体验</span></h2>
+      <h2><span class="en">Real Experiences From Orchard Farmers</span><span class="zh">果园农户的真实使用体验</span><span class="bm">Pengalaman Sebenar Daripada Petani Kebun</span></h2>
     </div>
     <div class="testimonial-marquee reveal">
       <div class="testimonial-track">
@@ -429,12 +443,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/pak-osman.jpg" alt="Pak Osman, Drone X Malaysia farmer testimonial photo" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Pak Osman</span><span class="zh">Osman</span></b>
-            <span class="testimonial-meta"><span class="en">Raub, Pahang · Durian</span><span class="zh">彭亨劳勿 · 榴莲</span></span>
+            <b class="testimonial-name"><span class="en">Pak Osman</span><span class="zh">Osman</span><span class="bm">Pak Osman</span></b>
+            <span class="testimonial-meta"><span class="en">Raub, Pahang · Durian</span><span class="zh">彭亨劳勿 · 榴莲</span><span class="bm">Raub, Pahang · Durian</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;No more risking my life on tall ladders to spray the durian trees. The drone finishes in a few hours what used to take my workers days.&quot;</span><span class="zh">&quot;现在不用再爬高梯帮榴莲树喷药了。以前工人要忙好几天，无人机几个小时就搞定。&quot;</span></p>
+          <p><span class="en">&quot;No more risking my life on tall ladders to spray the durian trees. The drone finishes in a few hours what used to take my workers days.&quot;</span><span class="zh">&quot;现在不用再爬高梯帮榴莲树喷药了。以前工人要忙好几天，无人机几个小时就搞定。&quot;</span><span class="bm">&quot;Tidak perlu lagi bertaruh nyawa memanjat tangga tinggi untuk menyembur pokok durian. Dron menyiapkan dalam beberapa jam apa yang dahulu mengambil masa berhari-hari untuk pekerja saya.&quot;</span></p>
           <span class="testimonial-time">10:42 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -442,12 +456,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/cik-aminah.jpg" alt="Cik Aminah, Drone X Malaysia farmer testimonial photo" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Cik Aminah</span><span class="zh">Aminah</span></b>
-            <span class="testimonial-meta"><span class="en">Sekinchan, Selangor · Paddy</span><span class="zh">雪兰莪适耕庄 · 稻田</span></span>
+            <b class="testimonial-name"><span class="en">Cik Aminah</span><span class="zh">Aminah</span><span class="bm">Cik Aminah</span></b>
+            <span class="testimonial-meta"><span class="en">Sekinchan, Selangor · Paddy</span><span class="zh">雪兰莪适耕庄 · 稻田</span><span class="bm">Sekinchan, Selangor · Padi</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;The spraying is so even now, my whole field looks the same green from end to end. Before, some parts were always missed.&quot;</span><span class="zh">&quot;现在喷洒真的很均匀，整片稻田从头到尾都一样绿。以前总有些地方漏喷。&quot;</span></p>
+          <p><span class="en">&quot;The spraying is so even now, my whole field looks the same green from end to end. Before, some parts were always missed.&quot;</span><span class="zh">&quot;现在喷洒真的很均匀，整片稻田从头到尾都一样绿。以前总有些地方漏喷。&quot;</span><span class="bm">&quot;Semburan sekarang begitu sekata, seluruh ladang saya kelihatan hijau sama rata dari hujung ke hujung. Dahulu, ada bahagian yang sering terlepas.&quot;</span></p>
           <span class="testimonial-time">09:15 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -455,12 +469,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/encik-rahman.jpg" alt="Encik Rahman, Drone X Malaysia farmer testimonial photo" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Encik Rahman</span><span class="zh">Rahman</span></b>
-            <span class="testimonial-meta"><span class="en">Kluang, Johor · Oil Palm</span><span class="zh">柔佛居銮 · 油棕</span></span>
+            <b class="testimonial-name"><span class="en">Encik Rahman</span><span class="zh">Rahman</span><span class="bm">Encik Rahman</span></b>
+            <span class="testimonial-meta"><span class="en">Kluang, Johor · Oil Palm</span><span class="zh">柔佛居銮 · 油棕</span><span class="bm">Kluang, Johor · Kelapa Sawit</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;I used to worry about my workers walking through the estate with heavy tanks on their backs. Now the drone does it, and everyone is safer.&quot;</span><span class="zh">&quot;以前担心工人背着重重的药桶在园里走来走去。现在无人机代劳，大家都更安全了。&quot;</span></p>
+          <p><span class="en">&quot;I used to worry about my workers walking through the estate with heavy tanks on their backs. Now the drone does it, and everyone is safer.&quot;</span><span class="zh">&quot;以前担心工人背着重重的药桶在园里走来走去。现在无人机代劳，大家都更安全了。&quot;</span><span class="bm">&quot;Dahulu saya risau melihat pekerja saya berjalan merentasi ladang dengan tangki berat di belakang. Kini dron yang melakukannya, dan semua orang lebih selamat.&quot;</span></p>
           <span class="testimonial-time">14:28 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -468,12 +482,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/ah-chong.jpg" alt="Ah Chong, Drone X Malaysia farmer testimonial photo" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Ah Chong</span><span class="zh">阿忠</span></b>
-            <span class="testimonial-meta"><span class="en">Bentong, Pahang · Durian</span><span class="zh">彭亨文冬 · 榴莲</span></span>
+            <b class="testimonial-name"><span class="en">Ah Chong</span><span class="zh">阿忠</span><span class="bm">Ah Chong</span></b>
+            <span class="testimonial-meta"><span class="en">Bentong, Pahang · Durian</span><span class="zh">彭亨文冬 · 榴莲</span><span class="bm">Bentong, Pahang · Durian</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;Drone X came exactly when they said they would, even up the hill slopes where it's hard to walk. Very reliable team.&quot;</span><span class="zh">&quot;Drone X 说好的时间就准时到，连山坡上难走的地方都能喷到。团队很可靠。&quot;</span></p>
+          <p><span class="en">&quot;Drone X came exactly when they said they would, even up the hill slopes where it's hard to walk. Very reliable team.&quot;</span><span class="zh">&quot;Drone X 说好的时间就准时到，连山坡上难走的地方都能喷到。团队很可靠。&quot;</span><span class="bm">&quot;Drone X datang tepat pada masa yang dijanjikan, walaupun ke lereng bukit yang sukar dilalui. Pasukan yang sangat boleh dipercayai.&quot;</span></p>
           <span class="testimonial-time">16:03 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -481,12 +495,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/uncle-tan.jpg" alt="Uncle Tan, Drone X Malaysia farmer testimonial photo" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Uncle Tan</span><span class="zh">陈伯</span></b>
-            <span class="testimonial-meta"><span class="en">Sungai Petani, Kedah · Paddy</span><span class="zh">吉打双溪大年 · 稻田</span></span>
+            <b class="testimonial-name"><span class="en">Uncle Tan</span><span class="zh">陈伯</span><span class="bm">Uncle Tan</span></b>
+            <span class="testimonial-meta"><span class="en">Sungai Petani, Kedah · Paddy</span><span class="zh">吉打双溪大年 · 稻田</span><span class="bm">Sungai Petani, Kedah · Padi</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;My son showed me the WhatsApp booking, and within days the drone team was already at my field. Simple process for someone my age.&quot;</span><span class="zh">&quot;儿子教我用 WhatsApp 预约，没几天无人机团队就到我的田里了。像我这个年纪的人也能轻松搞定。&quot;</span></p>
+          <p><span class="en">&quot;My son showed me the WhatsApp booking, and within days the drone team was already at my field. Simple process for someone my age.&quot;</span><span class="zh">&quot;儿子教我用 WhatsApp 预约，没几天无人机团队就到我的田里了。像我这个年纪的人也能轻松搞定。&quot;</span><span class="bm">&quot;Anak saya tunjukkan cara tempahan melalui WhatsApp, dan dalam beberapa hari sahaja pasukan dron sudah tiba di ladang saya. Proses yang mudah bagi orang seusia saya.&quot;</span></p>
           <span class="testimonial-time">08:37 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -494,12 +508,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/pak-osman.jpg" alt="" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Pak Osman</span><span class="zh">Osman</span></b>
-            <span class="testimonial-meta"><span class="en">Raub, Pahang · Durian</span><span class="zh">彭亨劳勿 · 榴莲</span></span>
+            <b class="testimonial-name"><span class="en">Pak Osman</span><span class="zh">Osman</span><span class="bm">Pak Osman</span></b>
+            <span class="testimonial-meta"><span class="en">Raub, Pahang · Durian</span><span class="zh">彭亨劳勿 · 榴莲</span><span class="bm">Raub, Pahang · Durian</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;No more risking my life on tall ladders to spray the durian trees. The drone finishes in a few hours what used to take my workers days.&quot;</span><span class="zh">&quot;现在不用再爬高梯帮榴莲树喷药了。以前工人要忙好几天，无人机几个小时就搞定。&quot;</span></p>
+          <p><span class="en">&quot;No more risking my life on tall ladders to spray the durian trees. The drone finishes in a few hours what used to take my workers days.&quot;</span><span class="zh">&quot;现在不用再爬高梯帮榴莲树喷药了。以前工人要忙好几天，无人机几个小时就搞定。&quot;</span><span class="bm">&quot;Tidak perlu lagi bertaruh nyawa memanjat tangga tinggi untuk menyembur pokok durian. Dron menyiapkan dalam beberapa jam apa yang dahulu mengambil masa berhari-hari untuk pekerja saya.&quot;</span></p>
           <span class="testimonial-time">10:42 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -507,12 +521,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/cik-aminah.jpg" alt="" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Cik Aminah</span><span class="zh">Aminah</span></b>
-            <span class="testimonial-meta"><span class="en">Sekinchan, Selangor · Paddy</span><span class="zh">雪兰莪适耕庄 · 稻田</span></span>
+            <b class="testimonial-name"><span class="en">Cik Aminah</span><span class="zh">Aminah</span><span class="bm">Cik Aminah</span></b>
+            <span class="testimonial-meta"><span class="en">Sekinchan, Selangor · Paddy</span><span class="zh">雪兰莪适耕庄 · 稻田</span><span class="bm">Sekinchan, Selangor · Padi</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;The spraying is so even now, my whole field looks the same green from end to end. Before, some parts were always missed.&quot;</span><span class="zh">&quot;现在喷洒真的很均匀，整片稻田从头到尾都一样绿。以前总有些地方漏喷。&quot;</span></p>
+          <p><span class="en">&quot;The spraying is so even now, my whole field looks the same green from end to end. Before, some parts were always missed.&quot;</span><span class="zh">&quot;现在喷洒真的很均匀，整片稻田从头到尾都一样绿。以前总有些地方漏喷。&quot;</span><span class="bm">&quot;Semburan sekarang begitu sekata, seluruh ladang saya kelihatan hijau sama rata dari hujung ke hujung. Dahulu, ada bahagian yang sering terlepas.&quot;</span></p>
           <span class="testimonial-time">09:15 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -520,12 +534,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/encik-rahman.jpg" alt="" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Encik Rahman</span><span class="zh">Rahman</span></b>
-            <span class="testimonial-meta"><span class="en">Kluang, Johor · Oil Palm</span><span class="zh">柔佛居銮 · 油棕</span></span>
+            <b class="testimonial-name"><span class="en">Encik Rahman</span><span class="zh">Rahman</span><span class="bm">Encik Rahman</span></b>
+            <span class="testimonial-meta"><span class="en">Kluang, Johor · Oil Palm</span><span class="zh">柔佛居銮 · 油棕</span><span class="bm">Kluang, Johor · Kelapa Sawit</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;I used to worry about my workers walking through the estate with heavy tanks on their backs. Now the drone does it, and everyone is safer.&quot;</span><span class="zh">&quot;以前担心工人背着重重的药桶在园里走来走去。现在无人机代劳，大家都更安全了。&quot;</span></p>
+          <p><span class="en">&quot;I used to worry about my workers walking through the estate with heavy tanks on their backs. Now the drone does it, and everyone is safer.&quot;</span><span class="zh">&quot;以前担心工人背着重重的药桶在园里走来走去。现在无人机代劳，大家都更安全了。&quot;</span><span class="bm">&quot;Dahulu saya risau melihat pekerja saya berjalan merentasi ladang dengan tangki berat di belakang. Kini dron yang melakukannya, dan semua orang lebih selamat.&quot;</span></p>
           <span class="testimonial-time">14:28 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -533,12 +547,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/ah-chong.jpg" alt="" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Ah Chong</span><span class="zh">阿忠</span></b>
-            <span class="testimonial-meta"><span class="en">Bentong, Pahang · Durian</span><span class="zh">彭亨文冬 · 榴莲</span></span>
+            <b class="testimonial-name"><span class="en">Ah Chong</span><span class="zh">阿忠</span><span class="bm">Ah Chong</span></b>
+            <span class="testimonial-meta"><span class="en">Bentong, Pahang · Durian</span><span class="zh">彭亨文冬 · 榴莲</span><span class="bm">Bentong, Pahang · Durian</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;Drone X came exactly when they said they would, even up the hill slopes where it's hard to walk. Very reliable team.&quot;</span><span class="zh">&quot;Drone X 说好的时间就准时到，连山坡上难走的地方都能喷到。团队很可靠。&quot;</span></p>
+          <p><span class="en">&quot;Drone X came exactly when they said they would, even up the hill slopes where it's hard to walk. Very reliable team.&quot;</span><span class="zh">&quot;Drone X 说好的时间就准时到，连山坡上难走的地方都能喷到。团队很可靠。&quot;</span><span class="bm">&quot;Drone X datang tepat pada masa yang dijanjikan, walaupun ke lereng bukit yang sukar dilalui. Pasukan yang sangat boleh dipercayai.&quot;</span></p>
           <span class="testimonial-time">16:03 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -546,12 +560,12 @@
         <div class="testimonial-header">
           <img class="testimonial-avatar" src="assets/testimonials/uncle-tan.jpg" alt="" loading="lazy" width="88" height="88">
           <div>
-            <b class="testimonial-name"><span class="en">Uncle Tan</span><span class="zh">陈伯</span></b>
-            <span class="testimonial-meta"><span class="en">Sungai Petani, Kedah · Paddy</span><span class="zh">吉打双溪大年 · 稻田</span></span>
+            <b class="testimonial-name"><span class="en">Uncle Tan</span><span class="zh">陈伯</span><span class="bm">Uncle Tan</span></b>
+            <span class="testimonial-meta"><span class="en">Sungai Petani, Kedah · Paddy</span><span class="zh">吉打双溪大年 · 稻田</span><span class="bm">Sungai Petani, Kedah · Padi</span></span>
           </div>
         </div>
         <div class="testimonial-bubble">
-          <p><span class="en">&quot;My son showed me the WhatsApp booking, and within days the drone team was already at my field. Simple process for someone my age.&quot;</span><span class="zh">&quot;儿子教我用 WhatsApp 预约，没几天无人机团队就到我的田里了。像我这个年纪的人也能轻松搞定。&quot;</span></p>
+          <p><span class="en">&quot;My son showed me the WhatsApp booking, and within days the drone team was already at my field. Simple process for someone my age.&quot;</span><span class="zh">&quot;儿子教我用 WhatsApp 预约，没几天无人机团队就到我的田里了。像我这个年纪的人也能轻松搞定。&quot;</span><span class="bm">&quot;Anak saya tunjukkan cara tempahan melalui WhatsApp, dan dalam beberapa hari sahaja pasukan dron sudah tiba di ladang saya. Proses yang mudah bagi orang seusia saya.&quot;</span></p>
           <span class="testimonial-time">08:37 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M1 8l3 3 4-5"/><path d="M7 8l3 3 5-6"/></svg></span>
         </div>
       </article>
@@ -564,28 +578,28 @@
 <section class="section on-surface" aria-labelledby="faq-heading">
   <div class="wrap">
     <div class="section-head center reveal">
-      <h2 id="faq-heading"><span class="en">Frequently Asked Questions</span><span class="zh">常见问题</span></h2>
+      <h2 id="faq-heading"><span class="en">Frequently Asked Questions</span><span class="zh">常见问题</span><span class="bm">Soalan Lazim</span></h2>
     </div>
     <div class="faq-list reveal" style="margin-inline:auto">
       <details class="faq-item" open>
-        <summary><span class="en">What if it rains or the weather is bad?</span><span class="zh">下雨或天气不好怎么办？会不会改期？</span></summary>
-        <div class="faq-body"><p><span class="en">We monitor the weather before every job. If conditions are unsafe or the spray would wash off, we reschedule to the next suitable day at no extra charge.</span><span class="zh">每次作业前我们都会监测天气。如天气不适合作业或药剂会被雨水冲走，我们会免费改期到下一个合适的日子。</span></p></div>
+        <summary><span class="en">What if it rains or the weather is bad?</span><span class="zh">下雨或天气不好怎么办？会不会改期？</span><span class="bm">Bagaimana jika hujan atau cuaca buruk?</span></summary>
+        <div class="faq-body"><p><span class="en">We monitor the weather before every job. If conditions are unsafe or the spray would wash off, we reschedule to the next suitable day at no extra charge.</span><span class="zh">每次作业前我们都会监测天气。如天气不适合作业或药剂会被雨水冲走，我们会免费改期到下一个合适的日子。</span><span class="bm">Kami memantau cuaca sebelum setiap kerja. Jika keadaan tidak selamat atau semburan akan tercuci, kami menjadualkan semula ke hari yang sesuai tanpa caj tambahan.</span></p></div>
       </details>
       <details class="faq-item">
-        <summary><span class="en">Do I supply the pesticide/fertilizer, or do you?</span><span class="zh">农药/肥料是我自己提供还是你们提供？</span></summary>
-        <div class="faq-body"><p><span class="en">Most common liquid pesticides and fertilizers are suitable. You are welcome to supply your own; our team will first check that it is safe and effective for drone application.</span><span class="zh">大部分常见的液态农药与肥料都适用。您可以使用自己购买的农药，我们的团队会先确认它适合无人机喷洒且安全有效。</span></p></div>
+        <summary><span class="en">Do I supply the pesticide/fertilizer, or do you?</span><span class="zh">农药/肥料是我自己提供还是你们提供？</span><span class="bm">Adakah saya membekalkan racun perosak/baja, atau pihak anda?</span></summary>
+        <div class="faq-body"><p><span class="en">Most common liquid pesticides and fertilizers are suitable. You are welcome to supply your own; our team will first check that it is safe and effective for drone application.</span><span class="zh">大部分常见的液态农药与肥料都适用。您可以使用自己购买的农药，我们的团队会先确认它适合无人机喷洒且安全有效。</span><span class="bm">Kebanyakan racun perosak dan baja cecair biasa adalah sesuai. Anda dialu-alukan membekalkan sendiri; pasukan kami akan memeriksa dahulu sama ada ia selamat dan berkesan untuk aplikasi dron.</span></p></div>
       </details>
       <details class="faq-item">
-        <summary><span class="en">Will drone spraying harm my trees or seedlings?</span><span class="zh">无人机喷洒会不会伤到树/秧苗？</span></summary>
-        <div class="faq-body"><p><span class="en">No. Every job is flown by a licensed pilot on a pre-planned route with a controlled spray rate, giving even coverage without damaging crops.</span><span class="zh">不会。每次作业由持牌飞手按预先规划的路线执行，喷洒速率受控，均匀覆盖而不会伤害作物。</span></p></div>
+        <summary><span class="en">Will drone spraying harm my trees or seedlings?</span><span class="zh">无人机喷洒会不会伤到树/秧苗？</span><span class="bm">Adakah semburan dron akan memudaratkan pokok atau anak benih saya?</span></summary>
+        <div class="faq-body"><p><span class="en">No. Every job is flown by a licensed pilot on a pre-planned route with a controlled spray rate, giving even coverage without damaging crops.</span><span class="zh">不会。每次作业由持牌飞手按预先规划的路线执行，喷洒速率受控，均匀覆盖而不会伤害作物。</span><span class="bm">Tidak. Setiap kerja diterbangkan oleh juruterbang bertauliah mengikut laluan yang dirancang dengan kadar semburan terkawal, memberikan liputan sekata tanpa merosakkan tanaman.</span></p></div>
       </details>
       <details class="faq-item">
-        <summary><span class="en">Is there a minimum land size? My plot is small.</span><span class="zh">最少几英亩才接单？我的园很小可以吗？</span></summary>
-        <div class="faq-body"><p><span class="en">There is no strict minimum. Smaller plots can be grouped with nearby jobs to keep costs reasonable. Tell us your land size and we will suggest the most economical arrangement.</span><span class="zh">没有严格的最低面积。较小的地块可以与附近的作业一起安排，以控制成本；告诉我们您的面积，我们会建议最省钱的安排。</span></p></div>
+        <summary><span class="en">Is there a minimum land size? My plot is small.</span><span class="zh">最少几英亩才接单？我的园很小可以吗？</span><span class="bm">Adakah terdapat keluasan tanah minimum? Plot saya kecil.</span></summary>
+        <div class="faq-body"><p><span class="en">There is no strict minimum. Smaller plots can be grouped with nearby jobs to keep costs reasonable. Tell us your land size and we will suggest the most economical arrangement.</span><span class="zh">没有严格的最低面积。较小的地块可以与附近的作业一起安排，以控制成本；告诉我们您的面积，我们会建议最省钱的安排。</span><span class="bm">Tiada had minimum yang ketat. Plot yang lebih kecil boleh digabungkan dengan kerja berdekatan untuk mengekalkan kos yang berpatutan. Beritahu kami keluasan tanah anda dan kami akan cadangkan susunan yang paling menjimatkan.</span></p></div>
       </details>
     </div>
     <div class="steps-cta reveal">
-      <a class="btn btn-ghost" href="farmer-solutions.html#fs-faq"><span class="en">More Questions? See Full FAQ</span><span class="zh">更多问题？查看完整常见问题</span></a>
+      <a class="btn btn-ghost" href="farmer-solutions.html#fs-faq"><span class="en">More Questions? See Full FAQ</span><span class="zh">更多问题？查看完整常见问题</span><span class="bm">Lebih Banyak Soalan? Lihat Soalan Lazim Penuh</span></a>
     </div>
   </div>
 </section>
@@ -600,8 +614,8 @@
   </div>
   <div class="wrap">
     <div class="section-head center reveal">
-      <h2 id="coverage-heading"><span class="en">Areas We Serve</span><span class="zh">服务覆盖地区</span></h2>
-      <p class="lead"><span class="en">Coverage is expanding across Malaysia. Confirm your area with us directly.</span><span class="zh">服务范围持续扩展中 — 欢迎直接联系确认您所在地区是否在覆盖范围内。</span></p>
+      <h2 id="coverage-heading"><span class="en">Areas We Serve</span><span class="zh">服务覆盖地区</span><span class="bm">Kawasan Yang Kami Liputi</span></h2>
+      <p class="lead"><span class="en">Coverage is expanding across Malaysia. Confirm your area with us directly.</span><span class="zh">服务范围持续扩展中 — 欢迎直接联系确认您所在地区是否在覆盖范围内。</span><span class="bm">Liputan sedang berkembang di seluruh Malaysia. Sahkan kawasan anda terus dengan kami.</span></p>
     </div>
     <!-- B4 — Service Coverage map. Static SVG (per spec: no complex interactive
          map needed), highlighted states + a matching text chip list. Coverage
@@ -1026,7 +1040,7 @@
       </div>
     </div>
     <div class="steps-cta reveal">
-      <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">Not on the List? WhatsApp Us</span><span class="zh">不在名单内？WhatsApp 询问我们</span></a>
+      <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">Not on the List? WhatsApp Us</span><span class="zh">不在名单内？WhatsApp 询问我们</span><span class="bm">Tiada Dalam Senarai? WhatsApp Kami</span></a>
     </div>
   </div>
 </section>
@@ -1039,12 +1053,12 @@
 <section class="section" aria-labelledby="about-heading">
   <div class="wrap about-teaser">
     <div class="reveal">
-      <h2 id="about-heading"><span class="en">About Drone X</span><span class="zh">关于 Drone X</span></h2>
+      <h2 id="about-heading"><span class="en">About Drone X</span><span class="zh">关于 Drone X</span><span class="bm">Tentang Drone X</span></h2>
       <p class="lead">
         <span class="en">Drone X Malaysia is a drone technology company with agriculture at its core, helping Malaysian farmers and businesses work faster and safer through licensed, professional drone operations.</span>
-        <span class="zh">Drone X Malaysia 是一家以农业为核心的无人机科技公司，以合法合规、专业团队与先进技术，协助马来西亚农夫与企业提升作业效率。</span>
+        <span class="zh">Drone X Malaysia 是一家以农业为核心的无人机科技公司，以合法合规、专业团队与先进技术，协助马来西亚农夫与企业提升作业效率。</span><span class="bm">Drone X Malaysia ialah sebuah syarikat teknologi dron yang berteraskan pertanian, membantu petani dan perniagaan Malaysia bekerja dengan lebih pantas dan selamat melalui operasi dron yang bertauliah dan profesional.</span>
       </p>
-      <a class="btn btn-secondary" href="about-us.html"><span class="en">Learn More About Us</span><span class="zh">认识我们</span></a>
+      <a class="btn btn-secondary" href="about-us.html"><span class="en">Learn More About Us</span><span class="zh">认识我们</span><span class="bm">Ketahui Lebih Lanjut Tentang Kami</span></a>
     </div>
     <img class="reveal" src="assets/about-brand.jpg" alt="Close-up of a Drone X aircraft propeller in motion with the Drone X wordmark" loading="lazy" width="1327" height="746">
   </div>
@@ -1056,43 +1070,43 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-cta">
-      <h2><span class="en">Ready to work with Drone X?</span><span class="zh">准备好与 Drone X 合作了吗？</span></h2>
+      <h2><span class="en">Ready to work with Drone X?</span><span class="zh">准备好与 Drone X 合作了吗？</span><span class="bm">Bersedia bekerjasama dengan Drone X?</span></h2>
       <div class="footer-cta-buttons">
-        <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Free Quote</span><span class="zh">WhatsApp 免费询价</span></a>
-        <a class="btn btn-ghost" href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">加入飞手网络</span></a>
-        <a class="btn btn-ghost" href="partners.html"><span class="en">Partner With Drone X</span><span class="zh">商业合作洽谈</span></a>
+        <a class="btn btn-primary" href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener"><span class="en">WhatsApp Free Quote</span><span class="zh">WhatsApp 免费询价</span><span class="bm">Sebut Harga Percuma WhatsApp</span></a>
+        <a class="btn btn-ghost" href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">加入飞手网络</span><span class="bm">Sertai Rangkaian Juruterbang</span></a>
+        <a class="btn btn-ghost" href="partners.html"><span class="en">Partner With Drone X</span><span class="zh">商业合作洽谈</span><span class="bm">Berunding Kerjasama Perniagaan</span></a>
       </div>
     </div>
     <div class="footer-grid">
       <div>
-        <h3><span class="en">Quick Links</span><span class="zh">快速连结</span></h3>
+        <h3><span class="en">Quick Links</span><span class="zh">快速连结</span><span class="bm">Pautan Pantas</span></h3>
         <ul>
-          <li><a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span></a></li>
-          <li><a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span></a></li>
-          <li><a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span></a></li>
-          <li><a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span></a></li>
-          <li><a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span></a></li>
+          <li><a href="farmer-solutions.html"><span class="en">Farmer Solutions</span><span class="zh">农业方案</span><span class="bm">Penyelesaian Petani</span></a></li>
+          <li><a href="become-a-pilot.html"><span class="en">Become a Pilot</span><span class="zh">飞手合作</span><span class="bm">Jadi Juruterbang</span></a></li>
+          <li><a href="about-us.html"><span class="en">About Us</span><span class="zh">关于我们</span><span class="bm">Tentang Kami</span></a></li>
+          <li><a href="media.html"><span class="en">Media</span><span class="zh">媒体中心</span><span class="bm">Media</span></a></li>
+          <li><a href="contact-us.html"><span class="en">Contact Us</span><span class="zh">联系我们</span><span class="bm">Hubungi Kami</span></a></li>
         </ul>
       </div>
       <div>
-        <h3><span class="en">More Solutions</span><span class="zh">更多方案</span></h3>
+        <h3><span class="en">More Solutions</span><span class="zh">更多方案</span><span class="bm">Lebih Banyak Penyelesaian</span></h3>
         <ul>
-          <li><a href="other-solutions.html"><span class="en">Other Solutions</span><span class="zh">其他领域方案</span></a></li>
-          <li><a href="technology-data.html"><span class="en">Technology &amp; Data</span><span class="zh">技术与数据</span></a></li>
-          <li><a href="partners.html"><span class="en">Partners</span><span class="zh">合作伙伴</span></a></li>
+          <li><a href="other-solutions.html"><span class="en">Other Solutions</span><span class="zh">其他领域方案</span><span class="bm">Penyelesaian Lain</span></a></li>
+          <li><a href="technology-data.html"><span class="en">Technology &amp; Data</span><span class="zh">技术与数据</span><span class="bm">Teknologi &amp; Data</span></a></li>
+          <li><a href="partners.html"><span class="en">Partners</span><span class="zh">合作伙伴</span><span class="bm">Rakan Kongsi</span></a></li>
         </ul>
       </div>
       <div>
-        <h3><span class="en">Contact</span><span class="zh">联系方式</span></h3>
+        <h3><span class="en">Contact</span><span class="zh">联系方式</span><span class="bm">Hubungi</span></h3>
         <ul>
           <!-- Phone number removed until a real office/WhatsApp Business number is confirmed (PDF v3 §A3) -->
           <li><a href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:hello@dronexmalaysia.com">hello@dronexmalaysia.com</a></li>
-          <li><span style="font-size:var(--text-small)"><span class="en">Kuala Lumpur, Malaysia</span><span class="zh">马来西亚吉隆坡</span></span></li>
+          <li><span style="font-size:var(--text-small)"><span class="en">Kuala Lumpur, Malaysia</span><span class="zh">马来西亚吉隆坡</span><span class="bm">Kuala Lumpur, Malaysia</span></span></li>
         </ul>
       </div>
       <div>
-        <h3><span class="en">Follow Us</span><span class="zh">社交媒体</span></h3>
+        <h3><span class="en">Follow Us</span><span class="zh">社交媒体</span><span class="bm">Ikuti Kami</span></h3>
         <!-- TikTok/YouTube icons removed until real links exist (PDF v3 launch checklist) -->
         <ul>
           <li><a href="https://www.facebook.com/profile.php?id=61589607842133" target="_blank" rel="noopener">Facebook</a></li>
@@ -1103,17 +1117,24 @@
     </div>
     <div class="footer-base">
       <span class="footer-logo"><img src="assets/logo-light-trim.png" alt="Drone X" width="122" height="34"></span>
-      <span>© <span data-year>2026</span> Drone X Malaysia. <span class="en">All rights reserved.</span><span class="zh">版权所有。</span></span>
-      <span class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" data-lang="en">EN</button>
-        <button type="button" data-lang="zh" class="active">中文</button>
-      </span>
+      <span>© <span data-year>2026</span> Drone X Malaysia. <span class="en">All rights reserved.</span><span class="zh">版权所有。</span><span class="bm">Hak cipta terpelihara.</span></span>
+      <div class="lang-dd">
+      <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
+        <span class="lang-dd-code">ZH</span>
+        <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+      <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
+        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
+        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
+      </ul>
+    </div>
     </div>
     <!-- Required attribution for the "Areas We Serve" map SVG (Blank malaysia
          map.svg by Exiang, Wikimedia Commons, CC BY 3.0) — license requires
          credit be given somewhere reasonably associated with the work;
          moved here per client preference so it doesn't clutter the map card. -->
-    <p class="footer-credit"><span class="en">Map data: <a href="https://commons.wikimedia.org/wiki/File:Blank_malaysia_map.svg" target="_blank" rel="noopener">Wikimedia Commons</a> (CC BY 3.0)</span><span class="zh">地图数据来源：<a href="https://commons.wikimedia.org/wiki/File:Blank_malaysia_map.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY 3.0）</span></p>
+    <p class="footer-credit"><span class="en">Map data: <a href="https://commons.wikimedia.org/wiki/File:Blank_malaysia_map.svg" target="_blank" rel="noopener">Wikimedia Commons</a> (CC BY 3.0)</span><span class="zh">地图数据来源：<a href="https://commons.wikimedia.org/wiki/File:Blank_malaysia_map.svg" target="_blank" rel="noopener">Wikimedia Commons</a>（CC BY 3.0）</span><span class="bm">Data peta: <a href="https://commons.wikimedia.org/wiki/File:Blank_malaysia_map.svg" target="_blank" rel="noopener">Wikimedia Commons</a> (CC BY 3.0)</span></p>
   </div>
 </footer>
 
@@ -1123,7 +1144,7 @@
    href="https://wa.me/60123456789?text=Hi%20Drone%20X%2C%20I%20have%20___%20acres%20of%20___%20%28durian/paddy/oil%20palm%29%20and%20would%20like%20to%20enquire%20about%20spraying%20services.%20/%20%E6%88%91%E6%9C%89___%E8%8B%B1%E4%BA%A9%E7%9A%84___%EF%BC%88%E6%A6%B4%E8%8E%B2/%E7%A8%BB%E7%94%B0/%E6%B2%B9%E6%A3%95%EF%BC%89%EF%BC%8C%E6%83%B3%E4%BA%86%E8%A7%A3%E5%96%B7%E8%8D%AF%E6%9C%8D%E5%8A%A1%E3%80%82"
    aria-label="Chat with us on WhatsApp">
   <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.5c1.2.5 2.5.8 3.8.8 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.2 0-2.4-.3-3.5-.8l-.6-.3-4.9.9 1-4.7-.4-.6c-1-1.6-1.5-3.4-1.5-5.3 0-5.5 4.4-9.9 9.9-9.9s9.9 4.4 9.9 9.9-4.4 9.8-9.9 9.8zm5.4-7.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.2-.3-.2-.6-.4z"/></svg>
-  <span class="wa-label"><span class="en">WhatsApp Us Now</span><span class="zh">立即 WhatsApp 联系</span></span>
+  <span class="wa-label"><span class="en">WhatsApp Us Now</span><span class="zh">立即 WhatsApp 联系</span><span class="bm">WhatsApp Kami Sekarang</span></span>
 </a>
 
 <script src="assets/js/v2-main.js?v=20260722" defer></script>

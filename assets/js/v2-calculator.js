@@ -34,8 +34,11 @@
   areaInput.addEventListener("input", compute);
 
   var resultBox = document.getElementById("calc-result");
-  var isZh = function () {
-    return document.documentElement.getAttribute("data-lang") === "zh";
+  /* Reads the active language off <html data-lang>, set by v2-main.js.
+     Falls back to "en" for any unrecognised value. */
+  var getLang = function () {
+    var lang = document.documentElement.getAttribute("data-lang");
+    return (lang === "zh" || lang === "bm") ? lang : "en";
   };
 
   function toAcres(v) {
@@ -46,11 +49,17 @@
 
   function serviceLabel() {
     var map = {
-      spraying:   { en: "Drone Spraying", zh: "无人机喷药" },
-      fertilizing:{ en: "Drone Fertilizing", zh: "无人机施肥" },
-      both:       { en: "Spraying + Fertilizing", zh: "喷药＋施肥" }
+      spraying:    { en: "Drone Spraying", zh: "无人机喷药", bm: "Semburan Dron" },
+      fertilizing: { en: "Drone Fertilizing", zh: "无人机施肥", bm: "Baja Dron" },
+      both:        { en: "Spraying + Fertilizing", zh: "喷药＋施肥", bm: "Semburan + Baja" }
     };
     return map[state.purpose] || map.spraying;
+  }
+
+  function droneUnitLabel(count) {
+    if (getLang() === "zh") return " 架";
+    if (getLang() === "bm") return " dron";
+    return count > 1 ? " drones" : " drone";
   }
 
   function compute() {
@@ -62,20 +71,29 @@
     var hours = (acres * passes) / ACRES_PER_DRONE_HOUR;
     var drones = Math.max(1, Math.ceil(hours / MAX_HOURS_PER_DAY));
     var hoursWithFleet = hours / drones;
+    var lang = getLang();
     var timeTxt;
-    if (hoursWithFleet <= 1) timeTxt = isZh() ? "约 1 小时内" : "Under ~1 hour";
-    else if (hoursWithFleet <= MAX_HOURS_PER_DAY) {
+    if (hoursWithFleet <= 1) {
+      timeTxt = { en: "Under ~1 hour", zh: "约 1 小时内", bm: "Bawah ~1 jam" }[lang];
+    } else if (hoursWithFleet <= MAX_HOURS_PER_DAY) {
       var h = Math.ceil(hoursWithFleet);
-      timeTxt = isZh() ? "约 " + h + " 小时（1 天内）" : "~" + h + " hours (within 1 day)";
+      timeTxt = {
+        en: "~" + h + " hours (within 1 day)",
+        zh: "约 " + h + " 小时（1 天内）",
+        bm: "~" + h + " jam (dalam 1 hari)"
+      }[lang];
     } else {
       var d = Math.ceil(hoursWithFleet / MAX_HOURS_PER_DAY);
-      timeTxt = isZh() ? "约 " + d + " 个工作天" : "~" + d + " working days";
+      timeTxt = {
+        en: "~" + d + " working days",
+        zh: "约 " + d + " 个工作天",
+        bm: "~" + d + " hari bekerja"
+      }[lang];
     }
 
     var svc = serviceLabel();
-    document.getElementById("res-service").textContent = isZh() ? svc.zh : svc.en;
-    document.getElementById("res-drones").textContent =
-      drones + (isZh() ? " 架" : drones > 1 ? " drones" : " drone");
+    document.getElementById("res-service").textContent = svc[lang];
+    document.getElementById("res-drones").textContent = drones + droneUnitLabel(drones);
     document.getElementById("res-time").textContent = timeTxt;
 
     /* Handoff link → contact form pre-filled (PDF: farmer不用重复填写) */
@@ -89,7 +107,7 @@
     resultBox.hidden = false;
   }
 
-  /* Recompute label language when the lang toggle flips */
+  /* Recompute label language when the lang dropdown changes selection */
   new MutationObserver(function () {
     if (!resultBox.hidden) compute();
   }).observe(document.documentElement, { attributes: true, attributeFilter: ["data-lang"] });
