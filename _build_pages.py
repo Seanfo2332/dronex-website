@@ -1,7 +1,24 @@
 # -*- coding: utf-8 -*-
 """Drone X V2 — static page generator for shared header/footer chrome.
-Run:  python _build_pages.py
-Pages emitted: farmer-solutions, become-a-pilot, about-us, media,
+
+  +----------------------------------------------------------------------+
+  |  WARNING — DO NOT RUN THIS SCRIPT.                                   |
+  |  The 8 pages below have been repeatedly hand-edited directly since   |
+  |  this generator was last updated (real team photos/bios, Partners    |
+  |  explore-grid + process timeline, Media case studies/video gallery/  |
+  |  news list, the contact form's Drone Rental Service option, etc.)    |
+  |  This script's own templates are STALE and no longer match the live |
+  |  pages. Running it will silently overwrite and delete that real      |
+  |  content (this has already happened twice — 2026-08-11/12).          |
+  |  Treat farmer-solutions.html, become-a-pilot.html, about-us.html,    |
+  |  media.html, contact-us.html, other-solutions.html,                  |
+  |  technology-data.html and partners.html as hand-maintained, exactly  |
+  |  like index.html — edit the .html files directly, not this script.  |
+  |  If this generator is ever resynced to match current content, this  |
+  |  warning block should be removed at that point.                     |
+  +----------------------------------------------------------------------+
+
+Pages originally emitted: farmer-solutions, become-a-pilot, about-us, media,
 contact-us, other-solutions, technology-data, partners.
 index.html is maintained by hand (hero differs)."""
 import io, sys
