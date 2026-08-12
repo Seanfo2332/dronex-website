@@ -157,6 +157,14 @@ SHELL = """<!DOCTYPE html>
 def bi(en: str, zh: str, bm: str) -> str:
     return '<span class="en">%s</span><span class="zh">%s</span><span class="bm">%s</span>' % (en, zh, bm)
 
+def opt(value: str, en: str, zh: str, bm: str) -> str:
+    """<option> whose visible label is kept in sync with the active site
+    language by JS (v2-main.js), since browsers ignore CSS on <option>
+    children — unlike every other bilingual node on the site, options
+    can't rely on the .en/.zh/.bm span + display:none trick."""
+    return ('<option value="%s" data-en="%s" data-zh="%s" data-bm="%s">%s</option>'
+            % (value, en, zh, bm, en))
+
 # Per-page header media (PDF follow-up: "put images related to content at the
 # start of every page" — farmer-solutions already had its own hero video, so
 # it's excluded). Reuses real project assets rather than stock/generic art.
@@ -680,13 +688,14 @@ contact_body = """
         <div class="form-field">
           <label for="f-service">""" + bi("Service Interested In", "我感兴趣的服务", "Perkhidmatan Yang Diminati") + """</label>
           <select id="f-service" name="service" required>
-            <option value="spraying">""" + bi("Drone Spraying Service (Farmer)", "农药喷洒服务（农夫）", "Perkhidmatan Semburan Dron (Petani)") + """</option>
-            <option value="pilot">""" + bi("Become a Pilot", "加入飞手", "Jadi Juruterbang") + """</option>
-            <option value="mapping">""" + bi("Aerial Mapping", "航拍测绘", "Pemetaan Udara") + """</option>
-            <option value="cleaning">""" + bi("Building / Solar Cleaning", "建筑/太阳能清洗", "Pembersihan Bangunan / Solar") + """</option>
-            <option value="public">""" + bi("Public Sector Support", "公共部门支援", "Sokongan Sektor Awam") + """</option>
-            <option value="show">""" + bi("Drone Entertainment", "无人机表演", "Persembahan Dron") + """</option>
-            <option value="other">""" + bi("Other", "其他", "Lain-lain") + """</option>
+            """ + opt("spraying", "Drone Spraying Service (Farmer)", "农药喷洒服务（农夫）", "Perkhidmatan Semburan Dron (Petani)") + """
+            """ + opt("pilot", "Become a Pilot", "加入飞手", "Jadi Juruterbang") + """
+            """ + opt("mapping", "Aerial Mapping", "航拍测绘", "Pemetaan Udara") + """
+            """ + opt("cleaning", "Building / Solar Cleaning", "建筑/太阳能清洗", "Pembersihan Bangunan / Solar") + """
+            """ + opt("public", "Public Sector Support", "公共部门支援", "Sokongan Sektor Awam") + """
+            """ + opt("show", "Drone Entertainment", "无人机表演", "Persembahan Dron") + """
+            """ + opt("rental", "Drone Rental Service", "出租服务", "Perkhidmatan Sewa Dron") + """
+            """ + opt("other", "Other", "其他", "Lain-lain") + """
           </select>
         </div>
         <div class="form-field">

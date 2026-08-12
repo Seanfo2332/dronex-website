@@ -34,6 +34,11 @@
         li.setAttribute("aria-selected", active ? "true" : "false");
       });
     });
+    /* <option> text can't use the .en/.zh/.bm span trick (browsers ignore
+       CSS on option children), so sync it here whenever language changes. */
+    document.querySelectorAll("option[data-en]").forEach(function (o) {
+      o.textContent = o.getAttribute("data-" + lang) || o.getAttribute("data-en");
+    });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode: keep in-page state only */ }
   }
   var saved = "zh";
