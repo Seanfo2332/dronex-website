@@ -1126,7 +1126,7 @@
   align-items: center; gap: 1.6rem 2.2rem;
 }
 .pt-eco-diagram {
-  grid-template-columns: 1fr 140px 1fr;
+  grid-template-columns: 1fr 152px 1fr;
   grid-template-rows: auto auto;
   grid-template-areas:
     "tl hub tr"
@@ -1144,6 +1144,12 @@
   display: flex; align-items: center; gap: 0.9rem;
   background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
   padding: 0.9rem; box-shadow: 0 14px 34px -26px rgba(21, 31, 39, 0.35);
+  transition: transform 220ms var(--ease), box-shadow 220ms var(--ease), border-color 220ms var(--ease);
+}
+.pt-eco-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -20px rgba(21, 31, 39, 0.45);
+  border-color: var(--pg-soft);
 }
 .pt-eco-card--tl { grid-area: tl; }
 .pt-eco-card--tr { grid-area: tr; }
@@ -1155,12 +1161,12 @@
 .pt-eco-card p { margin: 0; font-size: 0.74rem; color: var(--ink-2); line-height: 1.5; }
 .pt-eco-hub {
   grid-area: hub; position: relative; z-index: 1; justify-self: center;
-  width: 140px; height: 140px; border-radius: 50%; background: var(--ink);
+  width: 152px; height: 152px; border-radius: 50%;
+  background: radial-gradient(circle at 32% 26%, #26323c 0%, var(--ink) 72%);
   display: grid; place-items: center; text-align: center;
-  box-shadow: 0 20px 44px -18px rgba(21, 31, 39, 0.5);
+  box-shadow: 0 22px 48px -16px rgba(21, 31, 39, 0.55), 0 0 0 7px var(--pg-soft);
 }
-.pt-eco-hub span { color: var(--white); font-weight: 800; font-size: 1.1rem; letter-spacing: 0.02em; }
-.pt-eco-hub span b { color: var(--pg); }
+.pt-eco-hub img { width: 84px; height: auto; display: block; }
 .pt-eco-note { max-width: 620px; margin: 2.4rem auto 0; text-align: center; color: var(--ink-2); font-size: 0.9rem; line-height: 1.7; }
 @media (max-width: 720px) {
   .pt-eco-diagram {
