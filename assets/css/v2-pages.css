@@ -233,20 +233,82 @@
 .au-eco-dot--r1 { left: 61%; top: 17%; }
 .au-eco-dot--r2 { left: 61%; top: 50%; }
 .au-eco-dot--r3 { left: 61%; top: 83%; }
+/* Traveling signal dot per connector — animates card-to-hub along the
+   same two-segment path as the SVG connector (stub, then bend to the
+   hub's vertical center), visualising each partner feeding the
+   ecosystem. Real elements, gated behind reduced-motion. */
+.au-eco-pulse {
+  position: absolute; z-index: 1; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--pg); box-shadow: 0 0 7px 1px rgba(46, 125, 58, 0.55);
+  transform: translate(-50%, -50%); pointer-events: none; opacity: 0;
+}
 .au-eco-hub {
   grid-column: 2; grid-row: 1 / 4; justify-self: center;
   position: relative; z-index: 2; width: 140px; height: 140px; border-radius: 50%; background: var(--ink);
   display: grid; place-items: center;
   /* White ring badge the connector lines visibly run into and disappear
      under, so the hub reads as the lines' shared destination. */
-  box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5);
+  box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5), 0 0 0 0 rgba(46, 125, 58, 0.3);
 }
 .au-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .au-eco-hub { animation: au-eco-hub-glow 3.6s ease-in-out infinite; }
+  .au-eco-pulse--l1 { animation: au-eco-flow-l1 3.6s ease-in-out infinite; }
+  .au-eco-pulse--l2 { animation: au-eco-flow-l2 3.6s ease-in-out infinite; animation-delay: 0.6s; }
+  .au-eco-pulse--l3 { animation: au-eco-flow-l3 3.6s ease-in-out infinite; animation-delay: 1.2s; }
+  .au-eco-pulse--r1 { animation: au-eco-flow-r1 3.6s ease-in-out infinite; animation-delay: 1.8s; }
+  .au-eco-pulse--r2 { animation: au-eco-flow-r2 3.6s ease-in-out infinite; animation-delay: 2.4s; }
+  .au-eco-pulse--r3 { animation: au-eco-flow-r3 3.6s ease-in-out infinite; animation-delay: 3s; }
+}
+@keyframes au-eco-hub-glow {
+  0%, 100% { box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5), 0 0 0 0 rgba(46, 125, 58, 0.3); }
+  50% { box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5), 0 0 22px 6px rgba(46, 125, 58, 0.28); }
+}
+@keyframes au-eco-flow-l1 {
+  0%, 100% { left: 34.7%; top: 17%; opacity: 0; }
+  10% { opacity: 1; }
+  38% { left: 39%; top: 17%; }
+  88% { opacity: 1; }
+  99% { left: 41.5%; top: 50%; opacity: 0; }
+}
+@keyframes au-eco-flow-l2 {
+  0%, 100% { left: 34.7%; top: 50%; opacity: 0; }
+  10% { opacity: 1; }
+  88% { opacity: 1; }
+  99% { left: 41.5%; top: 50%; opacity: 0; }
+}
+@keyframes au-eco-flow-l3 {
+  0%, 100% { left: 34.7%; top: 83%; opacity: 0; }
+  10% { opacity: 1; }
+  38% { left: 39%; top: 83%; }
+  88% { opacity: 1; }
+  99% { left: 41.5%; top: 50%; opacity: 0; }
+}
+@keyframes au-eco-flow-r1 {
+  0%, 100% { left: 65.3%; top: 17%; opacity: 0; }
+  10% { opacity: 1; }
+  38% { left: 61%; top: 17%; }
+  88% { opacity: 1; }
+  99% { left: 58.5%; top: 50%; opacity: 0; }
+}
+@keyframes au-eco-flow-r2 {
+  0%, 100% { left: 65.3%; top: 50%; opacity: 0; }
+  10% { opacity: 1; }
+  88% { opacity: 1; }
+  99% { left: 58.5%; top: 50%; opacity: 0; }
+}
+@keyframes au-eco-flow-r3 {
+  0%, 100% { left: 65.3%; top: 83%; opacity: 0; }
+  10% { opacity: 1; }
+  38% { left: 61%; top: 83%; }
+  88% { opacity: 1; }
+  99% { left: 58.5%; top: 50%; opacity: 0; }
+}
 @media (max-width: 720px) {
   .au-eco-diagram { grid-template-columns: 1fr; row-gap: 1.2rem; max-width: 420px; }
   .au-eco-diagram::before { display: none; }
-  .au-eco-dot { display: none; }
-  .au-eco-hub { grid-column: 1; grid-row: auto; order: -1; margin-bottom: 0.4rem; }
+  .au-eco-dot, .au-eco-pulse { display: none; }
+  .au-eco-hub { grid-column: 1; grid-row: auto; order: -1; margin-bottom: 0.4rem; animation: none; }
 }
 
 /* ---------- Closing CTA banner (About — full-bleed photo, same
