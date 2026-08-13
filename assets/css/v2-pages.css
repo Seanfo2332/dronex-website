@@ -1178,8 +1178,7 @@
   display: grid; place-items: center; text-align: center;
   box-shadow: 0 20px 44px -18px rgba(21, 31, 39, 0.5);
 }
-.pt-eco-hub span { color: var(--white); font-weight: 800; font-size: 1.15rem; letter-spacing: 0.02em; white-space: nowrap; }
-.pt-eco-hub span b { color: var(--pg); font-weight: 800; }
+.pt-eco-hub img { width: 84px; height: auto; display: block; }
 .pt-eco-note { max-width: 620px; margin: 2.4rem auto 0; text-align: center; color: var(--ink-2); font-size: 0.9rem; line-height: 1.7; }
 @media (max-width: 720px) {
   .pt-eco-diagram {
