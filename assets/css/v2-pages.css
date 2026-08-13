@@ -1117,8 +1117,11 @@
 @media (max-width: 860px) { .pt-areas-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
 @media (max-width: 480px) { .pt-areas-grid { gap: 0.9rem; } }
 
-/* ---------- Partnership Ecosystem (hub-and-spoke diagram). Consecutive
-   white section directly below Partnership Areas — zero top padding. ---------- */
+/* ---------- Partnership Ecosystem — "signal network" diagram. Radar-
+   ring hub + curved flight-path connectors + traveling signal dots,
+   evoking the drone/coverage metaphor rather than a generic corporate
+   hub-and-spoke chart. Consecutive white section directly below
+   Partnership Areas — zero top padding. ---------- */
 .pt-eco { background: var(--white); padding-top: 0; }
 .pt-eco-rule { display: block; width: 56px; height: 3px; border-radius: 2px; background: var(--pg); margin: 0.85rem auto 0; }
 .pt-eco-diagram {
@@ -1134,14 +1137,21 @@
     "tl hub tr"
     "bl hub br";
 }
+/* Soft green atmosphere glow behind the whole diagram, centered on the
+   hub, to add depth without resorting to a busy texture. */
+.pt-eco-diagram::after {
+  content: ""; position: absolute; z-index: 0; pointer-events: none;
+  inset: -12% -6%;
+  background: radial-gradient(circle at 50% 50%, rgba(46, 125, 58, 0.07), transparent 62%);
+}
 .pt-eco-diagram::before {
-  /* Dotted connector lines from each corner card toward the hub —
+  /* Curved "flight path" connectors from each card toward the hub —
      percentage-based SVG so it scales with the container. */
   content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg stroke='%232E7D3A' stroke-width='0.45' stroke-dasharray='1.4,1.6' stroke-linecap='round' fill='none' opacity='0.6'%3E%3Cline x1='28' y1='22' x2='45' y2='40'/%3E%3Cline x1='72' y1='22' x2='55' y2='40'/%3E%3Cline x1='28' y1='78' x2='45' y2='60'/%3E%3Cline x1='72' y1='78' x2='55' y2='60'/%3E%3C/g%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg stroke='%232E7D3A' stroke-width='0.45' stroke-dasharray='1.4,1.6' stroke-linecap='round' fill='none' opacity='0.6'%3E%3Cpath d='M28,22 Q38,26 45,40'/%3E%3Cpath d='M72,22 Q62,26 55,40'/%3E%3Cpath d='M28,78 Q38,74 45,60'/%3E%3Cpath d='M72,78 Q62,74 55,60'/%3E%3C/g%3E%3C/svg%3E");
   background-repeat: no-repeat; background-size: 100% 100%;
 }
-/* Small accent node at the midpoint of each connector line — real
+/* Small accent node at the midpoint of each connector curve — real
    elements (not part of the stretched SVG) so they stay perfectly
    round regardless of the diagram's fluid aspect ratio. */
 .pt-eco-node {
@@ -1149,10 +1159,18 @@
   background: var(--pg); box-shadow: 0 0 0 4px var(--pg-soft);
   transform: translate(-50%, -50%); pointer-events: none;
 }
-.pt-eco-node--tl { left: 36.5%; top: 31%; }
-.pt-eco-node--tr { left: 63.5%; top: 31%; }
-.pt-eco-node--bl { left: 36.5%; top: 69%; }
-.pt-eco-node--br { left: 63.5%; top: 69%; }
+.pt-eco-node--tl { left: 37.25%; top: 28.5%; }
+.pt-eco-node--tr { left: 62.75%; top: 28.5%; }
+.pt-eco-node--bl { left: 37.25%; top: 71.5%; }
+.pt-eco-node--br { left: 62.75%; top: 71.5%; }
+/* Traveling signal dot — animates from each card into the hub on a
+   loop, visualising partners actively feeding the ecosystem. Static
+   (invisible) unless motion is allowed. */
+.pt-eco-pulse {
+  position: absolute; z-index: 1; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--pg); box-shadow: 0 0 7px 1px rgba(46, 125, 58, 0.55);
+  transform: translate(-50%, -50%); pointer-events: none; opacity: 0;
+}
 .pt-eco-card {
   position: relative; z-index: 1;
   display: flex; align-items: center; gap: 1rem;
@@ -1168,8 +1186,18 @@
 .pt-eco-card--tr { grid-area: tr; }
 .pt-eco-card--bl { grid-area: bl; }
 .pt-eco-card--br { grid-area: br; }
-.pt-eco-media { width: 64px; height: 64px; border-radius: 12px; overflow: hidden; flex: none; }
-.pt-eco-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pt-eco-media { position: relative; width: 64px; height: 64px; flex: none; }
+.pt-eco-media img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 12px; }
+/* Category badge overlapping the card's photo — reinforces the
+   partner type at a glance alongside the label. */
+.pt-eco-badge {
+  position: absolute; right: -6px; bottom: -6px; z-index: 2;
+  width: 25px; height: 25px; border-radius: 50%;
+  background: var(--pg); color: var(--white);
+  display: grid; place-items: center;
+  box-shadow: 0 0 0 3px var(--white), 0 6px 14px -6px rgba(21, 31, 39, 0.4);
+}
+.pt-eco-badge svg { width: 13px; height: 13px; }
 .pt-eco-card h3 { font-size: 0.92rem; margin: 0 0 0.25em; }
 .pt-eco-card p { margin: 0; font-size: 0.78rem; color: var(--ink-2); line-height: 1.5; }
 .pt-eco-hub {
@@ -1178,15 +1206,58 @@
   display: grid; place-items: center; text-align: center;
   box-shadow: 0 20px 44px -18px rgba(21, 31, 39, 0.5);
 }
-.pt-eco-hub img { width: 84px; height: auto; display: block; }
+/* Radar-style coverage rings around the hub — ties the diagram to the
+   drone/signal metaphor instead of a plain flat circle. */
+.pt-eco-hub::before, .pt-eco-hub::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+}
+.pt-eco-hub::before { inset: -18px; border: 1px dashed rgba(46, 125, 58, 0.32); }
+.pt-eco-hub::after { inset: -38px; border: 1px dashed rgba(46, 125, 58, 0.16); }
+.pt-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
 .pt-eco-note { max-width: 620px; margin: 2.4rem auto 0; text-align: center; color: var(--ink-2); font-size: 0.9rem; line-height: 1.7; }
+@media (prefers-reduced-motion: no-preference) {
+  .pt-eco-hub::after { animation: pt-eco-spin 46s linear infinite; }
+  .pt-eco-pulse--tl { animation: pt-eco-flow-tl 3.4s ease-in-out infinite; }
+  .pt-eco-pulse--tr { animation: pt-eco-flow-tr 3.4s ease-in-out infinite; animation-delay: 0.85s; }
+  .pt-eco-pulse--bl { animation: pt-eco-flow-bl 3.4s ease-in-out infinite; animation-delay: 1.7s; }
+  .pt-eco-pulse--br { animation: pt-eco-flow-br 3.4s ease-in-out infinite; animation-delay: 2.55s; }
+}
+@keyframes pt-eco-spin { to { transform: rotate(360deg); } }
+@keyframes pt-eco-flow-tl {
+  0%, 100% { left: 28%; top: 22%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { left: 37.25%; top: 28.5%; opacity: 1; }
+  85% { opacity: 1; }
+  99% { left: 45%; top: 40%; opacity: 0; }
+}
+@keyframes pt-eco-flow-tr {
+  0%, 100% { left: 72%; top: 22%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { left: 62.75%; top: 28.5%; opacity: 1; }
+  85% { opacity: 1; }
+  99% { left: 55%; top: 40%; opacity: 0; }
+}
+@keyframes pt-eco-flow-bl {
+  0%, 100% { left: 28%; top: 78%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { left: 37.25%; top: 71.5%; opacity: 1; }
+  85% { opacity: 1; }
+  99% { left: 45%; top: 60%; opacity: 0; }
+}
+@keyframes pt-eco-flow-br {
+  0%, 100% { left: 72%; top: 78%; opacity: 0; }
+  15% { opacity: 1; }
+  50% { left: 62.75%; top: 71.5%; opacity: 1; }
+  85% { opacity: 1; }
+  99% { left: 55%; top: 60%; opacity: 0; }
+}
 @media (max-width: 720px) {
   .pt-eco-diagram {
     grid-template-columns: 1fr; grid-template-areas: "hub" "tl" "tr" "bl" "br";
     gap: 1rem; max-width: 420px;
   }
-  .pt-eco-diagram::before { display: none; }
-  .pt-eco-node { display: none; }
+  .pt-eco-diagram::before, .pt-eco-diagram::after { display: none; }
+  .pt-eco-node, .pt-eco-pulse { display: none; }
   .pt-eco-hub { margin-bottom: 0.6rem; }
 }
 
