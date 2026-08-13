@@ -906,3 +906,98 @@
   background: var(--accent); border-color: var(--accent); color: var(--white); flex: none;
 }
 .partners-cta .btn-primary:hover { background: var(--accent-ink); border-color: var(--accent-ink); }
+
+/* ============================================================
+   Become a Pilot — dark hero, numbered process, offer/requirement
+   cards, photo CTA banner, trust strip (2026-08-13, matches client
+   reference design). Scoped green accent — isolated from the
+   Partners page's blue --accent and the homepage's own scoped green
+   in the "Why Choose" section (different values, same pattern). */
+.pilot-hero, .pilot-process, .pilot-offer, .pilot-cta {
+  --pg: #2E7D3A;
+  --pg-dark: #24672F;
+  --pg-soft: #E7F4EA;
+}
+
+/* ---------- Hero ---------- */
+.pilot-hero { background: var(--ink); overflow: hidden; padding-block: clamp(3rem, 6vw, 5rem); }
+.pilot-hero .wrap { display: flex; align-items: center; gap: clamp(2rem, 5vw, 4.5rem); flex-wrap: wrap; }
+.pilot-hero-content { flex: 1 1 440px; min-width: 300px; }
+.pilot-hero h1 { color: var(--white); margin: 0 0 0.5em; }
+.pilot-tagline { color: var(--pg); font-weight: 700; font-size: 1.05rem; margin: 0 0 1rem; line-height: 1.5; }
+.pilot-hero-desc { color: oklch(82% 0 0); margin: 0 0 1.8rem; max-width: 54ch; line-height: 1.7; }
+.pilot-hero-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2.2rem; }
+.pilot-hero .btn-primary { background: var(--pg); border-color: var(--pg); color: var(--white); }
+.pilot-hero .btn-primary:hover { background: var(--pg-dark); border-color: var(--pg-dark); }
+.pilot-hero .btn-ghost { color: var(--white); border-color: rgba(255, 255, 255, 0.4); }
+.pilot-hero .btn-ghost:hover { background: rgba(255, 255, 255, 0.08); border-color: var(--white); }
+.pilot-trust-row { display: flex; flex-wrap: wrap; gap: 1.6rem 2.2rem; }
+.pilot-trust-item { display: flex; align-items: flex-start; gap: 0.6em; max-width: 210px; }
+.pilot-trust-item svg { color: var(--pg); flex: none; width: 18px; height: 18px; margin-top: 0.2em; }
+.pilot-trust-item b { display: block; color: var(--white); font-size: 0.85rem; font-weight: 700; }
+.pilot-trust-item span { display: block; color: oklch(68% 0 0); font-size: 0.72rem; margin-top: 0.15em; line-height: 1.4; }
+.pilot-hero-media { flex: 1 1 320px; min-width: 240px; display: flex; justify-content: center; }
+.pilot-hero-media img { width: 100%; max-width: 460px; height: auto; filter: drop-shadow(0 30px 55px rgba(0, 0, 0, 0.5)); }
+@media (max-width: 700px) { .pilot-hero-media { order: -1; } }
+
+/* ---------- Process ---------- */
+.pilot-process { background: var(--white); }
+.pilot-process .section-head { text-align: center; margin-inline: auto; max-width: 640px; }
+.pilot-process-grid { display: flex; align-items: stretch; flex-wrap: wrap; gap: 0; justify-content: center; }
+.pilot-process-card {
+  flex: 1 1 160px; min-width: 150px; max-width: 220px;
+  background: var(--surface); border-radius: var(--radius);
+  padding: 1.4rem 1.2rem; text-align: left;
+}
+.pilot-process-num { display: block; font-size: 1.9rem; font-weight: 800; color: var(--pg); line-height: 1; margin-bottom: 0.5em; }
+.pilot-process-card h3 { font-size: 0.98rem; margin: 0 0 0.4em; }
+.pilot-process-card p { margin: 0; font-size: 0.78rem; color: var(--ink-2); line-height: 1.5; }
+.pilot-process-arrow { display: flex; align-items: center; flex: 0 0 auto; color: var(--line); padding-inline: 0.4rem; }
+.pilot-process-arrow svg { width: 20px; height: 20px; }
+@media (max-width: 900px) {
+  .pilot-process-grid { flex-direction: column; }
+  .pilot-process-card { max-width: none; width: 100%; }
+  .pilot-process-arrow { display: none; }
+}
+
+/* ---------- Offer / Requirements cards ---------- */
+.pilot-offer { background: var(--surface); }
+.pilot-offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+.pilot-offer-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.2rem); }
+.pilot-offer-card h2 { font-size: var(--text-h3); margin: 0 0 1.3rem; }
+.pilot-check-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+.pilot-check-list li { display: flex; gap: 0.8em; align-items: flex-start; }
+.pilot-check-badge {
+  width: 26px; height: 26px; border-radius: 50%; background: var(--pg-soft); color: var(--pg);
+  display: grid; place-items: center; flex: none; margin-top: 0.1em;
+}
+.pilot-check-badge svg { width: 14px; height: 14px; }
+.pilot-check-list b { display: block; font-size: 0.92rem; }
+.pilot-check-list span { display: block; font-size: 0.8rem; color: var(--ink-2); margin-top: 0.2em; line-height: 1.5; }
+.pilot-note {
+  display: flex; gap: 0.6em; align-items: flex-start; margin-top: 1.4rem;
+  padding: 0.9rem 1rem; background: var(--surface); border-radius: 10px;
+  font-size: 0.8rem; color: var(--ink-2);
+}
+.pilot-note svg { flex: none; width: 16px; height: 16px; margin-top: 0.15em; color: var(--ink-2); }
+
+/* ---------- Photo CTA banner ---------- */
+.pilot-cta-section { background: var(--white); padding-block: 0 var(--space-block); }
+.pilot-cta { background: var(--ink); border-radius: var(--radius); overflow: hidden; display: flex; flex-wrap: wrap; align-items: stretch; }
+.pilot-cta-text { flex: 1 1 320px; padding: clamp(1.8rem, 4vw, 3rem); display: flex; flex-direction: column; justify-content: center; }
+.pilot-cta-text h2 { color: var(--white); margin: 0 0 0.5em; font-size: var(--text-h3); }
+.pilot-cta-text p { color: oklch(80% 0 0); margin: 0 0 1.4rem; max-width: 40ch; }
+.pilot-cta .btn-primary { background: var(--pg); border-color: var(--pg); color: var(--white); align-self: flex-start; }
+.pilot-cta .btn-primary:hover { background: var(--pg-dark); border-color: var(--pg-dark); }
+.pilot-cta-media { flex: 1 1 280px; min-height: 220px; position: relative; }
+.pilot-cta-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-width: 640px) { .pilot-cta-media { min-height: 200px; order: -1; } }
+
+/* ---------- Trust strip (dark band, sits directly above the site footer) ---------- */
+.pilot-trust-strip { background: var(--ink); padding-block: clamp(1.8rem, 3vw, 2.4rem); }
+.pilot-trust-strip-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1.4rem; }
+.pilot-trust-strip-item { display: flex; align-items: flex-start; gap: 0.7em; }
+.pilot-trust-strip-item svg { color: var(--pg); flex: none; width: 22px; height: 22px; margin-top: 0.1em; }
+.pilot-trust-strip-item b { display: block; color: var(--white); font-size: 0.85rem; }
+.pilot-trust-strip-item span { display: block; color: oklch(65% 0 0); font-size: 0.7rem; margin-top: 0.15em; line-height: 1.4; }
+
