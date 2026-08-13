@@ -1055,7 +1055,7 @@
 }
 
 /* ---------- Why Choose Drone X (plain 4-column text) ---------- */
-.fs2-why { background: var(--surface); }
+.fs2-why { background: var(--white); }
 .fs2-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
 .fs2-why-item h3 {
   font-size: 0.95rem; margin: 0 0 0.6em; padding-bottom: 0.6em; border-bottom: 2px solid var(--pg);
