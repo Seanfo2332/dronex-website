@@ -1107,7 +1107,7 @@
 }
 .pilot-check-badge svg { width: 14px; height: 14px; }
 .pilot-check-list b { display: block; font-size: 0.92rem; }
-.pilot-check-list span { display: block; font-size: 0.8rem; color: var(--ink-2); margin-top: 0.2em; line-height: 1.5; }
+.pilot-check-list span:not(.pilot-check-badge) { display: block; font-size: 0.8rem; color: var(--ink-2); margin-top: 0.2em; line-height: 1.5; }
 .pilot-note {
   display: flex; gap: 0.6em; align-items: flex-start; margin-top: 1.4rem;
   padding: 0.9rem 1rem; background: var(--surface); border-radius: 10px;

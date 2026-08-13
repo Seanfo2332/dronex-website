@@ -279,6 +279,12 @@ html[data-lang="bm"] .en, html[data-lang="bm"] .zh { display: none !important; }
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--black); color: oklch(88% 0 0); margin-top: var(--space-section); }
+/* When the page's last section is already dark/photo-toned (e.g.
+   Become a Pilot's trust strip, About Us's closing CTA banner), the
+   default margin-top above leaves a visible white gap between two
+   dark blocks — collapse it so they sit flush. */
+main:has(> .pilot-trust-strip:last-child) + .site-footer,
+main:has(> .au-cta:last-child) + .site-footer { margin-top: 0; }
 .footer-cta {
   display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
   padding: var(--space-block) 0; border-bottom: 1px solid oklch(35% 0 0);
