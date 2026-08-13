@@ -213,6 +213,19 @@
   content: ""; position: absolute; top: 50%; left: -3.2rem; width: 3.2rem; height: 0;
   border-top: 1.5px dashed rgba(46, 125, 58, 0.55); transform: translateY(-50%); pointer-events: none;
 }
+/* Solid accent dot where each dashed line meets the hub's outer ring —
+   bridges the two independent dash patterns (line + circle border) so
+   the connection reads as continuous instead of a visible gap. */
+.au-eco-col--left .au-eco-item::before {
+  content: ""; position: absolute; z-index: 1; top: 50%; right: calc(-3.2rem - 3.5px);
+  width: 7px; height: 7px; border-radius: 50%; background: var(--pg);
+  box-shadow: 0 0 0 3px var(--pg-soft); transform: translateY(-50%); pointer-events: none;
+}
+.au-eco-col--right .au-eco-item::before {
+  content: ""; position: absolute; z-index: 1; top: 50%; left: calc(-3.2rem - 3.5px);
+  width: 7px; height: 7px; border-radius: 50%; background: var(--pg);
+  box-shadow: 0 0 0 3px var(--pg-soft); transform: translateY(-50%); pointer-events: none;
+}
 .au-eco-icon { flex: none; width: 22px; height: 22px; color: var(--pg); display: grid; place-items: center; }
 .au-eco-icon svg { width: 22px; height: 22px; }
 .au-eco-item b { display: block; font-size: 0.85rem; margin-bottom: 0.15em; }
@@ -229,18 +242,14 @@
   content: ""; position: absolute; inset: -26px; border-radius: 50%;
   border: 1px dashed rgba(46, 125, 58, 0.32); pointer-events: none;
 }
-.au-eco-hub-text {
-  position: relative; z-index: 1; color: var(--white);
-  font-weight: 800; font-size: 1.05rem; letter-spacing: 0.03em; white-space: nowrap;
-}
-.au-eco-hub-text b { color: var(--pg); font-weight: 800; }
+.au-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .au-eco-hub::after { animation: pt-eco-spin 46s linear infinite; }
 }
 @media (max-width: 720px) {
   .au-eco-diagram { grid-template-columns: 1fr; row-gap: 1.2rem; max-width: 420px; }
   .au-eco-hub { grid-column: 1; grid-row: auto; order: -1; margin-bottom: 0.4rem; }
-  .au-eco-col--left .au-eco-item::after, .au-eco-col--right .au-eco-item::after { display: none; }
+  .au-eco-col--left .au-eco-item::after, .au-eco-col--right .au-eco-item::after, .au-eco-col--left .au-eco-item::before, .au-eco-col--right .au-eco-item::before { display: none; }
 }
 
 /* ---------- Closing CTA banner (About — full-bleed photo, same
