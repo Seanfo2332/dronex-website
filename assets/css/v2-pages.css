@@ -1017,3 +1017,56 @@
 .pilot-trust-strip-item b { display: block; color: var(--white); font-size: 0.85rem; }
 .pilot-trust-strip-item span { display: block; color: oklch(65% 0 0); font-size: 0.7rem; margin-top: 0.15em; line-height: 1.4; }
 
+/* ============================================================
+   Farmer Solutions — hero, benefit cards, scenario strip, why-choose
+   grid, process row (2026-08-13, matches client reference design).
+   Reuses .pilot-hero / .pilot-cta-* from the Become a Pilot redesign
+   (same green accent, same photo-hero + photo-CTA mechanics) — only
+   the new card/grid layouts below are page-specific. */
+.fs2-benefit, .fs2-why, .fs2-process {
+  --pg: #2E7D3A;
+  --pg-soft: #E7F4EA;
+}
+
+/* ---------- Service Advantages (4 image cards) ---------- */
+.fs2-benefit { background: var(--white); }
+.fs2-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+.fs2-benefit-card { display: flex; flex-direction: column; }
+.fs2-benefit-media { aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden; margin-bottom: 1rem; }
+.fs2-benefit-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fs2-benefit-card h3 { font-size: 0.98rem; margin: 0 0 0.4em; }
+.fs2-benefit-card p { margin: 0; font-size: 0.82rem; color: var(--ink-2); line-height: 1.6; }
+
+/* ---------- Suited to Different Farming Scenarios (5 image cards,
+   bottom label overlay) ---------- */
+.fs2-scenario-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+.fs2-scenario-card {
+  position: relative; aspect-ratio: 4/3; border-radius: var(--radius);
+  overflow: hidden; display: flex; align-items: flex-end;
+}
+.fs2-scenario-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fs2-scenario-card::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(0deg, rgba(15, 25, 33, 0.82) 0%, rgba(15, 25, 33, 0.05) 55%, transparent 100%);
+}
+.fs2-scenario-label {
+  position: relative; z-index: 2; color: var(--white); font-weight: 700;
+  font-size: 0.88rem; padding: 0.9rem 0.9rem 0.8rem;
+}
+
+/* ---------- Why Choose Drone X (plain 4-column text) ---------- */
+.fs2-why { background: var(--surface); }
+.fs2-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.fs2-why-item h3 {
+  font-size: 0.95rem; margin: 0 0 0.6em; padding-bottom: 0.6em; border-bottom: 2px solid var(--pg);
+  display: inline-block;
+}
+.fs2-why-item p { margin: 0; font-size: 0.82rem; color: var(--ink-2); line-height: 1.65; }
+
+/* ---------- Service Process (plain 4-column numbered row, no cards) ---------- */
+.fs2-process { background: var(--white); }
+.fs2-process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.fs2-process-num { display: block; font-size: 1.9rem; font-weight: 800; color: var(--pg); line-height: 1; margin-bottom: 0.5em; }
+.fs2-process-item h3 { font-size: 0.95rem; margin: 0 0 0.4em; }
+.fs2-process-item p { margin: 0; font-size: 0.82rem; color: var(--ink-2); line-height: 1.6; }
+
