@@ -150,6 +150,7 @@
 
 /* ---------- Vision / Mission (About — photo + text panels) ---------- */
 .vm-grid {
+  --pg: #2E7D3A;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(1.2rem, 2.5vw, 1.8rem);
   max-width: 1020px; margin-inline: auto;
@@ -157,40 +158,32 @@
 .vm-panel {
   display: flex; align-items: center; gap: 1.4rem;
   border-radius: var(--radius);
-  padding: 1.1rem; background: var(--white); border: 1px solid var(--line);
+  padding: 1.1rem; background: var(--surface);
 }
-.vm-media { flex: 0 0 38%; aspect-ratio: 4/3; border-radius: calc(var(--radius) - 6px); overflow: hidden; }
+.vm-media { flex: 0 0 46%; aspect-ratio: 4/3; border-radius: calc(var(--radius) - 6px); overflow: hidden; }
 .vm-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .vm-body { min-width: 0; }
-.vm-panel h2 { margin: 0; }
+.vm-panel h2 { margin: 0 0 0.5em; color: var(--pg); font-size: var(--text-h3); }
 .vm-panel p {
   margin: 0; max-width: 34ch;
   font-size: var(--text-small); line-height: 1.65; color: var(--ink-2);
-}
-.vm-rule {
-  display: block; width: 44px; height: 3px; border-radius: 2px;
-  background: var(--pg); margin: 0.7rem 0 0.85rem;
 }
 @media (max-width: 720px) {
   .vm-grid { grid-template-columns: 1fr; }
   .vm-panel { flex-direction: column; align-items: flex-start; }
   .vm-media { width: 100%; flex-basis: auto; }
 }
-@media (prefers-reduced-motion: no-preference) {
-  /* Rule draws outward from the left once the panel has risen */
-  html.js .stagger > .vm-panel .vm-rule { transform: scaleX(0); transform-origin: left; }
-  html.js .stagger.in > .vm-panel .vm-rule {
-    transform: scaleX(1);
-    transition: transform 640ms var(--ease) 320ms;
-  }
-  html.js .stagger.in > .vm-panel:nth-child(2) .vm-rule { transition-delay: 460ms; }
-}
 
 /* ---------- Drone X Ecosystem (About — icon hub-and-spoke, 3 rows per
    side). Reuses the same radar-hub concept as Partners' ecosystem
    diagram for brand continuity, sized for icon-only rows instead of
    photo cards. ---------- */
-.au-eco { background: var(--white); }
+.au-eco {
+  --pg: #2E7D3A;
+  --pg-dark: #24672F;
+  --pg-soft: #E7F4EA;
+  background: var(--white);
+}
 .au-eco-diagram {
   max-width: 820px; margin-inline: auto;
   display: grid; grid-template-columns: 1fr 148px 1fr; column-gap: 3.2rem; row-gap: 1.1rem;
@@ -218,15 +211,21 @@
 .au-eco-item > span > span:last-child { display: block; font-size: 0.74rem; color: var(--ink-2); line-height: 1.4; }
 .au-eco-hub {
   grid-column: 2; grid-row: 1 / 4; justify-self: center;
-  position: relative; width: 148px; height: 148px; border-radius: 50%; background: var(--ink);
-  display: grid; place-items: center; box-shadow: 0 20px 44px -18px rgba(21, 31, 39, 0.5);
+  position: relative; width: 140px; height: 140px; border-radius: 50%; background: var(--ink);
+  display: grid; place-items: center;
+  /* Thick white ring between the dark disc and the outer radar ring —
+     gives the badge/target layering seen in the reference. */
+  box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5);
 }
-.au-eco-hub::before, .au-eco-hub::after {
-  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+.au-eco-hub::after {
+  content: ""; position: absolute; inset: -26px; border-radius: 50%;
+  border: 1px dashed rgba(46, 125, 58, 0.32); pointer-events: none;
 }
-.au-eco-hub::before { inset: -18px; border: 1px dashed rgba(46, 125, 58, 0.32); }
-.au-eco-hub::after { inset: -38px; border: 1px dashed rgba(46, 125, 58, 0.16); }
-.au-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
+.au-eco-hub-text {
+  position: relative; z-index: 1; color: var(--white);
+  font-weight: 800; font-size: 1.05rem; letter-spacing: 0.03em; white-space: nowrap;
+}
+.au-eco-hub-text b { color: var(--pg); font-weight: 800; }
 @media (prefers-reduced-motion: no-preference) {
   .au-eco-hub::after { animation: pt-eco-spin 46s linear infinite; }
 }
