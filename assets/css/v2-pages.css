@@ -1065,8 +1065,15 @@
 
 /* ---------- Service Process (plain 4-column numbered row, no cards) ---------- */
 .fs2-process { background: var(--white); }
-.fs2-process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
-.fs2-process-num { display: block; font-size: 1.9rem; font-weight: 800; color: var(--pg); line-height: 1; margin-bottom: 0.5em; }
-.fs2-process-item h3 { font-size: 0.95rem; margin: 0 0 0.4em; }
-.fs2-process-item p { margin: 0; font-size: 0.82rem; color: var(--ink-2); line-height: 1.6; }
+.fs2-process-grid { display: flex; align-items: flex-start; flex-wrap: wrap; }
+.fs2-process-step { flex: 1 1 180px; min-width: 160px; }
+.fs2-process-head { display: flex; align-items: baseline; gap: 0.5em; margin-bottom: 0.5em; }
+.fs2-process-num { font-size: 1.35rem; font-weight: 800; color: var(--pg); line-height: 1; flex: none; }
+.fs2-process-step h3 { font-size: 0.95rem; margin: 0; }
+.fs2-process-step p { margin: 0; font-size: 0.8rem; color: var(--ink-2); line-height: 1.6; }
+.fs2-process-line { flex: 1 1 32px; height: 1px; background: var(--line); margin-top: 0.9rem; align-self: flex-start; min-width: 16px; }
+@media (max-width: 860px) {
+  .fs2-process-grid { flex-direction: column; gap: 1.6rem; }
+  .fs2-process-line { display: none; }
+}
 
