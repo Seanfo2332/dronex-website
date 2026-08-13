@@ -148,55 +148,95 @@
 .benefit h3 { margin-bottom: 0.4em; }
 .benefit p { margin: 0; font-size: var(--text-small); color: var(--ink-2); }
 
-/* ---------- Vision / Mission (About — centered two-tone panels) ---------- */
+/* ---------- Vision / Mission (About — photo + text panels) ---------- */
 .vm-grid {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(1.2rem, 2.5vw, 1.8rem);
   max-width: 1020px; margin-inline: auto;
 }
 .vm-panel {
-  position: relative; overflow: hidden; text-align: center;
+  display: flex; align-items: center; gap: 1.4rem;
   border-radius: var(--radius);
-  padding: clamp(2.6rem, 5vw, 4rem) clamp(1.6rem, 4vw, 3rem);
-  background: var(--white); border: 1px solid var(--line);
+  padding: 1.1rem; background: var(--white); border: 1px solid var(--line);
 }
-.vm-panel-ink { background: var(--ink); border-color: var(--ink); }
+.vm-media { flex: 0 0 38%; aspect-ratio: 4/3; border-radius: calc(var(--radius) - 6px); overflow: hidden; }
+.vm-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vm-body { min-width: 0; }
 .vm-panel h2 { margin: 0; }
-.vm-panel-ink h2 { color: var(--white); }
 .vm-panel p {
-  margin: 0 auto; max-width: 44ch;
-  font-size: var(--text-lead); line-height: 1.7; color: var(--ink-2);
+  margin: 0; max-width: 34ch;
+  font-size: var(--text-small); line-height: 1.65; color: var(--ink-2);
 }
-.vm-panel-ink p { color: oklch(88% 0 0); }
 .vm-rule {
-  display: block; width: 54px; height: 3px; border-radius: 2px;
-  background: var(--ink); margin: 1.15rem auto 1.35rem;
-}
-.vm-panel-ink .vm-rule { background: var(--white); }
-.vm-watermark {
-  position: absolute; right: -36px; bottom: -36px; width: 190px; height: auto;
-  opacity: 0.09; pointer-events: none; user-select: none;
-  z-index: -1; /* behind the panel text, in front of the panel background */
+  display: block; width: 44px; height: 3px; border-radius: 2px;
+  background: var(--pg); margin: 0.7rem 0 0.85rem;
 }
 @media (max-width: 720px) {
   .vm-grid { grid-template-columns: 1fr; }
-  .vm-watermark { width: 150px; right: -28px; bottom: -28px; }
+  .vm-panel { flex-direction: column; align-items: flex-start; }
+  .vm-media { width: 100%; flex-basis: auto; }
 }
 @media (prefers-reduced-motion: no-preference) {
-  /* Rule draws outward from center once the panel has risen */
-  html.js .stagger > .vm-panel .vm-rule { transform: scaleX(0); }
+  /* Rule draws outward from the left once the panel has risen */
+  html.js .stagger > .vm-panel .vm-rule { transform: scaleX(0); transform-origin: left; }
   html.js .stagger.in > .vm-panel .vm-rule {
     transform: scaleX(1);
     transition: transform 640ms var(--ease) 320ms;
   }
   html.js .stagger.in > .vm-panel:nth-child(2) .vm-rule { transition-delay: 460ms; }
-  /* Watermark eases in with a slight drift */
-  html.js .stagger > .vm-panel .vm-watermark { opacity: 0; transform: translate(14px, 14px); }
-  html.js .stagger.in > .vm-panel .vm-watermark {
-    opacity: 0.09; transform: none;
-    transition: opacity 700ms var(--ease) 380ms, transform 700ms var(--ease) 380ms;
-  }
 }
+
+/* ---------- Drone X Ecosystem (About — icon hub-and-spoke, 3 rows per
+   side). Reuses the same radar-hub concept as Partners' ecosystem
+   diagram for brand continuity, sized for icon-only rows instead of
+   photo cards. ---------- */
+.au-eco { background: var(--surface); }
+.au-eco-diagram {
+  max-width: 780px; margin-inline: auto;
+  display: grid; grid-template-columns: 1fr 148px 1fr; column-gap: 3rem; row-gap: 1.6rem;
+  align-items: center;
+}
+.au-eco-col { display: flex; flex-direction: column; gap: 1.6rem; }
+.au-eco-item { position: relative; display: flex; align-items: flex-start; gap: 0.7em; }
+.au-eco-col--left .au-eco-item::after {
+  content: ""; position: absolute; top: 50%; right: -3rem; width: 3rem; height: 0;
+  border-top: 1px dashed rgba(46, 125, 58, 0.45); transform: translateY(-50%); pointer-events: none;
+}
+.au-eco-col--right .au-eco-item::after {
+  content: ""; position: absolute; top: 50%; left: -3rem; width: 3rem; height: 0;
+  border-top: 1px dashed rgba(46, 125, 58, 0.45); transform: translateY(-50%); pointer-events: none;
+}
+.au-eco-icon {
+  flex: none; width: 34px; height: 34px; border-radius: 9px;
+  background: var(--pg-soft); color: var(--pg); display: grid; place-items: center;
+}
+.au-eco-icon svg { width: 18px; height: 18px; }
+.au-eco-item b { display: block; font-size: 0.85rem; margin-bottom: 0.15em; }
+.au-eco-item > span > span:last-child { display: block; font-size: 0.74rem; color: var(--ink-2); line-height: 1.4; }
+.au-eco-hub {
+  grid-column: 2; grid-row: 1 / 4; justify-self: center;
+  position: relative; width: 148px; height: 148px; border-radius: 50%; background: var(--ink);
+  display: grid; place-items: center; box-shadow: 0 20px 44px -18px rgba(21, 31, 39, 0.5);
+}
+.au-eco-hub::before, .au-eco-hub::after {
+  content: ""; position: absolute; border-radius: 50%; pointer-events: none;
+}
+.au-eco-hub::before { inset: -18px; border: 1px dashed rgba(46, 125, 58, 0.32); }
+.au-eco-hub::after { inset: -38px; border: 1px dashed rgba(46, 125, 58, 0.16); }
+.au-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  .au-eco-hub::after { animation: pt-eco-spin 46s linear infinite; }
+}
+@media (max-width: 720px) {
+  .au-eco-diagram { grid-template-columns: 1fr; row-gap: 1.2rem; max-width: 420px; }
+  .au-eco-hub { grid-column: 1; grid-row: auto; order: -1; margin-bottom: 0.4rem; }
+  .au-eco-col--left .au-eco-item::after, .au-eco-col--right .au-eco-item::after { display: none; }
+}
+
+/* ---------- Closing CTA banner (About — full-bleed photo, same
+   .section-video mechanics used for the Coverage section). ---------- */
+.au-cta .section-head { max-width: 640px; }
+.au-cta .btn { margin-top: 0.6rem; }
 
 /* ---------- Value list (About / Why Drone X — row layout, not cards) ---------- */
 .value-list { max-width: 860px; margin-inline: auto; }
