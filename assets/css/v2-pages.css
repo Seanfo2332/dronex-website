@@ -152,26 +152,34 @@
 .vm-grid {
   --pg: #2E7D3A;
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(1.2rem, 2.5vw, 1.8rem);
-  max-width: 1020px; margin-inline: auto;
+  gap: clamp(1.4rem, 2.8vw, 2rem);
+  max-width: 1180px; margin-inline: auto;
 }
 .vm-panel {
-  display: flex; align-items: stretch;
+  display: flex; align-items: stretch; min-height: 280px;
   border-radius: var(--radius); overflow: hidden;
   background: var(--surface);
 }
-.vm-media { flex: 0 0 40%; }
+.vm-media { position: relative; flex: 0 0 44%; }
 .vm-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.vm-body { min-width: 0; padding: 1.5rem 1.7rem; display: flex; flex-direction: column; justify-content: center; }
-.vm-panel h2 { margin: 0 0 0.5em; color: var(--pg); font-size: var(--text-h3); }
+/* Fade the photo's trailing edge into the card's surface color instead
+   of a hard cut, for a softer photo-to-text transition. */
+.vm-media::after {
+  content: ; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to right, transparent 60%, var(--surface) 100%);
+}
+.vm-body { min-width: 0; padding: 2.2rem 2.4rem; display: flex; flex-direction: column; justify-content: center; }
+.vm-panel h2 { margin: 0 0 0.6em; color: var(--pg); font-size: var(--text-h2); }
 .vm-panel p {
-  margin: 0; max-width: 34ch;
-  font-size: var(--text-small); line-height: 1.65; color: var(--ink-2);
+  margin: 0; max-width: 36ch;
+  font-size: var(--text-lead); line-height: 1.7; color: var(--ink-2);
 }
 @media (max-width: 720px) {
   .vm-grid { grid-template-columns: 1fr; }
-  .vm-panel { flex-direction: column; }
+  .vm-panel { flex-direction: column; min-height: 0; }
   .vm-media { width: 100%; flex-basis: auto; aspect-ratio: 16/9; }
+  .vm-media::after { background: linear-gradient(to bottom, transparent 60%, var(--surface) 100%); }
+  .vm-body { padding: 1.6rem 1.8rem; }
 }
 
 /* ---------- Drone X Ecosystem (About — icon hub-and-spoke, 3 rows per
