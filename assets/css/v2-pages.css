@@ -206,23 +206,23 @@
 }
 .au-eco-item:hover { transform: translateY(-2px); box-shadow: 0 16px 32px -18px rgba(21, 31, 39, 0.28); }
 .au-eco-col--left .au-eco-item::after {
-  content: ""; position: absolute; top: 50%; right: -3.2rem; width: 3.2rem; height: 0;
-  border-top: 1.5px dashed rgba(46, 125, 58, 0.55); transform: translateY(-50%); pointer-events: none;
+  /* Extends past the card→hub gap and under the hub's white ring so it
+     visibly runs into the dark disc itself, not stopping in mid-air. */
+  content: ""; position: absolute; z-index: 0; top: 50%; right: -3.6rem; width: 3.6rem; height: 0;
+  border-top: 1.5px dashed rgba(46, 125, 58, 0.6); transform: translateY(-50%); pointer-events: none;
 }
 .au-eco-col--right .au-eco-item::after {
-  content: ""; position: absolute; top: 50%; left: -3.2rem; width: 3.2rem; height: 0;
-  border-top: 1.5px dashed rgba(46, 125, 58, 0.55); transform: translateY(-50%); pointer-events: none;
+  content: ""; position: absolute; z-index: 0; top: 50%; left: -3.6rem; width: 3.6rem; height: 0;
+  border-top: 1.5px dashed rgba(46, 125, 58, 0.6); transform: translateY(-50%); pointer-events: none;
 }
-/* Solid accent dot where each dashed line meets the hub's outer ring —
-   bridges the two independent dash patterns (line + circle border) so
-   the connection reads as continuous instead of a visible gap. */
+/* Solid accent dot marking the midpoint of each connector line. */
 .au-eco-col--left .au-eco-item::before {
-  content: ""; position: absolute; z-index: 1; top: 50%; right: calc(-3.2rem - 3.5px);
+  content: ""; position: absolute; z-index: 1; top: 50%; right: calc(-1.8rem - 3.5px);
   width: 7px; height: 7px; border-radius: 50%; background: var(--pg);
   box-shadow: 0 0 0 3px var(--pg-soft); transform: translateY(-50%); pointer-events: none;
 }
 .au-eco-col--right .au-eco-item::before {
-  content: ""; position: absolute; z-index: 1; top: 50%; left: calc(-3.2rem - 3.5px);
+  content: ""; position: absolute; z-index: 1; top: 50%; left: calc(-1.8rem - 3.5px);
   width: 7px; height: 7px; border-radius: 50%; background: var(--pg);
   box-shadow: 0 0 0 3px var(--pg-soft); transform: translateY(-50%); pointer-events: none;
 }
@@ -232,20 +232,13 @@
 .au-eco-item > span > span:last-child { display: block; font-size: 0.74rem; color: var(--ink-2); line-height: 1.4; }
 .au-eco-hub {
   grid-column: 2; grid-row: 1 / 4; justify-self: center;
-  position: relative; width: 140px; height: 140px; border-radius: 50%; background: var(--ink);
+  position: relative; z-index: 2; width: 140px; height: 140px; border-radius: 50%; background: var(--ink);
   display: grid; place-items: center;
-  /* Thick white ring between the dark disc and the outer radar ring —
-     gives the badge/target layering seen in the reference. */
+  /* White ring badge the connector lines visibly run into and disappear
+     under, so the hub reads as the lines' shared destination. */
   box-shadow: 0 0 0 8px var(--white), 0 20px 44px -18px rgba(21, 31, 39, 0.5);
 }
-.au-eco-hub::after {
-  content: ""; position: absolute; inset: -26px; border-radius: 50%;
-  border: 1px dashed rgba(46, 125, 58, 0.32); pointer-events: none;
-}
 .au-eco-hub img { position: relative; z-index: 1; width: 84px; height: auto; display: block; }
-@media (prefers-reduced-motion: no-preference) {
-  .au-eco-hub::after { animation: pt-eco-spin 46s linear infinite; }
-}
 @media (max-width: 720px) {
   .au-eco-diagram { grid-template-columns: 1fr; row-gap: 1.2rem; max-width: 420px; }
   .au-eco-hub { grid-column: 1; grid-row: auto; order: -1; margin-bottom: 0.4rem; }
