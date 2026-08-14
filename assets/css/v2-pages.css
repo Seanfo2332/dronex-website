@@ -549,6 +549,15 @@
   .case-card-body { padding: 0 1.1rem 1rem; }
 }
 
+/* Farmer Solutions "实际案例" cases as a 3-up card grid filling the section
+   box, vertical card shape (image on top). Scoped to .fs-case-grid so the
+   Home page's narrower two-column .case-grid (in .proof-layout) is untouched. */
+.fs-case-grid { grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.fs-case-grid .case-card { grid-template-columns: 1fr; align-items: stretch; }
+.fs-case-grid .case-card img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
+.fs-case-grid .case-card-body { padding: 1rem 1.1rem 1.1rem; }
+@media (max-width: 520px) { .fs-case-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Other Solutions icon row ---------- */
 .sol-row {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
