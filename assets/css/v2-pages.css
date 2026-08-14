@@ -1185,12 +1185,22 @@
 /* ---------- Why Choose Drone X (plain 4-column text). Also directly
    follows another white section — same zero-top-padding treatment. ---------- */
 .fs2-why { background: var(--white); padding-top: 0; }
+.fs2-why-rule { display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--pg); margin: 0.85rem 0 0; }
 .fs2-why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+.fs2-why-item { position: relative; }
+/* Vertical hairline between columns, centered in the grid gap. */
+.fs2-why-item:not(:first-child)::before {
+  content: ""; position: absolute; top: 0.2em; bottom: 0; left: -1rem;
+  width: 1px; background: var(--line);
+}
 .fs2-why-item h3 {
   font-size: 0.95rem; margin: 0 0 0.6em; padding-bottom: 0.6em; border-bottom: 2px solid var(--pg);
   display: inline-block;
 }
 .fs2-why-item p { margin: 0; font-size: 0.82rem; color: var(--ink-2); line-height: 1.65; }
+@media (max-width: 860px) {
+  .fs2-why-item:not(:first-child)::before { display: none; }
+}
 
 /* ---------- Service Process (plain 4-column numbered row, no cards).
    Also directly follows another white section. ---------- */
