@@ -1202,24 +1202,28 @@
   .fs2-why-item:not(:first-child)::before { display: none; }
 }
 
-/* ---------- Service Process (plain 4-column numbered row, no cards).
-   Also directly follows another white section. ---------- */
+/* ---------- Service Process (icon badge + numbered heading, chevron
+   connectors — same proven pattern as Partners' process row). Also
+   directly follows another white section. ---------- */
 .fs2-process { background: var(--white); padding-top: 0; }
-.fs2-process-grid { display: flex; align-items: flex-start; flex-wrap: wrap; }
-.fs2-process-step { flex: 1 1 180px; min-width: 160px; }
-.fs2-process-head { display: flex; align-items: baseline; gap: 0.5em; margin-bottom: 0.5em; }
-.fs2-process-num { font-size: 1.35rem; font-weight: 800; color: var(--pg); line-height: 1; flex: none; }
-.fs2-process-step h3 { font-size: 0.95rem; margin: 0; }
-.fs2-process-step p { margin: 0; font-size: 0.8rem; color: var(--ink-2); line-height: 1.6; }
-.fs2-process-line { flex: 1 1 32px; height: 1px; background: var(--line); margin-top: 0.9rem; align-self: flex-start; min-width: 16px; }
+.fs2-process-rule { display: block; width: 44px; height: 3px; border-radius: 2px; background: var(--pg); margin: 0.85rem 0 0; }
+.fs2-process-grid { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 0; }
+.fs2-process-step { flex: 1 1 200px; min-width: 180px; display: flex; align-items: flex-start; gap: 0.8rem; }
+.fs2-process-icon {
+  flex: none; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--pg); color: var(--white); display: grid; place-items: center;
+}
+.fs2-process-icon svg { width: 20px; height: 20px; }
+.fs2-process-head { display: flex; align-items: baseline; gap: 0.4em; margin-bottom: 0.3em; }
+.fs2-process-num { font-size: 0.85rem; font-weight: 800; color: var(--pg); }
+.fs2-process-step h3 { font-size: 0.92rem; margin: 0; }
+.fs2-process-step p { margin: 0; font-size: 0.78rem; color: var(--ink-2); line-height: 1.55; }
+.fs2-process-arrow { display: flex; align-items: center; flex: 0 0 auto; color: var(--line); padding: 1.1rem 0.6rem 0 0; }
+.fs2-process-arrow svg { width: 18px; height: 18px; }
 @media (max-width: 860px) {
-  /* flex-basis applies to the main axis, which flips to vertical when
-     flex-direction becomes column — without resetting it here, the
-     180px basis meant for desktop column-width instead forces 180px of
-     minimum HEIGHT per step, producing huge gaps between steps. */
-  .fs2-process-grid { flex-direction: column; gap: 1.8rem; }
+  .fs2-process-grid { flex-direction: column; gap: 1.4rem; }
   .fs2-process-step { flex: none; min-width: 0; }
-  .fs2-process-line { display: none; }
+  .fs2-process-arrow { display: none; }
 }
 
 /* ============================================================
