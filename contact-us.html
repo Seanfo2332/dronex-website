@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hans" data-lang="zh">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,12 +44,12 @@
     </ul>
     <div class="lang-dd">
       <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
-        <span class="lang-dd-code">ZH</span>
+        <span class="lang-dd-code">EN</span>
         <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
-        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
-        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="zh" aria-selected="false">中文</li>
+        <li role="option" data-lang="en" class="active" aria-selected="true">English</li>
         <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
       </ul>
     </div>
@@ -67,12 +67,12 @@
       <span class="mobile-menu-lang-label"><span class="en">Language</span><span class="zh">语言</span><span class="bm">Bahasa</span></span>
       <div class="lang-dd">
       <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
-        <span class="lang-dd-code">ZH</span>
+        <span class="lang-dd-code">EN</span>
         <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
-        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
-        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="zh" aria-selected="false">中文</li>
+        <li role="option" data-lang="en" class="active" aria-selected="true">English</li>
         <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
       </ul>
     </div>
@@ -143,30 +143,29 @@
         </div>
         <div class="form-field">
           <label for="f-location"><span class="en">Farm Location / State</span><span class="zh">农地地点／州属</span><span class="bm">Lokasi Ladang / Negeri</span> *</label>
-          <input id="f-location" name="location" type="text" placeholder="例如：霹雳怡保 / 柔佛新山" required>
+          <input id="f-location" name="location" type="text" placeholder="e.g. Ipoh, Perak / Johor Bahru, Johor" data-en="e.g. Ipoh, Perak / Johor Bahru, Johor" data-zh="例如：霹雳怡保 / 柔佛新山" data-bm="cth: Ipoh, Perak / Johor Bahru, Johor" required>
           <span class="err"><span class="en">Please enter a location.</span><span class="zh">请输入地点。</span><span class="bm">Sila masukkan lokasi.</span></span>
         </div>
         <div class="form-field">
           <label for="f-service"><span class="en">Service Needed</span><span class="zh">所需服务</span><span class="bm">Perkhidmatan Diperlukan</span> *</label>
           <select id="f-service" name="service" required>
-            <option value="spraying" data-en="Drone Spraying Service (Farmer)" data-zh="农药喷洒服务（农夫）" data-bm="Perkhidmatan Semburan Dron (Petani)">农药喷洒服务（农夫）</option>
-            <option value="pilot" data-en="Become a Pilot" data-zh="加入飞手" data-bm="Jadi Juruterbang">加入飞手</option>
-            <option value="mapping" data-en="Aerial Mapping" data-zh="航拍测绘" data-bm="Pemetaan Udara">航拍测绘</option>
-            <option value="cleaning" data-en="Building / Solar Cleaning" data-zh="建筑/太阳能清洗" data-bm="Pembersihan Bangunan / Solar">建筑/太阳能清洗</option>
-            <option value="public" data-en="Public Sector Support" data-zh="公共部门支援" data-bm="Sokongan Sektor Awam">公共部门支援</option>
-            <option value="show" data-en="Drone Entertainment" data-zh="无人机表演" data-bm="Persembahan Dron">无人机表演</option>
-            <option value="rental" data-en="Drone Rental Service" data-zh="无人机出租服务" data-bm="Perkhidmatan Sewa Dron">无人机出租服务</option>
-            <option value="other" data-en="Other" data-zh="其他" data-bm="Lain-lain">其他</option>
+            <option value="spraying" data-en="Drone Spraying" data-zh="无人机喷洒" data-bm="Semburan Dron">Drone Spraying</option>
+            <option value="rental" data-en="Drone Rental" data-zh="无人机租赁" data-bm="Sewaan Dron">Drone Rental</option>
+            <option value="mapping" data-en="Aerial Mapping/Photography" data-zh="航拍测绘／摄影" data-bm="Pemetaan/Fotografi Udara">Aerial Mapping/Photography</option>
+            <option value="show" data-en="Drone Show" data-zh="无人机表演" data-bm="Persembahan Dron">Drone Show</option>
+            <option value="insurance" data-en="Insurance" data-zh="保险服务" data-bm="Insurans">Insurance</option>
+            <option value="pilot" data-en="Become a Pilot" data-zh="加入飞手" data-bm="Jadi Juruterbang">Become a Pilot</option>
+            <option value="other" data-en="Others" data-zh="其他" data-bm="Lain-lain">Others</option>
           </select>
         </div>
         <div class="form-field">
           <label for="f-area"><span class="en">Farm Area</span><span class="zh">农地面积</span><span class="bm">Keluasan Ladang</span> *</label>
-          <input id="f-area" name="area" type="text" placeholder="例如：10 acre / 20 acre" required>
+          <input id="f-area" name="area" type="text" placeholder="e.g. 10 acre / 20 acre" data-en="e.g. 10 acre / 20 acre" data-zh="例如：10 acre / 20 acre" data-bm="cth: 10 ekar / 20 ekar" required>
           <span class="err"><span class="en">Please enter your farm area.</span><span class="zh">请输入农地面积。</span><span class="bm">Sila masukkan keluasan ladang.</span></span>
         </div>
         <div class="form-field form-field-full">
           <label for="f-message"><span class="en">Message / Other Needs (optional)</span><span class="zh">留言／其他需求（选填）</span><span class="bm">Mesej / Keperluan Lain (pilihan)</span></label>
-          <textarea id="f-message" name="message" rows="4" placeholder="请告诉我们您的农作物类型、作业时间或其他需求..."></textarea>
+          <textarea id="f-message" name="message" rows="4" placeholder="Tell us your crop type, preferred timing, or other needs..." data-en="Tell us your crop type, preferred timing, or other needs..." data-zh="请告诉我们您的农作物类型、作业时间或其他需求..." data-bm="Beritahu kami jenis tanaman, masa pilihan, atau keperluan lain anda..."></textarea>
         </div>
         <div class="form-field-full form-submit-row">
           <button type="submit" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true" style="width:18px;height:18px;margin-right:0.5em;vertical-align:-3px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z" stroke-linejoin="round" stroke-linecap="round"/></svg><span class="en">Get My Service Quote</span><span class="zh">获取服务报价</span><span class="bm">Dapatkan Sebut Harga Saya</span></button>
@@ -269,12 +268,12 @@
       <span>© <span data-year>2026</span> Drone X Malaysia. <span class="en">All rights reserved.</span><span class="zh">版权所有。</span><span class="bm">Hak cipta terpelihara.</span></span>
       <span class="lang-dd">
       <button type="button" class="lang-dd-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / 语言 / Bahasa">
-        <span class="lang-dd-code">ZH</span>
+        <span class="lang-dd-code">EN</span>
         <svg class="lang-dd-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </button>
       <ul class="lang-dd-menu" role="listbox" aria-label="Language" hidden>
-        <li role="option" data-lang="zh" class="active" aria-selected="true">中文</li>
-        <li role="option" data-lang="en" aria-selected="false">English</li>
+        <li role="option" data-lang="zh" aria-selected="false">中文</li>
+        <li role="option" data-lang="en" class="active" aria-selected="true">English</li>
         <li role="option" data-lang="bm" aria-selected="false">Bahasa Malaysia</li>
       </ul>
     </span>

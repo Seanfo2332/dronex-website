@@ -34,15 +34,18 @@
         li.setAttribute("aria-selected", active ? "true" : "false");
       });
     });
-    /* <option> text can't use the .en/.zh/.bm span trick (browsers ignore
-       CSS on option children), so sync it here whenever language changes. */
+    /* <option> text and input placeholders can't use the .en/.zh/.bm span
+       trick (no child-node rendering), so sync them here on language change. */
     document.querySelectorAll("option[data-en]").forEach(function (o) {
       o.textContent = o.getAttribute("data-" + lang) || o.getAttribute("data-en");
     });
+    document.querySelectorAll("[data-en][placeholder]").forEach(function (el) {
+      el.setAttribute("placeholder", el.getAttribute("data-" + lang) || el.getAttribute("data-en"));
+    });
     try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* private mode: keep in-page state only */ }
   }
-  var saved = "zh";
-  try { saved = localStorage.getItem(LANG_KEY) || "zh"; } catch (e) { /* ignore */ }
+  var saved = "en";
+  try { saved = localStorage.getItem(LANG_KEY) || "en"; } catch (e) { /* ignore */ }
   applyLang(saved);
 
   document.addEventListener("click", function (ev) {
