@@ -176,12 +176,15 @@
     /* Prefill from calculator handoff (?area=…&unit=…&purpose=…) */
     var params = new URLSearchParams(location.search);
     if (params.get("area")) {
+      var areaField = form.querySelector("[name=area]");
       var msg = form.querySelector("[name=message]");
       var svc = form.querySelector("[name=service]");
       if (svc) svc.value = "spraying";
+      if (areaField && !areaField.value) {
+        areaField.value = params.get("area") + " " + (params.get("unit") || "acre");
+      }
       if (msg && !msg.value) {
-        msg.value = "Calculator estimate — Area: " + params.get("area") + " " +
-          (params.get("unit") || "acre") + ", Purpose: " + (params.get("purpose") || "spraying") +
+        msg.value = "Calculator estimate — Purpose: " + (params.get("purpose") || "spraying") +
           (params.get("crop") ? ", Crop: " + params.get("crop") : "");
       }
     }
