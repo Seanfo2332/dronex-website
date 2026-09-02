@@ -1222,8 +1222,11 @@
    the new card/grid layouts below are page-specific. */
 .fs2-benefit, .fs2-why, .fs2-process {
   --pg: #2E7D3A;
+  --pg-dark: #24672F;
   --pg-soft: #E7F4EA;
 }
+.fs2-benefit .btn-primary { background: var(--pg); border-color: var(--pg); }
+.fs2-benefit .btn-primary:hover { background: var(--pg-dark); border-color: var(--pg-dark); }
 
 /* ---------- Service Advantages (4 image cards) ---------- */
 .fs2-benefit { background: var(--white); }
@@ -1518,4 +1521,57 @@ a[href*="wa.me"] {
 li:has(> a[href*="wa.me"]) {
   display: none !important;
 }
+
+/* ============================================================
+   Drone Insurance — hero, risk-benefit cards, offer/requirements
+   split, 5-step process (2026-08-26). Reuses .pilot-hero /
+   .pilot-trust-row / .fs2-benefit-* / .pilot-offer-* / .fs2-process-*
+   verbatim (same green accent + card/photo mechanics as Become a
+   Pilot / Farmer Solutions / Partners) — only the risk-card icon
+   badge and the new dual-path closing banner below are page-specific. */
+.ins-risk-badge {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--pg); color: var(--white);
+  display: grid; place-items: center; margin: 0.9rem 0 0.7rem;
+}
+.ins-risk-badge svg { width: 20px; height: 20px; }
+
+/* ---------- 5-step process — equal-width surface cards instead of
+   .fs2-process's arrow-chevron row, which was tuned for 4 items: with
+   5 steps the arrows eat enough width that headings wrap mid-phrase
+   and the row reads as cramped/uneven. Each step is self-contained so
+   uneven text length no longer misaligns neighboring items. ---------- */
+.ins-process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.4rem; }
+.ins-process-card { background: var(--surface); border-radius: var(--radius); padding: 1.5rem 1.3rem; }
+.ins-process-icon {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--pg); color: var(--white);
+  display: grid; place-items: center; margin-bottom: 1rem;
+}
+.ins-process-icon svg { width: 20px; height: 20px; }
+.ins-process-num { display: block; font-size: 0.8rem; font-weight: 800; color: var(--pg); margin-bottom: 0.35em; }
+.ins-process-card h3 { font-size: 0.98rem; margin: 0 0 0.4em; line-height: 1.35; }
+.ins-process-card p { margin: 0; font-size: 0.8rem; color: var(--ink-2); line-height: 1.6; }
+
+/* ---------- Closing dual-path CTA (full-bleed photo, two link-cards) ---------- */
+.ins-final { --pg: #2E7D3A; --pg-dark: #24672F; --pg-soft: #E7F4EA; position: relative; overflow: hidden; }
+.ins-final-media { position: absolute; inset: 0; }
+.ins-final-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ins-final-media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15, 25, 33, 0.55) 0%, rgba(15, 25, 33, 0.88) 100%);
+}
+.ins-final-inner { position: relative; z-index: 2; padding-block: clamp(3.5rem, 7vw, 6rem); }
+.ins-final .section-head { text-align: center; margin-inline: auto; }
+.ins-final .section-head h2 { color: var(--white); }
+.ins-final .section-head p { color: oklch(85% 0 0); }
+.ins-final-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.4rem; margin-top: 2.2rem; }
+.ins-final-card { background: var(--white); border-radius: var(--radius); padding: clamp(1.6rem, 3vw, 2.2rem); }
+.ins-final-icon {
+  width: 46px; height: 46px; border-radius: 12px; background: var(--pg-soft); color: var(--pg);
+  display: grid; place-items: center; margin-bottom: 1rem;
+}
+.ins-final-icon svg { width: 22px; height: 22px; }
+.ins-final-card h3 { font-size: 1.05rem; margin: 0 0 0.4em; }
+.ins-final-card p { margin: 0 0 1.2rem; font-size: 0.86rem; color: var(--ink-2); line-height: 1.6; }
+.ins-final .btn-primary { background: var(--pg); border-color: var(--pg); }
+.ins-final .btn-primary:hover { background: var(--pg-dark); border-color: var(--pg-dark); }
 
