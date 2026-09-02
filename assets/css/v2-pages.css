@@ -1508,20 +1508,6 @@
   .pt-process-arrow { display: none; }
 }
 
-/* ---------- WhatsApp temporarily hidden site-wide ----------
-   Markup/copy left in place on purpose — delete this block to restore.
-   Covers: sticky .wa-float button, every wa.me CTA/link (hero, mid-page
-   CTAs, footer contact entry), and the footer <li> wrapper so no empty
-   bullet is left behind. Testimonial chat-bubble styling is intentionally
-   NOT included here (kept visible per client decision). */
-.wa-float,
-a[href*="wa.me"] {
-  display: none !important;
-}
-li:has(> a[href*="wa.me"]) {
-  display: none !important;
-}
-
 /* ============================================================
    Drone Insurance — hero, risk-benefit cards, offer/requirements
    split, 5-step process (2026-08-26). Reuses .pilot-hero /
