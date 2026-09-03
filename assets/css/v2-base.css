@@ -278,13 +278,12 @@ html[data-lang="bm"] .en, html[data-lang="bm"] .zh { display: none !important; }
 @media (max-width: 600px) { .wa-float .wa-label { display: none; } .wa-float { padding: 0.9em; } }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--black); color: oklch(88% 0 0); margin-top: var(--space-section); }
-/* When the page's last section is already dark/photo-toned (e.g.
-   Become a Pilot's trust strip, About Us's closing CTA banner), the
-   default margin-top above leaves a visible white gap between two
-   dark blocks — collapse it so they sit flush. */
-main:has(> .pilot-trust-strip:last-child) + .site-footer,
-main:has(> .au-cta:last-child) + .site-footer { margin-top: 0; }
+/* No margin-top: every page's final section carries its own
+   padding-block (var(--space-section)) and .footer-cta adds its own
+   var(--space-block) top padding, so the footer sits flush without a
+   white body-colour gap showing between the last section and the
+   footer (was a visible strip on every light-ending page). */
+.site-footer { background: var(--black); color: oklch(88% 0 0); }
 .footer-cta {
   display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between;
   padding: var(--space-block) 0; border-bottom: 1px solid oklch(35% 0 0);
@@ -323,7 +322,10 @@ main:has(> .au-cta:last-child) + .site-footer { margin-top: 0; }
 }
 /* Required CC BY 3.0 attribution for the homepage coverage-map SVG (see
    index.html footer comment) — kept minimal/muted, matching .footer-base. */
-.footer-credit { margin: -0.6rem 0 1.4rem; font-size: 0.72rem; color: oklch(58% 0 0); text-align: center; }
+/* Bottom spacing is padding, not margin: as the footer's last child inside
+   a .wrap with no bottom padding, a margin-bottom here collapses out
+   through the footer and shows as a white body-colour strip below it. */
+.footer-credit { margin: -0.6rem 0 0; padding-bottom: 1.4rem; font-size: 0.72rem; color: oklch(58% 0 0); text-align: center; }
 .footer-credit a { color: inherit; }
 .footer-logo img { height: 34px; width: auto; }
 
